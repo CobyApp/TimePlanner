@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIViewController {
+    
     func makeBarButtonItem<T: UIView>(with view: T) -> UIBarButtonItem {
         return UIBarButtonItem(customView: view)
     }

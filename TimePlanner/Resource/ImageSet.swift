@@ -18,6 +18,11 @@ extension UIImage {
         static let plus = UIImage(name: "plus")!
         static let checkboxOff = UIImage(name: "checkbox_off")!
         static let checkboxOn = UIImage(name: "checkbox_on")!
+        static let setting = UIImage(name: "setting")!
+    }
+    
+    enum Icon {
+        static let logo = UIImage(name: "logo")!
     }
 }
 

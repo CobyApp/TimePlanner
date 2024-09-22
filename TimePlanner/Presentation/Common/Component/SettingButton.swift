@@ -1,14 +1,14 @@
 //
-//  BackButton.swift
+//  SettingButton.swift
 //  TimePlanner
 //
-//  Created by Coby on 9/20/24.
+//  Created by Coby on 9/22/24.
 //
 
 import UIKit
 
-final class BackButton: UIButton {
-
+final class SettingButton: UIButton {
+    
     // MARK: - init
     
     override init(frame: CGRect) {
@@ -23,7 +23,7 @@ final class BackButton: UIButton {
     // MARK: - func
     
     private func configUI() {
-        self.setImage(UIImage.Button.back, for: .normal)
+        self.setImage(UIImage.Button.setting, for: .normal)
         self.tintColor = .labelNormal
     }
 }

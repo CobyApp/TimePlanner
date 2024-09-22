@@ -30,4 +30,10 @@ extension UIView {
         layer.borderColor = color.cgColor
         return self
     }
+    
+    func addSubviews(_ views: UIView...) {
+        for view in views {
+            addSubview(view)
+        }
+    }
 }

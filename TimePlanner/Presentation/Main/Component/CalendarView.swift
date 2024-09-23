@@ -31,6 +31,7 @@ class CalendarView: UIView {
     var onDateSelected: ((Date) -> Void)? // 날짜 선택 콜백
     
     var dateGridView = UIView() // 날짜 버튼을 담는 그리드 뷰
+    var selectedButton: UIButton? // 선택된 날짜를 저장할 버튼
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -87,16 +88,35 @@ class CalendarView: UIView {
     
     // 이전 달로 이동
     @objc func goToPreviousMonth() {
-        self.currentMonth = Calendar.current.date(byAdding: .month, value: -1, to: self.currentMonth)!
-        self.renderCalendar(for: self.currentMonth)
-        self.updateSelectedDateLabel()
+        self.changeMonth(by: -1)
     }
     
     // 다음 달로 이동
     @objc func goToNextMonth() {
-        self.currentMonth = Calendar.current.date(byAdding: .month, value: 1, to: self.currentMonth)!
-        self.renderCalendar(for: self.currentMonth)
+        self.changeMonth(by: 1)
+    }
+    
+    // 달을 변경할 때 처리
+    func changeMonth(by value: Int) {
+        // 현재 월에서 value만큼 더하거나 뺌
+        var newMonth = Calendar.current.date(byAdding: .month, value: value, to: self.currentMonth)!
+        
+        // 변경된 월의 마지막 날짜를 확인
+        let lastDayOfNewMonth = Calendar.current.range(of: .day, in: .month, for: newMonth)!.upperBound - 1
+        
+        // 현재 선택된 날짜의 일(day)와 새로운 월의 마지막 일 비교하여 날짜 유지
+        var selectedComponents = Calendar.current.dateComponents([.year, .month, .day], from: self.selectedDate)
+        selectedComponents.month = Calendar.current.component(.month, from: newMonth)
+        selectedComponents.year = Calendar.current.component(.year, from: newMonth)
+        selectedComponents.day = min(selectedComponents.day ?? 1, lastDayOfNewMonth)
+        
+        if let newSelectedDate = Calendar.current.date(from: selectedComponents) {
+            self.selectedDate = newSelectedDate
+        }
+        
+        self.currentMonth = newMonth
         self.updateSelectedDateLabel()
+        self.renderCalendar(for: self.currentMonth)
     }
     
     // 요일과 날짜 버튼들 배치
@@ -138,6 +158,7 @@ class CalendarView: UIView {
     func renderCalendar(for date: Date) {
         // 기존 날짜 버튼들 제거
         self.dateGridView.subviews.forEach { $0.removeFromSuperview() }
+        self.selectedButton = nil
         
         let calendar = Calendar.current
         let range = calendar.range(of: .day, in: .month, for: date)!
@@ -166,6 +187,14 @@ class CalendarView: UIView {
                         $0.setTitleColor(.black, for: .normal)
                         $0.setTitleColor(.yellow, for: .selected)
                         $0.addTarget(self, action: #selector(self.dateButtonTapped(_:)), for: .touchUpInside)
+                        
+                        // 선택된 날짜 강조
+                        let dayComponent = calendar.component(.day, from: self.selectedDate)
+                        if currentDay == dayComponent {
+                            self.selectedButton = $0
+                            $0.backgroundColor = .yellow
+                        }
+                        
                         currentDay += 1
                     } else {
                         $0.setTitle("", for: .normal) // 빈 칸
@@ -210,6 +239,14 @@ class CalendarView: UIView {
     @objc func dateButtonTapped(_ sender: UIButton) {
         guard let dayString = sender.title(for: .normal), let day = Int(dayString) else { return }
         
+        // 이전 선택된 버튼 색상 초기화
+        self.selectedButton?.backgroundColor = .clear
+        
+        // 선택된 버튼을 노란색으로 강조
+        sender.backgroundColor = .yellow
+        self.selectedButton = sender
+        
+        // 선택한 날짜 갱신
         var components = Calendar.current.dateComponents([.year, .month], from: self.currentMonth)
         components.day = day
         if let selectedDate = Calendar.current.date(from: components) {

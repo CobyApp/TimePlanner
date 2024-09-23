@@ -23,7 +23,7 @@ final class SettingButton: UIButton {
     // MARK: - func
     
     private func configUI() {
-        self.setImage(UIImage.Button.setting, for: .normal)
+        self.setImage(UIImage.Button.setting.resize(to: CGSize(width: 24, height: 24)), for: .normal)
         self.tintColor = .labelNormal
     }
 }

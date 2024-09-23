@@ -23,7 +23,7 @@ final class BackButton: UIButton {
     // MARK: - func
     
     private func configUI() {
-        self.setImage(UIImage.Button.back, for: .normal)
+        self.setImage(UIImage.Button.back.resize(to: CGSize(width: 24, height: 24)), for: .normal)
         self.tintColor = .labelNormal
     }
 }

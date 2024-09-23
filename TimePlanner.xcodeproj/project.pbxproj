@@ -11,6 +11,7 @@
 		CB26285D2CA02ACC00C98360 /* SizeLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB26285C2CA02ACC00C98360 /* SizeLiteral.swift */; };
 		CB26285F2CA02BFD00C98360 /* SettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB26285E2CA02BFD00C98360 /* SettingButton.swift */; };
 		CB2628612CA02C2000C98360 /* MoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2628602CA02C2000C98360 /* MoreButton.swift */; };
+		CB2628642CA033EF00C98360 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2628632CA033EF00C98360 /* CalendarView.swift */; };
 		CB3F697F2C9DAA5100635DBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3F697E2C9DAA5100635DBC /* AppDelegate.swift */; };
 		CB3F69812C9DAA5100635DBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3F69802C9DAA5100635DBC /* SceneDelegate.swift */; };
 		CB3F69882C9DAA5400635DBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3F69872C9DAA5400635DBC /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		CBA20E8F2C9DBB3B00455DC4 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E8E2C9DBB3B00455DC4 /* BackButton.swift */; };
 		CBA20E922C9DBBF000455DC4 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = CBA20E912C9DBBF000455DC4 /* ComposableArchitecture */; };
 		CBA20E962C9DBDAC00455DC4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E952C9DBDAC00455DC4 /* MainViewController.swift */; };
+		CBE870EA2CA183C4008544C1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE870E92CA183C4008544C1 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,7 @@
 		CB26285C2CA02ACC00C98360 /* SizeLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeLiteral.swift; sourceTree = "<group>"; };
 		CB26285E2CA02BFD00C98360 /* SettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButton.swift; sourceTree = "<group>"; };
 		CB2628602CA02C2000C98360 /* MoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreButton.swift; sourceTree = "<group>"; };
+		CB2628632CA033EF00C98360 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		CB3F697B2C9DAA5100635DBC /* TimePlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimePlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3F697E2C9DAA5100635DBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB3F69802C9DAA5100635DBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +79,7 @@
 		CBA20E882C9DB88D00455DC4 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		CBA20E8E2C9DBB3B00455DC4 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		CBA20E952C9DBDAC00455DC4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CBE870E92CA183C4008544C1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,14 @@
 				CB26285C2CA02ACC00C98360 /* SizeLiteral.swift */,
 			);
 			path = Literal;
+			sourceTree = "<group>";
+		};
+		CB2628622CA033E500C98360 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				CB2628632CA033EF00C98360 /* CalendarView.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 		CB3F69722C9DAA5100635DBC = {
@@ -173,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				CBA20E572C9DB24C00455DC4 /* Common */,
+				CBE870E82CA183BD008544C1 /* Tab */,
 				CBA20E562C9DB24600455DC4 /* Main */,
 			);
 			path = Presentation;
@@ -181,6 +194,7 @@
 		CBA20E562C9DB24600455DC4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				CB2628622CA033E500C98360 /* Component */,
 				CBA20E952C9DBDAC00455DC4 /* MainViewController.swift */,
 			);
 			path = Main;
@@ -275,6 +289,14 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		CBE870E82CA183BD008544C1 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				CBE870E92CA183C4008544C1 /* TabBarController.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -361,9 +383,11 @@
 				CBA20E962C9DBDAC00455DC4 /* MainViewController.swift in Sources */,
 				CBA20E6B2C9DB46C00455DC4 /* UICollectionView+Extension.swift in Sources */,
 				CBA20E7D2C9DB66B00455DC4 /* ImageSet.swift in Sources */,
+				CBE870EA2CA183C4008544C1 /* TabBarController.swift in Sources */,
 				CBA20E722C9DB51C00455DC4 /* NSObject+ClassName.swift in Sources */,
 				CBA20E802C9DB6EF00455DC4 /* Palette.swift in Sources */,
 				CBA20E742C9DB52C00455DC4 /* String+DateFormatter.swift in Sources */,
+				CB2628642CA033EF00C98360 /* CalendarView.swift in Sources */,
 				CBA20E8F2C9DBB3B00455DC4 /* BackButton.swift in Sources */,
 				CBA20E682C9DB43F00455DC4 /* UIViewController+Extension.swift in Sources */,
 				CB26285F2CA02BFD00C98360 /* SettingButton.swift in Sources */,

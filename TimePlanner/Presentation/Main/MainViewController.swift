@@ -10,41 +10,51 @@ import UIKit
 import SnapKit
 import Then
 
-final class MainViewController: UIViewController, BaseViewControllerType {
+final class MainViewController: UIViewController, BaseViewControllerType, Navigationable {
     
     // MARK: - ui component
 
-    private let titleLogo = UIImageView(image: UIImage.Icon.logo.resize(to: CGSize(width: 150, height: 32)))
+    private let titleLogo = UIImageView(image: UIImage.Icon.logo.resize(to: CGSize(width: 150, height: 28)))
         
     private let moreButton = MoreButton()
+    
+    private let calendarView = CalendarView()
     
     // MARK: - life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.baseViewDidLoad()
+        self.setupNavigation()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.configureNavigationBar()
     }
     
     // MARK: - func
     
     func setupLayout() {
         self.view.addSubviews(
-            self.titleLogo,
-            self.moreButton
+            self.calendarView
         )
         
-        self.titleLogo.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).inset(12)
-            $0.leading.equalToSuperview().inset(SizeLiteral.horizantalPadding)
-        }
-        
-        self.moreButton.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).inset(16)
-            $0.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
+        self.calendarView.snp.makeConstraints {
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
     
     func configureUI() {
         self.view.backgroundColor = .backgroundNormalNormal
+    }
+    
+    func configureNavigationBar() {
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        let titleLogo = makeBarButtonItem(with: self.titleLogo)
+        let moreButton = makeBarButtonItem(with: self.moreButton)
+        self.navigationItem.leftBarButtonItem = titleLogo
+        self.navigationItem.rightBarButtonItem = moreButton
     }
 }

@@ -42,7 +42,8 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
         
         self.calendarView.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
+            $0.bottom.equalToSuperview()
         }
     }
     

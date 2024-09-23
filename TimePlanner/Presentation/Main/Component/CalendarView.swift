@@ -6,32 +6,45 @@
 //
 
 import UIKit
+
 import SnapKit
 import Then
 
 class CalendarView: UIView {
     
-    let selectedDateLabel = UILabel().then {
+    // MARK: - ui component
+    
+    private let selectedDateLabel = UILabel().then {
         $0.textAlignment = .left
-        $0.font = UIFont.systemFont(ofSize: 18)
+        $0.font = UIFont.font(size: 18, weight: .bold)
+    }
+
+    private lazy var prevMonthButton = UIButton().then {
+        $0.tintColor = .labelNormal
+        $0.setImage(UIImage.Button.back.resize(to: CGSize(width: 20, height: 20)), for: .normal)
+        let action = UIAction { [weak self] _ in
+            self?.goToPreviousMonth()
+        }
+        $0.addAction(action, for: .touchUpInside)
     }
     
-    let prevMonthButton = UIButton().then {
-        $0.setTitle("<", for: .normal)
-        $0.setTitleColor(.black, for: .normal)
+    private lazy var nextMonthButton = UIButton().then {
+        $0.tintColor = .labelNormal
+        $0.setImage(UIImage.Button.forward.resize(to: CGSize(width: 20, height: 20)), for: .normal)
+        let action = UIAction { [weak self] _ in
+            self?.goToNextMonth()
+        }
+        $0.addAction(action, for: .touchUpInside)
     }
     
-    let nextMonthButton = UIButton().then {
-        $0.setTitle(">", for: .normal)
-        $0.setTitleColor(.black, for: .normal)
-    }
+    private var currentMonth: Date = Date() // 현재 달
+    private var selectedDate: Date = Date() // 선택된 날짜
+    private var dateGridView = UIView() // 날짜 버튼을 담는 그리드 뷰
+    private var selectedButton: UIButton? // 선택된 날짜를 저장할 버튼
     
-    var currentMonth: Date = Date() // 현재 달
-    var selectedDate: Date = Date() // 선택된 날짜
     var onDateSelected: ((Date) -> Void)? // 날짜 선택 콜백
     
-    var dateGridView = UIView() // 날짜 버튼을 담는 그리드 뷰
-    var selectedButton: UIButton? // 선택된 날짜를 저장할 버튼
+    // MARK: - life cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,13 +62,10 @@ class CalendarView: UIView {
         self.renderCalendar(for: self.currentMonth)
     }
     
+    // MARK: - func
+    
     // 상단 뷰 설정
-    func setupTopView() {
-        // 이전 월 버튼
-        self.prevMonthButton.addTarget(self, action: #selector(self.goToPreviousMonth), for: .touchUpInside)
-        // 다음 월 버튼
-        self.nextMonthButton.addTarget(self, action: #selector(self.goToNextMonth), for: .touchUpInside)
-        
+    private func setupTopView() {
         let buttonStackView = UIStackView(arrangedSubviews: [self.prevMonthButton, self.nextMonthButton]).then {
             $0.axis = .horizontal
             $0.distribution = .fillEqually
@@ -70,16 +80,15 @@ class CalendarView: UIView {
         
         self.addSubview(topStackView)
         
-        topStackView.snp.makeConstraints { make in
-            make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(10)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.height.equalTo(50)
+        topStackView.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(10)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(50)
         }
     }
     
     // 선택된 날짜 레이블 업데이트
-    func updateSelectedDateLabel() {
+    private func updateSelectedDateLabel() {
         let formatter = DateFormatter().then {
             $0.dateFormat = "yyyy년 MM월 dd일"
         }
@@ -87,19 +96,19 @@ class CalendarView: UIView {
     }
     
     // 이전 달로 이동
-    @objc func goToPreviousMonth() {
+    private func goToPreviousMonth() {
         self.changeMonth(by: -1)
     }
     
     // 다음 달로 이동
-    @objc func goToNextMonth() {
+    private func goToNextMonth() {
         self.changeMonth(by: 1)
     }
     
     // 달을 변경할 때 처리
     func changeMonth(by value: Int) {
         // 현재 월에서 value만큼 더하거나 뺌
-        var newMonth = Calendar.current.date(byAdding: .month, value: value, to: self.currentMonth)!
+        let newMonth = Calendar.current.date(byAdding: .month, value: value, to: self.currentMonth)!
         
         // 변경된 월의 마지막 날짜를 확인
         let lastDayOfNewMonth = Calendar.current.range(of: .day, in: .month, for: newMonth)!.upperBound - 1
@@ -120,7 +129,7 @@ class CalendarView: UIView {
     }
     
     // 요일과 날짜 버튼들 배치
-    func setupCalendarView() {
+    private func setupCalendarView() {
         let dayOfWeekStackView = UIStackView().then {
             $0.axis = .horizontal
             $0.distribution = .fillEqually
@@ -132,30 +141,30 @@ class CalendarView: UIView {
             let dayLabel = UILabel().then {
                 $0.textAlignment = .center
                 $0.text = day
+                $0.font = .font(size: 16, weight: .semibold)
+                $0.textColor = .labelNormal
             }
             dayOfWeekStackView.addArrangedSubview(dayLabel)
         }
         
         self.addSubview(dayOfWeekStackView)
-        dayOfWeekStackView.snp.makeConstraints { make in
-            make.top.equalTo(self.selectedDateLabel.snp.bottom).offset(16)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.height.equalTo(40)
+        dayOfWeekStackView.snp.makeConstraints {
+            $0.top.equalTo(self.selectedDateLabel.snp.bottom).offset(16)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(30)
         }
         
         // 날짜 버튼들을 담을 뷰
         self.addSubview(self.dateGridView)
-        self.dateGridView.snp.makeConstraints { make in
-            make.top.equalTo(dayOfWeekStackView.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview()
+        self.dateGridView.snp.makeConstraints {
+            $0.top.equalTo(dayOfWeekStackView.snp.bottom).offset(8)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
     }
     
     // 달력 그리기
-    func renderCalendar(for date: Date) {
+    private func renderCalendar(for date: Date) {
         // 기존 날짜 버튼들 제거
         self.dateGridView.subviews.forEach { $0.removeFromSuperview() }
         self.selectedButton = nil
@@ -164,7 +173,7 @@ class CalendarView: UIView {
         let range = calendar.range(of: .day, in: .month, for: date)!
         let components = calendar.dateComponents([.year, .month], from: date)
         
-        var firstDayOfMonth = calendar.date(from: components)!
+        let firstDayOfMonth = calendar.date(from: components)!
         let firstWeekday = calendar.component(.weekday, from: firstDayOfMonth) - 1 // 일요일이 1이므로 1을 빼서 맞춤
 
         var currentDay = 1
@@ -184,8 +193,9 @@ class CalendarView: UIView {
                         $0.setTitle("", for: .normal) // 빈 칸
                     } else if currentDay <= range.count {
                         $0.setTitle("\(currentDay)", for: .normal)
-                        $0.setTitleColor(.black, for: .normal)
-                        $0.setTitleColor(.yellow, for: .selected)
+                        $0.setTitleColor(.labelNormal, for: .normal)
+                        $0.setTitleColor(.labelStrong, for: .selected)
+                        $0.titleLabel?.font = .font(size: 16, weight: .regular)
                         $0.addTarget(self, action: #selector(self.dateButtonTapped(_:)), for: .touchUpInside)
                         
                         // 선택된 날짜 강조
@@ -226,10 +236,10 @@ class CalendarView: UIView {
             }
             
             self.dateGridView.addSubview(rowStackView)
-            rowStackView.snp.makeConstraints { make in
-                make.leading.trailing.equalToSuperview()
-                make.top.equalToSuperview().offset(row * 40) // 각 줄이 40 포인트의 높이를 가짐
-                make.height.equalTo(40)
+            rowStackView.snp.makeConstraints {
+                $0.leading.trailing.equalToSuperview()
+                $0.top.equalToSuperview().offset(row * 40) // 각 줄이 40 포인트의 높이를 가짐
+                $0.height.equalTo(40)
             }
             
             isFirstWeek = false

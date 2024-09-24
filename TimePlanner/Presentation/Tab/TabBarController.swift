@@ -8,23 +8,24 @@
 import UIKit
 
 final class TabBarController: UITabBarController {
+    
     private lazy var vc1 = UINavigationController(rootViewController: self.mainViewController)
-    private lazy var vc2 = UINavigationController(rootViewController: self.mainViewController)
-    private lazy var vc3 = UINavigationController(rootViewController: self.mainViewController)
-    private lazy var vc4 = UINavigationController(rootViewController: self.mainViewController)
+    private lazy var vc2 = UINavigationController(rootViewController: self.noteViewController)
+    private lazy var vc3 = UINavigationController(rootViewController: self.dDayViewController)
+    private lazy var vc4 = UINavigationController(rootViewController: self.infoViewController)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        vc1.tabBarItem.image = UIImage.Button.person
+        vc1.tabBarItem.image = UIImage.Button.home
             .resize(to: CGSize(width: 20, height: 20))
         vc1.tabBarItem.title = "메인"
 
-        vc2.tabBarItem.image = UIImage.Button.person
+        vc2.tabBarItem.image = UIImage.Button.note
             .resize(to: CGSize(width: 18, height: 18))
-        vc2.tabBarItem.title = "메모"
+        vc2.tabBarItem.title = "노트"
 
-        vc3.tabBarItem.image = UIImage.Button.person
+        vc3.tabBarItem.image = UIImage.Button.calendarClock
             .resize(to: CGSize(width: 20, height: 20))
         vc3.tabBarItem.title = "디데이"
 
@@ -51,8 +52,23 @@ final class TabBarController: UITabBarController {
 
 extension TabBarController {
     
-    var mainViewController: MainViewController {
+    private var mainViewController: MainViewController {
         let viewController = MainViewController()
+        return viewController
+    }
+    
+    private var noteViewController: NoteViewController {
+        let viewController = NoteViewController()
+        return viewController
+    }
+    
+    private var dDayViewController: DDayViewController {
+        let viewController = DDayViewController()
+        return viewController
+    }
+    
+    private var infoViewController: InfoViewController {
+        let viewController = InfoViewController()
         return viewController
     }
 }

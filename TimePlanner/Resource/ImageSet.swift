@@ -19,6 +19,10 @@ extension UIImage {
         static let checkboxOff = UIImage(name: "checkbox_off")!
         static let checkboxOn = UIImage(name: "checkbox_on")!
         static let setting = UIImage(name: "setting")!
+        static let search = UIImage(name: "search")!
+        static let home = UIImage(name: "home")!
+        static let note = UIImage(name: "note")!
+        static let calendarClock = UIImage(name: "calendar_clock")!
     }
     
     enum Icon {

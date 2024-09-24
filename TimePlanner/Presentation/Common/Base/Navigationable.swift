@@ -44,7 +44,7 @@ extension Navigationable where Self: UIViewController {
         guard let navigationBar = navigationController?.navigationBar else { return }
         let appearance = UINavigationBarAppearance()
         let font = UIFont.font(size: 18, weight: .semibold)
-        let largeFont = UIFont.font(size: 18, weight: .medium)
+        let largeFont = UIFont.font(size: 20, weight: .medium)
         
         appearance.titleTextAttributes = [.font: font]
         appearance.largeTitleTextAttributes = [.font: largeFont]

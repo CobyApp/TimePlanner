@@ -41,6 +41,11 @@
 		CBA20E8F2C9DBB3B00455DC4 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E8E2C9DBB3B00455DC4 /* BackButton.swift */; };
 		CBA20E922C9DBBF000455DC4 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = CBA20E912C9DBBF000455DC4 /* ComposableArchitecture */; };
 		CBA20E962C9DBDAC00455DC4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E952C9DBDAC00455DC4 /* MainViewController.swift */; };
+		CBAAEAB42CA284E400844DB8 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEAB32CA284E400844DB8 /* NoteViewController.swift */; };
+		CBAAEAB62CA285F000844DB8 /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEAB52CA285F000844DB8 /* PlusButton.swift */; };
+		CBAAEAB82CA286D400844DB8 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEAB72CA286D400844DB8 /* PaddingLabel.swift */; };
+		CBAAEABC2CA2882B00844DB8 /* DDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEABB2CA2882B00844DB8 /* DDayViewController.swift */; };
+		CBAAEABE2CA2883300844DB8 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEABD2CA2883300844DB8 /* InfoViewController.swift */; };
 		CBE870EA2CA183C4008544C1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE870E92CA183C4008544C1 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +84,11 @@
 		CBA20E882C9DB88D00455DC4 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		CBA20E8E2C9DBB3B00455DC4 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		CBA20E952C9DBDAC00455DC4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CBAAEAB32CA284E400844DB8 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		CBAAEAB52CA285F000844DB8 /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
+		CBAAEAB72CA286D400844DB8 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		CBAAEABB2CA2882B00844DB8 /* DDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayViewController.swift; sourceTree = "<group>"; };
+		CBAAEABD2CA2883300844DB8 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		CBE870E92CA183C4008544C1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +197,9 @@
 				CBA20E572C9DB24C00455DC4 /* Common */,
 				CBE870E82CA183BD008544C1 /* Tab */,
 				CBA20E562C9DB24600455DC4 /* Main */,
+				CBAAEAB12CA284CF00844DB8 /* Note */,
+				CBAAEAB92CA287FD00844DB8 /* DDay */,
+				CBAAEABA2CA2880500844DB8 /* Info */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -285,8 +298,42 @@
 				CBA20E8E2C9DBB3B00455DC4 /* BackButton.swift */,
 				CB2628602CA02C2000C98360 /* MoreButton.swift */,
 				CB26285E2CA02BFD00C98360 /* SettingButton.swift */,
+				CBAAEAB52CA285F000844DB8 /* PlusButton.swift */,
+				CBAAEAB72CA286D400844DB8 /* PaddingLabel.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		CBAAEAB12CA284CF00844DB8 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				CBAAEAB22CA284D900844DB8 /* Component */,
+				CBAAEAB32CA284E400844DB8 /* NoteViewController.swift */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
+		CBAAEAB22CA284D900844DB8 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		CBAAEAB92CA287FD00844DB8 /* DDay */ = {
+			isa = PBXGroup;
+			children = (
+				CBAAEABB2CA2882B00844DB8 /* DDayViewController.swift */,
+			);
+			path = DDay;
+			sourceTree = "<group>";
+		};
+		CBAAEABA2CA2880500844DB8 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				CBAAEABD2CA2883300844DB8 /* InfoViewController.swift */,
+			);
+			path = Info;
 			sourceTree = "<group>";
 		};
 		CBE870E82CA183BD008544C1 /* Tab */ = {
@@ -380,19 +427,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBAAEAB42CA284E400844DB8 /* NoteViewController.swift in Sources */,
 				CBA20E962C9DBDAC00455DC4 /* MainViewController.swift in Sources */,
 				CBA20E6B2C9DB46C00455DC4 /* UICollectionView+Extension.swift in Sources */,
 				CBA20E7D2C9DB66B00455DC4 /* ImageSet.swift in Sources */,
 				CBE870EA2CA183C4008544C1 /* TabBarController.swift in Sources */,
 				CBA20E722C9DB51C00455DC4 /* NSObject+ClassName.swift in Sources */,
+				CBAAEAB82CA286D400844DB8 /* PaddingLabel.swift in Sources */,
 				CBA20E802C9DB6EF00455DC4 /* Palette.swift in Sources */,
 				CBA20E742C9DB52C00455DC4 /* String+DateFormatter.swift in Sources */,
+				CBAAEAB62CA285F000844DB8 /* PlusButton.swift in Sources */,
 				CB2628642CA033EF00C98360 /* CalendarView.swift in Sources */,
 				CBA20E8F2C9DBB3B00455DC4 /* BackButton.swift in Sources */,
 				CBA20E682C9DB43F00455DC4 /* UIViewController+Extension.swift in Sources */,
 				CB26285F2CA02BFD00C98360 /* SettingButton.swift in Sources */,
 				CBA20E792C9DB65600455DC4 /* ColorSet.swift in Sources */,
 				CBA20E5C2C9DB2DF00455DC4 /* BaseViewType.swift in Sources */,
+				CBAAEABC2CA2882B00844DB8 /* DDayViewController.swift in Sources */,
 				CB26285D2CA02ACC00C98360 /* SizeLiteral.swift in Sources */,
 				CBA20E842C9DB6FD00455DC4 /* Semantic.swift in Sources */,
 				CB3F697F2C9DAA5100635DBC /* AppDelegate.swift in Sources */,
@@ -406,6 +457,7 @@
 				CBA20E6D2C9DB48700455DC4 /* UIView+Extension.swift in Sources */,
 				CBA20E762C9DB53B00455DC4 /* Date+Extension.swift in Sources */,
 				CBA20E6F2C9DB4DC00455DC4 /* UIView+Animation.swift in Sources */,
+				CBAAEABE2CA2883300844DB8 /* InfoViewController.swift in Sources */,
 				CB3F69812C9DAA5100635DBC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

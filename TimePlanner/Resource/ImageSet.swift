@@ -15,6 +15,7 @@ extension UIImage {
         static let person = UIImage(name: "person")!
         static let close = UIImage(name: "close")!
         static let more = UIImage(name: "more")!
+        static let moreVert = UIImage(name: "more_vert")!
         static let plus = UIImage(name: "plus")!
         static let checkboxOff = UIImage(name: "checkbox_off")!
         static let checkboxOn = UIImage(name: "checkbox_on")!

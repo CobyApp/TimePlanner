@@ -9,13 +9,13 @@ import UIKit
 
 enum SizeLiteral {
     static let horizantalPadding: CGFloat = 24
-    static let verticalPadding: CGFloat = 20
+    static let verticalPadding: CGFloat = 16
     static let bottomPadding: CGFloat = 10 + bottomAreaPadding
     static let fullWidth: CGFloat = UIScreen.main.bounds.size.width - horizantalPadding * 2
     static let collectionInset = UIEdgeInsets(
-        top: 0,
+        top: verticalPadding,
         left: horizantalPadding,
-        bottom: 0,
+        bottom: verticalPadding,
         right: horizantalPadding
     )
     static var topAreaPadding: CGFloat {

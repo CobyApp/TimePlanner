@@ -15,17 +15,19 @@ final class NoteCollectionViewCell: UICollectionViewCell, BaseViewType {
     // MARK: - ui component
     
     private let noteContentLabel = UILabel().then {
-        $0.text = ""
-        $0.font = .font(size: 16, weight: .semibold)
+        $0.text = "노트 내용입니다."
+        $0.font = .font(size: 16, weight: .regular)
         $0.textColor = .labelNormal
-        $0.numberOfLines = 0
+        $0.numberOfLines = 3
     }
     
     private let noteDateLabel = UILabel().then {
-        $0.text = ""
+        $0.text = "2024.09.25"
         $0.font = .font(size: 14, weight: .regular)
-        $0.textColor = .labelAssistive
+        $0.textColor = .labelNeutral
     }
+    
+    private let moreVertbutton = MoreVertButton()
 
     // MARK: - init
 
@@ -42,7 +44,23 @@ final class NoteCollectionViewCell: UICollectionViewCell, BaseViewType {
     // MARK: - func
 
     func setupLayout() {
-        self.contentView.addSubviews()
+        self.contentView.addSubviews(
+            self.noteContentLabel,
+            self.noteDateLabel,
+            self.moreVertbutton
+        )
+        
+        self.noteContentLabel.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview().inset(14)
+        }
+        
+        self.noteDateLabel.snp.makeConstraints {
+            $0.bottom.leading.equalToSuperview().inset(14)
+        }
+        
+        self.moreVertbutton.snp.makeConstraints {
+            $0.bottom.trailing.equalToSuperview().inset(12)
+        }
     }
 
     func configureUI() {

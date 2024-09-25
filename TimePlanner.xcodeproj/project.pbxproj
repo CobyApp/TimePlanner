@@ -13,6 +13,7 @@
 		CB2628612CA02C2000C98360 /* MoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2628602CA02C2000C98360 /* MoreButton.swift */; };
 		CB2628642CA033EF00C98360 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2628632CA033EF00C98360 /* CalendarView.swift */; };
 		CB306DCB2CA3B2F6009517D6 /* DDayCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB306DCA2CA3B2F6009517D6 /* DDayCollectionView.swift */; };
+		CB306DCD2CA3BA9F009517D6 /* MoreVertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB306DCC2CA3BA9F009517D6 /* MoreVertButton.swift */; };
 		CB3F697F2C9DAA5100635DBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3F697E2C9DAA5100635DBC /* AppDelegate.swift */; };
 		CB3F69812C9DAA5100635DBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3F69802C9DAA5100635DBC /* SceneDelegate.swift */; };
 		CB3F69882C9DAA5400635DBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3F69872C9DAA5400635DBC /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 		CB2628602CA02C2000C98360 /* MoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreButton.swift; sourceTree = "<group>"; };
 		CB2628632CA033EF00C98360 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		CB306DCA2CA3B2F6009517D6 /* DDayCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayCollectionView.swift; sourceTree = "<group>"; };
+		CB306DCC2CA3BA9F009517D6 /* MoreVertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreVertButton.swift; sourceTree = "<group>"; };
 		CB3F697B2C9DAA5100635DBC /* TimePlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimePlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3F697E2C9DAA5100635DBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB3F69802C9DAA5100635DBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 			children = (
 				CBA20E8E2C9DBB3B00455DC4 /* BackButton.swift */,
 				CB2628602CA02C2000C98360 /* MoreButton.swift */,
+				CB306DCC2CA3BA9F009517D6 /* MoreVertButton.swift */,
 				CB26285E2CA02BFD00C98360 /* SettingButton.swift */,
 				CBAAEAB52CA285F000844DB8 /* PlusButton.swift */,
 				CBAAEAB72CA286D400844DB8 /* PaddingLabel.swift */,
@@ -491,6 +494,7 @@
 				CBA20E6D2C9DB48700455DC4 /* UIView+Extension.swift in Sources */,
 				CBA20E762C9DB53B00455DC4 /* Date+Extension.swift in Sources */,
 				CBA20E6F2C9DB4DC00455DC4 /* UIView+Animation.swift in Sources */,
+				CB306DCD2CA3BA9F009517D6 /* MoreVertButton.swift in Sources */,
 				CB306DCB2CA3B2F6009517D6 /* DDayCollectionView.swift in Sources */,
 				CBAAEAC02CA289C900844DB8 /* NoteCollectionViewCell.swift in Sources */,
 				CBAAEABE2CA2883300844DB8 /* InfoViewController.swift in Sources */,

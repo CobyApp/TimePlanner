@@ -15,7 +15,7 @@ final class DDayCollectionView: UIView, BaseViewType {
     
     private enum Size {
         static let cellWidth: CGFloat = SizeLiteral.fullWidth
-        static let cellHeight: CGFloat = 200
+        static let cellHeight: CGFloat = 100
     }
     
     // MARK: - ui component

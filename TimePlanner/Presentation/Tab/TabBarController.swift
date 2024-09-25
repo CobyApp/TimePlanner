@@ -17,25 +17,21 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        vc1.tabBarItem.image = UIImage.Button.home
-            .resize(to: CGSize(width: 20, height: 20))
-        vc1.tabBarItem.title = "메인"
+        self.vc1.tabBarItem.image = UIImage.Button.home.resize(to: CGSize(width: 20, height: 20))
+        self.vc1.tabBarItem.title = "메인"
 
-        vc2.tabBarItem.image = UIImage.Button.note
-            .resize(to: CGSize(width: 18, height: 18))
-        vc2.tabBarItem.title = "노트"
+        self.vc2.tabBarItem.image = UIImage.Button.note.resize(to: CGSize(width: 20, height: 20))
+        self.vc2.tabBarItem.title = "노트"
 
-        vc3.tabBarItem.image = UIImage.Button.calendarClock
-            .resize(to: CGSize(width: 20, height: 20))
-        vc3.tabBarItem.title = "디데이"
+        self.vc3.tabBarItem.image = UIImage.Button.calendarClock.resize(to: CGSize(width: 20, height: 20))
+        self.vc3.tabBarItem.title = "디데이"
 
-        vc4.tabBarItem.image = UIImage.Button.person
-            .resize(to: CGSize(width: 20, height: 20))
-        vc4.tabBarItem.title = "정보"
+        self.vc4.tabBarItem.image = UIImage.Button.person.resize(to: CGSize(width: 20, height: 20))
+        self.vc4.tabBarItem.title = "정보"
 
-        tabBar.tintColor = .labelNormal
-        tabBar.backgroundColor = .backgroundNormalNormal
-        setViewControllers([vc1, vc2, vc3, vc4], animated: true)
+        self.tabBar.tintColor = .labelNormal
+        self.tabBar.backgroundColor = .backgroundNormalNormal
+        self.setViewControllers([self.vc1, self.vc2, self.vc3, self.vc4], animated: true)
 
         let tabBarAppearance: UITabBarAppearance = .init()
         tabBarAppearance.configureWithDefaultBackground()
@@ -46,7 +42,7 @@ final class TabBarController: UITabBarController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
 }
 

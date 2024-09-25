@@ -25,7 +25,7 @@ extension UIView {
     
     @discardableResult
     func makeBorderLayer(color: UIColor) -> Self {
-        layer.cornerRadius = 10
+        layer.cornerRadius = 16
         layer.borderWidth = 1
         layer.borderColor = color.cgColor
         return self

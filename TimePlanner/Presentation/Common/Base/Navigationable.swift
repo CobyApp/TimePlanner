@@ -24,7 +24,7 @@ extension Navigationable where Self: UIViewController {
             self?.back()
         }
         button.addAction(buttonAction, for: .touchUpInside)
-        let leftOffsetBackButton = self.removeBarButtonItemOffset(with: button, offsetX: 10)
+        let leftOffsetBackButton = self.removeBarButtonItemOffset(with: button, offsetX: 14)
         let backButton = self.makeBarButtonItem(with: leftOffsetBackButton)
         return backButton
     }

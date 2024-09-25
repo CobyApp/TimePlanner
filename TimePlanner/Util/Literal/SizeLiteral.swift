@@ -8,7 +8,7 @@
 import UIKit
 
 enum SizeLiteral {
-    static let horizantalPadding: CGFloat = 20
+    static let horizantalPadding: CGFloat = 24
     static let verticalPadding: CGFloat = 20
     static let bottomPadding: CGFloat = 10 + bottomAreaPadding
     static let fullWidth: CGFloat = UIScreen.main.bounds.size.width - horizantalPadding * 2
@@ -16,7 +16,7 @@ enum SizeLiteral {
         top: 0,
         left: horizantalPadding,
         bottom: 0,
-        right: -horizantalPadding
+        right: horizantalPadding
     )
     static var topAreaPadding: CGFloat {
         let scenes = UIApplication.shared.connectedScenes

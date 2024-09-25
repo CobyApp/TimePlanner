@@ -24,6 +24,8 @@ final class NoteViewController: UIViewController, BaseViewControllerType, Naviga
     
     private let plusButton = PlusButton()
     
+    private let noteCollectionView = NoteCollectionView()
+    
     // MARK: - life cycle
     
     override func viewDidLoad() {
@@ -40,6 +42,14 @@ final class NoteViewController: UIViewController, BaseViewControllerType, Naviga
     // MARK: - func
     
     func setupLayout() {
+        self.view.addSubviews(
+            self.noteCollectionView
+        )
+        
+        self.noteCollectionView.snp.makeConstraints {
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
     }
     
     func configureUI() {

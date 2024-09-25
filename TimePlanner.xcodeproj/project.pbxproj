@@ -12,6 +12,7 @@
 		CB26285F2CA02BFD00C98360 /* SettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB26285E2CA02BFD00C98360 /* SettingButton.swift */; };
 		CB2628612CA02C2000C98360 /* MoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2628602CA02C2000C98360 /* MoreButton.swift */; };
 		CB2628642CA033EF00C98360 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2628632CA033EF00C98360 /* CalendarView.swift */; };
+		CB306DCB2CA3B2F6009517D6 /* DDayCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB306DCA2CA3B2F6009517D6 /* DDayCollectionView.swift */; };
 		CB3F697F2C9DAA5100635DBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3F697E2C9DAA5100635DBC /* AppDelegate.swift */; };
 		CB3F69812C9DAA5100635DBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3F69802C9DAA5100635DBC /* SceneDelegate.swift */; };
 		CB3F69882C9DAA5400635DBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3F69872C9DAA5400635DBC /* Assets.xcassets */; };
@@ -39,13 +40,15 @@
 		CBA20E8B2C9DB88D00455DC4 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CBA20E882C9DB88D00455DC4 /* Pretendard-SemiBold.otf */; };
 		CBA20E8C2C9DB88D00455DC4 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CBA20E872C9DB88D00455DC4 /* Pretendard-Regular.otf */; };
 		CBA20E8F2C9DBB3B00455DC4 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E8E2C9DBB3B00455DC4 /* BackButton.swift */; };
-		CBA20E922C9DBBF000455DC4 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = CBA20E912C9DBBF000455DC4 /* ComposableArchitecture */; };
 		CBA20E962C9DBDAC00455DC4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E952C9DBDAC00455DC4 /* MainViewController.swift */; };
 		CBAAEAB42CA284E400844DB8 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEAB32CA284E400844DB8 /* NoteViewController.swift */; };
 		CBAAEAB62CA285F000844DB8 /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEAB52CA285F000844DB8 /* PlusButton.swift */; };
 		CBAAEAB82CA286D400844DB8 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEAB72CA286D400844DB8 /* PaddingLabel.swift */; };
 		CBAAEABC2CA2882B00844DB8 /* DDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEABB2CA2882B00844DB8 /* DDayViewController.swift */; };
 		CBAAEABE2CA2883300844DB8 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEABD2CA2883300844DB8 /* InfoViewController.swift */; };
+		CBAAEAC02CA289C900844DB8 /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEABF2CA289C900844DB8 /* NoteCollectionViewCell.swift */; };
+		CBAAEAC32CA28A4700844DB8 /* DDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEAC22CA28A4700844DB8 /* DDayCollectionViewCell.swift */; };
+		CBAAEAC62CA28B0500844DB8 /* NoteCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEAC52CA28B0500844DB8 /* NoteCollectionView.swift */; };
 		CBE870EA2CA183C4008544C1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE870E92CA183C4008544C1 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +58,7 @@
 		CB26285E2CA02BFD00C98360 /* SettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButton.swift; sourceTree = "<group>"; };
 		CB2628602CA02C2000C98360 /* MoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreButton.swift; sourceTree = "<group>"; };
 		CB2628632CA033EF00C98360 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		CB306DCA2CA3B2F6009517D6 /* DDayCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayCollectionView.swift; sourceTree = "<group>"; };
 		CB3F697B2C9DAA5100635DBC /* TimePlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimePlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3F697E2C9DAA5100635DBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB3F69802C9DAA5100635DBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +93,9 @@
 		CBAAEAB72CA286D400844DB8 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		CBAAEABB2CA2882B00844DB8 /* DDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayViewController.swift; sourceTree = "<group>"; };
 		CBAAEABD2CA2883300844DB8 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		CBAAEABF2CA289C900844DB8 /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
+		CBAAEAC22CA28A4700844DB8 /* DDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayCollectionViewCell.swift; sourceTree = "<group>"; };
+		CBAAEAC52CA28B0500844DB8 /* NoteCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionView.swift; sourceTree = "<group>"; };
 		CBE870E92CA183C4008544C1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,7 +106,6 @@
 			files = (
 				CB3F69A22C9DAE9300635DBC /* Then in Frameworks */,
 				CB3F69A52C9DAF3F00635DBC /* SnapKit in Frameworks */,
-				CBA20E922C9DBBF000455DC4 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,12 +120,20 @@
 			path = Literal;
 			sourceTree = "<group>";
 		};
-		CB2628622CA033E500C98360 /* Component */ = {
+		CB2628622CA033E500C98360 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				CB2628632CA033EF00C98360 /* CalendarView.swift */,
 			);
-			path = Component;
+			path = View;
+			sourceTree = "<group>";
+		};
+		CB306DC92CA3B2E3009517D6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB306DCA2CA3B2F6009517D6 /* DDayCollectionView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		CB3F69722C9DAA5100635DBC = {
@@ -207,7 +221,7 @@
 		CBA20E562C9DB24600455DC4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				CB2628622CA033E500C98360 /* Component */,
+				CB2628622CA033E500C98360 /* View */,
 				CBA20E952C9DBDAC00455DC4 /* MainViewController.swift */,
 			);
 			path = Main;
@@ -307,6 +321,7 @@
 		CBAAEAB12CA284CF00844DB8 /* Note */ = {
 			isa = PBXGroup;
 			children = (
+				CBAAEAC42CA28AE700844DB8 /* View */,
 				CBAAEAB22CA284D900844DB8 /* Component */,
 				CBAAEAB32CA284E400844DB8 /* NoteViewController.swift */,
 			);
@@ -316,6 +331,7 @@
 		CBAAEAB22CA284D900844DB8 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				CBAAEABF2CA289C900844DB8 /* NoteCollectionViewCell.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -323,6 +339,8 @@
 		CBAAEAB92CA287FD00844DB8 /* DDay */ = {
 			isa = PBXGroup;
 			children = (
+				CB306DC92CA3B2E3009517D6 /* View */,
+				CBAAEAC12CA28A3600844DB8 /* Component */,
 				CBAAEABB2CA2882B00844DB8 /* DDayViewController.swift */,
 			);
 			path = DDay;
@@ -334,6 +352,22 @@
 				CBAAEABD2CA2883300844DB8 /* InfoViewController.swift */,
 			);
 			path = Info;
+			sourceTree = "<group>";
+		};
+		CBAAEAC12CA28A3600844DB8 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				CBAAEAC22CA28A4700844DB8 /* DDayCollectionViewCell.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		CBAAEAC42CA28AE700844DB8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CBAAEAC52CA28B0500844DB8 /* NoteCollectionView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		CBE870E82CA183BD008544C1 /* Tab */ = {
@@ -363,7 +397,6 @@
 			packageProductDependencies = (
 				CB3F69A12C9DAE9300635DBC /* Then */,
 				CB3F69A42C9DAF3F00635DBC /* SnapKit */,
-				CBA20E912C9DBBF000455DC4 /* ComposableArchitecture */,
 			);
 			productName = TimePlanner;
 			productReference = CB3F697B2C9DAA5100635DBC /* TimePlanner.app */;
@@ -396,7 +429,6 @@
 			packageReferences = (
 				CB3F69A02C9DAE9300635DBC /* XCRemoteSwiftPackageReference "Then" */,
 				CB3F69A32C9DAF3F00635DBC /* XCRemoteSwiftPackageReference "SnapKit" */,
-				CBA20E902C9DBBF000455DC4 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = CB3F697C2C9DAA5100635DBC /* Products */;
 			projectDirPath = "";
@@ -429,6 +461,7 @@
 			files = (
 				CBAAEAB42CA284E400844DB8 /* NoteViewController.swift in Sources */,
 				CBA20E962C9DBDAC00455DC4 /* MainViewController.swift in Sources */,
+				CBAAEAC62CA28B0500844DB8 /* NoteCollectionView.swift in Sources */,
 				CBA20E6B2C9DB46C00455DC4 /* UICollectionView+Extension.swift in Sources */,
 				CBA20E7D2C9DB66B00455DC4 /* ImageSet.swift in Sources */,
 				CBE870EA2CA183C4008544C1 /* TabBarController.swift in Sources */,
@@ -445,6 +478,7 @@
 				CBA20E5C2C9DB2DF00455DC4 /* BaseViewType.swift in Sources */,
 				CBAAEABC2CA2882B00844DB8 /* DDayViewController.swift in Sources */,
 				CB26285D2CA02ACC00C98360 /* SizeLiteral.swift in Sources */,
+				CBAAEAC32CA28A4700844DB8 /* DDayCollectionViewCell.swift in Sources */,
 				CBA20E842C9DB6FD00455DC4 /* Semantic.swift in Sources */,
 				CB3F697F2C9DAA5100635DBC /* AppDelegate.swift in Sources */,
 				CBA20E822C9DB6F600455DC4 /* Primary.swift in Sources */,
@@ -457,6 +491,8 @@
 				CBA20E6D2C9DB48700455DC4 /* UIView+Extension.swift in Sources */,
 				CBA20E762C9DB53B00455DC4 /* Date+Extension.swift in Sources */,
 				CBA20E6F2C9DB4DC00455DC4 /* UIView+Animation.swift in Sources */,
+				CB306DCB2CA3B2F6009517D6 /* DDayCollectionView.swift in Sources */,
+				CBAAEAC02CA289C900844DB8 /* NoteCollectionViewCell.swift in Sources */,
 				CBAAEABE2CA2883300844DB8 /* InfoViewController.swift in Sources */,
 				CB3F69812C9DAA5100635DBC /* SceneDelegate.swift in Sources */,
 			);
@@ -705,14 +741,6 @@
 				minimumVersion = 5.7.1;
 			};
 		};
-		CBA20E902C9DBBF000455DC4 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.15.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -725,11 +753,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB3F69A32C9DAF3F00635DBC /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		CBA20E912C9DBBF000455DC4 /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CBA20E902C9DBBF000455DC4 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

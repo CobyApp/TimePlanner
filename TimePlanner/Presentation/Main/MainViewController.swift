@@ -16,11 +16,35 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
 
     private let titleLogo = UIImageView(image: UIImage.Icon.logo.resize(to: CGSize(width: 150, height: 28)))
         
-    private let moreButton = MoreButton()
+    private lazy var moreButton = MoreButton().then {
+        let action = UIAction { [weak self] _ in
+            self?.viewModel.presentCategory()
+        }
+        $0.addAction(action, for: .touchUpInside)
+    }
     
     private let calendarView = CalendarView()
     
+    private let todoListView = ToDoListView()
+    
+    private lazy var scrollView = UIScrollView().then {
+        $0.showsVerticalScrollIndicator = false
+    }
+    
+    // MARK: - property
+    
+    private let viewModel: MainViewModel
+    
     // MARK: - life cycle
+    
+    init(viewModel: MainViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +61,29 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
     
     func setupLayout() {
         self.view.addSubviews(
-            self.calendarView
+            self.scrollView
+        )
+        self.scrollView.addSubviews(
+            self.calendarView,
+            self.todoListView
         )
         
-        self.calendarView.snp.makeConstraints {
+        self.scrollView.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
-            $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
-            $0.bottom.equalToSuperview()
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        self.calendarView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
+            $0.width.equalTo(self.scrollView.snp.width).offset(-SizeLiteral.horizantalPadding * 2)
+            $0.height.equalTo(400)
+        }
+        
+        self.todoListView.snp.makeConstraints {
+            $0.top.equalTo(self.calendarView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview().inset(SizeLiteral.horizantalPadding)
+            $0.width.equalTo(self.scrollView.snp.width).offset(-SizeLiteral.horizantalPadding * 2)
+            $0.height.equalTo(100)
         }
     }
     
@@ -57,5 +97,7 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
         let moreButton = makeBarButtonItem(with: self.moreButton)
         self.navigationItem.leftBarButtonItem = titleLogo
         self.navigationItem.rightBarButtonItem = moreButton
+        
+        
     }
 }

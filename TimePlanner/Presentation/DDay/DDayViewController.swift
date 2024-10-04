@@ -26,7 +26,20 @@ final class DDayViewController: UIViewController, BaseViewControllerType, Naviga
     
     private let dDayCollectionView = DDayCollectionView()
     
+    // MARK: - property
+    
+    private let viewModel: DDayViewModel
+    
     // MARK: - life cycle
+    
+    init(viewModel: DDayViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

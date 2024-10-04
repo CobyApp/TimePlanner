@@ -24,7 +24,20 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
     
     private let settingButton = SettingButton()
     
+    // MARK: - property
+    
+    private let viewModel: InfoViewModel
+    
     // MARK: - life cycle
+    
+    init(viewModel: InfoViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

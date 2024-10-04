@@ -87,4 +87,3 @@ extension NoteCollectionView: UICollectionViewDataSource, UICollectionViewDelega
         return cell
     }
 }
-

@@ -1,8 +1,8 @@
 //
-//  NoteViewController.swift
+//  CategoryViewController.swift
 //  TimePlanner
 //
-//  Created by Coby on 9/24/24.
+//  Created by Coby on 10/5/24.
 //
 
 import UIKit
@@ -10,29 +10,19 @@ import UIKit
 import SnapKit
 import Then
 
-final class NoteViewController: UIViewController, BaseViewControllerType, Navigationable {
+final class CategoryViewController: UIViewController, BaseViewControllerType, Navigationable {
     
     // MARK: - ui component
     
-    private let titleLabel = PaddingLabel().then {
-        $0.textColor = .labelNormal
-        $0.font = UIFont.font(size: 20, weight: .bold)
-        $0.padding = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0)
-        $0.text = "노트"
-        $0.frame = CGRect(x: 0, y: 0, width: 100, height: 0)
-    }
-    
     private let plusButton = PlusButton()
-    
-    private let noteCollectionView = NoteCollectionView()
     
     // MARK: - property
     
-    private let viewModel: NoteViewModel
+    private let viewModel: CategoryViewModel
     
     // MARK: - life cycle
     
-    init(viewModel: NoteViewModel) {
+    init(viewModel: CategoryViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -55,14 +45,6 @@ final class NoteViewController: UIViewController, BaseViewControllerType, Naviga
     // MARK: - func
     
     func setupLayout() {
-        self.view.addSubviews(
-            self.noteCollectionView
-        )
-        
-        self.noteCollectionView.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
-            $0.leading.trailing.bottom.equalToSuperview()
-        }
     }
     
     func configureUI() {
@@ -71,9 +53,8 @@ final class NoteViewController: UIViewController, BaseViewControllerType, Naviga
     
     func configureNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        let titleLabel = makeBarButtonItem(with: self.titleLabel)
         let plusButton = makeBarButtonItem(with: self.plusButton)
-        self.navigationItem.leftBarButtonItem = titleLabel
         self.navigationItem.rightBarButtonItem = plusButton
+        self.title = "카테고리 관리"
     }
 }

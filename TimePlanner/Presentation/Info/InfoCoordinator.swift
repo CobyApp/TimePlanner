@@ -16,4 +16,12 @@ final class InfoCoordinator: NSObject {
         super.init()
     }
     
+    func presentSetting() {
+        guard let navigationController = self.navigationController else { return }
+        let coordinator = SettingCoordinator(navigationController: navigationController)
+        let viewModel = SettingViewModel(coordinator: coordinator)
+        let viewController = SettingViewController(viewModel: viewModel)
+        
+        navigationController.pushViewController(viewController, animated: true)
+    }
 }

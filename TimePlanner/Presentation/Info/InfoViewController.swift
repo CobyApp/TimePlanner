@@ -22,7 +22,12 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
         $0.frame = CGRect(x: 0, y: 0, width: 100, height: 0)
     }
     
-    private let settingButton = SettingButton()
+    private lazy var settingButton = SettingButton().then {
+        let action = UIAction { [weak self] _ in
+            self?.viewModel.presentSetting()
+        }
+        $0.addAction(action, for: .touchUpInside)
+    }
     
     // MARK: - property
     

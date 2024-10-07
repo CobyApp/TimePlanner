@@ -16,4 +16,8 @@ final class InfoViewModel: NSObject, ObservableObject {
     ) {
         self.coordinator = coordinator
     }
+    
+    func presentSetting() {
+        self.coordinator?.presentSetting()
+    }
 }

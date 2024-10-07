@@ -41,6 +41,9 @@
 		CBA0E6D22CB41513000FF934 /* DDayRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E6D12CB41513000FF934 /* DDayRegisterViewModel.swift */; };
 		CBA0E6D42CB4151A000FF934 /* DDayRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E6D32CB4151A000FF934 /* DDayRegisterViewController.swift */; };
 		CBA0E6D62CB4151F000FF934 /* DDayRegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E6D52CB4151F000FF934 /* DDayRegisterCoordinator.swift */; };
+		CBA0E6D92CB41981000FF934 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E6D82CB41981000FF934 /* SettingViewController.swift */; };
+		CBA0E6DB2CB41989000FF934 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E6DA2CB41989000FF934 /* SettingViewModel.swift */; };
+		CBA0E6DD2CB41991000FF934 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E6DC2CB41991000FF934 /* SettingCoordinator.swift */; };
 		CBA20E5C2C9DB2DF00455DC4 /* BaseViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E5B2C9DB2DF00455DC4 /* BaseViewType.swift */; };
 		CBA20E602C9DB36400455DC4 /* Navigationable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E5F2C9DB36400455DC4 /* Navigationable.swift */; };
 		CBA20E642C9DB41D00455DC4 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E632C9DB41D00455DC4 /* UIViewController+Alert.swift */; };
@@ -111,6 +114,9 @@
 		CBA0E6D12CB41513000FF934 /* DDayRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayRegisterViewModel.swift; sourceTree = "<group>"; };
 		CBA0E6D32CB4151A000FF934 /* DDayRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayRegisterViewController.swift; sourceTree = "<group>"; };
 		CBA0E6D52CB4151F000FF934 /* DDayRegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayRegisterCoordinator.swift; sourceTree = "<group>"; };
+		CBA0E6D82CB41981000FF934 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		CBA0E6DA2CB41989000FF934 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		CBA0E6DC2CB41991000FF934 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
 		CBA20E5B2C9DB2DF00455DC4 /* BaseViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewType.swift; sourceTree = "<group>"; };
 		CBA20E5F2C9DB36400455DC4 /* Navigationable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigationable.swift; sourceTree = "<group>"; };
 		CBA20E632C9DB41D00455DC4 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
@@ -266,6 +272,7 @@
 				CBAAEAB92CA287FD00844DB8 /* DDay */,
 				CBA0E6D02CB414FD000FF934 /* DDayRegister */,
 				CBAAEABA2CA2880500844DB8 /* Info */,
+				CBA0E6D72CB41968000FF934 /* Setting */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -316,6 +323,16 @@
 				CBA0E6D52CB4151F000FF934 /* DDayRegisterCoordinator.swift */,
 			);
 			path = DDayRegister;
+			sourceTree = "<group>";
+		};
+		CBA0E6D72CB41968000FF934 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				CBA0E6D82CB41981000FF934 /* SettingViewController.swift */,
+				CBA0E6DA2CB41989000FF934 /* SettingViewModel.swift */,
+				CBA0E6DC2CB41991000FF934 /* SettingCoordinator.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		CBA20E562C9DB24600455DC4 /* Main */ = {
@@ -581,6 +598,7 @@
 				CB9590382CB06C1500CEF73B /* DDayCoordinator.swift in Sources */,
 				CBAAEAB82CA286D400844DB8 /* PaddingLabel.swift in Sources */,
 				CBA20E802C9DB6EF00455DC4 /* Palette.swift in Sources */,
+				CBA0E6DB2CB41989000FF934 /* SettingViewModel.swift in Sources */,
 				CBA20E742C9DB52C00455DC4 /* String+DateFormatter.swift in Sources */,
 				CBAAEAB62CA285F000844DB8 /* PlusButton.swift in Sources */,
 				CB2628642CA033EF00C98360 /* CalendarView.swift in Sources */,
@@ -596,6 +614,7 @@
 				CB26285D2CA02ACC00C98360 /* SizeLiteral.swift in Sources */,
 				CB9590342CB06BDB00CEF73B /* NoteCoordinator.swift in Sources */,
 				CBAAEAC32CA28A4700844DB8 /* DDayCollectionViewCell.swift in Sources */,
+				CBA0E6DD2CB41991000FF934 /* SettingCoordinator.swift in Sources */,
 				CBA0E6CD2CB413BF000FF934 /* NoteRegisterViewModel.swift in Sources */,
 				CBA0E6C82CB41201000FF934 /* CategoryRegisterViewModel.swift in Sources */,
 				CBA20E842C9DB6FD00455DC4 /* Semantic.swift in Sources */,
@@ -603,6 +622,7 @@
 				CB95903A2CB06C2600CEF73B /* DDayViewModel.swift in Sources */,
 				CBA20E822C9DB6F600455DC4 /* Primary.swift in Sources */,
 				CB95903E2CB06C5100CEF73B /* InfoViewModel.swift in Sources */,
+				CBA0E6D92CB41981000FF934 /* SettingViewController.swift in Sources */,
 				CBA20E642C9DB41D00455DC4 /* UIViewController+Alert.swift in Sources */,
 				CBA20E662C9DB43200455DC4 /* UIViewController+Keyboard.swift in Sources */,
 				CBA20E602C9DB36400455DC4 /* Navigationable.swift in Sources */,

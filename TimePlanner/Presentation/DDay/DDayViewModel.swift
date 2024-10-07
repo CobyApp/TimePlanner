@@ -16,4 +16,8 @@ final class DDayViewModel: NSObject, ObservableObject {
     ) {
         self.coordinator = coordinator
     }
+    
+    func presentDDayRegister() {
+        self.coordinator?.presentDDayRegister()
+    }
 }

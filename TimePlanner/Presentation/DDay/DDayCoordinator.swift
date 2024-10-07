@@ -16,4 +16,12 @@ final class DDayCoordinator: NSObject {
         super.init()
     }
     
+    func presentDDayRegister() {
+        guard let navigationController = self.navigationController else { return }
+        let coordinator = DDayRegisterCoordinator(navigationController: navigationController)
+        let viewModel = DDayRegisterViewModel(coordinator: coordinator)
+        let viewController = DDayRegisterViewController(viewModel: viewModel)
+        
+        navigationController.pushViewController(viewController, animated: true)
+    }
 }

@@ -17,7 +17,11 @@ final class MainViewModel: NSObject, ObservableObject {
         self.coordinator = coordinator
     }
     
-    func presentCategory() {
-        self.coordinator?.presentCategory()
+    func presentCategoryRegister() {
+        self.coordinator?.presentCategoryRegister()
+    }
+    
+    func presentCategoryManagement() {
+        self.coordinator?.presentCategoryManagement()
     }
 }

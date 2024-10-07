@@ -1,5 +1,5 @@
 //
-//  CategoryCoordinator.swift
+//  CategoryManagementCoordinator.swift
 //  TimePlanner
 //
 //  Created by Coby on 10/5/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CategoryCoordinator: NSObject {
+final class CategoryManagementCoordinator: NSObject {
     
     private weak var navigationController: UINavigationController?
     

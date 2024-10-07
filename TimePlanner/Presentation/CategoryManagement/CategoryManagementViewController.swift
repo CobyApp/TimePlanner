@@ -1,5 +1,5 @@
 //
-//  CategoryViewController.swift
+//  CategoryManagementViewController.swift
 //  TimePlanner
 //
 //  Created by Coby on 10/5/24.
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class CategoryViewController: UIViewController, BaseViewControllerType, Navigationable {
+final class CategoryManagementViewController: UIViewController, BaseViewControllerType, Navigationable {
     
     // MARK: - ui component
     
@@ -18,11 +18,11 @@ final class CategoryViewController: UIViewController, BaseViewControllerType, Na
     
     // MARK: - property
     
-    private let viewModel: CategoryViewModel
+    private let viewModel: CategoryManagementViewModel
     
     // MARK: - life cycle
     
-    init(viewModel: CategoryViewModel) {
+    init(viewModel: CategoryManagementViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -55,6 +55,6 @@ final class CategoryViewController: UIViewController, BaseViewControllerType, Na
         self.navigationController?.navigationBar.prefersLargeTitles = false
         let plusButton = makeBarButtonItem(with: self.plusButton)
         self.navigationItem.rightBarButtonItem = plusButton
-        self.title = "카테고리 관리"
+        self.title = "뭉치 관리"
     }
 }

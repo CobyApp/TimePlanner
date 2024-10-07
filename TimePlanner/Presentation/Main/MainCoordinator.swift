@@ -16,14 +16,20 @@ final class MainCoordinator: NSObject {
         super.init()
     }
     
-    func presentCategory() {
-        guard let navigationController = self.navigationController else {
-            print("못옴")
-            return
-        }
-        let coordinator = CategoryCoordinator(navigationController: navigationController)
-        let viewModel = CategoryViewModel(coordinator: coordinator)
-        let viewController = CategoryViewController(viewModel: viewModel)
+    func presentCategoryRegister() {
+        guard let navigationController = self.navigationController else { return }
+        let coordinator = CategoryRegisterCoordinator(navigationController: navigationController)
+        let viewModel = CategoryRegisterViewModel(coordinator: coordinator)
+        let viewController = CategoryRegisterViewController(viewModel: viewModel)
+        
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func presentCategoryManagement() {
+        guard let navigationController = self.navigationController else { return }
+        let coordinator = CategoryManagementCoordinator(navigationController: navigationController)
+        let viewModel = CategoryManagementViewModel(coordinator: coordinator)
+        let viewController = CategoryManagementViewController(viewModel: viewModel)
         
         navigationController.pushViewController(viewController, animated: true)
     }

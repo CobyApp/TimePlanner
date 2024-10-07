@@ -17,10 +17,15 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
     private let titleLogo = UIImageView(image: UIImage.Icon.logo.resize(to: CGSize(width: 150, height: 28)))
         
     private lazy var moreButton = MoreButton().then {
-        let action = UIAction { [weak self] _ in
-            self?.viewModel.presentCategory()
+        let action1 = UIAction(title: "뭉치 등록") { [weak self] _ in
+            self?.viewModel.presentCategoryRegister()
         }
-        $0.addAction(action, for: .touchUpInside)
+        let action2 = UIAction(title: "뭉치 관리") { [weak self] _ in
+            self?.viewModel.presentCategoryManagement()
+        }
+        let menu = UIMenu(children: [action1, action2])
+        $0.menu = menu
+        $0.showsMenuAsPrimaryAction = true
     }
     
     private let calendarView = CalendarView()

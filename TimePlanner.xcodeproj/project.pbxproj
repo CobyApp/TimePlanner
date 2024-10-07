@@ -23,15 +23,18 @@
 		CB5C97682CA4434E00E3F6C5 /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5C97672CA4434E00E3F6C5 /* ToDoListView.swift */; };
 		CB9590262CB0584900CEF73B /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9590252CB0584900CEF73B /* MainCoordinator.swift */; };
 		CB9590282CB058E300CEF73B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9590272CB058E300CEF73B /* MainViewModel.swift */; };
-		CB95902C2CB05B6C00CEF73B /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95902B2CB05B6C00CEF73B /* CategoryViewController.swift */; };
+		CB95902C2CB05B6C00CEF73B /* CategoryManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95902B2CB05B6C00CEF73B /* CategoryManagementViewController.swift */; };
 		CB95902E2CB05B7500CEF73B /* CategoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95902D2CB05B7500CEF73B /* CategoryCoordinator.swift */; };
-		CB9590302CB05B7D00CEF73B /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95902F2CB05B7D00CEF73B /* CategoryViewModel.swift */; };
+		CB9590302CB05B7D00CEF73B /* CategoryManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95902F2CB05B7D00CEF73B /* CategoryManagementViewModel.swift */; };
 		CB9590342CB06BDB00CEF73B /* NoteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9590332CB06BDB00CEF73B /* NoteCoordinator.swift */; };
 		CB9590362CB06BE800CEF73B /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9590352CB06BE800CEF73B /* NoteViewModel.swift */; };
 		CB9590382CB06C1500CEF73B /* DDayCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9590372CB06C1500CEF73B /* DDayCoordinator.swift */; };
 		CB95903A2CB06C2600CEF73B /* DDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9590392CB06C2600CEF73B /* DDayViewModel.swift */; };
 		CB95903C2CB06C4200CEF73B /* InfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95903B2CB06C4200CEF73B /* InfoCoordinator.swift */; };
 		CB95903E2CB06C5100CEF73B /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95903D2CB06C5100CEF73B /* InfoViewModel.swift */; };
+		CBA0E6C42CB411F3000FF934 /* CategoryRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E6C32CB411F3000FF934 /* CategoryRegisterViewController.swift */; };
+		CBA0E6C62CB411FA000FF934 /* CategoryRegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E6C52CB411FA000FF934 /* CategoryRegisterCoordinator.swift */; };
+		CBA0E6C82CB41201000FF934 /* CategoryRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E6C72CB41201000FF934 /* CategoryRegisterViewModel.swift */; };
 		CBA20E5C2C9DB2DF00455DC4 /* BaseViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E5B2C9DB2DF00455DC4 /* BaseViewType.swift */; };
 		CBA20E602C9DB36400455DC4 /* Navigationable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E5F2C9DB36400455DC4 /* Navigationable.swift */; };
 		CBA20E642C9DB41D00455DC4 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E632C9DB41D00455DC4 /* UIViewController+Alert.swift */; };
@@ -84,15 +87,18 @@
 		CB5C97672CA4434E00E3F6C5 /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
 		CB9590252CB0584900CEF73B /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		CB9590272CB058E300CEF73B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		CB95902B2CB05B6C00CEF73B /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		CB95902B2CB05B6C00CEF73B /* CategoryManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManagementViewController.swift; sourceTree = "<group>"; };
 		CB95902D2CB05B7500CEF73B /* CategoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCoordinator.swift; sourceTree = "<group>"; };
-		CB95902F2CB05B7D00CEF73B /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
+		CB95902F2CB05B7D00CEF73B /* CategoryManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManagementViewModel.swift; sourceTree = "<group>"; };
 		CB9590332CB06BDB00CEF73B /* NoteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCoordinator.swift; sourceTree = "<group>"; };
 		CB9590352CB06BE800CEF73B /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
 		CB9590372CB06C1500CEF73B /* DDayCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayCoordinator.swift; sourceTree = "<group>"; };
 		CB9590392CB06C2600CEF73B /* DDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayViewModel.swift; sourceTree = "<group>"; };
 		CB95903B2CB06C4200CEF73B /* InfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCoordinator.swift; sourceTree = "<group>"; };
 		CB95903D2CB06C5100CEF73B /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
+		CBA0E6C32CB411F3000FF934 /* CategoryRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRegisterViewController.swift; sourceTree = "<group>"; };
+		CBA0E6C52CB411FA000FF934 /* CategoryRegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRegisterCoordinator.swift; sourceTree = "<group>"; };
+		CBA0E6C72CB41201000FF934 /* CategoryRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRegisterViewModel.swift; sourceTree = "<group>"; };
 		CBA20E5B2C9DB2DF00455DC4 /* BaseViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewType.swift; sourceTree = "<group>"; };
 		CBA20E5F2C9DB36400455DC4 /* Navigationable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigationable.swift; sourceTree = "<group>"; };
 		CBA20E632C9DB41D00455DC4 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
@@ -241,7 +247,8 @@
 				CBA20E572C9DB24C00455DC4 /* Common */,
 				CBE870E82CA183BD008544C1 /* Tab */,
 				CBA20E562C9DB24600455DC4 /* Main */,
-				CB9590292CB05B4B00CEF73B /* Category */,
+				CBA0E6C22CB411D0000FF934 /* CategoryRegister */,
+				CB9590292CB05B4B00CEF73B /* CategoryManagement */,
 				CBAAEAB12CA284CF00844DB8 /* Note */,
 				CBAAEAB92CA287FD00844DB8 /* DDay */,
 				CBAAEABA2CA2880500844DB8 /* Info */,
@@ -249,15 +256,15 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
-		CB9590292CB05B4B00CEF73B /* Category */ = {
+		CB9590292CB05B4B00CEF73B /* CategoryManagement */ = {
 			isa = PBXGroup;
 			children = (
 				CB95902A2CB05B5F00CEF73B /* Component */,
-				CB95902B2CB05B6C00CEF73B /* CategoryViewController.swift */,
+				CB95902B2CB05B6C00CEF73B /* CategoryManagementViewController.swift */,
 				CB95902D2CB05B7500CEF73B /* CategoryCoordinator.swift */,
-				CB95902F2CB05B7D00CEF73B /* CategoryViewModel.swift */,
+				CB95902F2CB05B7D00CEF73B /* CategoryManagementViewModel.swift */,
 			);
-			path = Category;
+			path = CategoryManagement;
 			sourceTree = "<group>";
 		};
 		CB95902A2CB05B5F00CEF73B /* Component */ = {
@@ -265,6 +272,16 @@
 			children = (
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		CBA0E6C22CB411D0000FF934 /* CategoryRegister */ = {
+			isa = PBXGroup;
+			children = (
+				CBA0E6C32CB411F3000FF934 /* CategoryRegisterViewController.swift */,
+				CBA0E6C52CB411FA000FF934 /* CategoryRegisterCoordinator.swift */,
+				CBA0E6C72CB41201000FF934 /* CategoryRegisterViewModel.swift */,
+			);
+			path = CategoryRegister;
 			sourceTree = "<group>";
 		};
 		CBA20E562C9DB24600455DC4 /* Main */ = {
@@ -535,7 +552,7 @@
 				CBA20E682C9DB43F00455DC4 /* UIViewController+Extension.swift in Sources */,
 				CB26285F2CA02BFD00C98360 /* SettingButton.swift in Sources */,
 				CBA20E792C9DB65600455DC4 /* ColorSet.swift in Sources */,
-				CB95902C2CB05B6C00CEF73B /* CategoryViewController.swift in Sources */,
+				CB95902C2CB05B6C00CEF73B /* CategoryManagementViewController.swift in Sources */,
 				CB9590362CB06BE800CEF73B /* NoteViewModel.swift in Sources */,
 				CBA20E5C2C9DB2DF00455DC4 /* BaseViewType.swift in Sources */,
 				CBAAEABC2CA2882B00844DB8 /* DDayViewController.swift in Sources */,
@@ -543,6 +560,7 @@
 				CB26285D2CA02ACC00C98360 /* SizeLiteral.swift in Sources */,
 				CB9590342CB06BDB00CEF73B /* NoteCoordinator.swift in Sources */,
 				CBAAEAC32CA28A4700844DB8 /* DDayCollectionViewCell.swift in Sources */,
+				CBA0E6C82CB41201000FF934 /* CategoryRegisterViewModel.swift in Sources */,
 				CBA20E842C9DB6FD00455DC4 /* Semantic.swift in Sources */,
 				CB3F697F2C9DAA5100635DBC /* AppDelegate.swift in Sources */,
 				CB95903A2CB06C2600CEF73B /* DDayViewModel.swift in Sources */,
@@ -552,14 +570,16 @@
 				CBA20E662C9DB43200455DC4 /* UIViewController+Keyboard.swift in Sources */,
 				CBA20E602C9DB36400455DC4 /* Navigationable.swift in Sources */,
 				CB95903C2CB06C4200CEF73B /* InfoCoordinator.swift in Sources */,
+				CBA0E6C42CB411F3000FF934 /* CategoryRegisterViewController.swift in Sources */,
 				CBA20E7B2C9DB66400455DC4 /* FontSet.swift in Sources */,
 				CB2628562CA024AB00C98360 /* BaseViewControllerType.swift in Sources */,
 				CB2628612CA02C2000C98360 /* MoreButton.swift in Sources */,
 				CBA20E6D2C9DB48700455DC4 /* UIView+Extension.swift in Sources */,
 				CBA20E762C9DB53B00455DC4 /* Date+Extension.swift in Sources */,
+				CBA0E6C62CB411FA000FF934 /* CategoryRegisterCoordinator.swift in Sources */,
 				CBA20E6F2C9DB4DC00455DC4 /* UIView+Animation.swift in Sources */,
 				CB306DCD2CA3BA9F009517D6 /* MoreVertButton.swift in Sources */,
-				CB9590302CB05B7D00CEF73B /* CategoryViewModel.swift in Sources */,
+				CB9590302CB05B7D00CEF73B /* CategoryManagementViewModel.swift in Sources */,
 				CB9590282CB058E300CEF73B /* MainViewModel.swift in Sources */,
 				CB9590262CB0584900CEF73B /* MainCoordinator.swift in Sources */,
 				CB5C97682CA4434E00E3F6C5 /* ToDoListView.swift in Sources */,

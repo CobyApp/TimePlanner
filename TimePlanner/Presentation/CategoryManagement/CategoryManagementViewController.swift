@@ -14,7 +14,12 @@ final class CategoryManagementViewController: UIViewController, BaseViewControll
     
     // MARK: - ui component
     
-    private let plusButton = PlusButton()
+    private lazy var plusButton = PlusButton().then {
+        let action = UIAction { [weak self] _ in
+            self?.viewModel.presentCategoryRegister()
+        }
+        $0.addAction(action, for: .touchUpInside)
+    }
     
     // MARK: - property
     
@@ -52,9 +57,11 @@ final class CategoryManagementViewController: UIViewController, BaseViewControll
     }
     
     func configureNavigationBar() {
+        let rightOffsetButton = self.removeBarButtonItemOffset(with: self.plusButton, offsetX: -10)
+        let rightButton = self.makeBarButtonItem(with: rightOffsetButton)
+        
+        self.navigationItem.rightBarButtonItem = rightButton
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        let plusButton = makeBarButtonItem(with: self.plusButton)
-        self.navigationItem.rightBarButtonItem = plusButton
         self.title = "뭉치 관리"
     }
 }

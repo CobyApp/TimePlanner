@@ -75,10 +75,12 @@ final class DDayViewController: UIViewController, BaseViewControllerType, Naviga
     }
     
     func configureNavigationBar() {
-        self.navigationController?.navigationBar.prefersLargeTitles = false
         let titleLabel = makeBarButtonItem(with: self.titleLabel)
-        let plusButton = makeBarButtonItem(with: self.plusButton)
+        let rightOffsetButton = self.removeBarButtonItemOffset(with: self.plusButton, offsetX: -10)
+        let rightButton = self.makeBarButtonItem(with: rightOffsetButton)
+        
         self.navigationItem.leftBarButtonItem = titleLabel
-        self.navigationItem.rightBarButtonItem = plusButton
+        self.navigationItem.rightBarButtonItem = rightButton
+        self.navigationController?.navigationBar.prefersLargeTitles = false
     }
 }

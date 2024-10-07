@@ -16,4 +16,8 @@ final class CategoryManagementViewModel: NSObject, ObservableObject {
     ) {
         self.coordinator = coordinator
     }
+    
+    func presentCategoryRegister() {
+        self.coordinator?.presentCategoryRegister()
+    }
 }

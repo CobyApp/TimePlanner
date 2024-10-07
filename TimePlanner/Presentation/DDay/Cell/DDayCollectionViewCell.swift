@@ -16,7 +16,7 @@ final class DDayCollectionViewCell: UICollectionViewCell, BaseViewType {
     
     private let dDayTitleLabel = UILabel().then {
         $0.text = "디데이 제목"
-        $0.font = .font(size: 18, weight: .medium)
+        $0.font = .font(size: 16, weight: .medium)
         $0.textColor = .labelNormal
         $0.numberOfLines = 0
     }

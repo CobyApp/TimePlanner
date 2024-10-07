@@ -65,10 +65,12 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
     }
     
     func configureNavigationBar() {
-        self.navigationController?.navigationBar.prefersLargeTitles = false
         let titleLabel = makeBarButtonItem(with: self.titleLabel)
-        let settingButton = makeBarButtonItem(with: self.settingButton)
+        let rightOffsetButton = self.removeBarButtonItemOffset(with: self.settingButton, offsetX: -10)
+        let rightButton = self.makeBarButtonItem(with: rightOffsetButton)
+        
         self.navigationItem.leftBarButtonItem = titleLabel
-        self.navigationItem.rightBarButtonItem = settingButton
+        self.navigationItem.rightBarButtonItem = rightButton
+        self.navigationController?.navigationBar.prefersLargeTitles = false
     }
 }

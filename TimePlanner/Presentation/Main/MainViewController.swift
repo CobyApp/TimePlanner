@@ -97,12 +97,12 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
     }
     
     func configureNavigationBar() {
-        self.navigationController?.navigationBar.prefersLargeTitles = false
         let titleLogo = makeBarButtonItem(with: self.titleLogo)
-        let moreButton = makeBarButtonItem(with: self.moreButton)
+        let rightOffsetButton = self.removeBarButtonItemOffset(with: self.moreButton, offsetX: -10)
+        let rightButton = self.makeBarButtonItem(with: rightOffsetButton)
+        
         self.navigationItem.leftBarButtonItem = titleLogo
-        self.navigationItem.rightBarButtonItem = moreButton
-        
-        
+        self.navigationItem.rightBarButtonItem = rightButton
+        self.navigationController?.navigationBar.prefersLargeTitles = false
     }
 }

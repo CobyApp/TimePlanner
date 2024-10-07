@@ -16,4 +16,12 @@ final class CategoryManagementCoordinator: NSObject {
         super.init()
     }
     
+    func presentCategoryRegister() {
+        guard let navigationController = self.navigationController else { return }
+        let coordinator = CategoryRegisterCoordinator(navigationController: navigationController)
+        let viewModel = CategoryRegisterViewModel(coordinator: coordinator)
+        let viewController = CategoryRegisterViewController(viewModel: viewModel)
+        
+        navigationController.pushViewController(viewController, animated: true)
+    }
 }

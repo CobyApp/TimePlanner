@@ -16,7 +16,7 @@ final class DDayCollectionViewCell: UICollectionViewCell, BaseViewType {
     
     private let dDayTitleLabel = UILabel().then {
         $0.text = "디데이 제목"
-        $0.font = .font(size: 18, weight: .semibold)
+        $0.font = .font(size: 18, weight: .medium)
         $0.textColor = .labelNormal
         $0.numberOfLines = 0
     }
@@ -29,8 +29,18 @@ final class DDayCollectionViewCell: UICollectionViewCell, BaseViewType {
     
     private let dDayCountLabel = UILabel().then {
         $0.text = "D - 10"
-        $0.font = .font(size: 20, weight: .bold)
+        $0.font = .font(size: 20, weight: .semibold)
         $0.textColor = .labelNeutral
+    }
+    
+    private lazy var moreVertbutton = MoreVertButton().then {
+        let action1 = UIAction(title: "편집") { [weak self] _ in
+        }
+        let action2 = UIAction(title: "삭제") { [weak self] _ in
+        }
+        let menu = UIMenu(children: [action1, action2])
+        $0.menu = menu
+        $0.showsMenuAsPrimaryAction = true
     }
 
     // MARK: - init
@@ -51,11 +61,17 @@ final class DDayCollectionViewCell: UICollectionViewCell, BaseViewType {
         self.contentView.addSubviews(
             self.dDayTitleLabel,
             self.dDayDateLabel,
-            self.dDayCountLabel
+            self.dDayCountLabel,
+            self.moreVertbutton
         )
         
         self.dDayTitleLabel.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview().inset(14)
+            $0.top.leading.equalToSuperview().inset(14)
+            $0.trailing.equalTo(self.moreVertbutton.snp.leading).offset(12)
+        }
+        
+        self.moreVertbutton.snp.makeConstraints {
+            $0.top.trailing.equalToSuperview().inset(12)
         }
         
         self.dDayDateLabel.snp.makeConstraints {

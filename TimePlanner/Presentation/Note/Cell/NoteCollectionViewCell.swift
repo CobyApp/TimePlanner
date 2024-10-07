@@ -27,7 +27,15 @@ final class NoteCollectionViewCell: UICollectionViewCell, BaseViewType {
         $0.textColor = .labelNeutral
     }
     
-    private let moreVertbutton = MoreVertButton()
+    private lazy var moreVertbutton = MoreVertButton().then {
+        let action1 = UIAction(title: "편집") { [weak self] _ in
+        }
+        let action2 = UIAction(title: "삭제") { [weak self] _ in
+        }
+        let menu = UIMenu(children: [action1, action2])
+        $0.menu = menu
+        $0.showsMenuAsPrimaryAction = true
+    }
 
     // MARK: - init
 

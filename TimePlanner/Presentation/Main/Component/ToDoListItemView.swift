@@ -14,11 +14,11 @@ final class ToDoListItemView: UIView, BaseViewType {
     
     // MARK: - ui component
     
-    private let checkBoxImageView = UIImageView(image: UIImage.Button.checkboxOff.resize(to: CGSize(width: 16, height: 16)))
+    private let checkBoxImageView = UIImageView(image: UIImage.Button.checkboxOff.resize(to: CGSize(width: 20, height: 20)).withTintColor(.labelNeutral))
     
     private let toDoContentLabel = UILabel().then {
         $0.text = "할 일입니다."
-        $0.font = .font(size: 14, weight: .regular)
+        $0.font = .font(size: 16, weight: .regular)
         $0.textColor = .labelNeutral
     }
 
@@ -48,7 +48,7 @@ final class ToDoListItemView: UIView, BaseViewType {
         
         self.toDoContentLabel.snp.makeConstraints {
             $0.centerY.trailing.equalToSuperview()
-            $0.leading.equalTo(self.checkBoxImageView.snp.trailing).offset(12)
+            $0.leading.equalTo(self.checkBoxImageView.snp.trailing).offset(8)
         }
     }
 

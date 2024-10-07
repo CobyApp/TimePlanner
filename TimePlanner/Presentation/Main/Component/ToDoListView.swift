@@ -17,7 +17,7 @@ final class ToDoListView: UIView, BaseViewType {
     
     private let toDoListCategoryLabel = UILabel().then {
         $0.text = "공부 +"
-        $0.font = .font(size: 16, weight: .regular)
+        $0.font = .font(size: 17, weight: .semibold)
         $0.textColor = .labelNormal
         $0.textAlignment = .left
     }

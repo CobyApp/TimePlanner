@@ -23,7 +23,7 @@ final class MoreVertButton: UIButton {
     // MARK: - func
     
     private func configUI() {
-        self.setImage(UIImage.Button.moreVert.resize(to: CGSize(width: 16, height: 16)), for: .normal)
+        self.setImage(UIImage.Button.moreVert.resize(to: CGSize(width: 20, height: 20)), for: .normal)
         self.tintColor = .labelNormal
     }
 }

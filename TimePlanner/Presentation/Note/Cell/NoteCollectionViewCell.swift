@@ -67,7 +67,8 @@ final class NoteCollectionViewCell: UICollectionViewCell, BaseViewType {
         }
         
         self.moreVertbutton.snp.makeConstraints {
-            $0.bottom.trailing.equalToSuperview().inset(12)
+            $0.trailing.equalToSuperview().inset(6)
+            $0.bottom.equalToSuperview().inset(12)
         }
     }
 

@@ -16,7 +16,7 @@ final class DDayCollectionViewCell: UICollectionViewCell, BaseViewType {
     
     private let dDayTitleLabel = UILabel().then {
         $0.text = "디데이 제목"
-        $0.font = .font(size: 16, weight: .medium)
+        $0.font = .font(size: 18, weight: .medium)
         $0.textColor = .labelNormal
         $0.numberOfLines = 0
     }
@@ -71,15 +71,18 @@ final class DDayCollectionViewCell: UICollectionViewCell, BaseViewType {
         }
         
         self.moreVertbutton.snp.makeConstraints {
-            $0.top.trailing.equalToSuperview().inset(12)
+            $0.top.equalToSuperview().inset(12)
+            $0.trailing.equalToSuperview().inset(8)
         }
         
         self.dDayDateLabel.snp.makeConstraints {
-            $0.bottom.leading.equalToSuperview().inset(14)
+            $0.leading.equalToSuperview().inset(14)
+            $0.bottom.equalToSuperview().inset(12)
         }
         
         self.dDayCountLabel.snp.makeConstraints {
-            $0.bottom.trailing.equalToSuperview().inset(12)
+            $0.trailing.equalToSuperview().inset(10)
+            $0.bottom.equalToSuperview().inset(8)
         }
     }
 

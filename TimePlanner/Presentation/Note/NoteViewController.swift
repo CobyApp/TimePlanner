@@ -22,7 +22,12 @@ final class NoteViewController: UIViewController, BaseViewControllerType, Naviga
         $0.frame = CGRect(x: 0, y: 0, width: 100, height: 0)
     }
     
-    private let plusButton = PlusButton()
+    private lazy var plusButton = PlusButton().then {
+        let action = UIAction { [weak self] _ in
+            self?.viewModel.presentNoteRegister()
+        }
+        $0.addAction(action, for: .touchUpInside)
+    }
     
     private let noteCollectionView = NoteCollectionView()
     

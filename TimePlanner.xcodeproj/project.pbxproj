@@ -35,6 +35,9 @@
 		CBA0E6C42CB411F3000FF934 /* CategoryRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E6C32CB411F3000FF934 /* CategoryRegisterViewController.swift */; };
 		CBA0E6C62CB411FA000FF934 /* CategoryRegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E6C52CB411FA000FF934 /* CategoryRegisterCoordinator.swift */; };
 		CBA0E6C82CB41201000FF934 /* CategoryRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E6C72CB41201000FF934 /* CategoryRegisterViewModel.swift */; };
+		CBA0E6CB2CB413BB000FF934 /* NoteRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E6CA2CB413BB000FF934 /* NoteRegisterViewController.swift */; };
+		CBA0E6CD2CB413BF000FF934 /* NoteRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E6CC2CB413BF000FF934 /* NoteRegisterViewModel.swift */; };
+		CBA0E6CF2CB413C6000FF934 /* NoteRegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E6CE2CB413C6000FF934 /* NoteRegisterCoordinator.swift */; };
 		CBA20E5C2C9DB2DF00455DC4 /* BaseViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E5B2C9DB2DF00455DC4 /* BaseViewType.swift */; };
 		CBA20E602C9DB36400455DC4 /* Navigationable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E5F2C9DB36400455DC4 /* Navigationable.swift */; };
 		CBA20E642C9DB41D00455DC4 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E632C9DB41D00455DC4 /* UIViewController+Alert.swift */; };
@@ -99,6 +102,9 @@
 		CBA0E6C32CB411F3000FF934 /* CategoryRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRegisterViewController.swift; sourceTree = "<group>"; };
 		CBA0E6C52CB411FA000FF934 /* CategoryRegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRegisterCoordinator.swift; sourceTree = "<group>"; };
 		CBA0E6C72CB41201000FF934 /* CategoryRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRegisterViewModel.swift; sourceTree = "<group>"; };
+		CBA0E6CA2CB413BB000FF934 /* NoteRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRegisterViewController.swift; sourceTree = "<group>"; };
+		CBA0E6CC2CB413BF000FF934 /* NoteRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRegisterViewModel.swift; sourceTree = "<group>"; };
+		CBA0E6CE2CB413C6000FF934 /* NoteRegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRegisterCoordinator.swift; sourceTree = "<group>"; };
 		CBA20E5B2C9DB2DF00455DC4 /* BaseViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewType.swift; sourceTree = "<group>"; };
 		CBA20E5F2C9DB36400455DC4 /* Navigationable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigationable.swift; sourceTree = "<group>"; };
 		CBA20E632C9DB41D00455DC4 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
@@ -250,6 +256,7 @@
 				CBA0E6C22CB411D0000FF934 /* CategoryRegister */,
 				CB9590292CB05B4B00CEF73B /* CategoryManagement */,
 				CBAAEAB12CA284CF00844DB8 /* Note */,
+				CBA0E6C92CB413A3000FF934 /* NoteRegister */,
 				CBAAEAB92CA287FD00844DB8 /* DDay */,
 				CBAAEABA2CA2880500844DB8 /* Info */,
 			);
@@ -282,6 +289,16 @@
 				CBA0E6C72CB41201000FF934 /* CategoryRegisterViewModel.swift */,
 			);
 			path = CategoryRegister;
+			sourceTree = "<group>";
+		};
+		CBA0E6C92CB413A3000FF934 /* NoteRegister */ = {
+			isa = PBXGroup;
+			children = (
+				CBA0E6CA2CB413BB000FF934 /* NoteRegisterViewController.swift */,
+				CBA0E6CE2CB413C6000FF934 /* NoteRegisterCoordinator.swift */,
+				CBA0E6CC2CB413BF000FF934 /* NoteRegisterViewModel.swift */,
+			);
+			path = NoteRegister;
 			sourceTree = "<group>";
 		};
 		CBA20E562C9DB24600455DC4 /* Main */ = {
@@ -541,6 +558,7 @@
 				CBA20E6B2C9DB46C00455DC4 /* UICollectionView+Extension.swift in Sources */,
 				CBA20E7D2C9DB66B00455DC4 /* ImageSet.swift in Sources */,
 				CBE870EA2CA183C4008544C1 /* TabBarController.swift in Sources */,
+				CBA0E6CF2CB413C6000FF934 /* NoteRegisterCoordinator.swift in Sources */,
 				CBA20E722C9DB51C00455DC4 /* NSObject+ClassName.swift in Sources */,
 				CB9590382CB06C1500CEF73B /* DDayCoordinator.swift in Sources */,
 				CBAAEAB82CA286D400844DB8 /* PaddingLabel.swift in Sources */,
@@ -560,6 +578,7 @@
 				CB26285D2CA02ACC00C98360 /* SizeLiteral.swift in Sources */,
 				CB9590342CB06BDB00CEF73B /* NoteCoordinator.swift in Sources */,
 				CBAAEAC32CA28A4700844DB8 /* DDayCollectionViewCell.swift in Sources */,
+				CBA0E6CD2CB413BF000FF934 /* NoteRegisterViewModel.swift in Sources */,
 				CBA0E6C82CB41201000FF934 /* CategoryRegisterViewModel.swift in Sources */,
 				CBA20E842C9DB6FD00455DC4 /* Semantic.swift in Sources */,
 				CB3F697F2C9DAA5100635DBC /* AppDelegate.swift in Sources */,
@@ -586,6 +605,7 @@
 				CB306DCB2CA3B2F6009517D6 /* DDayCollectionView.swift in Sources */,
 				CBAAEAC02CA289C900844DB8 /* NoteCollectionViewCell.swift in Sources */,
 				CBAAEABE2CA2883300844DB8 /* InfoViewController.swift in Sources */,
+				CBA0E6CB2CB413BB000FF934 /* NoteRegisterViewController.swift in Sources */,
 				CB3F69812C9DAA5100635DBC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

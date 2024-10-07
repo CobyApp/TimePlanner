@@ -16,4 +16,12 @@ final class NoteCoordinator: NSObject {
         super.init()
     }
     
+    func presentNoteRegister() {
+        guard let navigationController = self.navigationController else { return }
+        let coordinator = NoteRegisterCoordinator(navigationController: navigationController)
+        let viewModel = NoteRegisterViewModel(coordinator: coordinator)
+        let viewController = NoteRegisterViewController(viewModel: viewModel)
+        
+        navigationController.pushViewController(viewController, animated: true)
+    }
 }

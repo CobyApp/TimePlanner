@@ -16,4 +16,8 @@ final class NoteViewModel: NSObject, ObservableObject {
     ) {
         self.coordinator = coordinator
     }
+    
+    func presentNoteRegister() {
+        self.coordinator?.presentNoteRegister()
+    }
 }

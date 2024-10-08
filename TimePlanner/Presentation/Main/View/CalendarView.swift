@@ -1,25 +1,31 @@
-//
-//  CalendarView.swift
-//  TimePlanner
-//
-//  Created by Coby on 9/22/24.
-//
-
 import UIKit
-
 import SnapKit
 import Then
 
 class CalendarView: UIView {
     
     override var intrinsicContentSize: CGSize {
-        let numberOfRows = 6 // 항상 6줄로 달력을 표시
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month], from: self.currentMonth)
+        
+        // 해당 월의 첫 날과 마지막 날 계산
+        guard let firstDayOfMonth = calendar.date(from: components),
+              let range = calendar.range(of: .day, in: .month, for: firstDayOfMonth) else {
+            return CGSize(width: UIView.noIntrinsicMetric, height: 0)
+        }
+        
+        let numberOfDays = range.count
+        let firstWeekday = calendar.component(.weekday, from: firstDayOfMonth) - 1 // 일요일이 1이므로 1을 빼서 맞춤
+
+        // 필요한 줄 수 계산
+        let totalRows = (numberOfDays + firstWeekday + 6) / 7 // 총 날짜 + 첫 주의 빈 칸 고려
+        let numberOfRows = min(totalRows, 6) // 최대 6줄로 제한
         let rowHeight: CGFloat = 40 // 각 줄의 높이 (날짜 버튼)
         let totalHeight = CGFloat(numberOfRows) * rowHeight + 80 // 날짜와 요일 포함
         return CGSize(width: UIView.noIntrinsicMetric, height: totalHeight)
     }
     
-    // MARK: - ui component
+    // MARK: - UI Components
     
     private let selectedDateLabel = UILabel().then {
         $0.textAlignment = .left
@@ -29,19 +35,13 @@ class CalendarView: UIView {
     private lazy var prevMonthButton = UIButton().then {
         $0.tintColor = .labelNormal
         $0.setImage(UIImage.Button.back.resize(to: CGSize(width: 20, height: 20)), for: .normal)
-        let action = UIAction { [weak self] _ in
-            self?.goToPreviousMonth()
-        }
-        $0.addAction(action, for: .touchUpInside)
+        $0.addAction(UIAction { [weak self] _ in self?.goToPreviousMonth() }, for: .touchUpInside)
     }
     
     private lazy var nextMonthButton = UIButton().then {
         $0.tintColor = .labelNormal
         $0.setImage(UIImage.Button.forward.resize(to: CGSize(width: 20, height: 20)), for: .normal)
-        let action = UIAction { [weak self] _ in
-            self?.goToNextMonth()
-        }
-        $0.addAction(action, for: .touchUpInside)
+        $0.addAction(UIAction { [weak self] _ in self?.goToNextMonth() }, for: .touchUpInside)
     }
     
     private var currentMonth: Date = Date() // 현재 달
@@ -51,7 +51,7 @@ class CalendarView: UIView {
     
     var onDateSelected: ((Date) -> Void)? // 날짜 선택 콜백
     
-    // MARK: - life cycle
+    // MARK: - Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,7 +69,7 @@ class CalendarView: UIView {
         self.renderCalendar(for: self.currentMonth)
     }
     
-    // MARK: - func
+    // MARK: - Functions
     
     // 상단 뷰 설정
     private func setupTopView() {
@@ -120,7 +120,7 @@ class CalendarView: UIView {
         // 변경된 월의 마지막 날짜를 확인
         let lastDayOfNewMonth = Calendar.current.range(of: .day, in: .month, for: newMonth)!.upperBound - 1
         
-        // 현재 선택된 날짜의 일(day)와 새로운 월의 마지막 일 비교하여 날짜 유지
+        // 현재 선택된 날짜의 일(day)과 새로운 월의 마지막 일 비교하여 날짜 유지
         var selectedComponents = Calendar.current.dateComponents([.year, .month, .day], from: self.selectedDate)
         selectedComponents.month = Calendar.current.component(.month, from: newMonth)
         selectedComponents.year = Calendar.current.component(.year, from: newMonth)
@@ -133,6 +133,9 @@ class CalendarView: UIView {
         self.currentMonth = newMonth
         self.updateSelectedDateLabel()
         self.renderCalendar(for: self.currentMonth)
+
+        // intrinsicContentSize 업데이트
+        self.invalidateIntrinsicContentSize() // 높이 업데이트
     }
     
     // 요일과 날짜 버튼들 배치
@@ -142,7 +145,7 @@ class CalendarView: UIView {
             $0.distribution = .fillEqually
         }
         
-        let days = ["월", "화", "수", "목", "금", "토", "일"]
+        let days = ["일", "월", "화", "수", "목", "금", "토"]
         
         for day in days {
             let dayLabel = UILabel().then {
@@ -185,7 +188,7 @@ class CalendarView: UIView {
 
         var currentDay = 1
         var isFirstWeek = true
-
+        
         // 총 6줄의 주를 그리기
         for row in 0..<6 {
             let rowStackView = UIStackView().then {
@@ -193,6 +196,8 @@ class CalendarView: UIView {
                 $0.distribution = .fillEqually
                 $0.spacing = 5
             }
+            
+            var hasDaysInRow = false
             
             for col in 0..<7 {
                 let dateButton = UIButton().then {
@@ -211,7 +216,7 @@ class CalendarView: UIView {
                             self.selectedButton = $0
                             $0.backgroundColor = .yellow
                         }
-                        
+                        hasDaysInRow = true
                         currentDay += 1
                     } else {
                         $0.setTitle("", for: .normal) // 빈 칸
@@ -242,11 +247,14 @@ class CalendarView: UIView {
                 rowStackView.addArrangedSubview(container)
             }
             
-            self.dateGridView.addSubview(rowStackView)
-            rowStackView.snp.makeConstraints {
-                $0.leading.trailing.equalToSuperview()
-                $0.top.equalToSuperview().offset(row * 40) // 각 줄이 40 포인트의 높이를 가짐
-                $0.height.equalTo(40)
+            // 해당 줄에 날짜가 없으면 줄을 추가하지 않음
+            if hasDaysInRow {
+                self.dateGridView.addSubview(rowStackView)
+                rowStackView.snp.makeConstraints {
+                    $0.leading.trailing.equalToSuperview()
+                    $0.top.equalToSuperview().offset(row * 40) // 각 줄이 40 포인트의 높이를 가짐
+                    $0.height.equalTo(40)
+                }
             }
             
             isFirstWeek = false

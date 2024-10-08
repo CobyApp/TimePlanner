@@ -13,11 +13,6 @@ import Then
 
 final class ToDoListCollectionViewCell: UICollectionViewCell, BaseViewType {
     
-    private enum Size {
-        static let cellWidth: CGFloat = SizeLiteral.fullWidth
-        static let cellHeight: CGFloat = 80
-    }
-    
     // MARK: - ui component
     
     private let toDoListCategoryLabel = UILabel().then {

@@ -76,6 +76,7 @@
 		CBAAEAC32CA28A4700844DB8 /* DDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEAC22CA28A4700844DB8 /* DDayCollectionViewCell.swift */; };
 		CBAAEAC62CA28B0500844DB8 /* NoteCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEAC52CA28B0500844DB8 /* NoteCollectionView.swift */; };
 		CBE870EA2CA183C4008544C1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE870E92CA183C4008544C1 /* TabBarController.swift */; };
+		CBF155042CB500D600758F7B /* ToDoListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF155032CB500D600758F7B /* ToDoListCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -149,6 +150,7 @@
 		CBAAEAC22CA28A4700844DB8 /* DDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayCollectionViewCell.swift; sourceTree = "<group>"; };
 		CBAAEAC52CA28B0500844DB8 /* NoteCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionView.swift; sourceTree = "<group>"; };
 		CBE870E92CA183C4008544C1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		CBF155032CB500D600758F7B /* ToDoListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,8 +177,6 @@
 		CB2628622CA033E500C98360 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				CB2628632CA033EF00C98360 /* CalendarView.swift */,
-				CB5C97672CA4434E00E3F6C5 /* ToDoListView.swift */,
 				CB5C97652CA4433A00E3F6C5 /* ToDoListItemView.swift */,
 			);
 			path = Component;
@@ -338,7 +338,9 @@
 		CBA20E562C9DB24600455DC4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				CBF155052CB5064800758F7B /* View */,
 				CB2628622CA033E500C98360 /* Component */,
+				CBDE88832CB4F6C600D97A94 /* Cell */,
 				CBA20E952C9DBDAC00455DC4 /* MainViewController.swift */,
 				CB9590272CB058E300CEF73B /* MainViewModel.swift */,
 				CB9590252CB0584900CEF73B /* MainCoordinator.swift */,
@@ -496,12 +498,29 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		CBDE88832CB4F6C600D97A94 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CBF155032CB500D600758F7B /* ToDoListCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		CBE870E82CA183BD008544C1 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
 				CBE870E92CA183C4008544C1 /* TabBarController.swift */,
 			);
 			path = Tab;
+			sourceTree = "<group>";
+		};
+		CBF155052CB5064800758F7B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB2628632CA033EF00C98360 /* CalendarView.swift */,
+				CB5C97672CA4434E00E3F6C5 /* ToDoListView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -626,6 +645,7 @@
 				CBA20E642C9DB41D00455DC4 /* UIViewController+Alert.swift in Sources */,
 				CBA20E662C9DB43200455DC4 /* UIViewController+Keyboard.swift in Sources */,
 				CBA20E602C9DB36400455DC4 /* Navigationable.swift in Sources */,
+				CBF155042CB500D600758F7B /* ToDoListCollectionViewCell.swift in Sources */,
 				CB95903C2CB06C4200CEF73B /* InfoCoordinator.swift in Sources */,
 				CBA0E6C42CB411F3000FF934 /* CategoryRegisterViewController.swift in Sources */,
 				CBA20E7B2C9DB66400455DC4 /* FontSet.swift in Sources */,

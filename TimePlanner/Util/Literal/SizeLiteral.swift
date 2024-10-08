@@ -15,7 +15,7 @@ enum SizeLiteral {
     static let collectionInset = UIEdgeInsets(
         top: verticalPadding,
         left: horizantalPadding,
-        bottom: verticalPadding,
+        bottom: verticalPadding * 2,
         right: horizantalPadding
     )
     static var topAreaPadding: CGFloat {

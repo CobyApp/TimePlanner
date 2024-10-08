@@ -12,6 +12,13 @@ import Then
 
 class CalendarView: UIView {
     
+    override var intrinsicContentSize: CGSize {
+        let numberOfRows = 6 // 항상 6줄로 달력을 표시
+        let rowHeight: CGFloat = 40 // 각 줄의 높이 (날짜 버튼)
+        let totalHeight = CGFloat(numberOfRows) * rowHeight + 80 // 날짜와 요일 포함
+        return CGSize(width: UIView.noIntrinsicMetric, height: totalHeight)
+    }
+    
     // MARK: - ui component
     
     private let selectedDateLabel = UILabel().then {

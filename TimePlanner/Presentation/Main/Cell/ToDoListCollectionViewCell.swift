@@ -1,8 +1,8 @@
 //
-//  ToDoListView.swift
+//  ToDoListCollectionViewCell.swift
 //  TimePlanner
 //
-//  Created by Coby on 9/25/24.
+//  Created by Coby on 10/8/24.
 //
 
 import Combine
@@ -11,7 +11,12 @@ import UIKit
 import SnapKit
 import Then
 
-final class ToDoListView: UIView, BaseViewType {
+final class ToDoListCollectionViewCell: UICollectionViewCell, BaseViewType {
+    
+    private enum Size {
+        static let cellWidth: CGFloat = SizeLiteral.fullWidth
+        static let cellHeight: CGFloat = 80
+    }
     
     // MARK: - ui component
     
@@ -22,16 +27,10 @@ final class ToDoListView: UIView, BaseViewType {
         $0.textAlignment = .left
     }
     
-    lazy var toDoListStackView: UIStackView = UIStackView(arrangedSubviews: [self.toDoListCategoryLabel, ToDoListItemView(), ToDoListItemView()]).then {
+    private lazy var toDoListItemStackView: UIStackView = UIStackView(arrangedSubviews: [ToDoListItemView(), ToDoListItemView()]).then {
         $0.axis = .vertical
         $0.distribution = .fill
         $0.spacing = 4
-    }
-    
-    lazy var toDoListsStackView: UIStackView = UIStackView(arrangedSubviews: [self.toDoListStackView, self.toDoListStackView]).then {
-        $0.axis = .vertical
-        $0.distribution = .fill
-        $0.spacing = 12
     }
     
     // MARK: - property
@@ -52,11 +51,17 @@ final class ToDoListView: UIView, BaseViewType {
     
     func setupLayout() {
         self.addSubviews(
-            self.toDoListsStackView
+            self.toDoListCategoryLabel,
+            self.toDoListItemStackView
         )
         
-        self.toDoListsStackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+        self.toDoListCategoryLabel.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+        }
+        
+        self.toDoListItemStackView.snp.makeConstraints {
+            $0.top.equalTo(self.toDoListCategoryLabel.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
     

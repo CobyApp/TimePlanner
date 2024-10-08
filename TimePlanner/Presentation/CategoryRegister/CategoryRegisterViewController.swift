@@ -15,7 +15,7 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
     
     private let titleLabel = UILabel().then {
         $0.text = "뭉치 이름"
-        $0.font = .font(size: 18, weight: .semibold)
+        $0.font = .font(size: 18, weight: .medium)
         $0.textColor = UIColor.labelNormal
     }
     
@@ -28,7 +28,7 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
     
     private let colorTitleLabel = UILabel().then {
         $0.text = "뭉치 색상"
-        $0.font = .font(size: 18, weight: .semibold)
+        $0.font = .font(size: 18, weight: .medium)
         $0.textColor = UIColor.labelNormal
     }
     

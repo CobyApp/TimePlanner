@@ -78,7 +78,8 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
         }
         
         self.calendarView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
             $0.width.equalTo(self.scrollView.snp.width).offset(-SizeLiteral.horizantalPadding * 2)
         }
         

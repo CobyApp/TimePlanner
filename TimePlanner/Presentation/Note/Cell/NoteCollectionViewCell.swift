@@ -29,13 +29,20 @@ final class NoteCollectionViewCell: UICollectionViewCell, BaseViewType {
     
     private lazy var moreVertbutton = MoreVertButton().then {
         let action1 = UIAction(title: "편집") { [weak self] _ in
+            self?.editTapAction?()
         }
         let action2 = UIAction(title: "삭제") { [weak self] _ in
+            self?.deleteTapAction?()
         }
         let menu = UIMenu(children: [action1, action2])
         $0.menu = menu
         $0.showsMenuAsPrimaryAction = true
     }
+    
+    // MARK: - Properties
+    
+    var editTapAction: (() -> Void)?
+    var deleteTapAction: (() -> Void)?
 
     // MARK: - init
 

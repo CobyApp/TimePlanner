@@ -29,7 +29,14 @@ final class NoteViewController: UIViewController, BaseViewControllerType, Naviga
         $0.addAction(action, for: .touchUpInside)
     }
     
-    private let noteCollectionView = NoteCollectionView()
+    private lazy var noteCollectionView = NoteCollectionView().then {
+        $0.editTapAction = { [weak self] in
+            self?.viewModel.presentNoteRegister()
+        }
+        $0.deleteTapAction = { [weak self] in
+            // 노트 삭제
+        }
+    }
     
     // MARK: - property
     

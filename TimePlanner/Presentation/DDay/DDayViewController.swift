@@ -29,7 +29,14 @@ final class DDayViewController: UIViewController, BaseViewControllerType, Naviga
         $0.addAction(action, for: .touchUpInside)
     }
     
-    private let dDayCollectionView = DDayCollectionView()
+    private lazy var dDayCollectionView = DDayCollectionView().then {
+        $0.editTapAction = { [weak self] in
+            self?.viewModel.presentDDayRegister()
+        }
+        $0.deleteTapAction = { [weak self] in
+            // 디데이 삭제
+        }
+    }
     
     // MARK: - property
     

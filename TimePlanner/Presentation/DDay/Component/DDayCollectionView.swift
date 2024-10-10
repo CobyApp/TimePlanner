@@ -37,6 +37,9 @@ final class DDayCollectionView: UIView, BaseViewType {
     
     // MARK: - property
     
+    var editTapAction: (() -> Void)?
+    var deleteTapAction: (() -> Void)?
+    
     // MARK: - init
     
     override init(frame: CGRect) {
@@ -81,6 +84,14 @@ extension DDayCollectionView: UICollectionViewDataSource, UICollectionViewDelega
             for: indexPath
         ) as? DDayCollectionViewCell else {
             return UICollectionViewCell()
+        }
+        
+        cell.editTapAction = { [weak self] in
+            self?.editTapAction?()
+        }
+        
+        cell.deleteTapAction = { [weak self] in
+            self?.deleteTapAction?()
         }
 
         return cell

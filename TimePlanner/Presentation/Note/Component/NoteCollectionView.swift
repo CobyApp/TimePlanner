@@ -38,6 +38,9 @@ final class NoteCollectionView: UIView, BaseViewType {
     
     // MARK: - property
     
+    var editTapAction: (() -> Void)?
+    var deleteTapAction: (() -> Void)?
+    
     // MARK: - init
     
     override init(frame: CGRect) {
@@ -82,6 +85,14 @@ extension NoteCollectionView: UICollectionViewDataSource, UICollectionViewDelega
             for: indexPath
         ) as? NoteCollectionViewCell else {
             return UICollectionViewCell()
+        }
+        
+        cell.editTapAction = { [weak self] in
+            self?.editTapAction?()
+        }
+        
+        cell.deleteTapAction = { [weak self] in
+            self?.deleteTapAction?()
         }
 
         return cell

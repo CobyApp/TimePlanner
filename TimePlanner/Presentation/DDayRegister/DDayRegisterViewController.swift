@@ -12,13 +12,48 @@ import Then
 
 final class DDayRegisterViewController: UIViewController, BaseViewControllerType, Navigationable {
     
-    // MARK: - ui component
+    // MARK: - UI Components
     
-    // MARK: - property
+    private let scrollView = UIScrollView().then {
+        $0.isScrollEnabled = true
+        $0.showsVerticalScrollIndicator = false
+    }
+    
+    private let contentView = UIView()
+    
+    private let titleLabel = UILabel().then {
+        $0.text = "디데이 제목"
+        $0.font = .systemFont(ofSize: 18, weight: .medium)
+        $0.textColor = .label
+    }
+    
+    private let titleTextField = UITextField().then {
+        $0.placeholder = "디데이 제목을 입력하세요"
+        $0.font = .systemFont(ofSize: 16)
+        $0.borderStyle = .roundedRect
+        $0.clearButtonMode = .whileEditing
+    }
+    
+    private let dateLabel = UILabel().then {
+        $0.text = "디데이 날짜"
+        $0.font = .systemFont(ofSize: 18, weight: .medium)
+        $0.textColor = .label
+    }
+    
+    private let datePicker = UIDatePicker().then {
+        $0.datePickerMode = .date
+        $0.preferredDatePickerStyle = .wheels
+        $0.locale = Locale(identifier: "ko_KR") // 한국어로 설정
+        $0.timeZone = .current
+    }
+    
+    private let completeButton = CompleteButton()
+    
+    // MARK: - Properties
     
     private let viewModel: DDayRegisterViewModel
     
-    // MARK: - life cycle
+    // MARK: - Life Cycle
     
     init(viewModel: DDayRegisterViewModel) {
         self.viewModel = viewModel
@@ -33,6 +68,8 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
         super.viewDidLoad()
         self.baseViewDidLoad()
         self.setupNavigation()
+        self.setupLayout()
+        self.configureUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,9 +77,60 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
         self.configureNavigationBar()
     }
     
-    // MARK: - func
+    // MARK: - Functions
     
     func setupLayout() {
+        self.view.addSubviews(
+            self.scrollView,
+            self.completeButton
+        )
+        
+        self.scrollView.snp.makeConstraints {
+            $0.top.edges.equalToSuperview()
+        }
+        
+        self.scrollView.addSubviews(
+            self.contentView
+        )
+        
+        self.contentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
+        
+        self.contentView.addSubviews(
+            self.titleLabel,
+            self.titleTextField,
+            self.dateLabel,
+            self.datePicker
+        )
+        
+        self.titleLabel.snp.makeConstraints {
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).inset(20)
+            $0.leading.equalToSuperview().inset(20)
+        }
+        
+        self.titleTextField.snp.makeConstraints {
+            $0.top.equalTo(self.titleLabel.snp.bottom).offset(10)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(50)
+        }
+        
+        self.dateLabel.snp.makeConstraints {
+            $0.top.equalTo(self.titleTextField.snp.bottom).offset(40)
+            $0.leading.equalToSuperview().inset(20)
+        }
+        
+        self.datePicker.snp.makeConstraints {
+            $0.top.equalTo(self.dateLabel.snp.bottom).offset(10)
+            $0.leading.trailing.equalToSuperview().inset(20)
+        }
+        
+        self.completeButton.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
+            $0.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top).offset(-10)
+            $0.height.equalTo(50)
+        }
     }
     
     func configureUI() {

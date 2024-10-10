@@ -13,6 +13,13 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
     
     // MARK: - UI Components
     
+    private let scrollView = UIScrollView().then {
+        $0.isScrollEnabled = true
+        $0.showsVerticalScrollIndicator = false
+    }
+    
+    private let contentView = UIView()
+    
     private let titleLabel = UILabel().then {
         $0.text = "뭉치 이름"
         $0.font = .font(size: 18, weight: .medium)
@@ -37,6 +44,8 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
         $0.spacing = 10
         $0.distribution = .fillEqually // 균등 분배
     }
+    
+    private let completeButton = CompleteButton()
     
     private let colors: [UIColor] = [
         .red, .green, .blue, .yellow, .orange
@@ -76,34 +85,58 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
     // MARK: - Functions
     
     func setupLayout() {
-        // 제목 레이블 추가
-        self.view.addSubview(self.titleLabel)
+        self.view.addSubviews(
+            self.scrollView,
+            self.completeButton
+        )
+        
+        self.scrollView.snp.makeConstraints {
+            $0.top.edges.equalToSuperview()
+        }
+        
+        self.scrollView.addSubviews(
+            self.contentView
+        )
+        
+        self.contentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
+        
+        self.contentView.addSubviews(
+            self.titleLabel,
+            self.nameTextField,
+            self.colorTitleLabel,
+            self.colorSelectionStackView
+        )
+        
         self.titleLabel.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(SizeLiteral.verticalPadding)
+            $0.top.equalToSuperview().inset(SizeLiteral.verticalPadding)
             $0.leading.equalToSuperview().inset(SizeLiteral.horizantalPadding)
         }
         
-        // 텍스트 필드 추가
-        self.view.addSubview(self.nameTextField)
         self.nameTextField.snp.makeConstraints {
             $0.top.equalTo(self.titleLabel.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
             $0.height.equalTo(50)
         }
         
-        // 색상 제목 레이블 추가
-        self.view.addSubview(self.colorTitleLabel)
         self.colorTitleLabel.snp.makeConstraints {
             $0.top.equalTo(self.nameTextField.snp.bottom).offset(30)
             $0.leading.equalToSuperview().inset(SizeLiteral.horizantalPadding)
         }
         
-        // 색상 선택 스택 뷰 추가
-        self.view.addSubview(self.colorSelectionStackView)
         self.colorSelectionStackView.snp.makeConstraints {
             $0.top.equalTo(self.colorTitleLabel.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
-            $0.height.equalTo(50) // 스택 뷰 높이 설정
+            $0.height.equalTo(50)
+            $0.bottom.equalToSuperview()
+        }
+        
+        self.completeButton.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
+            $0.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top).offset(-10)
+            $0.height.equalTo(50)
         }
     }
     

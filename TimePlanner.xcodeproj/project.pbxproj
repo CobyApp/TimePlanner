@@ -19,6 +19,7 @@
 		CB3F69882C9DAA5400635DBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3F69872C9DAA5400635DBC /* Assets.xcassets */; };
 		CB3F69A22C9DAE9300635DBC /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = CB3F69A12C9DAE9300635DBC /* Then */; };
 		CB3F69A52C9DAF3F00635DBC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CB3F69A42C9DAF3F00635DBC /* SnapKit */; };
+		CB494F7F2CB798DE00823804 /* CompleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB494F7E2CB798DE00823804 /* CompleteButton.swift */; };
 		CB5C97662CA4433A00E3F6C5 /* ToDoListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5C97652CA4433A00E3F6C5 /* ToDoListItemView.swift */; };
 		CB5C97682CA4434E00E3F6C5 /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5C97672CA4434E00E3F6C5 /* ToDoListView.swift */; };
 		CB9590262CB0584900CEF73B /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9590252CB0584900CEF73B /* MainCoordinator.swift */; };
@@ -93,6 +94,7 @@
 		CB3F69872C9DAA5400635DBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB3F698C2C9DAA5400635DBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB3F69992C9DAC9F00635DBC /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ko; path = ko.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CB494F7E2CB798DE00823804 /* CompleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteButton.swift; sourceTree = "<group>"; };
 		CB5C97652CA4433A00E3F6C5 /* ToDoListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListItemView.swift; sourceTree = "<group>"; };
 		CB5C97672CA4434E00E3F6C5 /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
 		CB9590252CB0584900CEF73B /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				CB26285E2CA02BFD00C98360 /* SettingButton.swift */,
 				CBAAEAB52CA285F000844DB8 /* PlusButton.swift */,
 				CBAAEAB72CA286D400844DB8 /* PaddingLabel.swift */,
+				CB494F7E2CB798DE00823804 /* CompleteButton.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				CB3F697F2C9DAA5100635DBC /* AppDelegate.swift in Sources */,
 				CB95903A2CB06C2600CEF73B /* DDayViewModel.swift in Sources */,
 				CBA20E822C9DB6F600455DC4 /* Primary.swift in Sources */,
+				CB494F7F2CB798DE00823804 /* CompleteButton.swift in Sources */,
 				CB95903E2CB06C5100CEF73B /* InfoViewModel.swift in Sources */,
 				CBA0E6D92CB41981000FF934 /* SettingViewController.swift in Sources */,
 				CBA20E642C9DB41D00455DC4 /* UIViewController+Alert.swift in Sources */,

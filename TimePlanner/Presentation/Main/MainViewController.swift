@@ -32,7 +32,7 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
     
     private let todoListView = ToDoListView()
     
-    private lazy var scrollView = UIScrollView().then {
+    private let scrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false
     }
     
@@ -68,6 +68,7 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
         self.view.addSubviews(
             self.scrollView
         )
+        
         self.scrollView.addSubviews(
             self.calendarView,
             self.todoListView

@@ -80,6 +80,16 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.configureNavigationBar()
+        
+        // 화면이 다시 나타날 때 탭 바를 표시
+        self.tabBarController?.tabBar.isHidden = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // 화면이 사라질 때 탭 바를 숨김
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - Functions

@@ -75,6 +75,12 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.configureNavigationBar()
+        self.tabBarController?.tabBar.isHidden = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - Functions
@@ -124,6 +130,7 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
         self.datePicker.snp.makeConstraints {
             $0.top.equalTo(self.dateLabel.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview()
         }
         
         self.completeButton.snp.makeConstraints {

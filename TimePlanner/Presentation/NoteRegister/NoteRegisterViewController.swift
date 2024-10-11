@@ -12,14 +12,7 @@ import Then
 
 final class NoteRegisterViewController: UIViewController, BaseViewControllerType, Navigationable {
     
-    // MARK: - UI Components
-    
-    private let scrollView = UIScrollView().then {
-        $0.isScrollEnabled = true
-        $0.showsVerticalScrollIndicator = false
-    }
-    
-    private let contentView = UIView()
+    // MARK: - UI Componentsㅋ
     
     private let titleLabel = UILabel().then {
         $0.text = "노트 내용"
@@ -75,38 +68,20 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
     
     func setupLayout() {
         self.view.addSubviews(
-            self.scrollView,
+            self.titleLabel,
+            self.noteTextView,
             self.completeButton
         )
         
-        self.scrollView.snp.makeConstraints {
-            $0.top.edges.equalToSuperview()
-        }
-        
-        self.scrollView.addSubviews(
-            self.contentView
-        )
-        
-        self.contentView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-            $0.width.equalToSuperview()
-        }
-        
-        self.contentView.addSubviews(
-            self.titleLabel,
-            self.noteTextView
-        )
-        
         self.titleLabel.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaLayoutGuide).inset(20)
-            $0.leading.equalToSuperview().inset(20)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).inset(SizeLiteral.verticalPadding)
+            $0.leading.equalToSuperview().inset(SizeLiteral.horizantalPadding)
         }
         
         self.noteTextView.snp.makeConstraints {
             $0.top.equalTo(self.titleLabel.snp.bottom).offset(10)
-            $0.leading.trailing.equalToSuperview().inset(20)
-            $0.height.equalTo(200)
-            $0.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
+            $0.bottom.equalTo(self.completeButton.snp.top).offset(-SizeLiteral.verticalPadding)
         }
         
         self.completeButton.snp.makeConstraints {

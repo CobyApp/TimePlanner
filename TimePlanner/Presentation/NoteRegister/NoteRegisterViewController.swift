@@ -51,6 +51,8 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
         self.setupNavigation()
         self.setupLayout()
         self.configureUI()
+        
+        self.noteTextView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,5 +100,12 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
     func configureNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.title = "노트 작성"
+    }
+}
+
+extension NoteRegisterViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        let hasText = !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        self.completeButton.isEnabled = hasText
     }
 }

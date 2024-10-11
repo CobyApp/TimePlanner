@@ -75,6 +75,8 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
         self.setupLayout()
         self.configureUI()
         self.setupColorSelection()
+        
+        self.nameTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -190,5 +192,13 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
         self.selectedColor = sender.backgroundColor // 선택된 색상 업데이트
         
         // 선택된 색상에 따라 뭉치 색상 업데이트 로직 추가 가능
+    }
+    
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        if let text = textField.text, !text.isEmpty {
+            self.completeButton.isEnabled = true
+        } else {
+            self.completeButton.isEnabled = false
+        }
     }
 }

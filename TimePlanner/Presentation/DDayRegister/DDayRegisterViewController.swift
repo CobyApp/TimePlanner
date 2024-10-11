@@ -70,6 +70,8 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
         self.setupNavigation()
         self.setupLayout()
         self.configureUI()
+        
+        self.titleTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -147,5 +149,13 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
     func configureNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.title = "디데이 작성"
+    }
+    
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        if let text = textField.text, !text.isEmpty {
+            self.completeButton.isEnabled = true
+        } else {
+            self.completeButton.isEnabled = false
+        }
     }
 }

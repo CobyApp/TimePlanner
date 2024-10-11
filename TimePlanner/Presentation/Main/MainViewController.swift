@@ -30,7 +30,17 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
     
     private let calendarView = CalendarView()
     
-    private let todoListView = ToDoListView()
+    private lazy var todoListView = ToDoListView().then {
+        $0.checkTapAction = { [weak self] in
+            print("투두 체크 버튼 클릭")
+        }
+        $0.editTapAction = { [weak self] in
+            print("투두 수정 버튼 클릭")
+        }
+        $0.deleteTapAction = { [weak self] in
+            print("투두 삭제 버튼 클릭")
+        }
+    }
     
     private let scrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false

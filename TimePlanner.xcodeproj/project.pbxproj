@@ -22,6 +22,7 @@
 		CB494F7F2CB798DE00823804 /* CompleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB494F7E2CB798DE00823804 /* CompleteButton.swift */; };
 		CB5C97662CA4433A00E3F6C5 /* ToDoListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5C97652CA4433A00E3F6C5 /* ToDoListItemView.swift */; };
 		CB5C97682CA4434E00E3F6C5 /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5C97672CA4434E00E3F6C5 /* ToDoListView.swift */; };
+		CB8B25872CB9005700F8A684 /* SmallMoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B25862CB9005700F8A684 /* SmallMoreButton.swift */; };
 		CB9590262CB0584900CEF73B /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9590252CB0584900CEF73B /* MainCoordinator.swift */; };
 		CB9590282CB058E300CEF73B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9590272CB058E300CEF73B /* MainViewModel.swift */; };
 		CB95902C2CB05B6C00CEF73B /* CategoryManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95902B2CB05B6C00CEF73B /* CategoryManagementViewController.swift */; };
@@ -97,6 +98,7 @@
 		CB494F7E2CB798DE00823804 /* CompleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteButton.swift; sourceTree = "<group>"; };
 		CB5C97652CA4433A00E3F6C5 /* ToDoListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListItemView.swift; sourceTree = "<group>"; };
 		CB5C97672CA4434E00E3F6C5 /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
+		CB8B25862CB9005700F8A684 /* SmallMoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallMoreButton.swift; sourceTree = "<group>"; };
 		CB9590252CB0584900CEF73B /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		CB9590272CB058E300CEF73B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		CB95902B2CB05B6C00CEF73B /* CategoryManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManagementViewController.swift; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 			children = (
 				CBA20E8E2C9DBB3B00455DC4 /* BackButton.swift */,
 				CB2628602CA02C2000C98360 /* MoreButton.swift */,
+				CB8B25862CB9005700F8A684 /* SmallMoreButton.swift */,
 				CB306DCC2CA3BA9F009517D6 /* MoreVertButton.swift */,
 				CB26285E2CA02BFD00C98360 /* SettingButton.swift */,
 				CBAAEAB52CA285F000844DB8 /* PlusButton.swift */,
@@ -608,6 +611,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBAAEAB42CA284E400844DB8 /* NoteViewController.swift in Sources */,
+				CB8B25872CB9005700F8A684 /* SmallMoreButton.swift in Sources */,
 				CBA20E962C9DBDAC00455DC4 /* MainViewController.swift in Sources */,
 				CB95902E2CB05B7500CEF73B /* CategoryCoordinator.swift in Sources */,
 				CBA0E6D22CB41513000FF934 /* DDayRegisterViewModel.swift in Sources */,

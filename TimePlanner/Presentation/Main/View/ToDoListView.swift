@@ -43,6 +43,10 @@ final class ToDoListView: UIView, BaseViewType {
     
     // MARK: - property
     
+    var checkTapAction: (() -> Void)?
+    var editTapAction: (() -> Void)?
+    var deleteTapAction: (() -> Void)?
+    
     // MARK: - init
     
     override init(frame: CGRect) {
@@ -80,7 +84,7 @@ final class ToDoListView: UIView, BaseViewType {
 
 extension ToDoListView: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
-        return 3
+        return 5
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -90,7 +94,19 @@ extension ToDoListView: UICollectionViewDataSource, UICollectionViewDelegate {
         ) as? ToDoListCollectionViewCell else {
             return UICollectionViewCell()
         }
+        
+        cell.checkTapAction = { [weak self] in
+            self?.checkTapAction?()
+        }
 
+        cell.editTapAction = { [weak self] in
+            self?.editTapAction?()
+        }
+        
+        cell.deleteTapAction = { [weak self] in
+            self?.deleteTapAction?()
+        }
+        
         return cell
     }
 }

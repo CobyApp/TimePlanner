@@ -1,18 +1,18 @@
 //
-//  MoreButton.swift
+//  SmallMoreButton.swift
 //  TimePlanner
 //
-//  Created by Coby on 9/22/24.
+//  Created by Coby on 10/11/24.
 //
 
 import UIKit
 
-final class MoreButton: UIButton {
+final class SmallMoreButton: UIButton {
     
     // MARK: - init
     
     override init(frame: CGRect) {
-        super.init(frame: .init(origin: .zero, size: .init(width: 40, height: 40)))
+        super.init(frame: .init(origin: .zero, size: .init(width: 20, height: 20)))
         self.configUI()
     }
     
@@ -23,7 +23,7 @@ final class MoreButton: UIButton {
     // MARK: - func
     
     private func configUI() {
-        self.setImage(UIImage.Button.more.resize(to: CGSize(width: 24, height: 24)), for: .normal)
+        self.setImage(UIImage.Button.more.resize(to: CGSize(width: 20, height: 20)), for: .normal)
         self.tintColor = .labelNormal
     }
 }

@@ -47,7 +47,12 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
         $0.timeZone = .current
     }
     
-    private let completeButton = CompleteButton()
+    private lazy var completeButton = CompleteButton().then {
+        let action = UIAction { [weak self] _ in
+            self?.viewModel.dismiss()
+        }
+        $0.addAction(action, for: .touchUpInside)
+    }
     
     // MARK: - Properties
     

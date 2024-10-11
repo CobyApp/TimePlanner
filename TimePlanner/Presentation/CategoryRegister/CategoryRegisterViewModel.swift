@@ -16,4 +16,8 @@ final class CategoryRegisterViewModel: NSObject, ObservableObject {
     ) {
         self.coordinator = coordinator
     }
+    
+    func dismiss() {
+        self.coordinator?.dismiss()
+    }
 }

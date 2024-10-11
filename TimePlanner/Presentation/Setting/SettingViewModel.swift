@@ -16,4 +16,8 @@ final class SettingViewModel: NSObject, ObservableObject {
     ) {
         self.coordinator = coordinator
     }
+    
+    func dismiss() {
+        self.coordinator?.dismiss()
+    }
 }

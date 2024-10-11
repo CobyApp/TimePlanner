@@ -16,4 +16,8 @@ final class NoteRegisterCoordinator: NSObject {
         super.init()
     }
     
+    func dismiss() {
+        guard let navigationController = navigationController else { return }
+        navigationController.popViewController(animated: true)
+    }
 }

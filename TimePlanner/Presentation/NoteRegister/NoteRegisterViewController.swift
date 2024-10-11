@@ -28,7 +28,12 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
         $0.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     
-    private let completeButton = CompleteButton()
+    private lazy var completeButton = CompleteButton().then {
+        let action = UIAction { [weak self] _ in
+            self?.viewModel.dismiss()
+        }
+        $0.addAction(action, for: .touchUpInside)
+    }
     
     // MARK: - Properties
     

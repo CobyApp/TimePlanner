@@ -16,6 +16,11 @@ final class CategoryManagementCoordinator: NSObject {
         super.init()
     }
     
+    func dismiss() {
+        guard let navigationController = navigationController else { return }
+        navigationController.popViewController(animated: true)
+    }
+    
     func presentCategoryRegister() {
         guard let navigationController = self.navigationController else { return }
         let coordinator = CategoryRegisterCoordinator(navigationController: navigationController)

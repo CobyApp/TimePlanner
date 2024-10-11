@@ -12,7 +12,7 @@ final class SmallMoreButton: UIButton {
     // MARK: - init
     
     override init(frame: CGRect) {
-        super.init(frame: .init(origin: .zero, size: .init(width: 20, height: 20)))
+        super.init(frame: .init(origin: .zero, size: .init(width: 40, height: 40)))
         self.configUI()
     }
     

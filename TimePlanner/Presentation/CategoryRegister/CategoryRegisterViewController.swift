@@ -45,7 +45,12 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
         $0.distribution = .fillEqually // 균등 분배
     }
     
-    private let completeButton = CompleteButton()
+    private lazy var completeButton = CompleteButton().then {
+        let action = UIAction { [weak self] _ in
+            self?.viewModel.dismiss()
+        }
+        $0.addAction(action, for: .touchUpInside)
+    }
     
     private let colors: [UIColor] = [
         .red, .green, .blue, .yellow, .orange

@@ -10,7 +10,16 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
+    private lazy var loginViewController: UINavigationController = {
+        let navController = UINavigationController()
+        let loginCoordinator = LoginCoordinator(navigationController: navController)
+        let loginViewModel = LoginViewModel(coordinator: loginCoordinator)
+        let loginViewController = LoginViewController(viewModel: loginViewModel)
+        navController.viewControllers = [loginViewController]
+        
+        return navController
+    }()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -19,11 +28,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
 //        self.window?.rootViewController = TabBarController()
-        
-        let loginCoordinator = LoginCoordinator(navigationController: UINavigationController())
-        let loginViewModel = LoginViewModel(coordinator: loginCoordinator)
-        let loginViewController = LoginViewController(viewModel: loginViewModel)
-        self.window?.rootViewController = loginViewController
+
+        self.window?.rootViewController = self.loginViewController
         self.window?.makeKeyAndVisible()
     }
 

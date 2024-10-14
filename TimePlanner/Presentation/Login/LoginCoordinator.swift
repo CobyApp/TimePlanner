@@ -15,4 +15,13 @@ final class LoginCoordinator: NSObject {
         self.navigationController = navigationController
         super.init()
     }
+    
+    func presentSign() {
+        guard let navigationController = self.navigationController else { return }
+        let coordinator = SignCoordinator(navigationController: navigationController)
+        let viewModel = SignViewModel(coordinator: coordinator)
+        let viewController = SignViewController(viewModel: viewModel)
+        
+        navigationController.pushViewController(viewController, animated: true)
+    }
 }

@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  SignViewController.swift
 //  TimePlanner
 //
 //  Created by Coby on 10/14/24.
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class LoginViewController: UIViewController, BaseViewControllerType {
+final class SignViewController: UIViewController, BaseViewControllerType, Navigationable {
     
     // MARK: - UI Components
     
@@ -47,25 +47,21 @@ final class LoginViewController: UIViewController, BaseViewControllerType {
         $0.clearButtonMode = .whileEditing
     }
     
-    private lazy var signUpButton = UIButton().then {
-        let title = "회원가입 하기"
-        let attributedString = NSAttributedString(
-            string: title,
-            attributes: [
-                .font: UIFont.font(size: 14, weight: .regular),
-                .foregroundColor: UIColor.labelAlternative,
-                .underlineStyle: NSUnderlineStyle.single.rawValue
-            ]
-        )
-        $0.setAttributedTitle(attributedString, for: .normal)
-        let action = UIAction { [weak self] _ in
-            self?.viewModel.presentSign()
-        }
-        $0.addAction(action, for: .touchUpInside)
+    private let passwordConfirmLabel = UILabel().then {
+        $0.text = "비밀번호 확인"
+        $0.font = .font(size: 18, weight: .medium)
+        $0.textColor = .label
     }
     
-    private lazy var loginButton = CompleteButton().then {
-        $0.label.text = "로그인"
+    private let passwordConfirmTextField = UITextField().then {
+        $0.placeholder = "비밀번호를 다시 입력하세요"
+        $0.font = .font(size: 16, weight: .regular)
+        $0.borderStyle = .roundedRect
+        $0.clearButtonMode = .whileEditing
+    }
+    
+    private lazy var signUpButton = CompleteButton().then {
+        $0.label.text = "회원가입"
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
         }
@@ -74,11 +70,11 @@ final class LoginViewController: UIViewController, BaseViewControllerType {
     
     // MARK: - Properties
     
-    private let viewModel: LoginViewModel
+    private let viewModel: SignViewModel
     
     // MARK: - Life Cycle
     
-    init(viewModel: LoginViewModel) {
+    init(viewModel: SignViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -90,11 +86,18 @@ final class LoginViewController: UIViewController, BaseViewControllerType {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.baseViewDidLoad()
+        self.setupNavigation()
         self.setupLayout()
         self.configureUI()
         
         self.emailTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         self.passwordTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        self.passwordConfirmTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.configureNavigationBar()
     }
     
     // MARK: - Functions
@@ -102,7 +105,7 @@ final class LoginViewController: UIViewController, BaseViewControllerType {
     func setupLayout() {
         self.view.addSubviews(
             self.scrollView,
-            self.loginButton
+            self.signUpButton
         )
         
         self.scrollView.snp.makeConstraints {
@@ -123,7 +126,8 @@ final class LoginViewController: UIViewController, BaseViewControllerType {
             self.emailTextField,
             self.passwordLabel,
             self.passwordTextField,
-            self.signUpButton
+            self.passwordConfirmLabel,
+            self.passwordConfirmTextField
         )
         
         self.emailLabel.snp.makeConstraints {
@@ -148,13 +152,19 @@ final class LoginViewController: UIViewController, BaseViewControllerType {
             $0.height.equalTo(50)
         }
         
-        self.signUpButton.snp.makeConstraints {
-            $0.top.equalTo(self.passwordTextField.snp.bottom).offset(20)
-            $0.centerX.equalToSuperview().inset(20)
+        self.passwordConfirmLabel.snp.makeConstraints {
+            $0.top.equalTo(self.passwordTextField.snp.bottom).offset(40)
+            $0.leading.equalToSuperview().inset(SizeLiteral.horizantalPadding)
+        }
+        
+        self.passwordConfirmTextField.snp.makeConstraints {
+            $0.top.equalTo(self.passwordConfirmLabel.snp.bottom).offset(10)
+            $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
+            $0.height.equalTo(50)
             $0.bottom.equalToSuperview()
         }
         
-        self.loginButton.snp.makeConstraints {
+        self.signUpButton.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
             $0.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top).offset(-10)
             $0.height.equalTo(50)
@@ -165,11 +175,18 @@ final class LoginViewController: UIViewController, BaseViewControllerType {
         self.view.backgroundColor = .backgroundNormalNormal
     }
     
+    func configureNavigationBar() {
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.title = "회원 가입"
+    }
+    
     @objc private func textFieldDidChange(_ textField: UITextField) {
-        if let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty {
-            self.loginButton.isEnabled = true
+        if let email = emailTextField.text, !email.isEmpty,
+            let password = passwordTextField.text, !password.isEmpty,
+            let passwordConfirm = passwordConfirmTextField.text, !passwordConfirm.isEmpty {
+            self.signUpButton.isEnabled = true
         } else {
-            self.loginButton.isEnabled = false
+            self.signUpButton.isEnabled = false
         }
     }
 }

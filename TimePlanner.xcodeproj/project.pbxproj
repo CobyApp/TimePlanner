@@ -25,6 +25,9 @@
 		CB3271F22CBCFA4000E1C4D7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3271F12CBCFA4000E1C4D7 /* LoginViewController.swift */; };
 		CB3271F42CBCFA4600E1C4D7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3271F32CBCFA4600E1C4D7 /* LoginViewModel.swift */; };
 		CB3271F62CBCFA4D00E1C4D7 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3271F52CBCFA4D00E1C4D7 /* LoginCoordinator.swift */; };
+		CB3271F92CBD011600E1C4D7 /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3271F82CBD011600E1C4D7 /* SignViewController.swift */; };
+		CB3271FB2CBD012400E1C4D7 /* SignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3271FA2CBD012400E1C4D7 /* SignViewModel.swift */; };
+		CB3271FD2CBD012800E1C4D7 /* SignCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3271FC2CBD012800E1C4D7 /* SignCoordinator.swift */; };
 		CB3F697F2C9DAA5100635DBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3F697E2C9DAA5100635DBC /* AppDelegate.swift */; };
 		CB3F69812C9DAA5100635DBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3F69802C9DAA5100635DBC /* SceneDelegate.swift */; };
 		CB3F69882C9DAA5400635DBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3F69872C9DAA5400635DBC /* Assets.xcassets */; };
@@ -108,6 +111,9 @@
 		CB3271F12CBCFA4000E1C4D7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CB3271F32CBCFA4600E1C4D7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		CB3271F52CBCFA4D00E1C4D7 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		CB3271F82CBD011600E1C4D7 /* SignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; };
+		CB3271FA2CBD012400E1C4D7 /* SignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewModel.swift; sourceTree = "<group>"; };
+		CB3271FC2CBD012800E1C4D7 /* SignCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignCoordinator.swift; sourceTree = "<group>"; };
 		CB3F697B2C9DAA5100635DBC /* TimePlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimePlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3F697E2C9DAA5100635DBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB3F69802C9DAA5100635DBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -252,6 +258,16 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		CB3271F72CBD010200E1C4D7 /* Sign */ = {
+			isa = PBXGroup;
+			children = (
+				CB3271F82CBD011600E1C4D7 /* SignViewController.swift */,
+				CB3271FA2CBD012400E1C4D7 /* SignViewModel.swift */,
+				CB3271FC2CBD012800E1C4D7 /* SignCoordinator.swift */,
+			);
+			path = Sign;
+			sourceTree = "<group>";
+		};
 		CB3F69722C9DAA5100635DBC = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +345,7 @@
 				CBA20E572C9DB24C00455DC4 /* Common */,
 				CBE870E82CA183BD008544C1 /* Tab */,
 				CB3271F02CBCFA2C00E1C4D7 /* Login */,
+				CB3271F72CBD010200E1C4D7 /* Sign */,
 				CBA20E562C9DB24600455DC4 /* Main */,
 				CBA0E6C22CB411D0000FF934 /* CategoryRegister */,
 				CB9590292CB05B4B00CEF73B /* CategoryManagement */,
@@ -719,15 +736,18 @@
 				CBA20E822C9DB6F600455DC4 /* Primary.swift in Sources */,
 				CB494F7F2CB798DE00823804 /* CompleteButton.swift in Sources */,
 				CB95903E2CB06C5100CEF73B /* InfoViewModel.swift in Sources */,
+				CB3271F92CBD011600E1C4D7 /* SignViewController.swift in Sources */,
 				CBA0E6D92CB41981000FF934 /* SettingViewController.swift in Sources */,
 				CBA20E642C9DB41D00455DC4 /* UIViewController+Alert.swift in Sources */,
 				CBA20E662C9DB43200455DC4 /* UIViewController+Keyboard.swift in Sources */,
+				CB3271FD2CBD012800E1C4D7 /* SignCoordinator.swift in Sources */,
 				CBA20E602C9DB36400455DC4 /* Navigationable.swift in Sources */,
 				CB3271E52CBCEAD800E1C4D7 /* NoteModel.swift in Sources */,
 				CBF155042CB500D600758F7B /* ToDoListCollectionViewCell.swift in Sources */,
 				CB3271F42CBCFA4600E1C4D7 /* LoginViewModel.swift in Sources */,
 				CB95903C2CB06C4200CEF73B /* InfoCoordinator.swift in Sources */,
 				CBA0E6C42CB411F3000FF934 /* CategoryRegisterViewController.swift in Sources */,
+				CB3271FB2CBD012400E1C4D7 /* SignViewModel.swift in Sources */,
 				CBA20E7B2C9DB66400455DC4 /* FontSet.swift in Sources */,
 				CB2628562CA024AB00C98360 /* BaseViewControllerType.swift in Sources */,
 				CB2628612CA02C2000C98360 /* MoreButton.swift in Sources */,

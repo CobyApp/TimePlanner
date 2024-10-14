@@ -1,5 +1,5 @@
 //
-//  LoginViewModel.swift
+//  SignViewModel.swift
 //  TimePlanner
 //
 //  Created by Coby on 10/14/24.
@@ -7,23 +7,23 @@
 
 import Foundation
 
-final class LoginViewModel: NSObject, ObservableObject {
+final class SignViewModel: NSObject, ObservableObject {
     
 //    @Published var note: NoteModel = .init()
     
-    private var coordinator: LoginCoordinator?
+    private var coordinator: SignCoordinator?
     
     init(
-        coordinator: LoginCoordinator?
+        coordinator: SignCoordinator?
     ) {
         self.coordinator = coordinator
     }
     
-    func presentSign() {
-        self.coordinator?.presentSign()
+    func dismiss() {
+        self.coordinator?.dismiss()
     }
     
-    func loginUser(
+    func signUser(
         email: String,
         password: String
     ) {

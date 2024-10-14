@@ -62,6 +62,13 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
     
     private let viewModel: CategoryRegisterViewModel
     
+    private var cellHeight: CGFloat {
+        let totalSpacing = CGFloat(12 * (CategoryColor.allCases.count - 1))
+        let totalWidth = SizeLiteral.fullWidth - totalSpacing
+        let cellCount = CGFloat(CategoryColor.allCases.count) // cellCount도 CGFloat으로 변환
+        return totalWidth / cellCount
+    }
+    
     // MARK: - Life Cycle
     
     init(viewModel: CategoryRegisterViewModel) {
@@ -146,7 +153,7 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
         self.colorSelectionStackView.snp.makeConstraints {
             $0.top.equalTo(self.colorTitleLabel.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
-            $0.height.equalTo((SizeLiteral.fullWidth - 12 * 6) / 7)
+            $0.height.equalTo(self.cellHeight)
             $0.bottom.equalToSuperview()
         }
         

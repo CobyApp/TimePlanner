@@ -9,6 +9,8 @@ import Foundation
 
 final class NoteRegisterViewModel: NSObject, ObservableObject {
     
+    @Published var note: NoteModel = .init()
+    
     private var coordinator: NoteRegisterCoordinator?
     
     init(
@@ -19,5 +21,15 @@ final class NoteRegisterViewModel: NSObject, ObservableObject {
     
     func dismiss() {
         self.coordinator?.dismiss()
+    }
+    
+    func registerNote(
+        content: String
+    ) {
+        self.note = NoteModel(
+            content: content
+        )
+        
+        self.dismiss()
     }
 }

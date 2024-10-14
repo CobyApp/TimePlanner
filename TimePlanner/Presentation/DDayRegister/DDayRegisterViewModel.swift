@@ -9,6 +9,8 @@ import Foundation
 
 final class DDayRegisterViewModel: NSObject, ObservableObject {
     
+    @Published var dDay: DDayModel = .init()
+    
     private var coordinator: DDayRegisterCoordinator?
     
     init(
@@ -19,5 +21,17 @@ final class DDayRegisterViewModel: NSObject, ObservableObject {
     
     func dismiss() {
         self.coordinator?.dismiss()
+    }
+    
+    func registerDDay(
+        name: String,
+        dDate: Date
+    ) {
+        self.dDay = DDayModel(
+            name: name,
+            dDate: dDate
+        )
+        
+        self.dismiss()
     }
 }

@@ -16,6 +16,8 @@
 		CB306DCD2CA3BA9F009517D6 /* MoreVertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB306DCC2CA3BA9F009517D6 /* MoreVertButton.swift */; };
 		CB3271DF2CBCDF5300E1C4D7 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3271DE2CBCDF5300E1C4D7 /* CategoryModel.swift */; };
 		CB3271E12CBCDFEB00E1C4D7 /* CategoryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3271E02CBCDFEB00E1C4D7 /* CategoryColor.swift */; };
+		CB3271E32CBCEA9800E1C4D7 /* DDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3271E22CBCEA9800E1C4D7 /* DDayModel.swift */; };
+		CB3271E52CBCEAD800E1C4D7 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3271E42CBCEAD800E1C4D7 /* NoteModel.swift */; };
 		CB3F697F2C9DAA5100635DBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3F697E2C9DAA5100635DBC /* AppDelegate.swift */; };
 		CB3F69812C9DAA5100635DBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3F69802C9DAA5100635DBC /* SceneDelegate.swift */; };
 		CB3F69882C9DAA5400635DBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3F69872C9DAA5400635DBC /* Assets.xcassets */; };
@@ -92,6 +94,8 @@
 		CB306DCC2CA3BA9F009517D6 /* MoreVertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreVertButton.swift; sourceTree = "<group>"; };
 		CB3271DE2CBCDF5300E1C4D7 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		CB3271E02CBCDFEB00E1C4D7 /* CategoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColor.swift; sourceTree = "<group>"; };
+		CB3271E22CBCEA9800E1C4D7 /* DDayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayModel.swift; sourceTree = "<group>"; };
+		CB3271E42CBCEAD800E1C4D7 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
 		CB3F697B2C9DAA5100635DBC /* TimePlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimePlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3F697E2C9DAA5100635DBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB3F69802C9DAA5100635DBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -209,6 +213,8 @@
 			isa = PBXGroup;
 			children = (
 				CB3271DE2CBCDF5300E1C4D7 /* CategoryModel.swift */,
+				CB3271E42CBCEAD800E1C4D7 /* NoteModel.swift */,
+				CB3271E22CBCEA9800E1C4D7 /* DDayModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -637,6 +643,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB3271E32CBCEA9800E1C4D7 /* DDayModel.swift in Sources */,
 				CBAAEAB42CA284E400844DB8 /* NoteViewController.swift in Sources */,
 				CB8B25872CB9005700F8A684 /* SmallMoreButton.swift in Sources */,
 				CBA20E962C9DBDAC00455DC4 /* MainViewController.swift in Sources */,
@@ -681,6 +688,7 @@
 				CBA20E642C9DB41D00455DC4 /* UIViewController+Alert.swift in Sources */,
 				CBA20E662C9DB43200455DC4 /* UIViewController+Keyboard.swift in Sources */,
 				CBA20E602C9DB36400455DC4 /* Navigationable.swift in Sources */,
+				CB3271E52CBCEAD800E1C4D7 /* NoteModel.swift in Sources */,
 				CBF155042CB500D600758F7B /* ToDoListCollectionViewCell.swift in Sources */,
 				CB95903C2CB06C4200CEF73B /* InfoCoordinator.swift in Sources */,
 				CBA0E6C42CB411F3000FF934 /* CategoryRegisterViewController.swift in Sources */,

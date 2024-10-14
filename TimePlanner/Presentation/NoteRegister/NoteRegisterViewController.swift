@@ -30,7 +30,7 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
     
     private lazy var completeButton = CompleteButton().then {
         let action = UIAction { [weak self] _ in
-            self?.viewModel.dismiss()
+            self?.viewModel.registerNote(content: self?.noteTextView.text ?? "")
         }
         $0.addAction(action, for: .touchUpInside)
     }

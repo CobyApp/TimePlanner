@@ -17,7 +17,7 @@ final class TabBarController: UITabBarController {
         navController.viewControllers = [mainViewController]
         
         navController.tabBarItem.image = UIImage.Button.home.resize(to: CGSize(width: 20, height: 20))
-        navController.tabBarItem.title = "메인"
+        navController.tabBarItem.title = "할일"
         
         return navController
     }()

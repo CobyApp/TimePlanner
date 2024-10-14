@@ -177,13 +177,15 @@ final class SignViewController: UIViewController, BaseViewControllerType, Naviga
     
     func configureNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.title = "회원 가입"
+        self.title = "회원가입"
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
         if let email = emailTextField.text, !email.isEmpty,
             let password = passwordTextField.text, !password.isEmpty,
-            let passwordConfirm = passwordConfirmTextField.text, !passwordConfirm.isEmpty {
+            let passwordConfirm = passwordConfirmTextField.text, !passwordConfirm.isEmpty,
+           password == passwordConfirm
+        {
             self.signUpButton.isEnabled = true
         } else {
             self.signUpButton.isEnabled = false

@@ -8,6 +8,7 @@
 import UIKit
 
 enum SizeLiteral {
+    
     static let horizantalPadding: CGFloat = 20
     static let verticalPadding: CGFloat = 16
     static let bottomPadding: CGFloat = 10 + bottomAreaPadding

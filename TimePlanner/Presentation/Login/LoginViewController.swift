@@ -23,28 +23,41 @@ final class LoginViewController: UIViewController, BaseViewControllerType {
     
     private let emailLabel = UILabel().then {
         $0.text = "이메일"
-        $0.font = .systemFont(ofSize: 18, weight: .medium)
+        $0.font = .font(size: 18, weight: .medium)
         $0.textColor = .label
     }
     
     private let emailTextField = UITextField().then {
         $0.placeholder = "이메일을 입력하세요"
-        $0.font = .systemFont(ofSize: 16)
+        $0.font = .font(size: 16, weight: .regular)
         $0.borderStyle = .roundedRect
         $0.clearButtonMode = .whileEditing
     }
     
     private let passwordLabel = UILabel().then {
         $0.text = "비밀번호"
-        $0.font = .systemFont(ofSize: 18, weight: .medium)
+        $0.font = .font(size: 18, weight: .medium)
         $0.textColor = .label
     }
     
     private let passwordTextField = UITextField().then {
         $0.placeholder = "비밀번호를 입력하세요"
-        $0.font = .systemFont(ofSize: 16)
+        $0.font = .font(size: 16, weight: .regular)
         $0.borderStyle = .roundedRect
         $0.clearButtonMode = .whileEditing
+    }
+    
+    private let signUpButton = UIButton().then {
+        let title = "회원가입"
+        let attributedString = NSAttributedString(
+            string: title,
+            attributes: [
+                .font: UIFont.font(size: 14, weight: .regular),
+                .foregroundColor: UIColor.blueNormal,
+                .underlineStyle: NSUnderlineStyle.single.rawValue
+            ]
+        )
+        $0.setAttributedTitle(attributedString, for: .normal)
     }
     
     private lazy var loginButton = CompleteButton().then {
@@ -105,29 +118,36 @@ final class LoginViewController: UIViewController, BaseViewControllerType {
             self.emailLabel,
             self.emailTextField,
             self.passwordLabel,
-            self.passwordTextField
+            self.passwordTextField,
+            self.signUpButton
         )
         
         self.emailLabel.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide).inset(20)
-            $0.leading.equalToSuperview().inset(20)
+            $0.leading.equalToSuperview().inset(SizeLiteral.horizantalPadding)
         }
         
         self.emailTextField.snp.makeConstraints {
             $0.top.equalTo(self.emailLabel.snp.bottom).offset(10)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
             $0.height.equalTo(50)
         }
         
         self.passwordLabel.snp.makeConstraints {
             $0.top.equalTo(self.emailTextField.snp.bottom).offset(40)
-            $0.leading.equalToSuperview().inset(20)
+            $0.leading.equalToSuperview().inset(SizeLiteral.horizantalPadding)
         }
         
         self.passwordTextField.snp.makeConstraints {
             $0.top.equalTo(self.passwordLabel.snp.bottom).offset(10)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
             $0.height.equalTo(50)
+        }
+        
+        self.signUpButton.snp.makeConstraints {
+            $0.top.equalTo(self.passwordTextField.snp.bottom).offset(20)
+            $0.centerX.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview()
         }
         
         self.loginButton.snp.makeConstraints {

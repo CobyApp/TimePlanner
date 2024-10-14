@@ -64,7 +64,7 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBar.tintColor = .labelNormal
+        self.tabBar.tintColor = .mainColor
         self.tabBar.backgroundColor = .backgroundNormalNormal
         
         // 모든 ViewControllers를 설정

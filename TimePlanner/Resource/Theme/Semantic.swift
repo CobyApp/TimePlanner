@@ -9,6 +9,9 @@ import UIKit
 
 extension UIColor {
     
+    // Main
+    static let mainColor = UIColor.blueHeavy
+    
     // Static
     static let staticWhite = UIColor.common100
     static let staticBlack = UIColor.common0

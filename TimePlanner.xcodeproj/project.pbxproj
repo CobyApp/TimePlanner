@@ -14,6 +14,8 @@
 		CB2628642CA033EF00C98360 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2628632CA033EF00C98360 /* CalendarView.swift */; };
 		CB306DCB2CA3B2F6009517D6 /* DDayCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB306DCA2CA3B2F6009517D6 /* DDayCollectionView.swift */; };
 		CB306DCD2CA3BA9F009517D6 /* MoreVertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB306DCC2CA3BA9F009517D6 /* MoreVertButton.swift */; };
+		CB3271DF2CBCDF5300E1C4D7 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3271DE2CBCDF5300E1C4D7 /* CategoryModel.swift */; };
+		CB3271E12CBCDFEB00E1C4D7 /* CategoryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3271E02CBCDFEB00E1C4D7 /* CategoryColor.swift */; };
 		CB3F697F2C9DAA5100635DBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3F697E2C9DAA5100635DBC /* AppDelegate.swift */; };
 		CB3F69812C9DAA5100635DBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3F69802C9DAA5100635DBC /* SceneDelegate.swift */; };
 		CB3F69882C9DAA5400635DBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3F69872C9DAA5400635DBC /* Assets.xcassets */; };
@@ -57,7 +59,6 @@
 		CBA20E722C9DB51C00455DC4 /* NSObject+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E712C9DB51C00455DC4 /* NSObject+ClassName.swift */; };
 		CBA20E742C9DB52C00455DC4 /* String+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E732C9DB52C00455DC4 /* String+DateFormatter.swift */; };
 		CBA20E762C9DB53B00455DC4 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E752C9DB53B00455DC4 /* Date+Extension.swift */; };
-		CBA20E792C9DB65600455DC4 /* ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E782C9DB65600455DC4 /* ColorSet.swift */; };
 		CBA20E7B2C9DB66400455DC4 /* FontSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E7A2C9DB66400455DC4 /* FontSet.swift */; };
 		CBA20E7D2C9DB66B00455DC4 /* ImageSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E7C2C9DB66B00455DC4 /* ImageSet.swift */; };
 		CBA20E802C9DB6EF00455DC4 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA20E7F2C9DB6EF00455DC4 /* Palette.swift */; };
@@ -89,6 +90,8 @@
 		CB2628632CA033EF00C98360 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		CB306DCA2CA3B2F6009517D6 /* DDayCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayCollectionView.swift; sourceTree = "<group>"; };
 		CB306DCC2CA3BA9F009517D6 /* MoreVertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreVertButton.swift; sourceTree = "<group>"; };
+		CB3271DE2CBCDF5300E1C4D7 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		CB3271E02CBCDFEB00E1C4D7 /* CategoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryColor.swift; sourceTree = "<group>"; };
 		CB3F697B2C9DAA5100635DBC /* TimePlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimePlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3F697E2C9DAA5100635DBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB3F69802C9DAA5100635DBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,7 +136,6 @@
 		CBA20E712C9DB51C00455DC4 /* NSObject+ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
 		CBA20E732C9DB52C00455DC4 /* String+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DateFormatter.swift"; sourceTree = "<group>"; };
 		CBA20E752C9DB53B00455DC4 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
-		CBA20E782C9DB65600455DC4 /* ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSet.swift; sourceTree = "<group>"; };
 		CBA20E7A2C9DB66400455DC4 /* FontSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSet.swift; sourceTree = "<group>"; };
 		CBA20E7C2C9DB66B00455DC4 /* ImageSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSet.swift; sourceTree = "<group>"; };
 		CBA20E7F2C9DB6EF00455DC4 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -194,6 +196,31 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		CB3271D92CBCDF1F00E1C4D7 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				CB3271DD2CBCDF4000E1C4D7 /* Type */,
+				CB3271DA2CBCDF2600E1C4D7 /* Model */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		CB3271DA2CBCDF2600E1C4D7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CB3271DE2CBCDF5300E1C4D7 /* CategoryModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CB3271DD2CBCDF4000E1C4D7 /* Type */ = {
+			isa = PBXGroup;
+			children = (
+				CB3271E02CBCDFEB00E1C4D7 /* CategoryColor.swift */,
+			);
+			path = Type;
+			sourceTree = "<group>";
+		};
 		CB3F69722C9DAA5100635DBC = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				CB3F69942C9DAAAF00635DBC /* App */,
+				CB3271D92CBCDF1F00E1C4D7 /* Domain */,
 				CB3F69982C9DAC1D00635DBC /* Presentation */,
 				CB3F69962C9DABB200635DBC /* Util */,
 				CB3F69952C9DAB9D00635DBC /* Resource */,
@@ -238,7 +266,6 @@
 				CBA20E7E2C9DB6E200455DC4 /* Theme */,
 				CB3F69892C9DAA5400635DBC /* LaunchScreen.storyboard */,
 				CB3F69872C9DAA5400635DBC /* Assets.xcassets */,
-				CBA20E782C9DB65600455DC4 /* ColorSet.swift */,
 				CBA20E7A2C9DB66400455DC4 /* FontSet.swift */,
 				CBA20E7C2C9DB66B00455DC4 /* ImageSet.swift */,
 			);
@@ -617,6 +644,8 @@
 				CBA0E6D22CB41513000FF934 /* DDayRegisterViewModel.swift in Sources */,
 				CBAAEAC62CA28B0500844DB8 /* NoteCollectionView.swift in Sources */,
 				CBA20E6B2C9DB46C00455DC4 /* UICollectionView+Extension.swift in Sources */,
+				CB3271DF2CBCDF5300E1C4D7 /* CategoryModel.swift in Sources */,
+				CB3271E12CBCDFEB00E1C4D7 /* CategoryColor.swift in Sources */,
 				CBA20E7D2C9DB66B00455DC4 /* ImageSet.swift in Sources */,
 				CBE870EA2CA183C4008544C1 /* TabBarController.swift in Sources */,
 				CBA0E6CF2CB413C6000FF934 /* NoteRegisterCoordinator.swift in Sources */,
@@ -631,7 +660,6 @@
 				CBA20E8F2C9DBB3B00455DC4 /* BackButton.swift in Sources */,
 				CBA20E682C9DB43F00455DC4 /* UIViewController+Extension.swift in Sources */,
 				CB26285F2CA02BFD00C98360 /* SettingButton.swift in Sources */,
-				CBA20E792C9DB65600455DC4 /* ColorSet.swift in Sources */,
 				CB95902C2CB05B6C00CEF73B /* CategoryManagementViewController.swift in Sources */,
 				CB9590362CB06BE800CEF73B /* NoteViewModel.swift in Sources */,
 				CBA20E5C2C9DB2DF00455DC4 /* BaseViewType.swift in Sources */,

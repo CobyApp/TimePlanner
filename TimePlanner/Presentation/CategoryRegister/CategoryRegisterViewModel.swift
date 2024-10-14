@@ -9,6 +9,8 @@ import Foundation
 
 final class CategoryRegisterViewModel: NSObject, ObservableObject {
     
+    @Published var category: CategoryModel = .init()
+    
     private var coordinator: CategoryRegisterCoordinator?
     
     init(
@@ -19,5 +21,17 @@ final class CategoryRegisterViewModel: NSObject, ObservableObject {
     
     func dismiss() {
         self.coordinator?.dismiss()
+    }
+    
+    func registerCategory(
+        name: String,
+        color: CategoryColor
+    ) {
+        self.category = CategoryModel(
+            name: name,
+            color: color
+        )
+        
+        self.dismiss()
     }
 }

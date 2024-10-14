@@ -41,22 +41,22 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
     
     private let colorSelectionStackView = UIStackView().then {
         $0.axis = .horizontal // 가로 방향으로 설정
-        $0.spacing = 10
+        $0.spacing = 12
         $0.distribution = .fillEqually // 균등 분배
     }
     
     private lazy var completeButton = CompleteButton().then {
         let action = UIAction { [weak self] _ in
-            self?.viewModel.dismiss()
+            guard let self = self else { return }
+            self.viewModel.registerCategory(
+                name: self.nameTextField.text ?? "",
+                color: self.selectedColor
+            )
         }
         $0.addAction(action, for: .touchUpInside)
     }
     
-    private let colors: [UIColor] = [
-        .red, .green, .blue, .yellow, .orange
-    ]
-    
-    private var selectedColor: UIColor? // 기본 선택 색상 (선택된 색상은 nil로 시작)
+    private var selectedColor: CategoryColor = CategoryColor.red
     
     // MARK: - Properties
     
@@ -146,7 +146,7 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
         self.colorSelectionStackView.snp.makeConstraints {
             $0.top.equalTo(self.colorTitleLabel.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
-            $0.height.equalTo(50)
+            $0.height.equalTo((SizeLiteral.fullWidth - 12 * 6) / 7)
             $0.bottom.equalToSuperview()
         }
         
@@ -166,37 +166,41 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
         self.title = "뭉치 등록"
     }
     
-    // 색상 선택 버튼 생성
     private func setupColorSelection() {
-        for color in colors {
+        for categoryColor in CategoryColor.allCases {
             let colorButton = UIButton().then {
-                $0.layer.cornerRadius = 25 // 동그라미 모양
-                $0.clipsToBounds = true // 테두리 자르기
-                $0.backgroundColor = color
+                $0.layer.cornerRadius = 16
+                $0.clipsToBounds = true
+                $0.backgroundColor = categoryColor.color
                 $0.addTarget(self, action: #selector(self.colorButtonTapped(_:)), for: .touchUpInside)
                 
                 // 초기 상태: 테두리 없음
                 $0.layer.borderWidth = 0
             }
+            
+            colorButton.tag = categoryColor.rawValue.hashValue
+            
             self.colorSelectionStackView.addArrangedSubview(colorButton)
-            colorButton.snp.makeConstraints {
-                $0.width.height.equalTo(50) // 버튼 크기 설정
-            }
         }
     }
     
     @objc private func colorButtonTapped(_ sender: UIButton) {
-        // 이전 선택된 버튼의 테두리 색상 초기화
-        if let previousButton = self.colorSelectionStackView.subviews.first(where: { ($0 as? UIButton)?.backgroundColor == self.selectedColor }) as? UIButton {
-            previousButton.layer.borderWidth = 0 // 테두리 없음
+        // 버튼의 태그를 이용하여 선택된 `CategoryColor` 찾기
+        if let selectedCategoryColor = CategoryColor(tag: sender.tag) {
+            // 이전 선택된 버튼의 테두리 제거
+            if let previousButton = self.colorSelectionStackView.subviews.first(where: {
+                ($0 as? UIButton)?.tag == self.selectedColor.rawValue.hashValue
+            }) as? UIButton {
+                previousButton.layer.borderWidth = 0 // 이전 선택에서 테두리 제거
+            }
+            
+            // 현재 선택된 버튼에 테두리 추가
+            sender.layer.borderWidth = 2
+            sender.layer.borderColor = UIColor.labelNormal.cgColor
+            
+            // 선택된 색상 업데이트
+            self.selectedColor = selectedCategoryColor
         }
-        
-        // 선택된 버튼의 색상을 강조
-        sender.layer.borderWidth = 2 // 테두리 두께 설정
-        sender.layer.borderColor = UIColor.black.cgColor // 테두리 색상 설정
-        self.selectedColor = sender.backgroundColor // 선택된 색상 업데이트
-        
-        // 선택된 색상에 따라 뭉치 색상 업데이트 로직 추가 가능
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {

@@ -51,7 +51,7 @@ final class CompleteButton: UIButton, BaseViewType {
 
     func configureUI() {
         self.isEnabled = false
-        self.backgroundColor = .labelNormal
+        self.backgroundColor = .mainColor
         self.layer.cornerRadius = 12
         self.layer.masksToBounds = false
     }

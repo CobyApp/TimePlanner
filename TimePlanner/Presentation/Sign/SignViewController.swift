@@ -32,6 +32,8 @@ final class SignViewController: UIViewController, BaseViewControllerType, Naviga
         $0.font = .font(size: 16, weight: .regular)
         $0.borderStyle = .roundedRect
         $0.clearButtonMode = .whileEditing
+        $0.autocapitalizationType = .none // 첫 글자 대문자 방지
+        $0.autocorrectionType = .no // 자동완성 기능 제거
     }
     
     private let passwordLabel = UILabel().then {
@@ -45,6 +47,9 @@ final class SignViewController: UIViewController, BaseViewControllerType, Naviga
         $0.font = .font(size: 16, weight: .regular)
         $0.borderStyle = .roundedRect
         $0.clearButtonMode = .whileEditing
+        $0.autocapitalizationType = .none // 첫 글자 대문자 방지
+        $0.autocorrectionType = .no // 자동완성 기능 제거
+        $0.isSecureTextEntry = true // 비밀번호 입력 보안 설정
     }
     
     private let passwordConfirmLabel = UILabel().then {
@@ -58,6 +63,9 @@ final class SignViewController: UIViewController, BaseViewControllerType, Naviga
         $0.font = .font(size: 16, weight: .regular)
         $0.borderStyle = .roundedRect
         $0.clearButtonMode = .whileEditing
+        $0.autocapitalizationType = .none // 첫 글자 대문자 방지
+        $0.autocorrectionType = .no // 자동완성 기능 제거
+        $0.isSecureTextEntry = true // 비밀번호 입력 보안 설정
     }
     
     private lazy var signUpButton = CompleteButton().then {

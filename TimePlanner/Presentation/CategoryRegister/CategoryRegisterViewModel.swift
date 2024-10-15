@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class CategoryRegisterViewModel: NSObject, ObservableObject {
+final class CategoryRegisterViewModel {
     
     @Published var category: CategoryModel = .init()
     

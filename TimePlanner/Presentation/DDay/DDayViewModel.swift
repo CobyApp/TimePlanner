@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class DDayViewModel: NSObject, ObservableObject {
+final class DDayViewModel {
     
     private let coordinator: DDayCoordinator?
     

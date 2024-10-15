@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class SignViewModel: NSObject, ObservableObject {
+final class SignViewModel {
     
     private let usecase: SignUsecase
     private let coordinator: SignCoordinator?

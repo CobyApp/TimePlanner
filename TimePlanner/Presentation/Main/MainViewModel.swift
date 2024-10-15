@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class MainViewModel: NSObject, ObservableObject {
+final class MainViewModel {
     
     private let coordinator: MainCoordinator?
     

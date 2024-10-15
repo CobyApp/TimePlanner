@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class CategoryManagementViewModel: NSObject, ObservableObject {
+final class CategoryManagementViewModel {
     
     private let coordinator: CategoryManagementCoordinator?
     

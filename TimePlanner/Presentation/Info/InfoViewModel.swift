@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class InfoViewModel: NSObject, ObservableObject {
+final class InfoViewModel {
     
     private let coordinator: InfoCoordinator?
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class NoteRegisterViewModel: NSObject, ObservableObject {
+final class NoteRegisterViewModel {
     
     @Published var note: NoteModel = .init()
     

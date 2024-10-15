@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class NoteViewModel: NSObject, ObservableObject {
+final class NoteViewModel {
     
     private let coordinator: NoteCoordinator?
     

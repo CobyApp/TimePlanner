@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class DDayRegisterViewModel: NSObject, ObservableObject {
+final class DDayRegisterViewModel {
     
     @Published var dDay: DDayModel = .init()
     

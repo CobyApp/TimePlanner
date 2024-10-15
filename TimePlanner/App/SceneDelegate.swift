@@ -12,40 +12,25 @@ import FirebaseAuth
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    
-    private lazy var loginViewController: UINavigationController = {
-        let navigationController = UINavigationController()
-        let repository = SignRepositoryImpl()
-        let usecase = SignUsecaseImpl(repository: repository)
-        let coordinator = LoginCoordinator(navigationController: navigationController)
-        let viewModel = LoginViewModel(usecase: usecase, coordinator: coordinator)
-        let viewController = LoginViewController(viewModel: viewModel)
-        navigationController.viewControllers = [loginViewController]
-        
-        return navigationController
-    }()
-    
-    private lazy var tabBarController: UITabBarController = {
-        let tabBarController = TabBarController()
-        return tabBarController
-    }()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
         
-        // 로그인 여부 확인
         if let user = Auth.auth().currentUser {
-            // 사용자가 로그인되어 있으면 TabBarController로 이동
             print(user)
-            self.window?.rootViewController = tabBarController
+            self.window?.rootViewController = TabBarController()
         } else {
-            // 로그인되지 않았으면 LoginViewController로 이동
-            self.window?.rootViewController = loginViewController
+            let navigationController = UINavigationController()
+            let repository = SignRepositoryImpl()
+            let usecase = SignUsecaseImpl(repository: repository)
+            let coordinator = LoginCoordinator(navigationController: navigationController)
+            let viewModel = LoginViewModel(usecase: usecase, coordinator: coordinator)
+            let viewController = LoginViewController(viewModel: viewModel)
+            navigationController.viewControllers = [viewController]
+            self.window?.rootViewController = navigationController
         }
+        
         self.window?.makeKeyAndVisible()
     }
 

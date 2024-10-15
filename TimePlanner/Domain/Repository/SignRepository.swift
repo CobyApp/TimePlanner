@@ -12,4 +12,5 @@ import FirebaseAuth
 protocol SignRepository {
     func signInWithEmail(email: String, password: String) async throws -> FirebaseAuth.User
     func signUpWithEmail(email: String, password: String) async throws -> FirebaseAuth.User
+    func signOut() throws
 }

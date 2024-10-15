@@ -22,11 +22,11 @@ final class SettingViewController: UIViewController, BaseViewControllerType, Nav
     
     private let viewModel: SettingViewModel
     
-    private let settingOptions: [SettingOption] = [
+    private lazy var settingOptions: [SettingOption] = [
         SettingOption(
             title: "로그아웃",
             handler: {
-                print("아웃")
+                self.viewModel.signOut()
         })
     ]
     

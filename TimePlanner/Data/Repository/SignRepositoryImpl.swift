@@ -12,7 +12,7 @@ import FirebaseAuth
 final class SignRepositoryImpl: SignRepository {
     
     func signInWithEmail(email: String, password: String) async throws -> FirebaseAuth.User {
-        return try await withCheckedThrowingContinuation { continuation in
+        try await withCheckedThrowingContinuation { continuation in
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 if let error = error {
                     continuation.resume(throwing: error)
@@ -29,7 +29,7 @@ final class SignRepositoryImpl: SignRepository {
     }
 
     func signUpWithEmail(email: String, password: String) async throws -> FirebaseAuth.User {
-        return try await withCheckedThrowingContinuation { continuation in
+        try await withCheckedThrowingContinuation { continuation in
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let error = error {
                     continuation.resume(throwing: error)
@@ -43,5 +43,9 @@ final class SignRepositoryImpl: SignRepository {
                 continuation.resume(returning: user)
             }
         }
+    }
+    
+    func signOut() throws {
+        try Auth.auth().signOut()
     }
 }

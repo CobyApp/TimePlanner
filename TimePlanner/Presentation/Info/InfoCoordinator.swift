@@ -18,8 +18,10 @@ final class InfoCoordinator: NSObject {
     
     func presentSetting() {
         guard let navigationController = self.navigationController else { return }
+        let repository = SignRepositoryImpl()
+        let usecase = SignUsecaseImpl(repository: repository)
         let coordinator = SettingCoordinator(navigationController: navigationController)
-        let viewModel = SettingViewModel(coordinator: coordinator)
+        let viewModel = SettingViewModel(usecase: usecase, coordinator: coordinator)
         let viewController = SettingViewController(viewModel: viewModel)
         
         navigationController.pushViewController(viewController, animated: true)

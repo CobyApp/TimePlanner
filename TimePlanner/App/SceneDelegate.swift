@@ -18,17 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: windowScene)
         
         if let user = Auth.auth().currentUser {
-            print(user)
             self.window?.rootViewController = TabBarController()
         } else {
-            let navigationController = UINavigationController()
-            let repository = SignRepositoryImpl()
-            let usecase = SignUsecaseImpl(repository: repository)
-            let coordinator = LoginCoordinator(navigationController: navigationController)
-            let viewModel = LoginViewModel(usecase: usecase, coordinator: coordinator)
-            let viewController = LoginViewController(viewModel: viewModel)
-            navigationController.viewControllers = [viewController]
-            self.window?.rootViewController = navigationController
+            self.window?.rootViewController = self.loginViewController
         }
         
         self.window?.makeKeyAndVisible()
@@ -60,5 +52,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+    }
+}
+
+extension SceneDelegate {
+    
+    private var loginViewController: UINavigationController {
+        let navigationController = UINavigationController()
+        let repository = SignRepositoryImpl()
+        let usecase = SignUsecaseImpl(repository: repository)
+        let coordinator = LoginCoordinator(navigationController: navigationController)
+        let viewModel = LoginViewModel(usecase: usecase, coordinator: coordinator)
+        let viewController = LoginViewController(viewModel: viewModel)
+        navigationController.viewControllers = [viewController]
+        return navigationController
+    }
+    
+    func moveToLogin() {
+        self.window?.rootViewController = self.loginViewController
     }
 }

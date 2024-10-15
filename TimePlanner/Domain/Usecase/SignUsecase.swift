@@ -10,6 +10,7 @@ import Foundation
 protocol SignUsecase {
     func signInWithEmail(email: String, password: String) async throws -> UserModel
     func signUpWithEmail(email: String, password: String) async throws -> UserModel
+    func signOut() throws
 }
 
 final class SignUsecaseImpl: SignUsecase {
@@ -39,6 +40,14 @@ final class SignUsecaseImpl: SignUsecase {
         do {
             let userDTO = try await self.repository.signUpWithEmail(email: email, password: password)
             return userDTO.toUserModel()
+        } catch(let error) {
+            throw error
+        }
+    }
+    
+    func signOut() throws {
+        do {
+            try self.repository.signOut()
         } catch(let error) {
             throw error
         }

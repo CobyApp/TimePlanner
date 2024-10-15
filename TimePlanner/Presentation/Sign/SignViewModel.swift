@@ -9,13 +9,14 @@ import Foundation
 
 final class SignViewModel: NSObject, ObservableObject {
     
-//    @Published var note: NoteModel = .init()
-    
+    private let usecase: SignUsecase
     private var coordinator: SignCoordinator?
     
     init(
+        usecase: SignUsecase,
         coordinator: SignCoordinator?
     ) {
+        self.usecase = usecase
         self.coordinator = coordinator
     }
     

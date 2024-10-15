@@ -9,13 +9,14 @@ import Foundation
 
 final class LoginViewModel: NSObject, ObservableObject {
     
-//    @Published var note: NoteModel = .init()
-    
+    private let usecase: SignUsecase
     private var coordinator: LoginCoordinator?
     
     init(
+        usecase: SignUsecase,
         coordinator: LoginCoordinator?
     ) {
+        self.usecase = usecase
         self.coordinator = coordinator
     }
     

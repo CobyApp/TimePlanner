@@ -7,18 +7,27 @@
 
 import UIKit
 
+import FirebaseAuth
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
     private lazy var loginViewController: UINavigationController = {
-        let navController = UINavigationController()
-        let loginCoordinator = LoginCoordinator(navigationController: navController)
-        let loginViewModel = LoginViewModel(coordinator: loginCoordinator)
-        let loginViewController = LoginViewController(viewModel: loginViewModel)
-        navController.viewControllers = [loginViewController]
+        let navigationController = UINavigationController()
+        let repository = SignRepositoryImpl()
+        let usecase = SignUsecaseImpl(repository: repository)
+        let coordinator = LoginCoordinator(navigationController: navigationController)
+        let viewModel = LoginViewModel(usecase: usecase, coordinator: coordinator)
+        let viewController = LoginViewController(viewModel: viewModel)
+        navigationController.viewControllers = [loginViewController]
         
-        return navController
+        return navigationController
+    }()
+    
+    private lazy var tabBarController: UITabBarController = {
+        let tabBarController = TabBarController()
+        return tabBarController
     }()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -27,9 +36,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
-//        self.window?.rootViewController = TabBarController()
-
-        self.window?.rootViewController = self.loginViewController
+        
+        // 로그인 여부 확인
+        if let user = Auth.auth().currentUser {
+            // 사용자가 로그인되어 있으면 TabBarController로 이동
+            print(user)
+            self.window?.rootViewController = tabBarController
+        } else {
+            // 로그인되지 않았으면 LoginViewController로 이동
+            self.window?.rootViewController = loginViewController
+        }
         self.window?.makeKeyAndVisible()
     }
 
@@ -60,7 +76,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
-

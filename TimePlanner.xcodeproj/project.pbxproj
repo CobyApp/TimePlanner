@@ -90,6 +90,11 @@
 		CBAAEAC02CA289C900844DB8 /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEABF2CA289C900844DB8 /* NoteCollectionViewCell.swift */; };
 		CBAAEAC32CA28A4700844DB8 /* DDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEAC22CA28A4700844DB8 /* DDayCollectionViewCell.swift */; };
 		CBAAEAC62CA28B0500844DB8 /* NoteCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEAC52CA28B0500844DB8 /* NoteCollectionView.swift */; };
+		CBB965812CBE2FD8006B7D8A /* SignRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB965802CBE2FD8006B7D8A /* SignRepository.swift */; };
+		CBB965832CBE2FDF006B7D8A /* SignUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB965822CBE2FDF006B7D8A /* SignUsecase.swift */; };
+		CBB9658A2CBE3028006B7D8A /* SignRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB965892CBE3028006B7D8A /* SignRepositoryImpl.swift */; };
+		CBB9658C2CBE30CA006B7D8A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB9658B2CBE30CA006B7D8A /* UserModel.swift */; };
+		CBB9658F2CBE3167006B7D8A /* UserMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB9658E2CBE3167006B7D8A /* UserMapper.swift */; };
 		CBE870EA2CA183C4008544C1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE870E92CA183C4008544C1 /* TabBarController.swift */; };
 		CBF155042CB500D600758F7B /* ToDoListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF155032CB500D600758F7B /* ToDoListCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -177,6 +182,11 @@
 		CBAAEABF2CA289C900844DB8 /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		CBAAEAC22CA28A4700844DB8 /* DDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayCollectionViewCell.swift; sourceTree = "<group>"; };
 		CBAAEAC52CA28B0500844DB8 /* NoteCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionView.swift; sourceTree = "<group>"; };
+		CBB965802CBE2FD8006B7D8A /* SignRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignRepository.swift; sourceTree = "<group>"; };
+		CBB965822CBE2FDF006B7D8A /* SignUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUsecase.swift; sourceTree = "<group>"; };
+		CBB965892CBE3028006B7D8A /* SignRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignRepositoryImpl.swift; sourceTree = "<group>"; };
+		CBB9658B2CBE30CA006B7D8A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		CBB9658E2CBE3167006B7D8A /* UserMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMapper.swift; sourceTree = "<group>"; };
 		CBE870E92CA183C4008544C1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CBF155032CB500D600758F7B /* ToDoListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -226,6 +236,8 @@
 			children = (
 				CB3271DD2CBCDF4000E1C4D7 /* Type */,
 				CB3271DA2CBCDF2600E1C4D7 /* Model */,
+				CBB9657E2CBE2F9D006B7D8A /* Repository */,
+				CBB9657F2CBE2FAC006B7D8A /* Usecase */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -233,6 +245,7 @@
 		CB3271DA2CBCDF2600E1C4D7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CBB9658B2CBE30CA006B7D8A /* UserModel.swift */,
 				CB3271DE2CBCDF5300E1C4D7 /* CategoryModel.swift */,
 				CB3271E42CBCEAD800E1C4D7 /* NoteModel.swift */,
 				CB3271E22CBCEA9800E1C4D7 /* DDayModel.swift */,
@@ -289,6 +302,7 @@
 			children = (
 				CB3271E62CBCF88300E1C4D7 /* TimePlanner.entitlements */,
 				CB3F69942C9DAAAF00635DBC /* App */,
+				CBB965842CBE2FEC006B7D8A /* Data */,
 				CB3271D92CBCDF1F00E1C4D7 /* Domain */,
 				CB3F69982C9DAC1D00635DBC /* Presentation */,
 				CB3F69962C9DABB200635DBC /* Util */,
@@ -582,6 +596,55 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		CBB9657E2CBE2F9D006B7D8A /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				CBB965802CBE2FD8006B7D8A /* SignRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		CBB9657F2CBE2FAC006B7D8A /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+				CBB965822CBE2FDF006B7D8A /* SignUsecase.swift */,
+			);
+			path = Usecase;
+			sourceTree = "<group>";
+		};
+		CBB965842CBE2FEC006B7D8A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CBB9658D2CBE3157006B7D8A /* Mapper */,
+				CBB965852CBE2FF5006B7D8A /* DTO */,
+				CBB965882CBE300D006B7D8A /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		CBB965852CBE2FF5006B7D8A /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		CBB965882CBE300D006B7D8A /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				CBB965892CBE3028006B7D8A /* SignRepositoryImpl.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		CBB9658D2CBE3157006B7D8A /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				CBB9658E2CBE3167006B7D8A /* UserMapper.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
 		CBDE88832CB4F6C600D97A94 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -697,6 +760,7 @@
 				CBAAEAB42CA284E400844DB8 /* NoteViewController.swift in Sources */,
 				CB8B25872CB9005700F8A684 /* SmallMoreButton.swift in Sources */,
 				CB3271F22CBCFA4000E1C4D7 /* LoginViewController.swift in Sources */,
+				CBB965812CBE2FD8006B7D8A /* SignRepository.swift in Sources */,
 				CBA20E962C9DBDAC00455DC4 /* MainViewController.swift in Sources */,
 				CB95902E2CB05B7500CEF73B /* CategoryCoordinator.swift in Sources */,
 				CBA0E6D22CB41513000FF934 /* DDayRegisterViewModel.swift in Sources */,
@@ -710,6 +774,8 @@
 				CBA0E6CF2CB413C6000FF934 /* NoteRegisterCoordinator.swift in Sources */,
 				CBA20E722C9DB51C00455DC4 /* NSObject+ClassName.swift in Sources */,
 				CB9590382CB06C1500CEF73B /* DDayCoordinator.swift in Sources */,
+				CBB9658A2CBE3028006B7D8A /* SignRepositoryImpl.swift in Sources */,
+				CBB965832CBE2FDF006B7D8A /* SignUsecase.swift in Sources */,
 				CBAAEAB82CA286D400844DB8 /* PaddingLabel.swift in Sources */,
 				CBA20E802C9DB6EF00455DC4 /* Palette.swift in Sources */,
 				CBA0E6DB2CB41989000FF934 /* SettingViewModel.swift in Sources */,
@@ -760,10 +826,12 @@
 				CB9590302CB05B7D00CEF73B /* CategoryManagementViewModel.swift in Sources */,
 				CBA0E6D62CB4151F000FF934 /* DDayRegisterCoordinator.swift in Sources */,
 				CB9590282CB058E300CEF73B /* MainViewModel.swift in Sources */,
+				CBB9658C2CBE30CA006B7D8A /* UserModel.swift in Sources */,
 				CB9590262CB0584900CEF73B /* MainCoordinator.swift in Sources */,
 				CB5C97682CA4434E00E3F6C5 /* ToDoListView.swift in Sources */,
 				CB306DCB2CA3B2F6009517D6 /* DDayCollectionView.swift in Sources */,
 				CBAAEAC02CA289C900844DB8 /* NoteCollectionViewCell.swift in Sources */,
+				CBB9658F2CBE3167006B7D8A /* UserMapper.swift in Sources */,
 				CBAAEABE2CA2883300844DB8 /* InfoViewController.swift in Sources */,
 				CBA0E6CB2CB413BB000FF934 /* NoteRegisterViewController.swift in Sources */,
 				CB3F69812C9DAA5100635DBC /* SceneDelegate.swift in Sources */,

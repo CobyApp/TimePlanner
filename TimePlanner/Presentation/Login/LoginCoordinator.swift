@@ -18,8 +18,10 @@ final class LoginCoordinator: NSObject {
     
     func presentSign() {
         guard let navigationController = self.navigationController else { return }
+        let repository = SignRepositoryImpl()
+        let usecase = SignUsecaseImpl(repository: repository)
         let coordinator = SignCoordinator(navigationController: navigationController)
-        let viewModel = SignViewModel(coordinator: coordinator)
+        let viewModel = SignViewModel(usecase: usecase, coordinator: coordinator)
         let viewController = SignViewController(viewModel: viewModel)
         
         navigationController.pushViewController(viewController, animated: true)

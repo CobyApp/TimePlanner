@@ -11,7 +11,7 @@ final class CategoryRegisterViewModel: NSObject, ObservableObject {
     
     @Published var category: CategoryModel = .init()
     
-    private var coordinator: CategoryRegisterCoordinator?
+    private let coordinator: CategoryRegisterCoordinator?
     
     init(
         coordinator: CategoryRegisterCoordinator?

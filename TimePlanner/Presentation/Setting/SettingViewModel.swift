@@ -9,7 +9,7 @@ import Foundation
 
 final class SettingViewModel: NSObject, ObservableObject {
     
-    private var coordinator: SettingCoordinator?
+    private let coordinator: SettingCoordinator?
     
     init(
         coordinator: SettingCoordinator?

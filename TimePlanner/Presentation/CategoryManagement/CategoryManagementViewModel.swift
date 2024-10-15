@@ -9,7 +9,7 @@ import Foundation
 
 final class CategoryManagementViewModel: NSObject, ObservableObject {
     
-    private var coordinator: CategoryManagementCoordinator?
+    private let coordinator: CategoryManagementCoordinator?
     
     init(
         coordinator: CategoryManagementCoordinator?

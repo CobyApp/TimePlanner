@@ -9,7 +9,7 @@ import Foundation
 
 final class InfoViewModel: NSObject, ObservableObject {
     
-    private var coordinator: InfoCoordinator?
+    private let coordinator: InfoCoordinator?
     
     init(
         coordinator: InfoCoordinator?

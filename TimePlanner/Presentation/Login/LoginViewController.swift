@@ -73,6 +73,10 @@ final class LoginViewController: UIViewController, BaseViewControllerType {
         $0.label.text = "로그인"
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
+            self.viewModel.loginUser(
+                email: self.emailTextField.text ?? "",
+                password: self.passwordTextField.text ?? ""
+            )
         }
         $0.addAction(action, for: .touchUpInside)
     }

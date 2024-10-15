@@ -9,7 +9,7 @@ import Foundation
 
 final class NoteViewModel: NSObject, ObservableObject {
     
-    private var coordinator: NoteCoordinator?
+    private let coordinator: NoteCoordinator?
     
     init(
         coordinator: NoteCoordinator?

@@ -10,7 +10,7 @@ import Foundation
 final class SignViewModel: NSObject, ObservableObject {
     
     private let usecase: SignUsecase
-    private var coordinator: SignCoordinator?
+    private let coordinator: SignCoordinator?
     
     init(
         usecase: SignUsecase,
@@ -28,5 +28,14 @@ final class SignViewModel: NSObject, ObservableObject {
         email: String,
         password: String
     ) {
+        Task {
+            do {
+                let user = try await self.usecase.signUpWithEmail(email: email, password: password)
+                print(user)
+                self.dismiss()
+            } catch(let error) {
+                print(error)
+            }
+        }
     }
 }

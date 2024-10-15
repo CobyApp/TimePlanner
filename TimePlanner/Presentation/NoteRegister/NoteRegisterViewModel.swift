@@ -11,7 +11,7 @@ final class NoteRegisterViewModel: NSObject, ObservableObject {
     
     @Published var note: NoteModel = .init()
     
-    private var coordinator: NoteRegisterCoordinator?
+    private let coordinator: NoteRegisterCoordinator?
     
     init(
         coordinator: NoteRegisterCoordinator?

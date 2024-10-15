@@ -11,7 +11,7 @@ final class DDayRegisterViewModel: NSObject, ObservableObject {
     
     @Published var dDay: DDayModel = .init()
     
-    private var coordinator: DDayRegisterCoordinator?
+    private let coordinator: DDayRegisterCoordinator?
     
     init(
         coordinator: DDayRegisterCoordinator?

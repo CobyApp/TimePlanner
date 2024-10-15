@@ -9,7 +9,7 @@ import Foundation
 
 final class MainViewModel: NSObject, ObservableObject {
     
-    private var coordinator: MainCoordinator?
+    private let coordinator: MainCoordinator?
     
     init(
         coordinator: MainCoordinator?

@@ -72,6 +72,10 @@ final class SignViewController: UIViewController, BaseViewControllerType, Naviga
         $0.label.text = "회원가입"
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
+            self.viewModel.signUser(
+                email: self.emailTextField.text ?? "",
+                password: self.passwordTextField.text ?? ""
+            )
         }
         $0.addAction(action, for: .touchUpInside)
     }

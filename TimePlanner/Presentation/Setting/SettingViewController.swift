@@ -14,9 +14,21 @@ final class SettingViewController: UIViewController, BaseViewControllerType, Nav
     
     // MARK: - ui component
     
+    private lazy var settingListView = SettingListView().then {
+        $0.updateSettingItems(self.settingOptions)
+    }
+    
     // MARK: - property
     
     private let viewModel: SettingViewModel
+    
+    private let settingOptions: [SettingOption] = [
+        SettingOption(
+            title: "로그아웃",
+            handler: {
+                print("아웃")
+        })
+    ]
     
     // MARK: - life cycle
     
@@ -49,6 +61,13 @@ final class SettingViewController: UIViewController, BaseViewControllerType, Nav
     // MARK: - func
     
     func setupLayout() {
+        self.view.addSubviews(
+            self.settingListView
+        )
+        
+        self.settingListView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
     
     func configureUI() {

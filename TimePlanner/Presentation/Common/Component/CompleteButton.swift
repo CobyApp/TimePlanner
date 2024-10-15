@@ -21,8 +21,7 @@ final class CompleteButton: UIButton, BaseViewType {
     // MARK: - ui component
 
     let label = UILabel().then {
-        let label = UILabel()
-        $0.textColor = .white
+        $0.textColor = .staticWhite
         $0.font = .font(size: 16, weight: .medium)
         $0.text = "완료"
     }

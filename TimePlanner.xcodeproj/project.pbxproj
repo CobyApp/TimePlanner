@@ -99,6 +99,7 @@
 		CBB965962CBE4C2E006B7D8A /* SettingItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB965952CBE4C2E006B7D8A /* SettingItemTableViewCell.swift */; };
 		CBB965982CBE4C97006B7D8A /* ForwardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB965972CBE4C97006B7D8A /* ForwardButton.swift */; };
 		CBB9659A2CBE4CE0006B7D8A /* SettingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB965992CBE4CE0006B7D8A /* SettingListView.swift */; };
+		CBB9659C2CBE54FD006B7D8A /* Keyboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB9659B2CBE54FD006B7D8A /* Keyboardable.swift */; };
 		CBE870EA2CA183C4008544C1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE870E92CA183C4008544C1 /* TabBarController.swift */; };
 		CBF155042CB500D600758F7B /* ToDoListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF155032CB500D600758F7B /* ToDoListCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -195,6 +196,7 @@
 		CBB965952CBE4C2E006B7D8A /* SettingItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemTableViewCell.swift; sourceTree = "<group>"; };
 		CBB965972CBE4C97006B7D8A /* ForwardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForwardButton.swift; sourceTree = "<group>"; };
 		CBB965992CBE4CE0006B7D8A /* SettingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListView.swift; sourceTree = "<group>"; };
+		CBB9659B2CBE54FD006B7D8A /* Keyboardable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboardable.swift; sourceTree = "<group>"; };
 		CBE870E92CA183C4008544C1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CBF155032CB500D600758F7B /* ToDoListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -470,6 +472,7 @@
 				CBA20E5B2C9DB2DF00455DC4 /* BaseViewType.swift */,
 				CB2628552CA024AB00C98360 /* BaseViewControllerType.swift */,
 				CBA20E5F2C9DB36400455DC4 /* Navigationable.swift */,
+				CBB9659B2CBE54FD006B7D8A /* Keyboardable.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -846,6 +849,7 @@
 				CBA0E6C42CB411F3000FF934 /* CategoryRegisterViewController.swift in Sources */,
 				CB3271FB2CBD012400E1C4D7 /* SignViewModel.swift in Sources */,
 				CBA20E7B2C9DB66400455DC4 /* FontSet.swift in Sources */,
+				CBB9659C2CBE54FD006B7D8A /* Keyboardable.swift in Sources */,
 				CB2628562CA024AB00C98360 /* BaseViewControllerType.swift in Sources */,
 				CB2628612CA02C2000C98360 /* MoreButton.swift in Sources */,
 				CBA20E6D2C9DB48700455DC4 /* UIView+Extension.swift in Sources */,

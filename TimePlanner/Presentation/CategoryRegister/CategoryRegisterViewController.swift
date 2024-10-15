@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class CategoryRegisterViewController: UIViewController, BaseViewControllerType, Navigationable {
+final class CategoryRegisterViewController: UIViewController, BaseViewControllerType, Navigationable, Keyboardable {
     
     // MARK: - UI Components
     
@@ -86,6 +86,7 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
         self.setupNavigation()
         self.setupLayout()
         self.configureUI()
+        self.setupKeyboardGesture()
         self.setupColorSelection()
         
         self.nameTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)

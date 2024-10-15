@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class NoteRegisterViewController: UIViewController, BaseViewControllerType, Navigationable {
+final class NoteRegisterViewController: UIViewController, BaseViewControllerType, Navigationable, Keyboardable {
     
     // MARK: - UI Componentsㅋ
     
@@ -56,6 +56,7 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
         self.setupNavigation()
         self.setupLayout()
         self.configureUI()
+        self.setupKeyboardGesture()
         
         self.noteTextView.delegate = self
     }

@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class LoginViewController: UIViewController, BaseViewControllerType {
+final class LoginViewController: UIViewController, BaseViewControllerType, Keyboardable {
     
     // MARK: - UI Components
     
@@ -101,6 +101,7 @@ final class LoginViewController: UIViewController, BaseViewControllerType {
         self.baseViewDidLoad()
         self.setupLayout()
         self.configureUI()
+        self.setupKeyboardGesture()
         
         self.emailTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         self.passwordTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)

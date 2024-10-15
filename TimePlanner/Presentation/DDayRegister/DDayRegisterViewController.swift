@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class DDayRegisterViewController: UIViewController, BaseViewControllerType, Navigationable {
+final class DDayRegisterViewController: UIViewController, BaseViewControllerType, Navigationable, Keyboardable {
     
     // MARK: - UI Components
     
@@ -79,6 +79,7 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
         self.setupNavigation()
         self.setupLayout()
         self.configureUI()
+        self.setupKeyboardGesture()
         
         self.titleTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }

@@ -71,4 +71,8 @@ extension SceneDelegate {
     func moveToLogin() {
         self.window?.rootViewController = self.loginViewController
     }
+    
+    func moveToTab() {
+        self.window?.rootViewController = TabBarController()
+    }
 }

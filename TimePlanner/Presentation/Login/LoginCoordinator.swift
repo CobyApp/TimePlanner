@@ -28,9 +28,7 @@ final class LoginCoordinator: NSObject {
     }
     
     func presentTabbar() {
-        guard let navigationController = self.navigationController else { return }
-        let tabBarController = TabBarController()
-        
-        navigationController.setViewControllers([tabBarController], animated: true)
+        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+        sceneDelegate.moveToTab()
     }
 }

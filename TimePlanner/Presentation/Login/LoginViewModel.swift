@@ -10,7 +10,7 @@ import Foundation
 final class LoginViewModel {
     
     private let usecase: SignUsecase
-    private weak var coordinator: LoginCoordinator?
+    private let coordinator: LoginCoordinator?
     
     init(
         usecase: SignUsecase,
@@ -24,6 +24,10 @@ final class LoginViewModel {
         self.coordinator?.presentSign()
     }
     
+    func presentTabbar() {
+        self.coordinator?.presentTabbar()
+    }
+    
     func loginUser(
         email: String,
         password: String
@@ -32,7 +36,10 @@ final class LoginViewModel {
             guard let self = self else { return }
             do {
                 let user = try await self.usecase.signInWithEmail(email: email, password: password)
-                print(user)
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.presentTabbar()
+                }
             } catch(let error) {
                 print(error)
             }

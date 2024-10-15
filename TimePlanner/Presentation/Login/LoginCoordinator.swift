@@ -26,4 +26,11 @@ final class LoginCoordinator: NSObject {
         
         navigationController.pushViewController(viewController, animated: true)
     }
+    
+    func presentTabbar() {
+        guard let navigationController = self.navigationController else { return }
+        let tabBarController = TabBarController()
+        
+        navigationController.setViewControllers([tabBarController], animated: true)
+    }
 }

@@ -31,8 +31,10 @@ final class SignViewModel {
         Task {
             do {
                 let user = try await self.usecase.signUpWithEmail(email: email, password: password)
-                print(user)
-                self.dismiss()
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.dismiss()
+                }
             } catch(let error) {
                 print(error)
             }

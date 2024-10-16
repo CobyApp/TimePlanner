@@ -182,12 +182,16 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
                 $0.backgroundColor = categoryColor.color
                 $0.addTarget(self, action: #selector(self.colorButtonTapped(_:)), for: .touchUpInside)
                 
-                // 초기 상태: 테두리 없음
-                $0.layer.borderWidth = 0
+                // 선택된 색상과 일치하는 경우 테두리 추가
+                if categoryColor == self.selectedColor {
+                    $0.layer.borderWidth = 2
+                    $0.layer.borderColor = UIColor.labelNormal.cgColor
+                } else {
+                    $0.layer.borderWidth = 0
+                }
             }
             
             colorButton.tag = categoryColor.rawValue.hashValue
-            
             self.colorSelectionStackView.addArrangedSubview(colorButton)
         }
     }

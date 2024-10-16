@@ -27,6 +27,9 @@ final class LoginViewModel {
     func presentTabbar() {
         self.coordinator?.presentTabbar()
     }
+}
+    
+extension LoginViewModel {
     
     func loginUser(
         email: String,

@@ -20,4 +20,9 @@ final class SignCoordinator: NSObject {
         guard let navigationController = navigationController else { return }
         navigationController.popViewController(animated: true)
     }
+    
+    func presentTabbar() {
+        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+        sceneDelegate.moveToTab()
+    }
 }

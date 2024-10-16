@@ -23,8 +23,10 @@ final class CategoryManagementCoordinator: NSObject {
     
     func presentCategoryRegister() {
         guard let navigationController = self.navigationController else { return }
+        let repository = ToDoRepositoryImpl()
+        let usecase = ToDoUsecaseImpl(repository: repository)
         let coordinator = CategoryRegisterCoordinator(navigationController: navigationController)
-        let viewModel = CategoryRegisterViewModel(coordinator: coordinator)
+        let viewModel = CategoryRegisterViewModel(usecase: usecase, coordinator: coordinator)
         let viewController = CategoryRegisterViewController(viewModel: viewModel)
         
         navigationController.pushViewController(viewController, animated: true)

@@ -22,7 +22,7 @@ final class ToDoRepositoryImpl: ToDoRepository {
         let categoryData: [String: Any] = [
             "id": category.id,
             "name": category.name,
-            "color": category.color
+            "color": category.color.rawValue
         ]
         
         try await self.db.collection("users")

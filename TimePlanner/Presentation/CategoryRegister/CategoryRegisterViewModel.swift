@@ -9,29 +9,41 @@ import Foundation
 
 final class CategoryRegisterViewModel {
     
-    @Published var category: CategoryModel = .init()
-    
+    private let usecase: ToDoUsecase
     private let coordinator: CategoryRegisterCoordinator?
     
     init(
+        usecase: ToDoUsecase,
         coordinator: CategoryRegisterCoordinator?
     ) {
+        self.usecase = usecase
         self.coordinator = coordinator
     }
     
     func dismiss() {
         self.coordinator?.dismiss()
     }
+}
+
+extension CategoryRegisterViewModel {
     
     func registerCategory(
         name: String,
         color: CategoryColor
     ) {
-        self.category = CategoryModel(
-            name: name,
-            color: color
-        )
-        
-        self.dismiss()
+        Task {
+            do {
+                try await self.usecase.createCategory(category: CategoryModel(
+                    name: name,
+                    color: color
+                ))
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.dismiss()
+                }
+            } catch(let error) {
+                print(error)
+            }
+        }
     }
 }

@@ -36,7 +36,7 @@ final class ToDoUsecaseImpl: ToDoUsecase {
     
     func getCategories() async throws -> [CategoryModel] {
         do {
-            let categories = try await self.repository.getCategories()
+            let categories = try await self.repository.getCategories().map { $0.toCategoryModel() }
             return categories
         } catch(let error) {
             throw error

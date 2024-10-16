@@ -100,6 +100,11 @@
 		CBB965982CBE4C97006B7D8A /* ForwardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB965972CBE4C97006B7D8A /* ForwardButton.swift */; };
 		CBB9659A2CBE4CE0006B7D8A /* SettingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB965992CBE4CE0006B7D8A /* SettingListView.swift */; };
 		CBB9659C2CBE54FD006B7D8A /* Keyboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB9659B2CBE54FD006B7D8A /* Keyboardable.swift */; };
+		CBBF9E022CBF5FA400EAEEBB /* ToDoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBF9E012CBF5FA400EAEEBB /* ToDoRepository.swift */; };
+		CBBF9E042CBF607500EAEEBB /* ToDoUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBF9E032CBF607500EAEEBB /* ToDoUsecase.swift */; };
+		CBBF9E062CBF610F00EAEEBB /* CategoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBF9E052CBF610F00EAEEBB /* CategoryDTO.swift */; };
+		CBBF9E082CBF615D00EAEEBB /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBF9E072CBF615D00EAEEBB /* UserDTO.swift */; };
+		CBBF9E0A2CBF622A00EAEEBB /* CategoryMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBF9E092CBF622A00EAEEBB /* CategoryMapper.swift */; };
 		CBE870EA2CA183C4008544C1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE870E92CA183C4008544C1 /* TabBarController.swift */; };
 		CBF155042CB500D600758F7B /* ToDoListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF155032CB500D600758F7B /* ToDoListCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -197,6 +202,11 @@
 		CBB965972CBE4C97006B7D8A /* ForwardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForwardButton.swift; sourceTree = "<group>"; };
 		CBB965992CBE4CE0006B7D8A /* SettingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListView.swift; sourceTree = "<group>"; };
 		CBB9659B2CBE54FD006B7D8A /* Keyboardable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboardable.swift; sourceTree = "<group>"; };
+		CBBF9E012CBF5FA400EAEEBB /* ToDoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoRepository.swift; sourceTree = "<group>"; };
+		CBBF9E032CBF607500EAEEBB /* ToDoUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoUsecase.swift; sourceTree = "<group>"; };
+		CBBF9E052CBF610F00EAEEBB /* CategoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDTO.swift; sourceTree = "<group>"; };
+		CBBF9E072CBF615D00EAEEBB /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
+		CBBF9E092CBF622A00EAEEBB /* CategoryMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMapper.swift; sourceTree = "<group>"; };
 		CBE870E92CA183C4008544C1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CBF155032CB500D600758F7B /* ToDoListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -615,6 +625,7 @@
 			isa = PBXGroup;
 			children = (
 				CBB965802CBE2FD8006B7D8A /* SignRepository.swift */,
+				CBBF9E012CBF5FA400EAEEBB /* ToDoRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -623,6 +634,7 @@
 			isa = PBXGroup;
 			children = (
 				CBB965822CBE2FDF006B7D8A /* SignUsecase.swift */,
+				CBBF9E032CBF607500EAEEBB /* ToDoUsecase.swift */,
 			);
 			path = Usecase;
 			sourceTree = "<group>";
@@ -640,6 +652,8 @@
 		CBB965852CBE2FF5006B7D8A /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				CBBF9E072CBF615D00EAEEBB /* UserDTO.swift */,
+				CBBF9E052CBF610F00EAEEBB /* CategoryDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -656,6 +670,7 @@
 			isa = PBXGroup;
 			children = (
 				CBB9658E2CBE3167006B7D8A /* UserMapper.swift */,
+				CBBF9E092CBF622A00EAEEBB /* CategoryMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -800,10 +815,13 @@
 				CBAAEAC62CA28B0500844DB8 /* NoteCollectionView.swift in Sources */,
 				CBA20E6B2C9DB46C00455DC4 /* UICollectionView+Extension.swift in Sources */,
 				CB3271DF2CBCDF5300E1C4D7 /* CategoryModel.swift in Sources */,
+				CBBF9E042CBF607500EAEEBB /* ToDoUsecase.swift in Sources */,
+				CBBF9E082CBF615D00EAEEBB /* UserDTO.swift in Sources */,
 				CB3271E12CBCDFEB00E1C4D7 /* CategoryColor.swift in Sources */,
 				CBA20E7D2C9DB66B00455DC4 /* ImageSet.swift in Sources */,
 				CBE870EA2CA183C4008544C1 /* TabBarController.swift in Sources */,
 				CBA0E6CF2CB413C6000FF934 /* NoteRegisterCoordinator.swift in Sources */,
+				CBBF9E0A2CBF622A00EAEEBB /* CategoryMapper.swift in Sources */,
 				CBA20E722C9DB51C00455DC4 /* NSObject+ClassName.swift in Sources */,
 				CB9590382CB06C1500CEF73B /* DDayCoordinator.swift in Sources */,
 				CBB9658A2CBE3028006B7D8A /* SignRepositoryImpl.swift in Sources */,
@@ -812,6 +830,7 @@
 				CBA20E802C9DB6EF00455DC4 /* Palette.swift in Sources */,
 				CBA0E6DB2CB41989000FF934 /* SettingViewModel.swift in Sources */,
 				CBA20E742C9DB52C00455DC4 /* String+DateFormatter.swift in Sources */,
+				CBBF9E022CBF5FA400EAEEBB /* ToDoRepository.swift in Sources */,
 				CBAAEAB62CA285F000844DB8 /* PlusButton.swift in Sources */,
 				CB2628642CA033EF00C98360 /* CalendarView.swift in Sources */,
 				CBA20E8F2C9DBB3B00455DC4 /* BackButton.swift in Sources */,
@@ -832,6 +851,7 @@
 				CBA20E842C9DB6FD00455DC4 /* Semantic.swift in Sources */,
 				CB3F697F2C9DAA5100635DBC /* AppDelegate.swift in Sources */,
 				CB95903A2CB06C2600CEF73B /* DDayViewModel.swift in Sources */,
+				CBBF9E062CBF610F00EAEEBB /* CategoryDTO.swift in Sources */,
 				CBA20E822C9DB6F600455DC4 /* Primary.swift in Sources */,
 				CB494F7F2CB798DE00823804 /* CompleteButton.swift in Sources */,
 				CB95903E2CB06C5100CEF73B /* InfoViewModel.swift in Sources */,

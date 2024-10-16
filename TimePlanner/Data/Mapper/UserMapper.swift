@@ -13,7 +13,7 @@ extension FirebaseAuth.User {
     
     func toUserModel() -> UserModel {
         return UserModel(
-            id: UUID(uuidString: self.uid) ?? UUID(),
+            id: self.uid,
             email: self.email ?? ""
         )
     }

@@ -9,11 +9,11 @@ import Foundation
 
 struct UserModel: Identifiable, Hashable, Equatable {
     
-    var id: UUID
-    var email: String
+    let id: String
+    let email: String
     
     init(
-        id: UUID = UUID(),
+        id: String = UUID().uuidString,
         email: String = ""
     ) {
         self.id = id

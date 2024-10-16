@@ -54,12 +54,12 @@ final class SignRepositoryImpl: SignRepository {
     
     func saveUser(user: UserModel) async throws {
         let userData: [String: Any] = [
-            "id": user.id.uuidString,
+            "id": user.id,
             "email": user.email
         ]
         
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
-            self.db.collection("users").document(user.id.uuidString).setData(userData) { error in
+            self.db.collection("users").document(user.id).setData(userData) { error in
                 if let error = error {
                     continuation.resume(throwing: error)
                 } else {

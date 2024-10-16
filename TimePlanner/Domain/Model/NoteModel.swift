@@ -9,12 +9,12 @@ import Foundation
 
 struct NoteModel: Identifiable, Hashable, Equatable {
     
-    var id: UUID
-    var content: String
-    var createdAt: Date
+    let id: String
+    let content: String
+    let createdAt: Date
     
     init(
-        id: UUID = UUID(),
+        id: String = UUID().uuidString,
         content: String = "",
         createdAt: Date = Date()
     ) {

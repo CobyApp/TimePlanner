@@ -9,12 +9,12 @@ import Foundation
 
 struct CategoryModel: Identifiable, Hashable, Equatable {
     
-    var id: UUID
-    var name: String
-    var color: CategoryColor
+    let id: String
+    let name: String
+    let color: CategoryColor
     
     init(
-        id: UUID = UUID(),
+        id: String = UUID().uuidString,
         name: String = "",
         color: CategoryColor = .red
     ) {
@@ -23,4 +23,3 @@ struct CategoryModel: Identifiable, Hashable, Equatable {
         self.color = color
     }
 }
-

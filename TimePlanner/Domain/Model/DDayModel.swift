@@ -9,12 +9,12 @@ import Foundation
 
 struct DDayModel: Identifiable, Hashable, Equatable {
     
-    var id: UUID
-    var name: String
-    var dDate: Date
+    let id: String
+    let name: String
+    let dDate: Date
     
     init(
-        id: UUID = UUID(),
+        id: String = UUID().uuidString,
         name: String = "",
         dDate: Date = Date()
     ) {

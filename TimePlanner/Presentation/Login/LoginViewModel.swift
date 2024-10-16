@@ -38,7 +38,7 @@ extension LoginViewModel {
         Task { [weak self] in
             guard let self = self else { return }
             do {
-                let user = try await self.usecase.signInWithEmail(email: email, password: password)
+                let _ = try await self.usecase.signInWithEmail(email: email, password: password)
                 
                 DispatchQueue.main.async { [weak self] in
                     self?.presentTabbar()

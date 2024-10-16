@@ -95,7 +95,7 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
         }
         
         self.todoListView.snp.makeConstraints {
-            $0.top.equalTo(self.calendarView.snp.bottom).offset(40)
+            $0.top.equalTo(self.calendarView.snp.bottom).offset(20)
             $0.leading.trailing.bottom.equalToSuperview().inset(SizeLiteral.horizantalPadding)
             $0.width.equalTo(self.scrollView.snp.width).offset(-SizeLiteral.horizantalPadding * 2)
         }

@@ -27,9 +27,8 @@ class CalendarView: UIView {
 
         // 필요한 줄 수 계산
         let totalRows = (numberOfDays + firstWeekday + 6) / 7 // 총 날짜 + 첫 주의 빈 칸 고려
-        let numberOfRows = min(totalRows, 6) // 최대 6줄로 제한
         let rowHeight: CGFloat = 40 // 각 줄의 높이 (날짜 버튼)
-        let totalHeight = CGFloat(numberOfRows) * rowHeight + 80 // 날짜와 요일 포함
+        let totalHeight = CGFloat(totalRows) * rowHeight + CGFloat(totalRows - 1) * 5 + 80 // 날짜와 요일 포함
         return CGSize(width: UIView.noIntrinsicMetric, height: totalHeight)
     }
     

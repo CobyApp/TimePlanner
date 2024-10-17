@@ -119,32 +119,32 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
     private func loadData() {
         // 샘플 데이터 생성
         let sampleItems1 = [
-            ToDoItem(title: "할 일 1", isChecked: false),
-            ToDoItem(title: "할 일 2", isChecked: false),
-            ToDoItem(title: "할 일 3", isChecked: false),
-            ToDoItem(title: "할 일 4", isChecked: false)
+            ToDoItemModel(title: "할 일 1", isChecked: false),
+            ToDoItemModel(title: "할 일 2", isChecked: false),
+            ToDoItemModel(title: "할 일 3", isChecked: false),
+            ToDoItemModel(title: "할 일 4", isChecked: false)
         ]
         
         let sampleItems2 = [
-            ToDoItem(title: "할 일 1", isChecked: false),
-            ToDoItem(title: "할 일 2", isChecked: false)
+            ToDoItemModel(title: "할 일 1", isChecked: false),
+            ToDoItemModel(title: "할 일 2", isChecked: false)
         ]
         
         let sampleItems3 = [
-            ToDoItem(title: "할 일 1", isChecked: false),
-            ToDoItem(title: "할 일 2", isChecked: false)
+            ToDoItemModel(title: "할 일 1", isChecked: false),
+            ToDoItemModel(title: "할 일 2", isChecked: false)
         ]
         
         let sampleItems4 = [
-            ToDoItem(title: "할 일 1", isChecked: false),
-            ToDoItem(title: "할 일 2", isChecked: false)
+            ToDoItemModel(title: "할 일 1", isChecked: false),
+            ToDoItemModel(title: "할 일 2", isChecked: false)
         ]
 
         let categories = [
-            ToDoCategory(title: "카테고리 1", items: sampleItems1),
-            ToDoCategory(title: "카테고리 2", items: sampleItems2),
-            ToDoCategory(title: "카테고리 3", items: sampleItems3),
-            ToDoCategory(title: "카테고리 4", items: sampleItems4)
+            ToDoModel(category: CategoryModel(name: "카테고리 1", color: .red), items: sampleItems1),
+            ToDoModel(category: CategoryModel(name: "카테고리 2", color: .blue), items: sampleItems2),
+            ToDoModel(category: CategoryModel(name: "카테고리 3", color: .green), items: sampleItems3),
+            ToDoModel(category: CategoryModel(name: "카테고리 4", color: .orange), items: sampleItems4)
         ]
 
         // categories 속성에 데이터 할당

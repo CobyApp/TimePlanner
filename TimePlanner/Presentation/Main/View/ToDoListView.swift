@@ -29,7 +29,7 @@ final class ToDoListView: UIView, BaseViewType {
 
     // MARK: - Properties
     
-    var categories: [ToDoCategory] = [] {
+    var categories: [ToDoModel] = [] {
         didSet {
             self.listCollectionView.reloadData()
         }

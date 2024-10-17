@@ -14,7 +14,7 @@ final class SettingListView: UIView, BaseViewType {
 
     // MARK: - Properties
     
-    private var settingOptions: [SettingOption] = []
+    private var settingOptions: [SettingOptionModel] = []
     
     // MARK: - UI Components
     
@@ -54,7 +54,7 @@ final class SettingListView: UIView, BaseViewType {
     
     // MARK: - Public Method
     
-    func updateSettingItems(_ items: [SettingOption]) {
+    func updateSettingItems(_ items: [SettingOptionModel]) {
         self.settingOptions = items
         self.listTableView.reloadData()
     }

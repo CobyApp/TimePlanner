@@ -33,7 +33,7 @@ final class ToDoListCollectionViewCell: UICollectionViewCell, BaseViewType {
     var editTapAction: (() -> Void)?
     var deleteTapAction: (() -> Void)?
     
-    var toDoItems: [ToDoItem] = [] {
+    var toDoItems: [ToDoItemModel] = [] {
         didSet {
             listCollectionView.reloadData()
         }

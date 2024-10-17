@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CB1FB1F12CC0D97C00284BCB /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1FB1F02CC0D97C00284BCB /* ToDoItem.swift */; };
-		CB1FB1F32CC0DA9300284BCB /* ToDoCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1FB1F22CC0DA9300284BCB /* ToDoCategory.swift */; };
+		CB1FB1F12CC0D97C00284BCB /* ToDoItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1FB1F02CC0D97C00284BCB /* ToDoItemModel.swift */; };
+		CB1FB1F32CC0DA9300284BCB /* ToDoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1FB1F22CC0DA9300284BCB /* ToDoModel.swift */; };
 		CB1FB1F52CC0E19E00284BCB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1FB1F42CC0E19E00284BCB /* String+Extension.swift */; };
 		CB2628562CA024AB00C98360 /* BaseViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2628552CA024AB00C98360 /* BaseViewControllerType.swift */; };
 		CB26285D2CA02ACC00C98360 /* SizeLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB26285C2CA02ACC00C98360 /* SizeLiteral.swift */; };
@@ -98,7 +98,7 @@
 		CBB9658A2CBE3028006B7D8A /* SignRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB965892CBE3028006B7D8A /* SignRepositoryImpl.swift */; };
 		CBB9658C2CBE30CA006B7D8A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB9658B2CBE30CA006B7D8A /* UserModel.swift */; };
 		CBB9658F2CBE3167006B7D8A /* UserMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB9658E2CBE3167006B7D8A /* UserMapper.swift */; };
-		CBB965912CBE4B94006B7D8A /* SettingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB965902CBE4B94006B7D8A /* SettingOption.swift */; };
+		CBB965912CBE4B94006B7D8A /* SettingOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB965902CBE4B94006B7D8A /* SettingOptionModel.swift */; };
 		CBB965962CBE4C2E006B7D8A /* SettingItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB965952CBE4C2E006B7D8A /* SettingItemTableViewCell.swift */; };
 		CBB965982CBE4C97006B7D8A /* ForwardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB965972CBE4C97006B7D8A /* ForwardButton.swift */; };
 		CBB9659A2CBE4CE0006B7D8A /* SettingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB965992CBE4CE0006B7D8A /* SettingListView.swift */; };
@@ -114,8 +114,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CB1FB1F02CC0D97C00284BCB /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
-		CB1FB1F22CC0DA9300284BCB /* ToDoCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCategory.swift; sourceTree = "<group>"; };
+		CB1FB1F02CC0D97C00284BCB /* ToDoItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemModel.swift; sourceTree = "<group>"; };
+		CB1FB1F22CC0DA9300284BCB /* ToDoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoModel.swift; sourceTree = "<group>"; };
 		CB1FB1F42CC0E19E00284BCB /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		CB2628552CA024AB00C98360 /* BaseViewControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerType.swift; sourceTree = "<group>"; };
 		CB26285C2CA02ACC00C98360 /* SizeLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeLiteral.swift; sourceTree = "<group>"; };
@@ -204,7 +204,7 @@
 		CBB965892CBE3028006B7D8A /* SignRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignRepositoryImpl.swift; sourceTree = "<group>"; };
 		CBB9658B2CBE30CA006B7D8A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		CBB9658E2CBE3167006B7D8A /* UserMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMapper.swift; sourceTree = "<group>"; };
-		CBB965902CBE4B94006B7D8A /* SettingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOption.swift; sourceTree = "<group>"; };
+		CBB965902CBE4B94006B7D8A /* SettingOptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptionModel.swift; sourceTree = "<group>"; };
 		CBB965952CBE4C2E006B7D8A /* SettingItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemTableViewCell.swift; sourceTree = "<group>"; };
 		CBB965972CBE4C97006B7D8A /* ForwardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForwardButton.swift; sourceTree = "<group>"; };
 		CBB965992CBE4CE0006B7D8A /* SettingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListView.swift; sourceTree = "<group>"; };
@@ -274,11 +274,11 @@
 			children = (
 				CBB9658B2CBE30CA006B7D8A /* UserModel.swift */,
 				CB3271DE2CBCDF5300E1C4D7 /* CategoryModel.swift */,
+				CB1FB1F02CC0D97C00284BCB /* ToDoItemModel.swift */,
+				CB1FB1F22CC0DA9300284BCB /* ToDoModel.swift */,
 				CB3271E42CBCEAD800E1C4D7 /* NoteModel.swift */,
 				CB3271E22CBCEA9800E1C4D7 /* DDayModel.swift */,
-				CBB965902CBE4B94006B7D8A /* SettingOption.swift */,
-				CB1FB1F02CC0D97C00284BCB /* ToDoItem.swift */,
-				CB1FB1F22CC0DA9300284BCB /* ToDoCategory.swift */,
+				CBB965902CBE4B94006B7D8A /* SettingOptionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -819,12 +819,12 @@
 				CB8B25872CB9005700F8A684 /* SmallMoreButton.swift in Sources */,
 				CB3271F22CBCFA4000E1C4D7 /* LoginViewController.swift in Sources */,
 				CBB965812CBE2FD8006B7D8A /* SignRepository.swift in Sources */,
-				CBB965912CBE4B94006B7D8A /* SettingOption.swift in Sources */,
+				CBB965912CBE4B94006B7D8A /* SettingOptionModel.swift in Sources */,
 				CBA20E962C9DBDAC00455DC4 /* MainViewController.swift in Sources */,
 				CB1FB1F52CC0E19E00284BCB /* String+Extension.swift in Sources */,
 				CB95902E2CB05B7500CEF73B /* CategoryCoordinator.swift in Sources */,
 				CBA0E6D22CB41513000FF934 /* DDayRegisterViewModel.swift in Sources */,
-				CB1FB1F12CC0D97C00284BCB /* ToDoItem.swift in Sources */,
+				CB1FB1F12CC0D97C00284BCB /* ToDoItemModel.swift in Sources */,
 				CB3271F62CBCFA4D00E1C4D7 /* LoginCoordinator.swift in Sources */,
 				CBAAEAC62CA28B0500844DB8 /* NoteCollectionView.swift in Sources */,
 				CBA20E6B2C9DB46C00455DC4 /* UICollectionView+Extension.swift in Sources */,
@@ -844,7 +844,7 @@
 				CBA20E802C9DB6EF00455DC4 /* Palette.swift in Sources */,
 				CBA0E6DB2CB41989000FF934 /* SettingViewModel.swift in Sources */,
 				CBA20E742C9DB52C00455DC4 /* String+DateFormatter.swift in Sources */,
-				CB1FB1F32CC0DA9300284BCB /* ToDoCategory.swift in Sources */,
+				CB1FB1F32CC0DA9300284BCB /* ToDoModel.swift in Sources */,
 				CBBF9E022CBF5FA400EAEEBB /* ToDoRepository.swift in Sources */,
 				CBAAEAB62CA285F000844DB8 /* PlusButton.swift in Sources */,
 				CB2628642CA033EF00C98360 /* CalendarView.swift in Sources */,

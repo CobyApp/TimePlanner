@@ -96,7 +96,7 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
         }
         
         self.todoListView.snp.makeConstraints {
-            $0.top.equalTo(self.calendarView.snp.bottom).offset(20)
+            $0.top.equalTo(self.calendarView.snp.bottom).offset(SizeLiteral.verticalPadding * 2)
             $0.leading.trailing.bottom.equalToSuperview().inset(SizeLiteral.horizantalPadding)
             $0.width.equalTo(self.scrollView.snp.width).offset(-SizeLiteral.horizantalPadding * 2)
         }
@@ -129,10 +129,22 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
             ToDoItem(title: "할 일 1", isChecked: false),
             ToDoItem(title: "할 일 2", isChecked: false)
         ]
+        
+        let sampleItems3 = [
+            ToDoItem(title: "할 일 1", isChecked: false),
+            ToDoItem(title: "할 일 2", isChecked: false)
+        ]
+        
+        let sampleItems4 = [
+            ToDoItem(title: "할 일 1", isChecked: false),
+            ToDoItem(title: "할 일 2", isChecked: false)
+        ]
 
         let categories = [
             ToDoCategory(title: "카테고리 1", items: sampleItems1),
-            ToDoCategory(title: "카테고리 2", items: sampleItems2)
+            ToDoCategory(title: "카테고리 2", items: sampleItems2),
+            ToDoCategory(title: "카테고리 3", items: sampleItems3),
+            ToDoCategory(title: "카테고리 4", items: sampleItems4)
         ]
 
         // categories 속성에 데이터 할당

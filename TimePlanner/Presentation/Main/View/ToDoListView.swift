@@ -19,7 +19,6 @@ final class ToDoListView: UIView, BaseViewType {
     }
 
     // MARK: - UI Components
-
     private lazy var listCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.dataSource = self
         $0.delegate = self
@@ -32,7 +31,7 @@ final class ToDoListView: UIView, BaseViewType {
     
     var categories: [ToDoCategory] = [] {
         didSet {
-            listCollectionView.reloadData()
+            self.listCollectionView.reloadData()
         }
     }
 
@@ -41,7 +40,6 @@ final class ToDoListView: UIView, BaseViewType {
     var deleteTapAction: (() -> Void)?
 
     // MARK: - Init
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.baseInit()
@@ -53,7 +51,6 @@ final class ToDoListView: UIView, BaseViewType {
     }
 
     // MARK: - Base Functions
-
     func setupLayout() {
         self.addSubviews(
             self.listCollectionView
@@ -106,10 +103,10 @@ extension ToDoListView: UICollectionViewDataSource, UICollectionViewDelegate, UI
         let category = categories[indexPath.item]
         
         // ToDo 항목의 수에 따라 동적 높이를 계산
-        let numberOfItems = category.items.count
-        let itemHeight: CGFloat = 60 // 각 ToDoItemView의 높이 (필요에 따라 조정 가능)
-        let spacing: CGFloat = 4 // 스택뷰 간의 간격
-        let totalHeight = CGFloat(numberOfItems) * (itemHeight + spacing) + 40 // 상단 여백을 포함한 전체 높이
+        let totalHeight = category.items.reduce(40) { (result, item) in
+            let itemHeight = item.title.height(withConstrainedWidth: SizeLiteral.fullWidth - 56, font: .font(size: 16, weight: .regular)) + 10
+            return result + itemHeight + 4 // Add spacing
+        }
         
         return CGSize(width: SizeLiteral.fullWidth, height: totalHeight)
     }

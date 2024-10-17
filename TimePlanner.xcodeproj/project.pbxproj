@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CB1FB1F12CC0D97C00284BCB /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1FB1F02CC0D97C00284BCB /* ToDoItem.swift */; };
 		CB1FB1F32CC0DA9300284BCB /* ToDoCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1FB1F22CC0DA9300284BCB /* ToDoCategory.swift */; };
+		CB1FB1F52CC0E19E00284BCB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1FB1F42CC0E19E00284BCB /* String+Extension.swift */; };
 		CB2628562CA024AB00C98360 /* BaseViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2628552CA024AB00C98360 /* BaseViewControllerType.swift */; };
 		CB26285D2CA02ACC00C98360 /* SizeLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB26285C2CA02ACC00C98360 /* SizeLiteral.swift */; };
 		CB26285F2CA02BFD00C98360 /* SettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB26285E2CA02BFD00C98360 /* SettingButton.swift */; };
@@ -115,6 +116,7 @@
 /* Begin PBXFileReference section */
 		CB1FB1F02CC0D97C00284BCB /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		CB1FB1F22CC0DA9300284BCB /* ToDoCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCategory.swift; sourceTree = "<group>"; };
+		CB1FB1F42CC0E19E00284BCB /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		CB2628552CA024AB00C98360 /* BaseViewControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerType.swift; sourceTree = "<group>"; };
 		CB26285C2CA02ACC00C98360 /* SizeLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeLiteral.swift; sourceTree = "<group>"; };
 		CB26285E2CA02BFD00C98360 /* SettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButton.swift; sourceTree = "<group>"; };
@@ -529,6 +531,7 @@
 				CBA20E712C9DB51C00455DC4 /* NSObject+ClassName.swift */,
 				CBA20E732C9DB52C00455DC4 /* String+DateFormatter.swift */,
 				CBA20E752C9DB53B00455DC4 /* Date+Extension.swift */,
+				CB1FB1F42CC0E19E00284BCB /* String+Extension.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -818,6 +821,7 @@
 				CBB965812CBE2FD8006B7D8A /* SignRepository.swift in Sources */,
 				CBB965912CBE4B94006B7D8A /* SettingOption.swift in Sources */,
 				CBA20E962C9DBDAC00455DC4 /* MainViewController.swift in Sources */,
+				CB1FB1F52CC0E19E00284BCB /* String+Extension.swift in Sources */,
 				CB95902E2CB05B7500CEF73B /* CategoryCoordinator.swift in Sources */,
 				CBA0E6D22CB41513000FF934 /* DDayRegisterViewModel.swift in Sources */,
 				CB1FB1F12CC0D97C00284BCB /* ToDoItem.swift in Sources */,

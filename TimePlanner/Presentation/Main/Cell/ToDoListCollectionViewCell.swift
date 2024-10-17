@@ -51,7 +51,6 @@ final class ToDoListCollectionViewCell: UICollectionViewCell, BaseViewType {
     }
     
     // MARK: - Functions
-    
     func setupLayout() {
         self.addSubviews(
             self.toDoListCategoryLabel,
@@ -63,7 +62,7 @@ final class ToDoListCollectionViewCell: UICollectionViewCell, BaseViewType {
         }
         
         self.listCollectionView.snp.makeConstraints {
-            $0.top.equalTo(self.toDoListCategoryLabel.snp.bottom)
+            $0.top.equalTo(self.toDoListCategoryLabel.snp.bottom).offset(12)
             $0.leading.trailing.bottom.equalToSuperview()
         }
     }
@@ -88,8 +87,8 @@ extension ToDoListCollectionViewCell: UICollectionViewDataSource, UICollectionVi
         }
 
         let item = toDoItems[indexPath.item]
-//        cell.configure(with: category.items) // ToDo 항목 리스트를 전달
-        
+        cell.toDoContentLabel.text = item.title // Set the title from the ToDoItem
+
         // 각 셀의 액션 핸들러 설정
         cell.checkTapAction = { [weak self] in
             self?.checkTapAction?()
@@ -109,6 +108,10 @@ extension ToDoListCollectionViewCell: UICollectionViewDataSource, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let item = toDoItems[indexPath.item]
         
-        return CGSize(width: SizeLiteral.fullWidth, height: 50)
+        // Dynamically calculate height based on text
+        let width = SizeLiteral.fullWidth - 56 // Adjust for padding
+        let height = item.title.height(withConstrainedWidth: width, font: .font(size: 16, weight: .regular)) + 4 // Add padding
+        
+        return CGSize(width: SizeLiteral.fullWidth, height: height)
     }
 }

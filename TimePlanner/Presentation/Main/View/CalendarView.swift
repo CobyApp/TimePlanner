@@ -22,14 +22,14 @@ final class CalendarView: UIView {
     }
     
     private lazy var prevMonthButton = UIButton().then {
-        $0.tintColor = .label
-        $0.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        $0.tintColor = .labelNormal
+        $0.setImage(UIImage.Button.back.resize(to: CGSize(width: 20, height: 20)), for: .normal)
         $0.addAction(UIAction { [weak self] _ in self?.goToPreviousMonth() }, for: .touchUpInside)
     }
     
     private lazy var nextMonthButton = UIButton().then {
-        $0.tintColor = .label
-        $0.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        $0.tintColor = .labelNormal
+        $0.setImage(UIImage.Button.forward.resize(to: CGSize(width: 20, height: 20)), for: .normal)
         $0.addAction(UIAction { [weak self] _ in self?.goToNextMonth() }, for: .touchUpInside)
     }
     
@@ -135,10 +135,10 @@ final class CalendarView: UIView {
                         $0.addTarget(self, action: #selector(dateButtonTapped(_:)), for: .touchUpInside) // 클릭 이벤트 추가
                         if currentDay == Calendar.current.component(.day, from: self.selectedDate) {
                             self.selectedButton = $0
-                            self.selectedButton?.layer.borderColor = UIColor.clear.cgColor
+                            self.selectedButton?.layer.borderColor = UIColor.lineSolidNormal.cgColor
                             self.selectedButton?.backgroundColor = .blue
                         } else {
-                            $0.alpha = 0.7 // 기본 불투명도 설정
+                            $0.alpha = 0.5 // 기본 불투명도 설정
                         }
                         hasDaysInRow = true
                         currentDay += 1
@@ -222,11 +222,11 @@ final class CalendarView: UIView {
     }
 
     private func styleDateButton(_ button: UIButton, day: Int) {
-        button.backgroundColor = .clear
+        button.backgroundColor = .blue
         button.layer.cornerRadius = 15
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.lineSolidAlternative.cgColor
-        button.alpha = 0.7 // 기본 불투명도
+        button.alpha = 0.5 // 기본 불투명도
     }
     
     private func createButtonContainer(with button: UIButton) -> UIView {
@@ -250,12 +250,11 @@ final class CalendarView: UIView {
         // 이전 선택된 버튼의 스타일 초기화
         if let selectedButton = self.selectedButton {
             selectedButton.layer.borderColor = UIColor.lineSolidAlternative.cgColor
-            selectedButton.alpha = 0.7 // 이전 선택된 버튼의 불투명도 초기화
+            selectedButton.alpha = 0.5 // 이전 선택된 버튼의 불투명도 초기화
         }
         
         // 현재 선택된 버튼 스타일 변경
-        sender.layer.borderColor = UIColor.clear.cgColor
-        sender.backgroundColor = .blue
+        sender.layer.borderColor = UIColor.lineSolidNormal.cgColor
         sender.alpha = 1.0 // 선택된 버튼의 불투명도
         
         self.selectedButton = sender

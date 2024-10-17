@@ -65,6 +65,7 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
         super.viewDidLoad()
         self.baseViewDidLoad()
         self.setupNavigation()
+        self.loadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -113,5 +114,28 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
         self.navigationItem.leftBarButtonItem = titleLogo
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    private func loadData() {
+        // 샘플 데이터 생성
+        let sampleItems1 = [
+            ToDoItem(title: "할 일 1", isChecked: false),
+            ToDoItem(title: "할 일 2", isChecked: false),
+            ToDoItem(title: "할 일 3", isChecked: false),
+            ToDoItem(title: "할 일 4", isChecked: false)
+        ]
+        
+        let sampleItems2 = [
+            ToDoItem(title: "할 일 1", isChecked: false),
+            ToDoItem(title: "할 일 2", isChecked: false)
+        ]
+
+        let categories = [
+            ToDoCategory(title: "카테고리 1", items: sampleItems1),
+            ToDoCategory(title: "카테고리 2", items: sampleItems2)
+        ]
+
+        // categories 속성에 데이터 할당
+        todoListView.categories = categories
     }
 }

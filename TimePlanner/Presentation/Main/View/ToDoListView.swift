@@ -11,80 +11,68 @@ import SnapKit
 import Then
 
 final class ToDoListView: UIView, BaseViewType {
-    
-    private enum Size {
-        static let cellWidth: CGFloat = SizeLiteral.fullWidth
-        static let cellHeight: CGFloat = 80
-    }
-    
+
     override var intrinsicContentSize: CGSize {
-        // 리스트 뷰의 콘텐츠 크기를 계산
-        self.listCollectionView.layoutIfNeeded() // 레이아웃을 먼저 계산하여 contentSize 가져오기
+        self.listCollectionView.layoutIfNeeded()
         let contentHeight = self.listCollectionView.contentSize.height
         return CGSize(width: UIView.noIntrinsicMetric, height: contentHeight)
     }
-    
-    // MARK: - ui component
-    
-    private let collectionViewFlowLayout = UICollectionViewFlowLayout().then {
-        $0.scrollDirection = .vertical
-        $0.sectionInset = SizeLiteral.collectionInset
-        $0.itemSize = CGSize(width: Size.cellWidth, height: Size.cellHeight)
-        $0.minimumLineSpacing = 40
-    }
-    
-    private lazy var listCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout).then {
+
+    // MARK: - UI Components
+
+    private lazy var listCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.dataSource = self
         $0.delegate = self
         $0.showsVerticalScrollIndicator = false
         $0.register(ToDoListCollectionViewCell.self, forCellWithReuseIdentifier: ToDoListCollectionViewCell.className)
         $0.backgroundColor = .clear
     }
+
+    // MARK: - Properties
     
-    // MARK: - property
-    
+    var categories: [ToDoCategory] = [] {
+        didSet {
+            listCollectionView.reloadData()
+        }
+    }
+
     var checkTapAction: (() -> Void)?
     var editTapAction: (() -> Void)?
     var deleteTapAction: (() -> Void)?
-    
-    // MARK: - init
-    
+
+    // MARK: - Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.baseInit()
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    // MARK: - func
-    
-    func collectionView() -> UICollectionView {
-        self.listCollectionView
-    }
-    
-    // MARK: - base func
-    
+
+    // MARK: - Base Functions
+
     func setupLayout() {
         self.addSubviews(
             self.listCollectionView
         )
-        
+
         self.listCollectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
-    
+
     func configureUI() {
         self.backgroundColor = .backgroundNormalNormal
     }
 }
 
-extension ToDoListView: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
-        return 5
+extension ToDoListView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return categories.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -94,7 +82,11 @@ extension ToDoListView: UICollectionViewDataSource, UICollectionViewDelegate {
         ) as? ToDoListCollectionViewCell else {
             return UICollectionViewCell()
         }
+
+        let category = categories[indexPath.item]
+        cell.toDoItems = category.items
         
+        // 각 셀의 액션 핸들러 설정
         cell.checkTapAction = { [weak self] in
             self?.checkTapAction?()
         }
@@ -102,11 +94,23 @@ extension ToDoListView: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.editTapAction = { [weak self] in
             self?.editTapAction?()
         }
-        
+
         cell.deleteTapAction = { [weak self] in
             self?.deleteTapAction?()
         }
-        
+
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let category = categories[indexPath.item]
+        
+        // ToDo 항목의 수에 따라 동적 높이를 계산
+        let numberOfItems = category.items.count
+        let itemHeight: CGFloat = 60 // 각 ToDoItemView의 높이 (필요에 따라 조정 가능)
+        let spacing: CGFloat = 4 // 스택뷰 간의 간격
+        let totalHeight = CGFloat(numberOfItems) * (itemHeight + spacing) + 40 // 상단 여백을 포함한 전체 높이
+        
+        return CGSize(width: SizeLiteral.fullWidth, height: totalHeight)
     }
 }

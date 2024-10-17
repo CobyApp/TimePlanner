@@ -1,25 +1,24 @@
 //
-//  ToDoListItemView.swift
+//  ToDoListItemCollectionViewCell.swift
 //  TimePlanner
 //
 //  Created by Coby on 9/25/24.
 //
 
 import UIKit
-
 import SnapKit
 import Then
 
-final class ToDoListItemView: UIView, BaseViewType {
+final class ToDoListItemCollectionViewCell: UICollectionViewCell, BaseViewType {
     
-    // MARK: - ui component
-    
+    // MARK: - UI Components
     private let checkBoxImageView = UIImageView(image: UIImage.Button.checkboxOff.resize(to: CGSize(width: 20, height: 20)).withTintColor(.labelNeutral))
     
-    private let toDoContentLabel = UILabel().then {
+    let toDoContentLabel = UILabel().then {
         $0.text = "할 일입니다."
         $0.font = .font(size: 16, weight: .regular)
         $0.textColor = .labelNeutral
+        $0.numberOfLines = 0
     }
     
     private lazy var smallMoreButton = SmallMoreButton().then {
@@ -35,13 +34,11 @@ final class ToDoListItemView: UIView, BaseViewType {
     }
     
     // MARK: - Properties
-    
     var checkTapAction: (() -> Void)?
     var editTapAction: (() -> Void)?
     var deleteTapAction: (() -> Void)?
 
-    // MARK: - init
-
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.baseInit()
@@ -52,8 +49,7 @@ final class ToDoListItemView: UIView, BaseViewType {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - func
-
+    // MARK: - Functions
     func setupLayout() {
         self.addSubviews(
             self.checkBoxImageView,
@@ -77,8 +73,13 @@ final class ToDoListItemView: UIView, BaseViewType {
             $0.height.width.equalTo(20)
         }
     }
-
+    
     func configureUI() {
         self.backgroundColor = .backgroundNormalNormal
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.toDoContentLabel.sizeToFit() // 라벨의 크기를 내용에 맞게 조정
     }
 }

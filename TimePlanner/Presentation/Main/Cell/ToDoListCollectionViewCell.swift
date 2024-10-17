@@ -5,7 +5,6 @@
 //  Created by Coby on 10/8/24.
 //
 
-import Combine
 import UIKit
 
 import SnapKit
@@ -13,8 +12,7 @@ import Then
 
 final class ToDoListCollectionViewCell: UICollectionViewCell, BaseViewType {
     
-    // MARK: - ui component
-    
+    // MARK: - UI Components
     private let toDoListCategoryLabel = UILabel().then {
         $0.text = "공부 +"
         $0.font = .font(size: 17, weight: .semibold)
@@ -22,49 +20,26 @@ final class ToDoListCollectionViewCell: UICollectionViewCell, BaseViewType {
         $0.textAlignment = .left
     }
     
-    // 추후 유동적으로 투두리스트 로직 수정 예정
-    private lazy var toDoListItemView1 = ToDoListItemView().then {
-        $0.checkTapAction = { [weak self] in
-            self?.checkTapAction?()
-        }
-
-        $0.editTapAction = { [weak self] in
-            self?.editTapAction?()
-        }
-        
-        $0.deleteTapAction = { [weak self] in
-            self?.deleteTapAction?()
-        }
+    private lazy var listCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.dataSource = self
+        $0.delegate = self
+        $0.showsVerticalScrollIndicator = false
+        $0.register(ToDoListItemCollectionViewCell.self, forCellWithReuseIdentifier: ToDoListItemCollectionViewCell.className)
+        $0.backgroundColor = .clear
     }
     
-    private lazy var toDoListItemView2 = ToDoListItemView().then {
-        $0.checkTapAction = { [weak self] in
-            self?.checkTapAction?()
-        }
-
-        $0.editTapAction = { [weak self] in
-            self?.editTapAction?()
-        }
-        
-        $0.deleteTapAction = { [weak self] in
-            self?.deleteTapAction?()
-        }
-    }
-    
-    private lazy var toDoListItemStackView: UIStackView = UIStackView(arrangedSubviews: [self.toDoListItemView1, self.toDoListItemView2]).then {
-        $0.axis = .vertical
-        $0.distribution = .fill
-        $0.spacing = 4
-    }
-    
-    // MARK: - property
-    
+    // MARK: - Properties
     var checkTapAction: (() -> Void)?
     var editTapAction: (() -> Void)?
     var deleteTapAction: (() -> Void)?
     
-    // MARK: - init
+    var toDoItems: [ToDoItem] = [] {
+        didSet {
+            listCollectionView.reloadData()
+        }
+    }
     
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.baseInit()
@@ -75,19 +50,19 @@ final class ToDoListCollectionViewCell: UICollectionViewCell, BaseViewType {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - func
+    // MARK: - Functions
     
     func setupLayout() {
         self.addSubviews(
             self.toDoListCategoryLabel,
-            self.toDoListItemStackView
+            self.listCollectionView
         )
         
         self.toDoListCategoryLabel.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
         }
         
-        self.toDoListItemStackView.snp.makeConstraints {
+        self.listCollectionView.snp.makeConstraints {
             $0.top.equalTo(self.toDoListCategoryLabel.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
@@ -95,5 +70,45 @@ final class ToDoListCollectionViewCell: UICollectionViewCell, BaseViewType {
     
     func configureUI() {
         self.backgroundColor = .backgroundNormalNormal
+    }
+}
+
+extension ToDoListCollectionViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.toDoItems.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: ToDoListItemCollectionViewCell.className,
+            for: indexPath
+        ) as? ToDoListItemCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+
+        let item = toDoItems[indexPath.item]
+//        cell.configure(with: category.items) // ToDo 항목 리스트를 전달
+        
+        // 각 셀의 액션 핸들러 설정
+        cell.checkTapAction = { [weak self] in
+            self?.checkTapAction?()
+        }
+
+        cell.editTapAction = { [weak self] in
+            self?.editTapAction?()
+        }
+
+        cell.deleteTapAction = { [weak self] in
+            self?.deleteTapAction?()
+        }
+
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let item = toDoItems[indexPath.item]
+        
+        return CGSize(width: SizeLiteral.fullWidth, height: 50)
     }
 }

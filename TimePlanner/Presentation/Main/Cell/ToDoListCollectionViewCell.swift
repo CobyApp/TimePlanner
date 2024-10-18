@@ -13,11 +13,9 @@ import Then
 final class ToDoListCollectionViewCell: UICollectionViewCell, BaseViewType {
     
     // MARK: - UI Components
-    private let toDoListCategoryLabel = UILabel().then {
-        $0.text = "공부 +"
-        $0.font = .font(size: 17, weight: .semibold)
-        $0.textColor = .labelNormal
-        $0.textAlignment = .left
+    
+    private lazy var categoryItemView: CategoryItemView = CategoryItemView().then {
+        $0.configure(CategoryModel(name: "공부 +", color: CategoryColor.red))
     }
     
     private lazy var listCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
@@ -53,16 +51,16 @@ final class ToDoListCollectionViewCell: UICollectionViewCell, BaseViewType {
     // MARK: - Functions
     func setupLayout() {
         self.addSubviews(
-            self.toDoListCategoryLabel,
+            self.categoryItemView,
             self.listCollectionView
         )
         
-        self.toDoListCategoryLabel.snp.makeConstraints {
+        self.categoryItemView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
         }
         
         self.listCollectionView.snp.makeConstraints {
-            $0.top.equalTo(self.toDoListCategoryLabel.snp.bottom).offset(12)
+            $0.top.equalTo(self.categoryItemView.snp.bottom).offset(12)
             $0.leading.trailing.bottom.equalToSuperview()
         }
     }

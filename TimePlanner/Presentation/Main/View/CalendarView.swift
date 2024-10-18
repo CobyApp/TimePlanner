@@ -205,6 +205,7 @@ final class CalendarView: UIView {
         let dayOfWeekStackView = UIStackView().then {
             $0.axis = .horizontal
             $0.distribution = .fillEqually
+            $0.spacing = 5
         }
         let days = ["일", "월", "화", "수", "목", "금", "토"]
         for day in days {
@@ -214,11 +215,18 @@ final class CalendarView: UIView {
                 $0.font = .systemFont(ofSize: 16, weight: .semibold)
                 $0.textColor = .label
             }
-            dayOfWeekStackView.addArrangedSubview(dayLabel)
+            let labelContainer = UIView().then {
+                $0.addSubview(dayLabel)
+                dayLabel.snp.makeConstraints { make in
+                    make.center.equalToSuperview()
+                    make.width.height.equalTo(50) // 날짜 셀 크기와 동일하게 설정
+                }
+            }
+            dayOfWeekStackView.addArrangedSubview(labelContainer)
         }
         return dayOfWeekStackView
     }
-
+    
     private func createRowStackView() -> UIStackView {
         return UIStackView().then {
             $0.axis = .horizontal

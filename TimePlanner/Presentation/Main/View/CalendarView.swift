@@ -140,7 +140,7 @@ final class CalendarView: UIView {
                         if currentDay == selectedDay && Calendar.current.isDate(self.selectedDate, equalTo: date, toGranularity: .month) {
                             self.selectedButton = $0
                             self.selectedButton?.layer.borderColor = UIColor.lineSolidNormal.cgColor
-                            self.selectedButton?.backgroundColor = .blue
+                            self.selectedButton?.backgroundColor = .fillStrong
                             self.selectedButton?.alpha = 1.0
                         } else {
                             $0.alpha = 0.5 // 기본 불투명도 설정
@@ -213,7 +213,7 @@ final class CalendarView: UIView {
                 $0.textAlignment = .center
                 $0.text = day
                 $0.font = .systemFont(ofSize: 16, weight: .semibold)
-                $0.textColor = .label
+                $0.textColor = .labelNormal
             }
             let labelContainer = UIView().then {
                 $0.addSubview(dayLabel)
@@ -236,7 +236,8 @@ final class CalendarView: UIView {
     }
 
     private func styleDateButton(_ button: UIButton, day: Int) {
-        button.backgroundColor = .blue
+        button.setTitleColor(.labelNeutral, for: .normal)
+        button.backgroundColor = .fillStrong
         button.layer.cornerRadius = 15
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.lineSolidAlternative.cgColor

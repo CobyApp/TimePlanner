@@ -114,17 +114,19 @@ final class CalendarView: UIView {
     private func renderCalendar(for date: Date) {
         self.dateGridView.subviews.forEach { $0.removeFromSuperview() }
         self.selectedButton = nil
-        
+
         let firstWeekday = getFirstWeekday(of: date)
         let numberOfDays = getNumberOfDays(in: date)
-        
+
         var currentDay = 1
         var isFirstWeek = true
-        
+
+        let selectedDay = Calendar.current.component(.day, from: self.selectedDate) // 선택된 날짜의 일(day)을 가져옴
+
         for row in 0..<6 {
             let rowStackView = createRowStackView()
             var hasDaysInRow = false
-            
+
             for col in 0..<7 {
                 let dateButton = UIButton().then {
                     if isFirstWeek && col < firstWeekday {
@@ -132,14 +134,18 @@ final class CalendarView: UIView {
                     } else if currentDay <= numberOfDays {
                         $0.setTitle("\(currentDay)", for: .normal)
                         self.styleDateButton($0, day: currentDay)
-                        $0.addTarget(self, action: #selector(dateButtonTapped(_:)), for: .touchUpInside) // 클릭 이벤트 추가
-                        if currentDay == Calendar.current.component(.day, from: self.selectedDate) {
+                        $0.addTarget(self, action: #selector(dateButtonTapped(_:)), for: .touchUpInside)
+                        
+                        // 선택된 날짜와 현재 날짜 비교 후 스타일 적용
+                        if currentDay == selectedDay && Calendar.current.isDate(self.selectedDate, equalTo: date, toGranularity: .month) {
                             self.selectedButton = $0
                             self.selectedButton?.layer.borderColor = UIColor.lineSolidNormal.cgColor
                             self.selectedButton?.backgroundColor = .blue
+                            self.selectedButton?.alpha = 1.0
                         } else {
                             $0.alpha = 0.5 // 기본 불투명도 설정
                         }
+                        
                         hasDaysInRow = true
                         currentDay += 1
                     } else {
@@ -149,7 +155,7 @@ final class CalendarView: UIView {
                 let container = createButtonContainer(with: dateButton)
                 rowStackView.addArrangedSubview(container)
             }
-            
+
             if hasDaysInRow {
                 self.dateGridView.addSubview(rowStackView)
                 rowStackView.snp.makeConstraints {

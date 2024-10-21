@@ -26,9 +26,7 @@ final class CategoryManagementViewController: UIViewController, BaseViewControll
             self?.viewModel.presentCategoryRegister(category: category)
         }
         $0.deleteTapAction = { [weak self] category in
-            self?.viewModel.deleteCategory(categoryId: category.id) {
-                self?.loadCategories()
-            }
+            self?.confirmDeletion(for: category.id)
         }
     }
     
@@ -88,6 +86,19 @@ final class CategoryManagementViewController: UIViewController, BaseViewControll
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.title = "뭉치 관리"
+    }
+    
+    private func confirmDeletion(for categoryId: String) {
+        let alertController = UIAlertController(title: "삭제 확인", message: "이 뭉치를 삭제하시겠습니까?", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { [weak self] _ in
+            self?.viewModel.deleteCategory(categoryId: categoryId) {
+                self?.loadCategories()
+            }
+        }))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 

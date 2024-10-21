@@ -71,9 +71,17 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
     
     // MARK: - Life Cycle
     
-    init(viewModel: CategoryRegisterViewModel) {
+    init(
+        viewModel: CategoryRegisterViewModel
+    ) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        
+        if let category = self.viewModel.category {
+            self.selectedColor = category.color
+            self.nameTextField.text = category.name
+            self.completeButton.isEnabled = true
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -171,7 +179,11 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
     
     func configureNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.title = "뭉치 등록"
+        if let _ = self.viewModel.category {
+            self.title = "뭉치 편집"
+        } else {
+            self.title = "뭉치 추가"
+        }
     }
     
     private func setupColorSelection() {

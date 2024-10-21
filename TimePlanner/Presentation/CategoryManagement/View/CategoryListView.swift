@@ -44,9 +44,8 @@ final class CategoryListView: UIView, BaseViewType {
         }
     }
 
-    var checkTapAction: (() -> Void)?
-    var editTapAction: (() -> Void)?
-    var deleteTapAction: (() -> Void)?
+    var editTapAction: ((CategoryModel) -> Void)?
+    var deleteTapAction: ((CategoryModel) -> Void)?
 
     // MARK: - Init
     override init(frame: CGRect) {
@@ -94,11 +93,11 @@ extension CategoryListView: UICollectionViewDataSource, UICollectionViewDelegate
         cell.categoryItemView.configure(category)
 
         cell.editTapAction = { [weak self] in
-            self?.editTapAction?()
+            self?.editTapAction?(category)
         }
 
         cell.deleteTapAction = { [weak self] in
-            self?.deleteTapAction?()
+            self?.deleteTapAction?(category)
         }
 
         return cell

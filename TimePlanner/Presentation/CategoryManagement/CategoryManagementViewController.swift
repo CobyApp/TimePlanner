@@ -21,7 +21,13 @@ final class CategoryManagementViewController: UIViewController, BaseViewControll
         $0.addAction(action, for: .touchUpInside)
     }
     
-    private let categoryListView: CategoryListView = CategoryListView()
+    private lazy var categoryListView = CategoryListView().then {
+        $0.editTapAction = { [weak self] category in
+            self?.viewModel.presentCategoryRegister(category: category)
+        }
+        $0.deleteTapAction = { [weak self] category in
+        }
+    }
     
     // MARK: - property
     
@@ -83,7 +89,7 @@ final class CategoryManagementViewController: UIViewController, BaseViewControll
 }
 
 extension CategoryManagementViewController {
-    
+
     private func loadCategories() {
         self.viewModel.getCategories { [weak self] categories in
             self?.categoryListView.categories = categories

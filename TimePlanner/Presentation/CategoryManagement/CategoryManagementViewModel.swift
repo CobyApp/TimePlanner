@@ -24,8 +24,14 @@ final class CategoryManagementViewModel {
         self.coordinator?.dismiss()
     }
     
+    // 추가 모드로 전환
     func presentCategoryRegister() {
-        self.coordinator?.presentCategoryRegister()
+        self.coordinator?.presentCategoryRegister(category: nil)
+    }
+
+    // 편집 모드로 전환
+    func presentCategoryRegister(category: CategoryModel) {
+        self.coordinator?.presentCategoryRegister(category: category)
     }
 }
 

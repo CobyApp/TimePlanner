@@ -12,12 +12,16 @@ final class CategoryRegisterViewModel {
     private let usecase: ToDoUsecase
     private let coordinator: CategoryRegisterCoordinator?
     
+    var category: CategoryModel?
+    
     init(
         usecase: ToDoUsecase,
-        coordinator: CategoryRegisterCoordinator?
+        coordinator: CategoryRegisterCoordinator?,
+        category: CategoryModel? = nil
     ) {
         self.usecase = usecase
         self.coordinator = coordinator
+        self.category = category
     }
     
     func dismiss() {

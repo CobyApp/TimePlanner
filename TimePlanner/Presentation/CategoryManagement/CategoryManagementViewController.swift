@@ -21,6 +21,8 @@ final class CategoryManagementViewController: UIViewController, BaseViewControll
         $0.addAction(action, for: .touchUpInside)
     }
     
+    private let categoryListView: CategoryListView = CategoryListView()
+    
     // MARK: - property
     
     private let viewModel: CategoryManagementViewModel
@@ -40,6 +42,7 @@ final class CategoryManagementViewController: UIViewController, BaseViewControll
         super.viewDidLoad()
         self.baseViewDidLoad()
         self.setupNavigation()
+        self.loadCategories()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +59,13 @@ final class CategoryManagementViewController: UIViewController, BaseViewControll
     // MARK: - func
     
     func setupLayout() {
+        self.view.addSubviews(
+            self.categoryListView
+        )
+        
+        self.categoryListView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
     
     func configureUI() {
@@ -69,5 +79,14 @@ final class CategoryManagementViewController: UIViewController, BaseViewControll
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.title = "뭉치 관리"
+    }
+}
+
+extension CategoryManagementViewController {
+    
+    private func loadCategories() {
+        self.viewModel.getCategories { [weak self] categories in
+            self?.categoryListView.categories = categories
+        }
     }
 }

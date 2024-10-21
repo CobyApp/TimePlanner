@@ -32,7 +32,7 @@ final class MainCoordinator: NSObject {
         let repository = ToDoRepositoryImpl()
         let usecase = ToDoUsecaseImpl(repository: repository)
         let coordinator = CategoryManagementCoordinator(navigationController: navigationController)
-        let viewModel = CategoryManagementViewModel(coordinator: coordinator)
+        let viewModel = CategoryManagementViewModel(usecase: usecase, coordinator: coordinator)
         let viewController = CategoryManagementViewController(viewModel: viewModel)
         
         navigationController.pushViewController(viewController, animated: true)

@@ -110,6 +110,8 @@
 		CBBF9E082CBF615D00EAEEBB /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBF9E072CBF615D00EAEEBB /* UserDTO.swift */; };
 		CBBF9E0A2CBF622A00EAEEBB /* CategoryMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBF9E092CBF622A00EAEEBB /* CategoryMapper.swift */; };
 		CBBF9E0C2CBF637B00EAEEBB /* ToDoRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBF9E0B2CBF637B00EAEEBB /* ToDoRepositoryImpl.swift */; };
+		CBE2552A2CC615C60099C301 /* CategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE255292CC615C60099C301 /* CategoryListView.swift */; };
+		CBE2552D2CC616290099C301 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2552C2CC616290099C301 /* CategoryCollectionViewCell.swift */; };
 		CBE870EA2CA183C4008544C1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE870E92CA183C4008544C1 /* TabBarController.swift */; };
 		CBF155042CB500D600758F7B /* ToDoListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF155032CB500D600758F7B /* ToDoListCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -217,6 +219,8 @@
 		CBBF9E072CBF615D00EAEEBB /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		CBBF9E092CBF622A00EAEEBB /* CategoryMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMapper.swift; sourceTree = "<group>"; };
 		CBBF9E0B2CBF637B00EAEEBB /* ToDoRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoRepositoryImpl.swift; sourceTree = "<group>"; };
+		CBE255292CC615C60099C301 /* CategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListView.swift; sourceTree = "<group>"; };
+		CBE2552C2CC616290099C301 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		CBE870E92CA183C4008544C1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CBF155032CB500D600758F7B /* ToDoListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -401,6 +405,8 @@
 		CB9590292CB05B4B00CEF73B /* CategoryManagement */ = {
 			isa = PBXGroup;
 			children = (
+				CBE255282CC615BB0099C301 /* View */,
+				CBE2552B2CC616000099C301 /* Cell */,
 				CB95902A2CB05B5F00CEF73B /* Component */,
 				CB95902B2CB05B6C00CEF73B /* CategoryManagementViewController.swift */,
 				CB95902F2CB05B7D00CEF73B /* CategoryManagementViewModel.swift */,
@@ -706,6 +712,22 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		CBE255282CC615BB0099C301 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CBE255292CC615C60099C301 /* CategoryListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CBE2552B2CC616000099C301 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CBE2552C2CC616290099C301 /* CategoryCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		CBE870E82CA183BD008544C1 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -858,6 +880,7 @@
 				CBA0E6CD2CB413BF000FF934 /* NoteRegisterViewModel.swift in Sources */,
 				CBA0E6C82CB41201000FF934 /* CategoryRegisterViewModel.swift in Sources */,
 				CBB965962CBE4C2E006B7D8A /* SettingItemTableViewCell.swift in Sources */,
+				CBE2552A2CC615C60099C301 /* CategoryListView.swift in Sources */,
 				CB1FB1F92CC2362D00284BCB /* CategoryItemView.swift in Sources */,
 				CBA20E842C9DB6FD00455DC4 /* Semantic.swift in Sources */,
 				CB3F697F2C9DAA5100635DBC /* AppDelegate.swift in Sources */,
@@ -872,6 +895,7 @@
 				CBB965982CBE4C97006B7D8A /* ForwardButton.swift in Sources */,
 				CBA20E662C9DB43200455DC4 /* UIViewController+Keyboard.swift in Sources */,
 				CB3271FD2CBD012800E1C4D7 /* SignCoordinator.swift in Sources */,
+				CBE2552D2CC616290099C301 /* CategoryCollectionViewCell.swift in Sources */,
 				CBA20E602C9DB36400455DC4 /* Navigationable.swift in Sources */,
 				CB3271E52CBCEAD800E1C4D7 /* NoteModel.swift in Sources */,
 				CBF155042CB500D600758F7B /* ToDoListCollectionViewCell.swift in Sources */,

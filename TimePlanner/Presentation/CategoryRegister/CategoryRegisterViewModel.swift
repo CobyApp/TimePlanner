@@ -50,4 +50,32 @@ extension CategoryRegisterViewModel {
             }
         }
     }
+    
+    func updateCategory(
+        name: String,
+        color: CategoryColor
+    ) {
+        guard let category = self.category else {
+            print("Category is not set for update.")
+            return
+        }
+        
+        Task {
+            do {
+                let updatedCategory = CategoryModel(
+                    id: category.id,
+                    name: name,
+                    color: color
+                )
+                
+                try await self.usecase.updateCategory(category: updatedCategory)
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.dismiss()
+                }
+            } catch(let error) {
+                print(error)
+            }
+        }
+    }
 }

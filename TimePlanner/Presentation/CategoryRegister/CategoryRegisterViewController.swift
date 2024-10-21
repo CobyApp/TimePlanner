@@ -48,10 +48,17 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
     private lazy var completeButton = CompleteButton().then {
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
-            self.viewModel.registerCategory(
-                name: self.nameTextField.text ?? "",
-                color: self.selectedColor
-            )
+            if let _ = self.viewModel.category {
+                self.viewModel.updateCategory(
+                    name: self.nameTextField.text ?? "",
+                    color: self.selectedColor
+                )
+            } else {
+                self.viewModel.registerCategory(
+                    name: self.nameTextField.text ?? "",
+                    color: self.selectedColor
+                )
+            }
         }
         $0.addAction(action, for: .touchUpInside)
     }

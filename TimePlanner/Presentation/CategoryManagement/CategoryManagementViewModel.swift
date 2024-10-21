@@ -48,4 +48,19 @@ extension CategoryManagementViewModel {
             }
         }
     }
+    
+    func deleteCategory(
+        categoryId: String,
+        completion: @escaping () -> Void
+    ) {
+        Task {
+            do {
+                try await self.usecase.deleteCategory(categoryId: categoryId)
+                completion()
+            } catch(let error) {
+                print(error)
+                completion()
+            }
+        }
+    }
 }

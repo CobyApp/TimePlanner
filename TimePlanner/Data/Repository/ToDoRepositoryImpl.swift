@@ -32,6 +32,37 @@ final class ToDoRepositoryImpl: ToDoRepository {
             .setData(categoryData)
     }
     
+    func updateCategory(category: CategoryModel) async throws {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            throw NSError(domain: "No user logged in", code: 401, userInfo: nil)
+        }
+        
+        let categoryData: [String: Any] = [
+            "name": category.name,
+            "color": category.color.rawValue
+        ]
+        
+        // 카테고리의 ID로 Firestore 문서를 업데이트
+        try await self.db.collection("users")
+            .document(userId)
+            .collection("categories")
+            .document(category.id)
+            .updateData(categoryData)
+    }
+    
+    func deleteCategory(categoryId: String) async throws {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            throw NSError(domain: "No user logged in", code: 401, userInfo: nil)
+        }
+        
+        // 카테고리의 ID로 Firestore 문서를 삭제
+        try await self.db.collection("users")
+            .document(userId)
+            .collection("categories")
+            .document(categoryId)
+            .delete()
+    }
+    
     func getCategories() async throws -> [CategoryDTO] {
         guard let userId = Auth.auth().currentUser?.uid else {
             throw NSError(domain: "No user logged in", code: 401, userInfo: nil)

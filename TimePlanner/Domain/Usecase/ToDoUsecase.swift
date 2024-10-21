@@ -9,6 +9,8 @@ import Foundation
 
 protocol ToDoUsecase {
     func createCategory(category: CategoryModel) async throws
+    func updateCategory(category: CategoryModel) async throws
+    func deleteCategory(categoryId: String) async throws
     func getCategories() async throws -> [CategoryModel]
 }
 
@@ -29,6 +31,22 @@ final class ToDoUsecaseImpl: ToDoUsecase {
     func createCategory(category: CategoryModel) async throws {
         do {
             try await self.repository.createCategory(category: category)
+        } catch(let error) {
+            throw error
+        }
+    }
+    
+    func updateCategory(category: CategoryModel) async throws {
+        do {
+            try await self.repository.updateCategory(category: category)
+        } catch(let error) {
+            throw error
+        }
+    }
+    
+    func deleteCategory(categoryId: String) async throws {
+        do {
+            try await self.repository.deleteCategory(categoryId: categoryId)
         } catch(let error) {
             throw error
         }

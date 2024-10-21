@@ -26,6 +26,9 @@ final class CategoryManagementViewController: UIViewController, BaseViewControll
             self?.viewModel.presentCategoryRegister(category: category)
         }
         $0.deleteTapAction = { [weak self] category in
+            self?.viewModel.deleteCategory(categoryId: category.id) {
+                self?.loadCategories()
+            }
         }
     }
     
@@ -48,13 +51,13 @@ final class CategoryManagementViewController: UIViewController, BaseViewControll
         super.viewDidLoad()
         self.baseViewDidLoad()
         self.setupNavigation()
-        self.loadCategories()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.configureNavigationBar()
         self.tabBarController?.tabBar.isHidden = true
+        self.loadCategories()
     }
 
     override func viewWillDisappear(_ animated: Bool) {

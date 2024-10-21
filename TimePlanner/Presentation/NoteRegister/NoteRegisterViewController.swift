@@ -14,12 +14,6 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
     
     // MARK: - UI Componentsㅋ
     
-    private let titleLabel = UILabel().then {
-        $0.text = "노트 내용"
-        $0.font = .font(size: 18, weight: .medium)
-        $0.textColor = UIColor.labelNormal
-    }
-    
     private let noteTextView = UITextView().then {
         $0.font = .font(size: 16, weight: .regular)
         $0.layer.borderWidth = 1
@@ -30,7 +24,16 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
     
     private lazy var completeButton = CompleteButton().then {
         let action = UIAction { [weak self] _ in
-            self?.viewModel.registerNote(content: self?.noteTextView.text ?? "")
+            guard let self = self else { return }
+            if let _ = self.viewModel.note {
+                self.viewModel.updateNote(
+                    content: self.noteTextView.text ?? ""
+                )
+            } else {
+                self.viewModel.registerNote(
+                    content: self.noteTextView.text ?? ""
+                )
+            }
         }
         $0.addAction(action, for: .touchUpInside)
     }
@@ -44,6 +47,10 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
     init(viewModel: NoteRegisterViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        
+        if let note = self.viewModel.note {
+            self.noteTextView.text = note.content
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -76,18 +83,12 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
     
     func setupLayout() {
         self.view.addSubviews(
-            self.titleLabel,
             self.noteTextView,
             self.completeButton
         )
         
-        self.titleLabel.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaLayoutGuide).inset(SizeLiteral.verticalPadding)
-            $0.leading.equalToSuperview().inset(SizeLiteral.horizantalPadding)
-        }
-        
         self.noteTextView.snp.makeConstraints {
-            $0.top.equalTo(self.titleLabel.snp.bottom).offset(10)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(SizeLiteral.verticalPadding)
             $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
             $0.bottom.equalTo(self.completeButton.snp.top).offset(-SizeLiteral.verticalPadding)
         }

@@ -18,7 +18,7 @@ final class NoteCollectionViewCell: UICollectionViewCell, BaseViewType {
         $0.text = "노트 내용입니다."
         $0.font = .font(size: 16, weight: .regular)
         $0.textColor = .labelNormal
-        $0.numberOfLines = 3
+        $0.numberOfLines = 4
     }
     
     private let noteDateLabel = UILabel().then {
@@ -83,5 +83,12 @@ final class NoteCollectionViewCell: UICollectionViewCell, BaseViewType {
         self.backgroundColor = .backgroundNormalNormal
         self.clipsToBounds = true
         self.makeBorderLayer(color: .lineNormalNormal)
+    }
+}
+
+extension NoteCollectionViewCell {
+    func configure(_ note: NoteModel) {
+        self.noteContentLabel.text = note.content
+        self.noteDateLabel.text = note.createdAt.toFullString
     }
 }

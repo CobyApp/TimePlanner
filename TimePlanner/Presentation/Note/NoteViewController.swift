@@ -30,11 +30,11 @@ final class NoteViewController: UIViewController, BaseViewControllerType, Naviga
     }
     
     private lazy var noteCollectionView = NoteCollectionView().then {
-        $0.editTapAction = { [weak self] in
-            self?.viewModel.presentNoteRegister()
+        $0.editTapAction = { [weak self] note in
+            self?.viewModel.presentNoteRegister(note: note)
         }
-        $0.deleteTapAction = { [weak self] in
-            // 노트 삭제
+        $0.deleteTapAction = { [weak self] note in
+            self?.confirmDeletion(for: note.id)
         }
     }
     
@@ -62,6 +62,7 @@ final class NoteViewController: UIViewController, BaseViewControllerType, Naviga
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.configureNavigationBar()
+        self.loadNotes()
     }
     
     // MARK: - func
@@ -89,5 +90,27 @@ final class NoteViewController: UIViewController, BaseViewControllerType, Naviga
         
         self.navigationItem.leftBarButtonItem = titleLabel
         self.navigationItem.rightBarButtonItem = rightButton
+    }
+    
+    private func confirmDeletion(for noteId: String) {
+        let alertController = UIAlertController(title: "삭제 확인", message: "이 노트를 삭제하시겠습니까?", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { [weak self] _ in
+            self?.viewModel.deleteNote(noteId: noteId) {
+                self?.loadNotes()
+            }
+        }))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension NoteViewController {
+
+    private func loadNotes() {
+        self.viewModel.getNotes { [weak self] notes in
+            self?.noteCollectionView.notes = notes
+        }
     }
 }

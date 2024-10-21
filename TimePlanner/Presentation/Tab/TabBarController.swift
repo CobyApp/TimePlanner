@@ -10,55 +10,57 @@ import UIKit
 final class TabBarController: UITabBarController {
     
     private lazy var vc1: UINavigationController = {
-        let navController = UINavigationController()
-        let mainCoordinator = MainCoordinator(navigationController: navController)
+        let navigationController = UINavigationController()
+        let mainCoordinator = MainCoordinator(navigationController: navigationController)
         let mainViewModel = MainViewModel(coordinator: mainCoordinator)
         let mainViewController = MainViewController(viewModel: mainViewModel)
-        navController.viewControllers = [mainViewController]
+        navigationController.viewControllers = [mainViewController]
         
-        navController.tabBarItem.image = UIImage.Button.home.resize(to: CGSize(width: 20, height: 20))
-        navController.tabBarItem.title = "할일"
+        navigationController.tabBarItem.image = UIImage.Button.home.resize(to: CGSize(width: 20, height: 20))
+        navigationController.tabBarItem.title = "할일"
         
-        return navController
+        return navigationController
     }()
     
     private lazy var vc2: UINavigationController = {
-        let navController = UINavigationController()
-        let noteCoordinator = NoteCoordinator(navigationController: navController)
-        let noteViewModel = NoteViewModel(coordinator: noteCoordinator)
-        let noteViewController = NoteViewController(viewModel: noteViewModel)
-        navController.viewControllers = [noteViewController]
+        let navigationController = UINavigationController()
+        let repository = NoteRepositoryImpl()
+        let usecase = NoteUsecaseImpl(repository: repository)
+        let coordinator = NoteCoordinator(navigationController: navigationController)
+        let viewModel = NoteViewModel(usecase: usecase, coordinator: coordinator)
+        let viewController = NoteViewController(viewModel: viewModel)
+        navigationController.viewControllers = [viewController]
         
-        navController.tabBarItem.image = UIImage.Button.note.resize(to: CGSize(width: 20, height: 20))
-        navController.tabBarItem.title = "노트"
+        navigationController.tabBarItem.image = UIImage.Button.note.resize(to: CGSize(width: 20, height: 20))
+        navigationController.tabBarItem.title = "노트"
         
-        return navController
+        return navigationController
     }()
     
     private lazy var vc3: UINavigationController = {
-        let navController = UINavigationController()
-        let dDayCoordinator = DDayCoordinator(navigationController: navController)
+        let navigationController = UINavigationController()
+        let dDayCoordinator = DDayCoordinator(navigationController: navigationController)
         let dDayViewModel = DDayViewModel(coordinator: dDayCoordinator)
         let dDayViewController = DDayViewController(viewModel: dDayViewModel)
-        navController.viewControllers = [dDayViewController]
+        navigationController.viewControllers = [dDayViewController]
         
-        navController.tabBarItem.image = UIImage.Button.calendarClock.resize(to: CGSize(width: 20, height: 20))
-        navController.tabBarItem.title = "디데이"
+        navigationController.tabBarItem.image = UIImage.Button.calendarClock.resize(to: CGSize(width: 20, height: 20))
+        navigationController.tabBarItem.title = "디데이"
         
-        return navController
+        return navigationController
     }()
     
     private lazy var vc4: UINavigationController = {
-        let navController = UINavigationController()
-        let infoCoordinator = InfoCoordinator(navigationController: navController)
+        let navigationController = UINavigationController()
+        let infoCoordinator = InfoCoordinator(navigationController: navigationController)
         let infoViewModel = InfoViewModel(coordinator: infoCoordinator)
         let infoViewController = InfoViewController(viewModel: infoViewModel)
-        navController.viewControllers = [infoViewController]
+        navigationController.viewControllers = [infoViewController]
         
-        navController.tabBarItem.image = UIImage.Button.person.resize(to: CGSize(width: 20, height: 20))
-        navController.tabBarItem.title = "정보"
+        navigationController.tabBarItem.image = UIImage.Button.person.resize(to: CGSize(width: 20, height: 20))
+        navigationController.tabBarItem.title = "정보"
         
-        return navController
+        return navigationController
     }()
     
     override func viewDidLoad() {

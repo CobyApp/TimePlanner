@@ -38,8 +38,16 @@ final class NoteCollectionView: UIView, BaseViewType {
     
     // MARK: - property
     
-    var editTapAction: (() -> Void)?
-    var deleteTapAction: (() -> Void)?
+    var notes: [NoteModel] = [] {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                self?.listCollectionView.reloadData()
+            }
+        }
+    }
+    
+    var editTapAction: ((NoteModel) -> Void)?
+    var deleteTapAction: ((NoteModel) -> Void)?
     
     // MARK: - init
     
@@ -76,7 +84,7 @@ final class NoteCollectionView: UIView, BaseViewType {
 
 extension NoteCollectionView: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
-        return 10
+        return self.notes.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -87,13 +95,17 @@ extension NoteCollectionView: UICollectionViewDataSource, UICollectionViewDelega
             return UICollectionViewCell()
         }
         
+        let note = notes[indexPath.item]
+        
         cell.editTapAction = { [weak self] in
-            self?.editTapAction?()
+            self?.editTapAction?(note)
         }
         
         cell.deleteTapAction = { [weak self] in
-            self?.deleteTapAction?()
+            self?.deleteTapAction?(note)
         }
+        
+        cell.configure(note)
 
         return cell
     }

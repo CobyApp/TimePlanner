@@ -112,6 +112,11 @@
 		CBBF9E0C2CBF637B00EAEEBB /* ToDoRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBF9E0B2CBF637B00EAEEBB /* ToDoRepositoryImpl.swift */; };
 		CBE2552A2CC615C60099C301 /* CategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE255292CC615C60099C301 /* CategoryListView.swift */; };
 		CBE2552D2CC616290099C301 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2552C2CC616290099C301 /* CategoryCollectionViewCell.swift */; };
+		CBE2552F2CC630EB0099C301 /* NoteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE2552E2CC630EB0099C301 /* NoteDTO.swift */; };
+		CBE255312CC631FB0099C301 /* NoteRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE255302CC631FB0099C301 /* NoteRepositoryImpl.swift */; };
+		CBE255332CC632010099C301 /* NoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE255322CC632010099C301 /* NoteRepository.swift */; };
+		CBE255352CC632070099C301 /* NoteUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE255342CC632070099C301 /* NoteUsecase.swift */; };
+		CBE255372CC633360099C301 /* NoteMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE255362CC633360099C301 /* NoteMapper.swift */; };
 		CBE870EA2CA183C4008544C1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE870E92CA183C4008544C1 /* TabBarController.swift */; };
 		CBF155042CB500D600758F7B /* ToDoListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF155032CB500D600758F7B /* ToDoListCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -221,6 +226,11 @@
 		CBBF9E0B2CBF637B00EAEEBB /* ToDoRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoRepositoryImpl.swift; sourceTree = "<group>"; };
 		CBE255292CC615C60099C301 /* CategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListView.swift; sourceTree = "<group>"; };
 		CBE2552C2CC616290099C301 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		CBE2552E2CC630EB0099C301 /* NoteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDTO.swift; sourceTree = "<group>"; };
+		CBE255302CC631FB0099C301 /* NoteRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRepositoryImpl.swift; sourceTree = "<group>"; };
+		CBE255322CC632010099C301 /* NoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRepository.swift; sourceTree = "<group>"; };
+		CBE255342CC632070099C301 /* NoteUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteUsecase.swift; sourceTree = "<group>"; };
+		CBE255362CC633360099C301 /* NoteMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteMapper.swift; sourceTree = "<group>"; };
 		CBE870E92CA183C4008544C1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CBF155032CB500D600758F7B /* ToDoListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -637,6 +647,7 @@
 			children = (
 				CBB965802CBE2FD8006B7D8A /* SignRepository.swift */,
 				CBBF9E012CBF5FA400EAEEBB /* ToDoRepository.swift */,
+				CBE255322CC632010099C301 /* NoteRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -646,6 +657,7 @@
 			children = (
 				CBB965822CBE2FDF006B7D8A /* SignUsecase.swift */,
 				CBBF9E032CBF607500EAEEBB /* ToDoUsecase.swift */,
+				CBE255342CC632070099C301 /* NoteUsecase.swift */,
 			);
 			path = Usecase;
 			sourceTree = "<group>";
@@ -665,6 +677,7 @@
 			children = (
 				CBBF9E072CBF615D00EAEEBB /* UserDTO.swift */,
 				CBBF9E052CBF610F00EAEEBB /* CategoryDTO.swift */,
+				CBE2552E2CC630EB0099C301 /* NoteDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -674,6 +687,7 @@
 			children = (
 				CBB965892CBE3028006B7D8A /* SignRepositoryImpl.swift */,
 				CBBF9E0B2CBF637B00EAEEBB /* ToDoRepositoryImpl.swift */,
+				CBE255302CC631FB0099C301 /* NoteRepositoryImpl.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -683,6 +697,7 @@
 			children = (
 				CBB9658E2CBE3167006B7D8A /* UserMapper.swift */,
 				CBBF9E092CBF622A00EAEEBB /* CategoryMapper.swift */,
+				CBE255362CC633360099C301 /* NoteMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -867,6 +882,7 @@
 				CB2628642CA033EF00C98360 /* CalendarView.swift in Sources */,
 				CBA20E8F2C9DBB3B00455DC4 /* BackButton.swift in Sources */,
 				CBA20E682C9DB43F00455DC4 /* UIViewController+Extension.swift in Sources */,
+				CBE255332CC632010099C301 /* NoteRepository.swift in Sources */,
 				CB26285F2CA02BFD00C98360 /* SettingButton.swift in Sources */,
 				CB95902C2CB05B6C00CEF73B /* CategoryManagementViewController.swift in Sources */,
 				CB9590362CB06BE800CEF73B /* NoteViewModel.swift in Sources */,
@@ -879,10 +895,12 @@
 				CBA0E6DD2CB41991000FF934 /* SettingCoordinator.swift in Sources */,
 				CBA0E6CD2CB413BF000FF934 /* NoteRegisterViewModel.swift in Sources */,
 				CBA0E6C82CB41201000FF934 /* CategoryRegisterViewModel.swift in Sources */,
+				CBE2552F2CC630EB0099C301 /* NoteDTO.swift in Sources */,
 				CBB965962CBE4C2E006B7D8A /* SettingItemTableViewCell.swift in Sources */,
 				CBE2552A2CC615C60099C301 /* CategoryListView.swift in Sources */,
 				CB1FB1F92CC2362D00284BCB /* CategoryItemView.swift in Sources */,
 				CBA20E842C9DB6FD00455DC4 /* Semantic.swift in Sources */,
+				CBE255312CC631FB0099C301 /* NoteRepositoryImpl.swift in Sources */,
 				CB3F697F2C9DAA5100635DBC /* AppDelegate.swift in Sources */,
 				CB95903A2CB06C2600CEF73B /* DDayViewModel.swift in Sources */,
 				CBBF9E062CBF610F00EAEEBB /* CategoryDTO.swift in Sources */,
@@ -899,6 +917,7 @@
 				CBA20E602C9DB36400455DC4 /* Navigationable.swift in Sources */,
 				CB3271E52CBCEAD800E1C4D7 /* NoteModel.swift in Sources */,
 				CBF155042CB500D600758F7B /* ToDoListCollectionViewCell.swift in Sources */,
+				CBE255372CC633360099C301 /* NoteMapper.swift in Sources */,
 				CB3271F42CBCFA4600E1C4D7 /* LoginViewModel.swift in Sources */,
 				CB95903C2CB06C4200CEF73B /* InfoCoordinator.swift in Sources */,
 				CBA0E6C42CB411F3000FF934 /* CategoryRegisterViewController.swift in Sources */,
@@ -915,6 +934,7 @@
 				CBBF9E0C2CBF637B00EAEEBB /* ToDoRepositoryImpl.swift in Sources */,
 				CBA20E6F2C9DB4DC00455DC4 /* UIView+Animation.swift in Sources */,
 				CB306DCD2CA3BA9F009517D6 /* MoreVertButton.swift in Sources */,
+				CBE255352CC632070099C301 /* NoteUsecase.swift in Sources */,
 				CB9590302CB05B7D00CEF73B /* CategoryManagementViewModel.swift in Sources */,
 				CBA0E6D62CB4151F000FF934 /* DDayRegisterCoordinator.swift in Sources */,
 				CB9590282CB058E300CEF73B /* MainViewModel.swift in Sources */,

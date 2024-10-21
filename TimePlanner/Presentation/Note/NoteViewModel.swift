@@ -18,6 +18,10 @@ final class NoteViewModel {
     }
     
     func presentNoteRegister() {
-        self.coordinator?.presentNoteRegister()
+        self.coordinator?.presentNoteRegister(note: nil)
+    }
+    
+    func presentNoteRegister(note: NoteModel) {
+        self.coordinator?.presentNoteRegister(note: note)
     }
 }

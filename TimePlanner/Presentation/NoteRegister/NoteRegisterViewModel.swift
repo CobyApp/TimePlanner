@@ -9,27 +9,71 @@ import Foundation
 
 final class NoteRegisterViewModel {
     
-    @Published var note: NoteModel = .init()
-    
+    private let usecase: NoteUsecase
     private let coordinator: NoteRegisterCoordinator?
     
+    var note: NoteModel?
+    
     init(
-        coordinator: NoteRegisterCoordinator?
+        usecase: NoteUsecase,
+        coordinator: NoteRegisterCoordinator?,
+        note: NoteModel? = nil
     ) {
+        self.usecase = usecase
         self.coordinator = coordinator
+        self.note = note
     }
     
     func dismiss() {
         self.coordinator?.dismiss()
     }
+}
+
+extension NoteRegisterViewModel {
     
     func registerNote(
         content: String
     ) {
-        self.note = NoteModel(
-            content: content
-        )
+        Task {
+            do {
+                try await self.usecase.createNote(note: NoteModel(
+                    content: content,
+                    createdAt: Date()
+                ))
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.dismiss()
+                }
+            } catch(let error) {
+                print(error)
+            }
+        }
+    }
+    
+    func updateNote(
+        content: String
+    ) {
+        guard let note = self.note else {
+            print("Note is not set for update.")
+            return
+        }
         
-        self.dismiss()
+        Task {
+            do {
+                let updatedNote = NoteModel(
+                    id: note.id,
+                    content: content,
+                    createdAt: Date()
+                )
+                
+                try await self.usecase.updateNote(note: updatedNote)
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.dismiss()
+                }
+            } catch(let error) {
+                print(error)
+            }
+        }
     }
 }

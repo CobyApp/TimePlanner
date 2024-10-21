@@ -16,10 +16,17 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
     
     private let noteTextView = UITextView().then {
         $0.font = .font(size: 16, weight: .regular)
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.lightGray.cgColor
-        $0.layer.cornerRadius = 10
-        $0.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        $0.layer.borderWidth = 0 // 경계선 제거
+        $0.layer.borderColor = UIColor.clear.cgColor // 경계선 색상 제거
+        $0.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        $0.backgroundColor = .clear // 배경색을 투명하게 설정
+    }
+    
+    private let placeholderLabel = UILabel().then {
+        $0.text = "노트 내용을 입력해주세요."
+        $0.font = .font(size: 16, weight: .regular)
+        $0.textColor = .labelAssistive
+        $0.isHidden = false // 기본적으로 표시
     }
     
     private lazy var completeButton = CompleteButton().then {
@@ -50,6 +57,8 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
         
         if let note = self.viewModel.note {
             self.noteTextView.text = note.content
+            self.completeButton.isEnabled = true
+            self.placeholderLabel.isHidden = true
         }
     }
     
@@ -84,6 +93,7 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
     func setupLayout() {
         self.view.addSubviews(
             self.noteTextView,
+            self.placeholderLabel,
             self.completeButton
         )
         
@@ -91,6 +101,11 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
             $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(SizeLiteral.verticalPadding)
             $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
             $0.bottom.equalTo(self.completeButton.snp.top).offset(-SizeLiteral.verticalPadding)
+        }
+        
+        self.placeholderLabel.snp.makeConstraints {
+            $0.top.equalTo(self.noteTextView)
+            $0.leading.equalTo(self.noteTextView).offset(4)
         }
         
         self.completeButton.snp.makeConstraints {
@@ -106,7 +121,7 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
     
     func configureNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.title = "노트 작성"
+        self.title = "노트"
     }
 }
 
@@ -114,5 +129,6 @@ extension NoteRegisterViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         let hasText = !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         self.completeButton.isEnabled = hasText
+        self.placeholderLabel.isHidden = !textView.text.isEmpty
     }
 }

@@ -37,8 +37,16 @@ final class DDayCollectionView: UIView, BaseViewType {
     
     // MARK: - property
     
-    var editTapAction: (() -> Void)?
-    var deleteTapAction: (() -> Void)?
+    var dDays: [DDayModel] = [] {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                self?.listCollectionView.reloadData()
+            }
+        }
+    }
+    
+    var editTapAction: ((DDayModel) -> Void)?
+    var deleteTapAction: ((DDayModel) -> Void)?
     
     // MARK: - init
     
@@ -75,7 +83,7 @@ final class DDayCollectionView: UIView, BaseViewType {
 
 extension DDayCollectionView: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
-        return 10
+        self.dDays.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -86,13 +94,17 @@ extension DDayCollectionView: UICollectionViewDataSource, UICollectionViewDelega
             return UICollectionViewCell()
         }
         
+        let dDay = dDays[indexPath.item]
+        
         cell.editTapAction = { [weak self] in
-            self?.editTapAction?()
+            self?.editTapAction?(dDay)
         }
         
         cell.deleteTapAction = { [weak self] in
-            self?.deleteTapAction?()
+            self?.deleteTapAction?(dDay)
         }
+        
+        cell.configure(dDay)
 
         return cell
     }

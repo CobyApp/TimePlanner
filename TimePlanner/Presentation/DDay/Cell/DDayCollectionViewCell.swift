@@ -99,3 +99,10 @@ final class DDayCollectionViewCell: UICollectionViewCell, BaseViewType {
         self.makeBorderLayer(color: .lineNormalNormal)
     }
 }
+
+extension DDayCollectionViewCell {
+    func configure(_ dDay: DDayModel) {
+        self.dDayTitleLabel.text = dDay.name
+        self.dDayDateLabel.text = dDay.dDate.toFullString
+    }
+}

@@ -30,11 +30,11 @@ final class DDayViewController: UIViewController, BaseViewControllerType, Naviga
     }
     
     private lazy var dDayCollectionView = DDayCollectionView().then {
-        $0.editTapAction = { [weak self] in
-            self?.viewModel.presentDDayRegister()
+        $0.editTapAction = { [weak self] dDay in
+            self?.viewModel.presentDDayRegister(dDay: dDay)
         }
-        $0.deleteTapAction = { [weak self] in
-            // 디데이 삭제
+        $0.deleteTapAction = { [weak self] dDay in
+            self?.confirmDeletion(for: dDay.id)
         }
     }
     
@@ -62,6 +62,7 @@ final class DDayViewController: UIViewController, BaseViewControllerType, Naviga
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.configureNavigationBar()
+        self.loadDDays()
     }
     
     // MARK: - func
@@ -89,5 +90,27 @@ final class DDayViewController: UIViewController, BaseViewControllerType, Naviga
         self.navigationItem.leftBarButtonItem = titleLabel
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    private func confirmDeletion(for dDayId: String) {
+        let alertController = UIAlertController(title: "삭제 확인", message: "이 디데이를 삭제하시겠습니까?", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { [weak self] _ in
+            self?.viewModel.deleteDDay(dDayId: dDayId) {
+                self?.loadDDays()
+            }
+        }))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension DDayViewController {
+
+    private func loadDDays() {
+        self.viewModel.getDDays { [weak self] dDays in
+            self?.dDayCollectionView.dDays = dDays
+        }
     }
 }

@@ -22,20 +22,20 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
     private let contentView = UIView()
     
     private let titleLabel = UILabel().then {
-        $0.text = "디데이 제목"
+        $0.text = "제목"
         $0.font = .systemFont(ofSize: 18, weight: .medium)
         $0.textColor = .label
     }
     
     private let titleTextField = UITextField().then {
-        $0.placeholder = "디데이 제목을 입력하세요"
+        $0.placeholder = "내용을 입력해주세요."
         $0.font = .systemFont(ofSize: 16)
         $0.borderStyle = .roundedRect
         $0.clearButtonMode = .whileEditing
     }
     
     private let dateLabel = UILabel().then {
-        $0.text = "디데이 날짜"
+        $0.text = "날짜"
         $0.font = .systemFont(ofSize: 18, weight: .medium)
         $0.textColor = .label
     }
@@ -56,6 +56,7 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
             )
         }
         $0.addAction(action, for: .touchUpInside)
+        $0.label.text = "저장"
     }
     
     // MARK: - Properties
@@ -164,11 +165,7 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
     
     func configureNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        if let _ = self.viewModel.dDay {
-            self.title = "디데이 편집"
-        } else {
-            self.title = "디데이 작성"
-        }
+        self.title = "디데이"
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {

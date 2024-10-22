@@ -293,8 +293,8 @@
 			children = (
 				CBB9658B2CBE30CA006B7D8A /* UserModel.swift */,
 				CB3271DE2CBCDF5300E1C4D7 /* CategoryModel.swift */,
-				CB1FB1F02CC0D97C00284BCB /* ToDoItemModel.swift */,
 				CB1FB1F22CC0DA9300284BCB /* ToDoModel.swift */,
+				CB1FB1F02CC0D97C00284BCB /* ToDoItemModel.swift */,
 				CB3271E42CBCEAD800E1C4D7 /* NoteModel.swift */,
 				CB3271E22CBCEA9800E1C4D7 /* DDayModel.swift */,
 				CBB965902CBE4B94006B7D8A /* SettingOptionModel.swift */,

@@ -109,4 +109,8 @@ extension NoteCollectionView: UICollectionViewDataSource, UICollectionViewDelega
 
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.editTapAction?(notes[indexPath.item])
+    }
 }

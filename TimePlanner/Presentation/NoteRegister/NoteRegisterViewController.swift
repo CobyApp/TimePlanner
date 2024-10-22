@@ -43,6 +43,7 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
             }
         }
         $0.addAction(action, for: .touchUpInside)
+        $0.label.text = "저장"
     }
     
     // MARK: - Properties
@@ -57,7 +58,7 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
         
         if let note = self.viewModel.note {
             self.noteTextView.text = note.content
-            self.completeButton.isEnabled = true
+            self.completeButton.isHidden = true
             self.placeholderLabel.isHidden = true
         }
     }
@@ -130,5 +131,6 @@ extension NoteRegisterViewController: UITextViewDelegate {
         let hasText = !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         self.completeButton.isEnabled = hasText
         self.placeholderLabel.isHidden = !textView.text.isEmpty
+        self.completeButton.isHidden = false
     }
 }

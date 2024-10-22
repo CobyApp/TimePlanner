@@ -50,10 +50,17 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
     private lazy var completeButton = CompleteButton().then {
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
-            self.viewModel.registerDDay(
-                name: self.titleTextField.text ?? "",
-                dDate: self.datePicker.date
-            )
+            if let _ = self.viewModel.dDay {
+                self.viewModel.updateDDay(
+                    name: self.titleTextField.text ?? "",
+                    dDate: self.datePicker.date
+                )
+            } else {
+                self.viewModel.registerDDay(
+                    name: self.titleTextField.text ?? "",
+                    dDate: self.datePicker.date
+                )
+            }
         }
         $0.addAction(action, for: .touchUpInside)
         $0.label.text = "저장"

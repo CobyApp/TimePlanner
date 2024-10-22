@@ -10,7 +10,7 @@ import Foundation
 extension NoteDTO {
     
     func toNoteModel() -> NoteModel {
-        return NoteModel(
+        NoteModel(
             id: self.id ?? UUID().uuidString,
             content: self.content,
             createdAt: self.createdAt

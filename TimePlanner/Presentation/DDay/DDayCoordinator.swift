@@ -16,10 +16,12 @@ final class DDayCoordinator: NSObject {
         super.init()
     }
     
-    func presentDDayRegister() {
+    func presentDDayRegister(dDay: DDayModel?) {
         guard let navigationController = self.navigationController else { return }
+        let repository = DDayRepositoryImpl()
+        let usecase = DDayUsecaseImpl(repository: repository)
         let coordinator = DDayRegisterCoordinator(navigationController: navigationController)
-        let viewModel = DDayRegisterViewModel(coordinator: coordinator)
+        let viewModel = DDayRegisterViewModel(usecase: usecase, coordinator: coordinator, dDay: dDay)
         let viewController = DDayRegisterViewController(viewModel: viewModel)
         
         navigationController.pushViewController(viewController, animated: true)

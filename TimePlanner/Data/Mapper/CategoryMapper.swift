@@ -10,7 +10,7 @@ import Foundation
 extension CategoryDTO {
     
     func toCategoryModel() -> CategoryModel {
-        return CategoryModel(
+        CategoryModel(
             id: self.id ?? UUID().uuidString,
             name: self.name,
             color: CategoryColor(self.color) ?? .red

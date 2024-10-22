@@ -67,6 +67,12 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
     init(viewModel: DDayRegisterViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        
+        if let dDay = self.viewModel.dDay {
+            self.titleTextField.text = dDay.name
+            self.datePicker.date = dDay.dDate
+            self.completeButton.isEnabled = true
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -158,7 +164,11 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
     
     func configureNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.title = "디데이 작성"
+        if let _ = self.viewModel.dDay {
+            self.title = "디데이 편집"
+        } else {
+            self.title = "디데이 작성"
+        }
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {

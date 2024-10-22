@@ -39,10 +39,12 @@ final class TabBarController: UITabBarController {
     
     private lazy var vc3: UINavigationController = {
         let navigationController = UINavigationController()
-        let dDayCoordinator = DDayCoordinator(navigationController: navigationController)
-        let dDayViewModel = DDayViewModel(coordinator: dDayCoordinator)
-        let dDayViewController = DDayViewController(viewModel: dDayViewModel)
-        navigationController.viewControllers = [dDayViewController]
+        let repository = DDayRepositoryImpl()
+        let usecase = DDayUsecaseImpl(repository: repository)
+        let coordinator = DDayCoordinator(navigationController: navigationController)
+        let viewModel = DDayViewModel(usecase: usecase, coordinator: coordinator)
+        let viewController = DDayViewController(viewModel: viewModel)
+        navigationController.viewControllers = [viewController]
         
         navigationController.tabBarItem.image = UIImage.Button.calendarClock.resize(to: CGSize(width: 20, height: 20))
         navigationController.tabBarItem.title = "디데이"

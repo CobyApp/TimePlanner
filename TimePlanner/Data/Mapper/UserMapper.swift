@@ -12,7 +12,7 @@ import FirebaseAuth
 extension FirebaseAuth.User {
     
     func toUserModel() -> UserModel {
-        return UserModel(
+        UserModel(
             id: self.uid,
             email: self.email ?? ""
         )

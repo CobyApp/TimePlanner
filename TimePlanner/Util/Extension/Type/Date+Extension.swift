@@ -24,4 +24,21 @@ extension Date {
         formatter.locale = Locale(identifier: "ko_KR")
         return formatter.string(from: self)
     }
+    
+    var dDay: String {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let targetDate = calendar.startOfDay(for: self)
+        let components = calendar.dateComponents([.day], from: today, to: targetDate)
+
+        guard let dayDifference = components.day else { return "D - Day" }
+
+        if dayDifference == 0 {
+            return "D - Day"
+        } else if dayDifference > 0 {
+            return "D - \(dayDifference)"
+        } else {
+            return "D + \(-dayDifference)"
+        }
+    }
 }

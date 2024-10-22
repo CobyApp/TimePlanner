@@ -104,5 +104,6 @@ extension DDayCollectionViewCell {
     func configure(_ dDay: DDayModel) {
         self.dDayTitleLabel.text = dDay.name
         self.dDayDateLabel.text = dDay.dDate.toFullString
+        self.dDayCountLabel.text = dDay.dDate.dDay
     }
 }

@@ -31,7 +31,9 @@ final class ToDoListView: UIView, BaseViewType {
     
     var categories: [CategoryModel] = [] {
         didSet {
-            self.listCollectionView.reloadData()
+            DispatchQueue.main.async { [weak self] in
+                self?.listCollectionView.reloadData()
+            }
         }
     }
 

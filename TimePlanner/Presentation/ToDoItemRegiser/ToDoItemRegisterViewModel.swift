@@ -1,5 +1,5 @@
 //
-//  ToDoItemRegiserViewModel.swift
+//  ToDoItemRegisterViewModel.swift
 //  TimePlanner
 //
 //  Created by Coby on 10/23/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ToDoItemRegiserViewModel {
+final class ToDoItemRegisterViewModel {
     
     private let usecase: ToDoUsecase
     private let coordinator: ToDoItemRegisterCoordinator?
@@ -32,11 +32,10 @@ final class ToDoItemRegiserViewModel {
     }
 }
 
-extension ToDoItemRegiserViewModel {
+extension ToDoItemRegisterViewModel {
     
     func registerToDoItem(
         title: String,
-        isChecked: Bool,
         date: Date
     ) {
         Task {
@@ -45,7 +44,6 @@ extension ToDoItemRegiserViewModel {
                     categoryId: self.categoryId,
                     item: ToDoItemModel(
                         title: title,
-                        isChecked: isChecked,
                         date: date
                     )
                 )
@@ -61,7 +59,6 @@ extension ToDoItemRegiserViewModel {
     
     func updateToDoItem(
         title: String,
-        isChecked: Bool,
         date: Date
     ) {
         guard let toDoItem = self.toDoItem else {
@@ -74,7 +71,7 @@ extension ToDoItemRegiserViewModel {
                 let updatedToDoItem = ToDoItemModel(
                     id: toDoItem.id,
                     title: title,
-                    isChecked: isChecked,
+                    isChecked: toDoItem.isChecked,
                     date: date
                 )
                 

@@ -207,6 +207,7 @@ final class ToDoRepositoryImpl: ToDoRepository {
                 .whereField("date", isLessThan: endOfDay)
                 .getDocuments()
             
+            // 필터링된 할 일 목록 생성, 없으면 빈 배열로 처리
             let filteredItems: [ToDoItemDTO] = toDoSnapshot.documents.compactMap { itemDoc in
                 let itemData = itemDoc.data()
                 guard let id = itemData["id"] as? String,

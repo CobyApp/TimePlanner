@@ -65,12 +65,12 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
         super.viewDidLoad()
         self.baseViewDidLoad()
         self.setupNavigation()
-        self.loadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.configureNavigationBar()
+        self.loadCategories(date: Date())
     }
     
     // MARK: - func
@@ -115,39 +115,13 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationController?.navigationBar.prefersLargeTitles = false
     }
-    
-    private func loadData() {
-        // 샘플 데이터 생성
-        let sampleItems1 = [
-            ToDoItemModel(title: "할 일 1", isChecked: false),
-            ToDoItemModel(title: "할 일 2", isChecked: false),
-            ToDoItemModel(title: "할 일 3", isChecked: false),
-            ToDoItemModel(title: "할 일 4", isChecked: false)
-        ]
-        
-        let sampleItems2 = [
-            ToDoItemModel(title: "할 일 1", isChecked: false),
-            ToDoItemModel(title: "할 일 2", isChecked: false)
-        ]
-        
-        let sampleItems3 = [
-            ToDoItemModel(title: "할 일 1", isChecked: false),
-            ToDoItemModel(title: "할 일 2", isChecked: false)
-        ]
-        
-        let sampleItems4 = [
-            ToDoItemModel(title: "할 일 1", isChecked: false),
-            ToDoItemModel(title: "할 일 2", isChecked: false)
-        ]
+}
 
-        let categories = [
-            CategoryModel(name: "공부", color: .blue, items: sampleItems1),
-            CategoryModel(name: "공부", color: .blue, items: sampleItems2),
-            CategoryModel(name: "공부", color: .blue, items: sampleItems3),
-            CategoryModel(name: "공부", color: .blue, items: sampleItems4)
-        ]
+extension MainViewController {
 
-        // categories 속성에 데이터 할당
-        todoListView.categories = categories
+    private func loadCategories(date: Date) {
+        self.viewModel.getCategoriesWithFilteredToDoItems(date: date) { [weak self] categories in
+            self?.todoListView.categories = categories
+        }
     }
 }

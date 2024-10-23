@@ -15,7 +15,7 @@ final class ToDoListItemCollectionViewCell: UICollectionViewCell, BaseViewType {
     // MARK: - UI Components
     private let checkBoxImageView = UIImageView(image: UIImage.Button.checkboxOff.resize(to: CGSize(width: 20, height: 20)).withTintColor(.labelNeutral))
     
-    let toDoContentLabel = UILabel().then {
+    private let toDoContentLabel = UILabel().then {
         $0.text = "할 일입니다."
         $0.font = .font(size: 16, weight: .regular)
         $0.textColor = .labelNeutral
@@ -82,5 +82,12 @@ final class ToDoListItemCollectionViewCell: UICollectionViewCell, BaseViewType {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.toDoContentLabel.sizeToFit() // 라벨의 크기를 내용에 맞게 조정
+    }
+}
+
+extension ToDoListItemCollectionViewCell {
+    func configure(_ toDoItem: ToDoItemModel) {
+        self.toDoContentLabel.text = toDoItem.title
+//        self.toDoContentLabel.checkBoxImageView.image = toDoItem.isChecked
     }
 }

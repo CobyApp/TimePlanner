@@ -11,10 +11,13 @@ final class TabBarController: UITabBarController {
     
     private lazy var vc1: UINavigationController = {
         let navigationController = UINavigationController()
-        let mainCoordinator = MainCoordinator(navigationController: navigationController)
-        let mainViewModel = MainViewModel(coordinator: mainCoordinator)
-        let mainViewController = MainViewController(viewModel: mainViewModel)
-        navigationController.viewControllers = [mainViewController]
+        
+        let repository = ToDoRepositoryImpl()
+        let usecase = ToDoUsecaseImpl(repository: repository)
+        let coordinator = MainCoordinator(navigationController: navigationController)
+        let viewModel = MainViewModel(usecase: usecase, coordinator: coordinator)
+        let viewController = MainViewController(viewModel: viewModel)
+        navigationController.viewControllers = [viewController]
         
         navigationController.tabBarItem.image = UIImage.Button.home.resize(to: CGSize(width: 20, height: 20))
         navigationController.tabBarItem.title = "할일"

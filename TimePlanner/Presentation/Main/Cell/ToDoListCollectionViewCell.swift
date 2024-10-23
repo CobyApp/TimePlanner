@@ -14,9 +14,7 @@ final class ToDoListCollectionViewCell: UICollectionViewCell, BaseViewType {
     
     // MARK: - UI Components
     
-    private lazy var categoryItemView: CategoryItemView = CategoryItemView().then {
-        $0.configure(CategoryModel(name: "공부 +", color: CategoryColor.red))
-    }
+    private let categoryItemView: CategoryItemView = CategoryItemView()
     
     private lazy var listCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.dataSource = self
@@ -33,7 +31,9 @@ final class ToDoListCollectionViewCell: UICollectionViewCell, BaseViewType {
     
     var toDoItems: [ToDoItemModel] = [] {
         didSet {
-            listCollectionView.reloadData()
+            DispatchQueue.main.async { [weak self] in
+                self?.listCollectionView.reloadData()
+            }
         }
     }
     
@@ -73,7 +73,7 @@ final class ToDoListCollectionViewCell: UICollectionViewCell, BaseViewType {
 extension ToDoListCollectionViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.toDoItems.count
+        self.toDoItems.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -85,7 +85,8 @@ extension ToDoListCollectionViewCell: UICollectionViewDataSource, UICollectionVi
         }
 
         let item = toDoItems[indexPath.item]
-        cell.toDoContentLabel.text = item.title // Set the title from the ToDoItem
+        
+        cell.configure(item)
 
         // 각 셀의 액션 핸들러 설정
         cell.checkTapAction = { [weak self] in
@@ -111,5 +112,12 @@ extension ToDoListCollectionViewCell: UICollectionViewDataSource, UICollectionVi
         let height = item.title.height(withConstrainedWidth: width, font: .font(size: 16, weight: .regular)) + 4 // Add padding
         
         return CGSize(width: SizeLiteral.fullWidth, height: height)
+    }
+}
+
+extension ToDoListCollectionViewCell {
+    func configure(_ category: CategoryModel) {
+        self.categoryItemView.configure(category)
+        self.toDoItems = category.items
     }
 }

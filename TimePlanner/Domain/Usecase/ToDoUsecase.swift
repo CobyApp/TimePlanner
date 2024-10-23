@@ -14,7 +14,7 @@ protocol ToDoUsecase {
     func getCategories() async throws -> [CategoryModel]
     func createToDoItem(categoryId: String, item: ToDoItemModel) async throws
     func updateToDoItem(categoryId: String, item: ToDoItemModel) async throws
-    func deleteToDoItem(categoryId: String, itemId: String)
+    func deleteToDoItem(categoryId: String, itemId: String) async throws
     func getToDoItems(categoryId: String) async throws -> [ToDoItemModel]
     func getCategoriesWithFilteredToDoItems(forDate date: Date) async throws -> [CategoryModel]
 }

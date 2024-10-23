@@ -33,6 +33,9 @@
 		CB3271FD2CBD012800E1C4D7 /* SignCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3271FC2CBD012800E1C4D7 /* SignCoordinator.swift */; };
 		CB3820432CC894C8003315F4 /* ToDoItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3820422CC894C8003315F4 /* ToDoItemDTO.swift */; };
 		CB3820452CC895E1003315F4 /* ToDoItemMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3820442CC895E1003315F4 /* ToDoItemMapper.swift */; };
+		CB3820482CC89E9E003315F4 /* ToDoItemRegiserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3820472CC89E9E003315F4 /* ToDoItemRegiserViewController.swift */; };
+		CB38204A2CC89EA6003315F4 /* ToDoItemRegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3820492CC89EA6003315F4 /* ToDoItemRegisterCoordinator.swift */; };
+		CB38204C2CC89EAA003315F4 /* ToDoItemRegiserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB38204B2CC89EAA003315F4 /* ToDoItemRegiserViewModel.swift */; };
 		CB3F697F2C9DAA5100635DBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3F697E2C9DAA5100635DBC /* AppDelegate.swift */; };
 		CB3F69812C9DAA5100635DBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3F69802C9DAA5100635DBC /* SceneDelegate.swift */; };
 		CB3F69882C9DAA5400635DBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3F69872C9DAA5400635DBC /* Assets.xcassets */; };
@@ -152,6 +155,9 @@
 		CB3271FC2CBD012800E1C4D7 /* SignCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignCoordinator.swift; sourceTree = "<group>"; };
 		CB3820422CC894C8003315F4 /* ToDoItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemDTO.swift; sourceTree = "<group>"; };
 		CB3820442CC895E1003315F4 /* ToDoItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemMapper.swift; sourceTree = "<group>"; };
+		CB3820472CC89E9E003315F4 /* ToDoItemRegiserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemRegiserViewController.swift; sourceTree = "<group>"; };
+		CB3820492CC89EA6003315F4 /* ToDoItemRegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemRegisterCoordinator.swift; sourceTree = "<group>"; };
+		CB38204B2CC89EAA003315F4 /* ToDoItemRegiserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemRegiserViewModel.swift; sourceTree = "<group>"; };
 		CB3F697B2C9DAA5100635DBC /* TimePlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimePlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3F697E2C9DAA5100635DBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB3F69802C9DAA5100635DBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -331,6 +337,16 @@
 			path = Sign;
 			sourceTree = "<group>";
 		};
+		CB3820462CC89E82003315F4 /* ToDoItemRegiser */ = {
+			isa = PBXGroup;
+			children = (
+				CB3820472CC89E9E003315F4 /* ToDoItemRegiserViewController.swift */,
+				CB38204B2CC89EAA003315F4 /* ToDoItemRegiserViewModel.swift */,
+				CB3820492CC89EA6003315F4 /* ToDoItemRegisterCoordinator.swift */,
+			);
+			path = ToDoItemRegiser;
+			sourceTree = "<group>";
+		};
 		CB3F69722C9DAA5100635DBC = {
 			isa = PBXGroup;
 			children = (
@@ -411,6 +427,7 @@
 				CB3271F02CBCFA2C00E1C4D7 /* Login */,
 				CB3271F72CBD010200E1C4D7 /* Sign */,
 				CBA20E562C9DB24600455DC4 /* Main */,
+				CB3820462CC89E82003315F4 /* ToDoItemRegiser */,
 				CBA0E6C22CB411D0000FF934 /* CategoryRegister */,
 				CB9590292CB05B4B00CEF73B /* CategoryManagement */,
 				CBAAEAB12CA284CF00844DB8 /* Note */,
@@ -907,6 +924,7 @@
 				CB9590362CB06BE800CEF73B /* NoteViewModel.swift in Sources */,
 				CBA20E5C2C9DB2DF00455DC4 /* BaseViewType.swift in Sources */,
 				CBAAEABC2CA2882B00844DB8 /* DDayViewController.swift in Sources */,
+				CB3820482CC89E9E003315F4 /* ToDoItemRegiserViewController.swift in Sources */,
 				CB5C97662CA4433A00E3F6C5 /* ToDoListItemCollectionViewCell.swift in Sources */,
 				CB26285D2CA02ACC00C98360 /* SizeLiteral.swift in Sources */,
 				CB9590342CB06BDB00CEF73B /* NoteCoordinator.swift in Sources */,
@@ -945,6 +963,8 @@
 				CB3271F42CBCFA4600E1C4D7 /* LoginViewModel.swift in Sources */,
 				CB95903C2CB06C4200CEF73B /* InfoCoordinator.swift in Sources */,
 				CBA0E6C42CB411F3000FF934 /* CategoryRegisterViewController.swift in Sources */,
+				CB38204A2CC89EA6003315F4 /* ToDoItemRegisterCoordinator.swift in Sources */,
+				CB38204C2CC89EAA003315F4 /* ToDoItemRegiserViewModel.swift in Sources */,
 				CB3271FB2CBD012400E1C4D7 /* SignViewModel.swift in Sources */,
 				CBA20E7B2C9DB66400455DC4 /* FontSet.swift in Sources */,
 				CBB9659C2CBE54FD006B7D8A /* Keyboardable.swift in Sources */,

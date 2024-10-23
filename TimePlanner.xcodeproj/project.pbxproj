@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CB1FB1F12CC0D97C00284BCB /* ToDoItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1FB1F02CC0D97C00284BCB /* ToDoItemModel.swift */; };
-		CB1FB1F32CC0DA9300284BCB /* ToDoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1FB1F22CC0DA9300284BCB /* ToDoModel.swift */; };
 		CB1FB1F52CC0E19E00284BCB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1FB1F42CC0E19E00284BCB /* String+Extension.swift */; };
 		CB1FB1F92CC2362D00284BCB /* CategoryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1FB1F82CC2362D00284BCB /* CategoryItemView.swift */; };
 		CB2628562CA024AB00C98360 /* BaseViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2628552CA024AB00C98360 /* BaseViewControllerType.swift */; };
@@ -32,6 +31,8 @@
 		CB3271F92CBD011600E1C4D7 /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3271F82CBD011600E1C4D7 /* SignViewController.swift */; };
 		CB3271FB2CBD012400E1C4D7 /* SignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3271FA2CBD012400E1C4D7 /* SignViewModel.swift */; };
 		CB3271FD2CBD012800E1C4D7 /* SignCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3271FC2CBD012800E1C4D7 /* SignCoordinator.swift */; };
+		CB3820432CC894C8003315F4 /* ToDoItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3820422CC894C8003315F4 /* ToDoItemDTO.swift */; };
+		CB3820452CC895E1003315F4 /* ToDoItemMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3820442CC895E1003315F4 /* ToDoItemMapper.swift */; };
 		CB3F697F2C9DAA5100635DBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3F697E2C9DAA5100635DBC /* AppDelegate.swift */; };
 		CB3F69812C9DAA5100635DBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3F69802C9DAA5100635DBC /* SceneDelegate.swift */; };
 		CB3F69882C9DAA5400635DBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3F69872C9DAA5400635DBC /* Assets.xcassets */; };
@@ -128,7 +129,6 @@
 
 /* Begin PBXFileReference section */
 		CB1FB1F02CC0D97C00284BCB /* ToDoItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemModel.swift; sourceTree = "<group>"; };
-		CB1FB1F22CC0DA9300284BCB /* ToDoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoModel.swift; sourceTree = "<group>"; };
 		CB1FB1F42CC0E19E00284BCB /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		CB1FB1F82CC2362D00284BCB /* CategoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemView.swift; sourceTree = "<group>"; };
 		CB2628552CA024AB00C98360 /* BaseViewControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerType.swift; sourceTree = "<group>"; };
@@ -150,6 +150,8 @@
 		CB3271F82CBD011600E1C4D7 /* SignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; };
 		CB3271FA2CBD012400E1C4D7 /* SignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewModel.swift; sourceTree = "<group>"; };
 		CB3271FC2CBD012800E1C4D7 /* SignCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignCoordinator.swift; sourceTree = "<group>"; };
+		CB3820422CC894C8003315F4 /* ToDoItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemDTO.swift; sourceTree = "<group>"; };
+		CB3820442CC895E1003315F4 /* ToDoItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemMapper.swift; sourceTree = "<group>"; };
 		CB3F697B2C9DAA5100635DBC /* TimePlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimePlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3F697E2C9DAA5100635DBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB3F69802C9DAA5100635DBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -293,7 +295,6 @@
 			children = (
 				CBB9658B2CBE30CA006B7D8A /* UserModel.swift */,
 				CB3271DE2CBCDF5300E1C4D7 /* CategoryModel.swift */,
-				CB1FB1F22CC0DA9300284BCB /* ToDoModel.swift */,
 				CB1FB1F02CC0D97C00284BCB /* ToDoItemModel.swift */,
 				CB3271E42CBCEAD800E1C4D7 /* NoteModel.swift */,
 				CB3271E22CBCEA9800E1C4D7 /* DDayModel.swift */,
@@ -689,6 +690,7 @@
 			children = (
 				CBBF9E072CBF615D00EAEEBB /* UserDTO.swift */,
 				CBBF9E052CBF610F00EAEEBB /* CategoryDTO.swift */,
+				CB3820422CC894C8003315F4 /* ToDoItemDTO.swift */,
 				CBE2552E2CC630EB0099C301 /* NoteDTO.swift */,
 				CB75CA602CC768E90017BE4C /* DDayDTO.swift */,
 			);
@@ -711,6 +713,7 @@
 			children = (
 				CBB9658E2CBE3167006B7D8A /* UserMapper.swift */,
 				CBBF9E092CBF622A00EAEEBB /* CategoryMapper.swift */,
+				CB3820442CC895E1003315F4 /* ToDoItemMapper.swift */,
 				CBE255362CC633360099C301 /* NoteMapper.swift */,
 				CB75CA6A2CC76A810017BE4C /* DDayMapper.swift */,
 			);
@@ -892,7 +895,6 @@
 				CBA20E802C9DB6EF00455DC4 /* Palette.swift in Sources */,
 				CBA0E6DB2CB41989000FF934 /* SettingViewModel.swift in Sources */,
 				CBA20E742C9DB52C00455DC4 /* String+DateFormatter.swift in Sources */,
-				CB1FB1F32CC0DA9300284BCB /* ToDoModel.swift in Sources */,
 				CBBF9E022CBF5FA400EAEEBB /* ToDoRepository.swift in Sources */,
 				CBAAEAB62CA285F000844DB8 /* PlusButton.swift in Sources */,
 				CB2628642CA033EF00C98360 /* CalendarView.swift in Sources */,
@@ -911,11 +913,13 @@
 				CBAAEAC32CA28A4700844DB8 /* DDayCollectionViewCell.swift in Sources */,
 				CBA0E6DD2CB41991000FF934 /* SettingCoordinator.swift in Sources */,
 				CBA0E6CD2CB413BF000FF934 /* NoteRegisterViewModel.swift in Sources */,
+				CB3820452CC895E1003315F4 /* ToDoItemMapper.swift in Sources */,
 				CBA0E6C82CB41201000FF934 /* CategoryRegisterViewModel.swift in Sources */,
 				CBE2552F2CC630EB0099C301 /* NoteDTO.swift in Sources */,
 				CB75CA672CC769C10017BE4C /* DDayUsecase.swift in Sources */,
 				CBB965962CBE4C2E006B7D8A /* SettingItemTableViewCell.swift in Sources */,
 				CBE2552A2CC615C60099C301 /* CategoryListView.swift in Sources */,
+				CB3820432CC894C8003315F4 /* ToDoItemDTO.swift in Sources */,
 				CB1FB1F92CC2362D00284BCB /* CategoryItemView.swift in Sources */,
 				CBA20E842C9DB6FD00455DC4 /* Semantic.swift in Sources */,
 				CBE255312CC631FB0099C301 /* NoteRepositoryImpl.swift in Sources */,

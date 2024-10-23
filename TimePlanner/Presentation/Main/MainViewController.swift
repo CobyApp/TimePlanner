@@ -141,10 +141,10 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
         ]
 
         let categories = [
-            ToDoModel(category: CategoryModel(name: "카테고리 1", color: .red), items: sampleItems1),
-            ToDoModel(category: CategoryModel(name: "카테고리 2", color: .blue), items: sampleItems2),
-            ToDoModel(category: CategoryModel(name: "카테고리 3", color: .green), items: sampleItems3),
-            ToDoModel(category: CategoryModel(name: "카테고리 4", color: .orange), items: sampleItems4)
+            CategoryModel(name: "공부", color: .blue, items: sampleItems1),
+            CategoryModel(name: "공부", color: .blue, items: sampleItems2),
+            CategoryModel(name: "공부", color: .blue, items: sampleItems3),
+            CategoryModel(name: "공부", color: .blue, items: sampleItems4)
         ]
 
         // categories 속성에 데이터 할당

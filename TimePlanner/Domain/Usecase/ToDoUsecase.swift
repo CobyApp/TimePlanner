@@ -12,10 +12,15 @@ protocol ToDoUsecase {
     func updateCategory(category: CategoryModel) async throws
     func deleteCategory(categoryId: String) async throws
     func getCategories() async throws -> [CategoryModel]
+    func createToDoItem(categoryId: String, item: ToDoItemModel) async throws
+    func updateToDoItem(categoryId: String, item: ToDoItemModel) async throws
+    func deleteToDoItem(categoryId: String, itemId: String)
+    func getToDoItems(categoryId: String) async throws -> [ToDoItemModel]
+    func getCategoriesWithFilteredToDoItems(forDate date: Date) async throws -> [CategoryModel]
 }
 
 final class ToDoUsecaseImpl: ToDoUsecase {
-       
+    
     // MARK: - property
     
     private let repository: ToDoRepository
@@ -55,6 +60,48 @@ final class ToDoUsecaseImpl: ToDoUsecase {
     func getCategories() async throws -> [CategoryModel] {
         do {
             let categories = try await self.repository.getCategories().map { $0.toCategoryModel() }
+            return categories
+        } catch(let error) {
+            throw error
+        }
+    }
+    
+    func createToDoItem(categoryId: String, item: ToDoItemModel) async throws {
+        do {
+            try await self.repository.createToDoItem(categoryId: categoryId, item: item)
+        } catch(let error) {
+            throw error
+        }
+    }
+    
+    func updateToDoItem(categoryId: String, item: ToDoItemModel) async throws {
+        do {
+            try await self.repository.updateToDoItem(categoryId: categoryId, item: item)
+        } catch(let error) {
+            throw error
+        }
+    }
+    
+    func deleteToDoItem(categoryId: String, itemId: String) async throws {
+        do {
+            try await self.repository.deleteToDoItem(categoryId: categoryId, itemId: itemId)
+        } catch(let error) {
+            throw error
+        }
+    }
+    
+    func getToDoItems(categoryId: String) async throws -> [ToDoItemModel] {
+        do {
+            let toDoItems = try await self.repository.getToDoItems(categoryId: categoryId).map { $0.toToDoItemModel() }
+            return toDoItems
+        } catch(let error) {
+            throw error
+        }
+    }
+    
+    func getCategoriesWithFilteredToDoItems(forDate date: Date) async throws -> [CategoryModel] {
+        do {
+            let categories = try await self.repository.getCategoriesWithFilteredToDoItems(forDate: date).map { $0.toCategoryModel() }
             return categories
         } catch(let error) {
             throw error

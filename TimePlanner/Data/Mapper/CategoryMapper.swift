@@ -13,7 +13,8 @@ extension CategoryDTO {
         CategoryModel(
             id: self.id ?? UUID().uuidString,
             name: self.name,
-            color: CategoryColor(self.color) ?? .red
+            color: CategoryColor(self.color) ?? .red,
+            items: self.items.map { $0.toToDoItemModel() }
         )
     }
 }

@@ -12,4 +12,9 @@ protocol ToDoRepository {
     func updateCategory(category: CategoryModel) async throws
     func deleteCategory(categoryId: String) async throws
     func getCategories() async throws -> [CategoryDTO]
+    func createToDoItem(categoryId: String, item: ToDoItemModel) async throws
+    func updateToDoItem(categoryId: String, item: ToDoItemModel) async throws
+    func deleteToDoItem(categoryId: String, itemId: String) async throws
+    func getToDoItems(categoryId: String) async throws -> [ToDoItemDTO]
+    func getCategoriesWithFilteredToDoItems(forDate date: Date) async throws -> [CategoryDTO]
 }

@@ -13,4 +13,5 @@ struct CategoryDTO: Codable, Identifiable, Equatable, Hashable {
     
     let name: String
     let color: String
+    let items: [ToDoItemDTO]
 }

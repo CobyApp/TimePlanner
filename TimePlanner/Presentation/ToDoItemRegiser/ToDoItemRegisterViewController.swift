@@ -22,7 +22,7 @@ final class ToDoItemRegisterViewController: UIViewController, BaseViewController
     private let contentView = UIView()
     
     private let titleLabel = UILabel().then {
-        $0.text = "제목"
+        $0.text = "내용"
         $0.font = .systemFont(ofSize: 18, weight: .medium)
         $0.textColor = .label
     }
@@ -35,7 +35,7 @@ final class ToDoItemRegisterViewController: UIViewController, BaseViewController
     }
     
     private let dateLabel = UILabel().then {
-        $0.text = "날짜"
+        $0.text = "시각"
         $0.font = .systemFont(ofSize: 18, weight: .medium)
         $0.textColor = .label
     }

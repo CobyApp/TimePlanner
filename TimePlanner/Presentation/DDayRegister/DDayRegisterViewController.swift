@@ -22,7 +22,7 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
     private let contentView = UIView()
     
     private let titleLabel = UILabel().then {
-        $0.text = "제목"
+        $0.text = "내용"
         $0.font = .systemFont(ofSize: 18, weight: .medium)
         $0.textColor = .label
     }

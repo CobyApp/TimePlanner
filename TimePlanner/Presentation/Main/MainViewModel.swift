@@ -27,13 +27,7 @@ final class MainViewModel {
     func presentCategoryManagement() {
         self.coordinator?.presentCategoryManagement()
     }
-    
-    // 추가 모드로 전환
-    func presentToDoItemRegister(categoryId: String) {
-        self.coordinator?.presentToDoItemRegister(categoryId: categoryId)
-    }
 
-    // 편집 모드로 전환
     func presentToDoItemRegister(categoryId: String, toDoItem: ToDoItemModel) {
         self.coordinator?.presentToDoItemRegister(categoryId: categoryId, toDoItem: toDoItem)
     }

@@ -41,7 +41,7 @@ final class ToDoItemRegisterViewController: UIViewController, BaseViewController
     }
     
     private let datePicker = UIDatePicker().then {
-        $0.datePickerMode = .date
+        $0.datePickerMode = .time
         $0.preferredDatePickerStyle = .wheels
         $0.locale = Locale(identifier: "ko_KR") // 한국어로 설정
         $0.timeZone = .current
@@ -50,7 +50,7 @@ final class ToDoItemRegisterViewController: UIViewController, BaseViewController
     private lazy var completeButton = CompleteButton().then {
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
-            if let _ = self.viewModel.toDoItem {
+            if self.viewModel.toDoItem.title != "" {
                 self.viewModel.updateToDoItem(
                     title: self.titleTextField.text ?? "",
                     date: self.datePicker.date
@@ -76,11 +76,8 @@ final class ToDoItemRegisterViewController: UIViewController, BaseViewController
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         
-        if let toDoItem = self.viewModel.toDoItem {
-            self.titleTextField.text = toDoItem.title
-            self.datePicker.date = toDoItem.date
-            self.completeButton.isEnabled = true
-        }
+        self.titleTextField.text = self.viewModel.toDoItem.title
+        self.datePicker.date = self.viewModel.toDoItem.date
     }
     
     required init?(coder: NSCoder) {

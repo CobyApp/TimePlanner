@@ -77,6 +77,11 @@ extension CategoryItemView {
         self.label.text = category.name
     }
     
+    func configurePlus(_ category: CategoryModel) {
+        self.colorView.backgroundColor = category.color.color
+        self.label.text = category.name + " +"
+    }
+    
     @objc private func didTap() {
         self.createToDoItemTapAction?()
     }

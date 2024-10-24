@@ -32,7 +32,8 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
     
     private lazy var todoListView = ToDoListView().then {
         $0.createToDoItemTapAction = { [weak self] category in
-            self?.viewModel.presentToDoItemRegister(categoryId: category.id)
+            let item = ToDoItemModel(title: "", date: self?.selectedDate ?? Date())
+            self?.viewModel.presentToDoItemRegister(categoryId: category.id, toDoItem: item)
         }
         $0.checkTapAction = { [weak self] category, item in
             self?.viewModel.updateToDoItemCheckedStatus(

@@ -13,13 +13,13 @@ final class ToDoItemRegisterViewModel {
     private let coordinator: ToDoItemRegisterCoordinator?
     
     var categoryId: String
-    var toDoItem: ToDoItemModel?
+    var toDoItem: ToDoItemModel
     
     init(
         usecase: ToDoUsecase,
         coordinator: ToDoItemRegisterCoordinator?,
         categoryId: String,
-        toDoItem: ToDoItemModel? = nil
+        toDoItem: ToDoItemModel
     ) {
         self.usecase = usecase
         self.coordinator = coordinator
@@ -61,17 +61,12 @@ extension ToDoItemRegisterViewModel {
         title: String,
         date: Date
     ) {
-        guard let toDoItem = self.toDoItem else {
-            print("ToDoItem is not set for update.")
-            return
-        }
-        
         Task {
             do {
                 let updatedToDoItem = ToDoItemModel(
-                    id: toDoItem.id,
+                    id: self.toDoItem.id,
                     title: title,
-                    isChecked: toDoItem.isChecked,
+                    isChecked: self.toDoItem.isChecked,
                     date: date
                 )
                 

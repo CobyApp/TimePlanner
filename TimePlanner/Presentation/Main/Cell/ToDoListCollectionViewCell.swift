@@ -119,7 +119,7 @@ extension ToDoListCollectionViewCell: UICollectionViewDataSource, UICollectionVi
 
 extension ToDoListCollectionViewCell {
     func configure(_ category: CategoryModel) {
-        self.categoryItemView.configure(category)
+        self.categoryItemView.configurePlus(category)
         self.categoryItemView.createToDoItemTapAction = { [weak self] in
             self?.createToDoItemTapAction?(category)
         }

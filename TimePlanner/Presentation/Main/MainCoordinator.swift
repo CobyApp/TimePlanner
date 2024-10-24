@@ -38,17 +38,6 @@ final class MainCoordinator: NSObject {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func presentToDoItemRegister(categoryId: String) {
-        guard let navigationController = self.navigationController else { return }
-        let repository = ToDoRepositoryImpl()
-        let usecase = ToDoUsecaseImpl(repository: repository)
-        let coordinator = ToDoItemRegisterCoordinator(navigationController: navigationController)
-        let viewModel = ToDoItemRegisterViewModel(usecase: usecase, coordinator: coordinator, categoryId: categoryId)
-        let viewController = ToDoItemRegisterViewController(viewModel: viewModel)
-        
-        navigationController.pushViewController(viewController, animated: true)
-    }
-    
     func presentToDoItemRegister(categoryId: String, toDoItem: ToDoItemModel) {
         guard let navigationController = self.navigationController else { return }
         let repository = ToDoRepositoryImpl()

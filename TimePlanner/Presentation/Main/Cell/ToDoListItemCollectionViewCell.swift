@@ -106,6 +106,14 @@ extension ToDoListItemCollectionViewCell {
         let checkBoxImage = toDoItem.isChecked ? UIImage.Button.checkboxOn.resize(to: CGSize(width: 20, height: 20)) : UIImage.Button.checkboxOff.resize(to: CGSize(width: 20, height: 20))
         self.checkBoxImageView.image = checkBoxImage
         self.checkBoxImageView.tintColor = .labelNeutral
-        self.toDoContentLabel.text = toDoItem.title
+        
+        if toDoItem.isChecked {
+            let attributedString = NSMutableAttributedString(string: toDoItem.title)
+            attributedString.addAttribute(.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: attributedString.length))
+            self.toDoContentLabel.attributedText = attributedString
+        } else {
+            self.toDoContentLabel.attributedText = nil
+            self.toDoContentLabel.text = toDoItem.title
+        }
     }
 }

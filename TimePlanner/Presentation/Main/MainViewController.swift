@@ -66,15 +66,17 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
         self.baseViewDidLoad()
         self.setupNavigation()
         
-        // 날짜가 선택될 때마다 loadCategories 호출
-        self.calendarView.onDateSelected = { [weak self] selectedDate in
-            self?.loadCategories(date: selectedDate)
-        }
+        self.loadCategories(date: Date())
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.configureNavigationBar()
+        
+        // 날짜가 선택될 때마다 loadCategories 호출
+        self.calendarView.onDateSelected = { [weak self] selectedDate in
+            self?.loadCategories(date: selectedDate)
+        }
     }
     
     // MARK: - func

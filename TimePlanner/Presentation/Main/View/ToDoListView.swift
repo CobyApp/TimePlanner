@@ -33,7 +33,7 @@ final class ToDoListView: UIView, BaseViewType {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 self?.listCollectionView.reloadData()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self?.listCollectionView.performBatchUpdates(nil) { _ in
                     self?.invalidateIntrinsicContentSize()
                 }
             }

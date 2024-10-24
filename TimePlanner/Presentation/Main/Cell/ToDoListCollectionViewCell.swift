@@ -84,7 +84,7 @@ extension ToDoListCollectionViewCell: UICollectionViewDataSource, UICollectionVi
             return UICollectionViewCell()
         }
 
-        let item = toDoItems[indexPath.item]
+        let item = self.toDoItems[indexPath.item]
         
         cell.configure(item)
 
@@ -105,7 +105,7 @@ extension ToDoListCollectionViewCell: UICollectionViewDataSource, UICollectionVi
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let item = toDoItems[indexPath.item]
+        let item = self.toDoItems[indexPath.item]
         
         // Dynamically calculate height based on text
         let width = SizeLiteral.fullWidth - 56 // Adjust for padding

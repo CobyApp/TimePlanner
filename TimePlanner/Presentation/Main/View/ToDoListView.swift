@@ -33,6 +33,7 @@ final class ToDoListView: UIView, BaseViewType {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 self?.listCollectionView.reloadData()
+                self?.invalidateIntrinsicContentSize()
             }
         }
     }
@@ -71,7 +72,7 @@ final class ToDoListView: UIView, BaseViewType {
 extension ToDoListView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.count
+        self.categories.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -82,8 +83,9 @@ extension ToDoListView: UICollectionViewDataSource, UICollectionViewDelegate, UI
             return UICollectionViewCell()
         }
 
-        let category = categories[indexPath.item]
-        cell.toDoItems = category.items
+        let category = self.categories[indexPath.item]
+        
+        cell.configure(category)
         
         // 각 셀의 액션 핸들러 설정
         cell.checkTapAction = { [weak self] in
@@ -102,7 +104,7 @@ extension ToDoListView: UICollectionViewDataSource, UICollectionViewDelegate, UI
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let category = categories[indexPath.item]
+        let category = self.categories[indexPath.item]
         
         // ToDo 항목의 수에 따라 동적 높이를 계산
         let totalHeight = category.items.reduce(40) { (result, item) in

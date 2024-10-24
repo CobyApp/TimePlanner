@@ -40,6 +40,7 @@ final class ToDoListView: UIView, BaseViewType {
         }
     }
 
+    var createToDoItemTapAction: ((CategoryModel) -> Void)?
     var checkTapAction: (() -> Void)?
     var editTapAction: (() -> Void)?
     var deleteTapAction: (() -> Void)?
@@ -90,6 +91,10 @@ extension ToDoListView: UICollectionViewDataSource, UICollectionViewDelegate, UI
         cell.configure(category)
         
         // 각 셀의 액션 핸들러 설정
+        cell.createToDoItemTapAction = { [weak self] category in
+            self?.createToDoItemTapAction?(category)
+        }
+        
         cell.checkTapAction = { [weak self] in
             self?.checkTapAction?()
         }

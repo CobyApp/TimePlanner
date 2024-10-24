@@ -26,11 +26,16 @@ final class CategoryItemView: UIButton, BaseViewType {
         $0.textAlignment = .left
     }
     
+    // MARK: - Properties
+    
+    var createToDoItemTapAction: (() -> Void)?
+    
     // MARK: - init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.baseInit()
+        self.addTarget(self, action: #selector(self.didTap), for: .touchUpInside)
     }
     
     @available(*, unavailable)
@@ -70,5 +75,9 @@ extension CategoryItemView {
     func configure(_ category: CategoryModel) {
         self.colorView.backgroundColor = category.color.color
         self.label.text = category.name
+    }
+    
+    @objc private func didTap() {
+        self.createToDoItemTapAction?()
     }
 }

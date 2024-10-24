@@ -25,6 +25,8 @@ final class ToDoListCollectionViewCell: UICollectionViewCell, BaseViewType {
     }
     
     // MARK: - Properties
+    
+    var createToDoItemTapAction: ((CategoryModel) -> Void)?
     var checkTapAction: (() -> Void)?
     var editTapAction: (() -> Void)?
     var deleteTapAction: (() -> Void)?
@@ -118,6 +120,9 @@ extension ToDoListCollectionViewCell: UICollectionViewDataSource, UICollectionVi
 extension ToDoListCollectionViewCell {
     func configure(_ category: CategoryModel) {
         self.categoryItemView.configure(category)
+        self.categoryItemView.createToDoItemTapAction = { [weak self] in
+            self?.createToDoItemTapAction?(category)
+        }
         self.toDoItems = category.items
     }
 }

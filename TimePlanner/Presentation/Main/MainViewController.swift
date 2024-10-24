@@ -31,6 +31,9 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
     private let calendarView = CalendarView()
     
     private lazy var todoListView = ToDoListView().then {
+        $0.createToDoItemTapAction = { [weak self] category in
+            self?.viewModel.presentToDoItemRegister(categoryId: category.id)
+        }
         $0.checkTapAction = { [weak self] in
             print("투두 체크 버튼 클릭")
         }
@@ -50,6 +53,8 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
     
     private let viewModel: MainViewModel
     
+    private var selectedDate: Date?
+    
     // MARK: - life cycle
     
     init(viewModel: MainViewModel) {
@@ -65,8 +70,6 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
         super.viewDidLoad()
         self.baseViewDidLoad()
         self.setupNavigation()
-        
-        self.loadCategories(date: Date())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,8 +78,11 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
         
         // 날짜가 선택될 때마다 loadCategories 호출
         self.calendarView.onDateSelected = { [weak self] selectedDate in
+            self?.selectedDate = selectedDate
             self?.loadCategories(date: selectedDate)
         }
+        
+        self.loadCategories(date: self.selectedDate ?? Date())
     }
     
     // MARK: - func

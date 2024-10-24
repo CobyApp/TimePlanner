@@ -13,7 +13,7 @@ import Then
 final class ToDoListItemCollectionViewCell: UICollectionViewCell, BaseViewType {
     
     // MARK: - UI Components
-    private let checkBoxImageView = UIImageView(image: UIImage.Button.checkboxOff.resize(to: CGSize(width: 20, height: 20)).withTintColor(.labelNeutral))
+    private let checkBoxImageView = UIImageView()
     
     private let toDoContentLabel = UILabel().then {
         $0.text = "할 일입니다."
@@ -87,7 +87,9 @@ final class ToDoListItemCollectionViewCell: UICollectionViewCell, BaseViewType {
 
 extension ToDoListItemCollectionViewCell {
     func configure(_ toDoItem: ToDoItemModel) {
+        let checkBoxImage = toDoItem.isChecked ? UIImage.Button.checkboxOn.resize(to: CGSize(width: 20, height: 20)) : UIImage.Button.checkboxOff.resize(to: CGSize(width: 20, height: 20))
+        self.checkBoxImageView.image = checkBoxImage
+        self.checkBoxImageView.tintColor = .labelNeutral
         self.toDoContentLabel.text = toDoItem.title
-//        self.toDoContentLabel.checkBoxImageView.image = toDoItem.isChecked
     }
 }

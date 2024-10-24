@@ -55,4 +55,20 @@ extension MainViewModel {
             }
         }
     }
+    
+    func deleteToDoItem(
+        categoryId: String,
+        toDoItemId: String,
+        completion: @escaping () -> Void
+    ) {
+        Task {
+            do {
+                try await self.usecase.deleteToDoItem(categoryId: categoryId, itemId: toDoItemId)
+                completion()
+            } catch(let error) {
+                print(error)
+                completion()
+            }
+        }
+    }
 }

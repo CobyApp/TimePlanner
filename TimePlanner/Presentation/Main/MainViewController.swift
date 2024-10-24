@@ -34,14 +34,14 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
         $0.createToDoItemTapAction = { [weak self] category in
             self?.viewModel.presentToDoItemRegister(categoryId: category.id)
         }
-        $0.checkTapAction = { [weak self] in
+        $0.checkTapAction = { [weak self] category, item in
             print("투두 체크 버튼 클릭")
         }
-        $0.editTapAction = { [weak self] in
-            print("투두 수정 버튼 클릭")
+        $0.editTapAction = { [weak self] category, item in
+            self?.viewModel.presentToDoItemRegister(categoryId: category.id, toDoItem: item)
         }
-        $0.deleteTapAction = { [weak self] in
-            print("투두 삭제 버튼 클릭")
+        $0.deleteTapAction = { [weak self] category, item in
+            self?.confirmDeletion(categoryId: category.id, toDoItemId: item.id)
         }
     }
     
@@ -70,17 +70,16 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
         super.viewDidLoad()
         self.baseViewDidLoad()
         self.setupNavigation()
+        
+        self.calendarView.onDateSelected = { [weak self] selectedDate in
+            self?.selectedDate = selectedDate
+            self?.loadCategories(date: selectedDate)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.configureNavigationBar()
-        
-        // 날짜가 선택될 때마다 loadCategories 호출
-        self.calendarView.onDateSelected = { [weak self] selectedDate in
-            self?.selectedDate = selectedDate
-            self?.loadCategories(date: selectedDate)
-        }
         
         self.loadCategories(date: self.selectedDate ?? Date())
     }
@@ -126,6 +125,19 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
         self.navigationItem.leftBarButtonItem = titleLogo
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    private func confirmDeletion(categoryId: String, toDoItemId: String) {
+        let alertController = UIAlertController(title: "삭제 확인", message: "이 할일을 삭제하시겠습니까?", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { [weak self] _ in
+            self?.viewModel.deleteToDoItem(categoryId: categoryId, toDoItemId: toDoItemId) {
+                self?.loadCategories(date: self?.selectedDate ?? Date())
+            }
+        }))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 

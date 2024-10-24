@@ -27,9 +27,9 @@ final class ToDoListCollectionViewCell: UICollectionViewCell, BaseViewType {
     // MARK: - Properties
     
     var createToDoItemTapAction: ((CategoryModel) -> Void)?
-    var checkTapAction: (() -> Void)?
-    var editTapAction: (() -> Void)?
-    var deleteTapAction: (() -> Void)?
+    var checkTapAction: ((ToDoItemModel) -> Void)?
+    var editTapAction: ((ToDoItemModel) -> Void)?
+    var deleteTapAction: ((ToDoItemModel) -> Void)?
     
     var toDoItems: [ToDoItemModel] = [] {
         didSet {
@@ -92,15 +92,15 @@ extension ToDoListCollectionViewCell: UICollectionViewDataSource, UICollectionVi
 
         // 각 셀의 액션 핸들러 설정
         cell.checkTapAction = { [weak self] in
-            self?.checkTapAction?()
+            self?.checkTapAction?(item)
         }
 
         cell.editTapAction = { [weak self] in
-            self?.editTapAction?()
+            self?.editTapAction?(item)
         }
 
         cell.deleteTapAction = { [weak self] in
-            self?.deleteTapAction?()
+            self?.deleteTapAction?(item)
         }
 
         return cell

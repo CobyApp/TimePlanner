@@ -11,7 +11,7 @@ struct ToDoItemModel: Identifiable, Hashable, Equatable {
     
     let id: String
     let title: String
-    var isChecked: Bool
+    let isChecked: Bool
     let date: Date
     
     init(

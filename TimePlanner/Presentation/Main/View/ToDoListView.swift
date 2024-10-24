@@ -13,9 +13,7 @@ import Then
 final class ToDoListView: UIView, BaseViewType {
 
     override var intrinsicContentSize: CGSize {
-        self.listCollectionView.layoutIfNeeded()
-        let contentHeight = self.listCollectionView.contentSize.height
-        return CGSize(width: UIView.noIntrinsicMetric, height: contentHeight)
+        CGSize(width: UIView.noIntrinsicMetric, height: listCollectionView.contentSize.height)
     }
 
     // MARK: - UI Components
@@ -41,9 +39,9 @@ final class ToDoListView: UIView, BaseViewType {
     }
 
     var createToDoItemTapAction: ((CategoryModel) -> Void)?
-    var checkTapAction: (() -> Void)?
-    var editTapAction: (() -> Void)?
-    var deleteTapAction: (() -> Void)?
+    var checkTapAction: ((CategoryModel, ToDoItemModel) -> Void)?
+    var editTapAction: ((CategoryModel, ToDoItemModel) -> Void)?
+    var deleteTapAction: ((CategoryModel, ToDoItemModel) -> Void)?
 
     // MARK: - Init
     override init(frame: CGRect) {
@@ -95,16 +93,16 @@ extension ToDoListView: UICollectionViewDataSource, UICollectionViewDelegate, UI
             self?.createToDoItemTapAction?(category)
         }
         
-        cell.checkTapAction = { [weak self] in
-            self?.checkTapAction?()
+        cell.checkTapAction = { [weak self] item in
+            self?.checkTapAction?(category, item)
         }
 
-        cell.editTapAction = { [weak self] in
-            self?.editTapAction?()
+        cell.editTapAction = { [weak self] item in
+            self?.editTapAction?(category, item)
         }
 
-        cell.deleteTapAction = { [weak self] in
-            self?.deleteTapAction?()
+        cell.deleteTapAction = { [weak self] item in
+            self?.deleteTapAction?(category, item)
         }
 
         return cell

@@ -17,4 +17,5 @@ protocol ToDoRepository {
     func deleteToDoItem(categoryId: String, itemId: String) async throws
     func getToDoItems(categoryId: String) async throws -> [ToDoItemDTO]
     func getCategoriesWithFilteredToDoItems(forDate date: Date) async throws -> [CategoryDTO]
+    func updateToDoItemCheckedStatus(categoryId: String, itemId: String, isChecked: Bool) async throws
 }

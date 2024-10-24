@@ -225,4 +225,23 @@ final class ToDoRepositoryImpl: ToDoRepository {
         
         return categories
     }
+    
+    // 할 일 체크 상태 업데이트
+    func updateToDoItemCheckedStatus(categoryId: String, itemId: String, isChecked: Bool) async throws {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            throw NSError(domain: "No user logged in", code: 401, userInfo: nil)
+        }
+        
+        let updateData: [String: Any] = [
+            "isChecked": isChecked
+        ]
+        
+        try await self.db.collection("users")
+            .document(userId)
+            .collection("categories")
+            .document(categoryId)
+            .collection("items")
+            .document(itemId)
+            .updateData(updateData)
+    }
 }

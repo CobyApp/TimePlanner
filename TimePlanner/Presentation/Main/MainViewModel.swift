@@ -71,4 +71,21 @@ extension MainViewModel {
             }
         }
     }
+    
+    func updateToDoItemCheckedStatus(
+        categoryId: String,
+        itemId: String,
+        isChecked: Bool,
+        completion: @escaping () -> Void
+    ) {
+        Task {
+            do {
+                try await self.usecase.updateToDoItemCheckedStatus(categoryId: categoryId, itemId: itemId, isChecked: isChecked)
+                completion()
+            } catch(let error) {
+                print(error)
+                completion()
+            }
+        }
+    }
 }

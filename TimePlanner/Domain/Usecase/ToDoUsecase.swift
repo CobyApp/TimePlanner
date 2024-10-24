@@ -17,6 +17,7 @@ protocol ToDoUsecase {
     func deleteToDoItem(categoryId: String, itemId: String) async throws
     func getToDoItems(categoryId: String) async throws -> [ToDoItemModel]
     func getCategoriesWithFilteredToDoItems(forDate date: Date) async throws -> [CategoryModel]
+    func updateToDoItemCheckedStatus(categoryId: String, itemId: String, isChecked: Bool) async throws
 }
 
 final class ToDoUsecaseImpl: ToDoUsecase {
@@ -103,6 +104,14 @@ final class ToDoUsecaseImpl: ToDoUsecase {
         do {
             let categories = try await self.repository.getCategoriesWithFilteredToDoItems(forDate: date).map { $0.toCategoryModel() }
             return categories
+        } catch(let error) {
+            throw error
+        }
+    }
+    
+    func updateToDoItemCheckedStatus(categoryId: String, itemId: String, isChecked: Bool) async throws {
+        do {
+            try await self.repository.updateToDoItemCheckedStatus(categoryId: categoryId, itemId: itemId, isChecked: isChecked)
         } catch(let error) {
             throw error
         }

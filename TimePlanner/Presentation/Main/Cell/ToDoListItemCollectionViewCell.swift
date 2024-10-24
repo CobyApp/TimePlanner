@@ -43,6 +43,7 @@ final class ToDoListItemCollectionViewCell: UICollectionViewCell, BaseViewType {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.baseInit()
+        self.setupGestureRecognizers()
     }
     
     @available(*, unavailable)
@@ -82,6 +83,21 @@ final class ToDoListItemCollectionViewCell: UICollectionViewCell, BaseViewType {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.toDoContentLabel.sizeToFit() // 라벨의 크기를 내용에 맞게 조정
+    }
+    
+    // MARK: - Gesture Recognizers
+    private func setupGestureRecognizers() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleCheckTap))
+        self.checkBoxImageView.isUserInteractionEnabled = true
+        self.checkBoxImageView.addGestureRecognizer(tapGesture)
+        
+        let labelTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleCheckTap))
+        self.toDoContentLabel.isUserInteractionEnabled = true
+        self.toDoContentLabel.addGestureRecognizer(labelTapGesture)
+    }
+
+    @objc private func handleCheckTap() {
+        self.checkTapAction?()
     }
 }
 

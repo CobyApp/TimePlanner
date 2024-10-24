@@ -35,7 +35,13 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
             self?.viewModel.presentToDoItemRegister(categoryId: category.id)
         }
         $0.checkTapAction = { [weak self] category, item in
-            print("투두 체크 버튼 클릭")
+            self?.viewModel.updateToDoItemCheckedStatus(
+                categoryId: category.id,
+                itemId: item.id,
+                isChecked: !item.isChecked
+            ) {
+                self?.loadCategories(date: self?.selectedDate ?? Date())
+            }
         }
         $0.editTapAction = { [weak self] category, item in
             self?.viewModel.presentToDoItemRegister(categoryId: category.id, toDoItem: item)

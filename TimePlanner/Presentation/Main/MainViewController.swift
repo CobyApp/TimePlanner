@@ -133,6 +133,9 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationController?.navigationBar.prefersLargeTitles = false
     }
+}
+
+extension MainViewController {
     
     private func confirmDeletion(categoryId: String, toDoItemId: String) {
         let alertController = UIAlertController(title: "삭제 확인", message: "이 할일을 삭제하시겠습니까?", preferredStyle: .alert)

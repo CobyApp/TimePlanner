@@ -24,9 +24,19 @@ final class SettingViewController: UIViewController, BaseViewControllerType, Nav
     
     private lazy var settingOptions: [SettingOptionModel] = [
         SettingOptionModel(
+            title: "알림설정",
+            handler: {
+                self.viewModel.presentNotificationSettings()
+        }),
+        SettingOptionModel(
             title: "로그아웃",
             handler: {
-                self.viewModel.signOut()
+                self.confirmSignOut()
+        }),
+        SettingOptionModel(
+            title: "회원탈퇴",
+            handler: {
+                self.confirmDeleteUser()
         })
     ]
     
@@ -77,5 +87,30 @@ final class SettingViewController: UIViewController, BaseViewControllerType, Nav
     func configureNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.title = "설정"
+    }
+}
+
+extension SettingViewController {
+    
+    private func confirmSignOut() {
+        let alertController = UIAlertController(title: "로그아웃 확인", message: "이 앱에서 로그아웃하시겠습니까?", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "나가기", style: .destructive, handler: { [weak self] _ in
+            self?.viewModel.signOut()
+        }))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func confirmDeleteUser() {
+        let alertController = UIAlertController(title: "탈퇴 확인", message: "이 앱에서 탈퇴하시겠습니까?", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "탈퇴", style: .destructive, handler: { [weak self] _ in
+            self?.viewModel.deleteUser()
+        }))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 }

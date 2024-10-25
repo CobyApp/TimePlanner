@@ -16,7 +16,7 @@ final class SettingItemTableViewCell: UITableViewCell, BaseViewType {
     
     let menuLabel = UILabel().then {
         $0.textColor = .labelNormal
-        $0.font = .font(size: 16, weight: .regular)
+        $0.font = .font(size: 17, weight: .regular)
         $0.text = "설정"
     }
     

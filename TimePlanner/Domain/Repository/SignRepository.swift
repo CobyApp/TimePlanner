@@ -14,4 +14,5 @@ protocol SignRepository {
     func signUpWithEmail(email: String, password: String) async throws -> FirebaseAuth.User
     func signOut() throws
     func saveUser(user: UserModel) async throws
+    func deleteUser() async throws
 }

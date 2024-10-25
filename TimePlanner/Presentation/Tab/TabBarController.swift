@@ -57,10 +57,24 @@ final class TabBarController: UITabBarController {
     
     private lazy var vc4: UINavigationController = {
         let navigationController = UINavigationController()
-        let infoCoordinator = InfoCoordinator(navigationController: navigationController)
-        let infoViewModel = InfoViewModel(coordinator: infoCoordinator)
-        let infoViewController = InfoViewController(viewModel: infoViewModel)
-        navigationController.viewControllers = [infoViewController]
+        let signRepository = SignRepositoryImpl()
+        let signUsecase = SignUsecaseImpl(repository: signRepository)
+        let toDoRepository = ToDoRepositoryImpl()
+        let toDoUsecase = ToDoUsecaseImpl(repository: toDoRepository)
+        let noteRepository = NoteRepositoryImpl()
+        let noteUsecase = NoteUsecaseImpl(repository: noteRepository)
+        let dDayRepository = DDayRepositoryImpl()
+        let dDayUsecase = DDayUsecaseImpl(repository: dDayRepository)
+        let coordinator = InfoCoordinator(navigationController: navigationController)
+        let viewModel = InfoViewModel(
+            signUsecase: signUsecase,
+            toDoUsecase: toDoUsecase,
+            noteUsecase: noteUsecase,
+            dDayUsecase: dDayUsecase,
+            coordinator: coordinator
+        )
+        let viewController = InfoViewController(viewModel: viewModel)
+        navigationController.viewControllers = [viewController]
         
         navigationController.tabBarItem.image = UIImage.Button.person.resize(to: CGSize(width: 20, height: 20))
         navigationController.tabBarItem.title = "정보"

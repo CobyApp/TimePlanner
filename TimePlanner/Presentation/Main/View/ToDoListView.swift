@@ -24,6 +24,13 @@ final class ToDoListView: UIView, BaseViewType {
         $0.register(ToDoListCollectionViewCell.self, forCellWithReuseIdentifier: ToDoListCollectionViewCell.className)
         $0.backgroundColor = .clear
     }
+    
+    private let emptyMessageLabel = UILabel().then {
+        $0.text = "뭉치를 추가해주세요."
+        $0.textColor = .labelNeutral
+        $0.textAlignment = .center
+        $0.isHidden = true
+    }
 
     // MARK: - Properties
     
@@ -34,6 +41,7 @@ final class ToDoListView: UIView, BaseViewType {
                 self?.listCollectionView.performBatchUpdates(nil) { _ in
                     self?.invalidateIntrinsicContentSize()
                 }
+                self?.emptyMessageLabel.isHidden = !self!.categories.isEmpty
             }
         }
     }
@@ -57,11 +65,17 @@ final class ToDoListView: UIView, BaseViewType {
     // MARK: - Base Functions
     func setupLayout() {
         self.addSubviews(
-            self.listCollectionView
+            self.listCollectionView,
+            self.emptyMessageLabel
         )
 
         self.listCollectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        self.emptyMessageLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(120)
         }
     }
 

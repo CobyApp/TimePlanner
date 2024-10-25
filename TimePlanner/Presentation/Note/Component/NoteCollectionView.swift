@@ -36,12 +36,20 @@ final class NoteCollectionView: UIView, BaseViewType {
         $0.backgroundColor = .clear
     }
     
+    private let emptyMessageLabel = UILabel().then {
+        $0.text = "작성된 노트가 없습니다."
+        $0.textColor = .labelNeutral
+        $0.textAlignment = .center
+        $0.isHidden = true
+    }
+    
     // MARK: - property
     
     var notes: [NoteModel] = [] {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 self?.listCollectionView.reloadData()
+                self?.emptyMessageLabel.isHidden = !self!.notes.isEmpty
             }
         }
     }
@@ -61,19 +69,21 @@ final class NoteCollectionView: UIView, BaseViewType {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - func
-    
-    func collectionView() -> UICollectionView {
-        self.listCollectionView
-    }
-    
     // MARK: - base func
     
     func setupLayout() {
-        self.addSubviews(self.listCollectionView)
+        self.addSubviews(
+            self.listCollectionView,
+            self.emptyMessageLabel
+        )
         
         self.listCollectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        self.emptyMessageLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(-50)
         }
     }
     

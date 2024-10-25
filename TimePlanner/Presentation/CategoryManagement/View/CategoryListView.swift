@@ -33,6 +33,13 @@ final class CategoryListView: UIView, BaseViewType {
         $0.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.className)
         $0.backgroundColor = .clear
     }
+    
+    private let emptyMessageLabel = UILabel().then {
+        $0.text = "뭉치를 추가해주세요."
+        $0.textColor = .labelNeutral
+        $0.textAlignment = .center
+        $0.isHidden = true
+    }
 
     // MARK: - Properties
     
@@ -40,6 +47,7 @@ final class CategoryListView: UIView, BaseViewType {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 self?.listCollectionView.reloadData()
+                self?.emptyMessageLabel.isHidden = !self!.categories.isEmpty
             }
         }
     }
@@ -61,11 +69,16 @@ final class CategoryListView: UIView, BaseViewType {
     // MARK: - Base Functions
     func setupLayout() {
         self.addSubviews(
-            self.listCollectionView
+            self.listCollectionView,
+            self.emptyMessageLabel
         )
 
         self.listCollectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        self.emptyMessageLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
         }
     }
 

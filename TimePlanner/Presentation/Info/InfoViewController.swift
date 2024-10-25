@@ -53,6 +53,7 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.configureNavigationBar()
+        self.loadData()
     }
     
     // MARK: - func
@@ -72,5 +73,25 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
         self.navigationItem.leftBarButtonItem = titleLabel
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationController?.navigationBar.prefersLargeTitles = false
+    }
+}
+
+extension InfoViewController {
+    
+    private func loadData() {
+        self.viewModel.getCategories { [weak self] categories in
+            print("카테고리")
+            print(categories.totalToDo)
+        }
+        
+        self.viewModel.getNotes { [weak self] notes in
+            print("노트")
+            print(notes.count)
+        }
+        
+        self.viewModel.getDDay { [weak self] dDays in
+            print("디데이")
+            print(dDays.count)
+        }
     }
 }

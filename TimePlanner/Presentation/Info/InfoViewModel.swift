@@ -33,3 +33,48 @@ final class InfoViewModel {
         self.coordinator?.presentSetting()
     }
 }
+
+extension InfoViewModel {
+    
+    func getCategories(
+        completion: @escaping ([CategoryModel]) -> Void
+    ) {
+        Task {
+            do {
+                let categories = try await self.toDoUsecase.getCategories()
+                completion(categories)
+            } catch(let error) {
+                print(error)
+                completion([])
+            }
+        }
+    }
+    
+    func getNotes(
+        completion: @escaping ([NoteModel]) -> Void
+    ) {
+        Task {
+            do {
+                let notes = try await self.noteUsecase.getNotes()
+                completion(notes)
+            } catch(let error) {
+                print(error)
+                completion([])
+            }
+        }
+    }
+    
+    func getDDay(
+        completion: @escaping ([DDayModel]) -> Void
+    ) {
+        Task {
+            do {
+                let dDays = try await self.dDayUsecase.getDDays()
+                completion(dDays)
+            } catch(let error) {
+                print(error)
+                completion([])
+            }
+        }
+    }
+}

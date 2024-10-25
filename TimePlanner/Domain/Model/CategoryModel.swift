@@ -26,3 +26,22 @@ struct CategoryModel: Identifiable, Hashable, Equatable {
         self.items = items
     }
 }
+
+extension [CategoryModel] {
+    
+    // 총 할 일 갯수
+    var totalToDo: Int {
+        self.reduce(0) { $0 + $1.items.totalToDo }
+    }
+    
+    // 완료된 할 일 갯수
+    var checkedToDo: Int {
+        self.reduce(0) { $0 + $1.items.checkedToDo }
+    }
+    
+    // 완료된 비율 (0.0 ~ 1.0 사이의 값)
+    var completionRate: Double {
+        guard self.totalToDo > 0 else { return 0.0 }
+        return Double(self.checkedToDo) / Double(self.totalToDo)
+    }
+}

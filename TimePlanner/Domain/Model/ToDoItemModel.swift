@@ -26,3 +26,19 @@ struct ToDoItemModel: Identifiable, Hashable, Equatable {
         self.date = date
     }
 }
+
+extension [ToDoItemModel] {
+    
+    var totalToDo: Int {
+        self.count
+    }
+    
+    var checkedToDo: Int {
+        self.filter { $0.isChecked }.count
+    }
+    
+    var completionRate: Double {
+        guard self.totalToDo > 0 else { return 0.0 }
+        return Double(self.checkedToDo) / Double(self.totalToDo)
+    }
+}

@@ -70,26 +70,38 @@ final class SignRepositoryImpl: SignRepository {
     }
     
     func deleteUser() async throws {
-        // 현재 로그인된 사용자 가져오기
         guard let user = Auth.auth().currentUser else {
             throw NSError(domain: "FirebaseAuth", code: -1, userInfo: [NSLocalizedDescriptionKey: "No current user found"])
         }
 
-        // Firestore에서 사용자 데이터 삭제
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
-            // Firestore에서 사용자 문서 삭제
             self.db.collection("users").document(user.uid).delete { error in
                 if let error = error {
-                    continuation.resume(throwing: error) // Firestore 삭제 에러
+                    continuation.resume(throwing: error)
                 } else {
-                    // Firestore에서 성공적으로 삭제한 후, Firebase Auth에서 사용자 삭제
                     user.delete { error in
                         if let error = error {
-                            continuation.resume(throwing: error) // Auth 삭제 에러
+                            continuation.resume(throwing: error)
                         } else {
-                            continuation.resume() // 성공적으로 삭제됨
+                            continuation.resume()
                         }
                     }
+                }
+            }
+        }
+    }
+    
+    func changePassword(newPassword: String) async throws {
+        guard let user = Auth.auth().currentUser else {
+            throw NSError(domain: "FirebaseAuth", code: -1, userInfo: [NSLocalizedDescriptionKey: "No current user found"])
+        }
+
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+            user.updatePassword(to: newPassword) { error in
+                if let error = error {
+                    continuation.resume(throwing: error)
+                } else {
+                    continuation.resume()
                 }
             }
         }

@@ -29,6 +29,11 @@ final class SettingViewController: UIViewController, BaseViewControllerType, Nav
                 self.viewModel.presentNotificationSettings()
         }),
         SettingOptionModel(
+            title: "비밀번호 변경",
+            handler: {
+                self.viewModel.presentChangePassword()
+        }),
+        SettingOptionModel(
             title: "로그아웃",
             handler: {
                 self.confirmSignOut()

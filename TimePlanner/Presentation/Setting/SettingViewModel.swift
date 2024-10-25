@@ -27,6 +27,10 @@ final class SettingViewModel {
     func presentLogin() {
         self.coordinator?.presentLogin()
     }
+    
+    func presentChangePassword() {
+        self.coordinator?.presentChangePassword()
+    }
 }
 
 extension SettingViewModel {

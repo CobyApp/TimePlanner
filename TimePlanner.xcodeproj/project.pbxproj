@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB13FD7F2CCB797D00FE9678 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13FD7E2CCB797C00FE9678 /* ChangePasswordViewModel.swift */; };
+		CB13FD812CCB798600FE9678 /* ChangePasswardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13FD802CCB798600FE9678 /* ChangePasswardViewController.swift */; };
+		CB13FD832CCB798B00FE9678 /* ChangePasswordCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13FD822CCB798B00FE9678 /* ChangePasswordCoordinator.swift */; };
 		CB1FB1F12CC0D97C00284BCB /* ToDoItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1FB1F02CC0D97C00284BCB /* ToDoItemModel.swift */; };
 		CB1FB1F52CC0E19E00284BCB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1FB1F42CC0E19E00284BCB /* String+Extension.swift */; };
 		CB1FB1F92CC2362D00284BCB /* CategoryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1FB1F82CC2362D00284BCB /* CategoryItemView.swift */; };
@@ -131,6 +134,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB13FD7E2CCB797C00FE9678 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		CB13FD802CCB798600FE9678 /* ChangePasswardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswardViewController.swift; sourceTree = "<group>"; };
+		CB13FD822CCB798B00FE9678 /* ChangePasswordCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordCoordinator.swift; sourceTree = "<group>"; };
 		CB1FB1F02CC0D97C00284BCB /* ToDoItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemModel.swift; sourceTree = "<group>"; };
 		CB1FB1F42CC0E19E00284BCB /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		CB1FB1F82CC2362D00284BCB /* CategoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemView.swift; sourceTree = "<group>"; };
@@ -269,6 +275,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB13FD7D2CCB795B00FE9678 /* ChangePassward */ = {
+			isa = PBXGroup;
+			children = (
+				CB13FD802CCB798600FE9678 /* ChangePasswardViewController.swift */,
+				CB13FD7E2CCB797C00FE9678 /* ChangePasswordViewModel.swift */,
+				CB13FD822CCB798B00FE9678 /* ChangePasswordCoordinator.swift */,
+			);
+			path = ChangePassward;
+			sourceTree = "<group>";
+		};
 		CB26285B2CA02AC400C98360 /* Literal */ = {
 			isa = PBXGroup;
 			children = (
@@ -436,6 +452,7 @@
 				CBA0E6D02CB414FD000FF934 /* DDayRegister */,
 				CBAAEABA2CA2880500844DB8 /* Info */,
 				CBA0E6D72CB41968000FF934 /* Setting */,
+				CB13FD7D2CCB795B00FE9678 /* ChangePassward */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -927,6 +944,7 @@
 				CB3820482CC89E9E003315F4 /* ToDoItemRegisterViewController.swift in Sources */,
 				CB5C97662CA4433A00E3F6C5 /* ToDoListItemCollectionViewCell.swift in Sources */,
 				CB26285D2CA02ACC00C98360 /* SizeLiteral.swift in Sources */,
+				CB13FD832CCB798B00FE9678 /* ChangePasswordCoordinator.swift in Sources */,
 				CB9590342CB06BDB00CEF73B /* NoteCoordinator.swift in Sources */,
 				CBAAEAC32CA28A4700844DB8 /* DDayCollectionViewCell.swift in Sources */,
 				CBA0E6DD2CB41991000FF934 /* SettingCoordinator.swift in Sources */,
@@ -948,7 +966,9 @@
 				CB494F7F2CB798DE00823804 /* CompleteButton.swift in Sources */,
 				CB95903E2CB06C5100CEF73B /* InfoViewModel.swift in Sources */,
 				CB75CA6B2CC76A810017BE4C /* DDayMapper.swift in Sources */,
+				CB13FD812CCB798600FE9678 /* ChangePasswardViewController.swift in Sources */,
 				CB3271F92CBD011600E1C4D7 /* SignViewController.swift in Sources */,
+				CB13FD7F2CCB797D00FE9678 /* ChangePasswordViewModel.swift in Sources */,
 				CBA0E6D92CB41981000FF934 /* SettingViewController.swift in Sources */,
 				CBA20E642C9DB41D00455DC4 /* UIViewController+Alert.swift in Sources */,
 				CBB965982CBE4C97006B7D8A /* ForwardButton.swift in Sources */,

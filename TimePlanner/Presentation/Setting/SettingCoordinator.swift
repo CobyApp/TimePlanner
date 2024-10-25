@@ -25,4 +25,15 @@ final class SettingCoordinator: NSObject {
         guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
         sceneDelegate.moveToLogin()
     }
+    
+    func presentChangePassword() {
+        guard let navigationController = self.navigationController else { return }
+        let repository = SignRepositoryImpl()
+        let usecase = SignUsecaseImpl(repository: repository)
+        let coordinator = ChangePasswordCoordinator(navigationController: navigationController)
+        let viewModel = ChangePasswordViewModel(usecase: usecase, coordinator: coordinator)
+        let viewController = ChangePasswordViewController(viewModel: viewModel)
+        
+        navigationController.pushViewController(viewController, animated: true)
+    }
 }

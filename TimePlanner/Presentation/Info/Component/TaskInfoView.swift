@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class TaskInfoView: UIView {
+final class TaskInfoView: UIView, BaseViewType {
     
     // MARK: - Properties
     
@@ -29,7 +29,7 @@ final class TaskInfoView: UIView {
         let stackView = UIStackView(arrangedSubviews: [self.titleLabel, self.countLabel])
         stackView.axis = .vertical
         stackView.alignment = .center
-        stackView.spacing = 4
+        stackView.spacing = 8
         return stackView
     }()
     
@@ -39,7 +39,7 @@ final class TaskInfoView: UIView {
         super.init(frame: .zero)
         self.titleLabel.text = title
         self.countLabel.text = countText
-        self.setupLayout()
+        self.baseInit()
     }
     
     required init?(coder: NSCoder) {
@@ -48,12 +48,20 @@ final class TaskInfoView: UIView {
     
     // MARK: - Layout
     
-    private func setupLayout() {
+    func setupLayout() {
         self.addSubviews(self.stackView)
         
         self.stackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.edges.equalToSuperview().inset(16)
         }
+    }
+    
+    func configureUI() {
+        self.backgroundColor = .backgroundNormalNormal
+        self.layer.cornerRadius = 16
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.lineNormalNormal.cgColor
+        self.layer.masksToBounds = true
     }
     
     // MARK: - Update Method

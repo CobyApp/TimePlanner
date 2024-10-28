@@ -75,13 +75,37 @@ final class ToDoRepositoryImpl: ToDoRepository {
             .collection("categories")
             .getDocuments()
         
-        let categories: [CategoryDTO] = snapshot.documents.compactMap { document in
+        var categories: [CategoryDTO] = []
+        
+        // 각 카테고리별로 할 일 목록 가져오기
+        for document in snapshot.documents {
             let data = document.data()
             guard let id = data["id"] as? String,
                   let name = data["name"] as? String,
-                  let color = data["color"] as? String else { return nil }
+                  let color = data["color"] as? String else { continue }
             
-            return CategoryDTO(id: id, name: name, color: color, items: [])
+            // 해당 카테고리의 할 일 목록 가져오기
+            let toDoSnapshot = try await self.db.collection("users")
+                .document(userId)
+                .collection("categories")
+                .document(id)
+                .collection("items")
+                .getDocuments()
+            
+            // 할 일 목록 생성
+            let items: [ToDoItemDTO] = toDoSnapshot.documents.compactMap { itemDoc in
+                let itemData = itemDoc.data()
+                guard let itemId = itemData["id"] as? String,
+                      let title = itemData["title"] as? String,
+                      let isChecked = itemData["isChecked"] as? Bool,
+                      let date = (itemData["date"] as? Timestamp)?.dateValue() else { return nil }
+                
+                return ToDoItemDTO(id: itemId, title: title, isChecked: isChecked, date: date)
+            }
+            
+            // 카테고리와 해당 할 일들로 CategoryDTO 생성
+            let categoryDTO = CategoryDTO(id: id, name: name, color: color, items: items)
+            categories.append(categoryDTO)
         }
         
         return categories

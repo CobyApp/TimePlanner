@@ -36,7 +36,7 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
     private lazy var stackView = UIStackView(arrangedSubviews: [self.toDoInfoView, self.noteInfoView, self.dDayInfoView]).then {
         $0.axis = .horizontal
         $0.distribution = .fillEqually
-        $0.spacing = 24
+        $0.spacing = 8
     }
     
     // MARK: - property

@@ -39,6 +39,10 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
         $0.spacing = 8
     }
     
+    private let barGraphView = BarGraphView().then {
+        $0.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
+    }
+    
     // MARK: - property
     
     private let viewModel: InfoViewModel
@@ -69,10 +73,18 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
     // MARK: - func
     
     func setupLayout() {
-        self.view.addSubviews(self.stackView)
+        self.view.addSubviews(
+            self.stackView,
+            self.barGraphView
+        )
         
         self.stackView.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(SizeLiteral.verticalPadding)
+            $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
+        }
+        
+        self.barGraphView.snp.makeConstraints {
+            $0.top.equalTo(self.stackView.snp.bottom).offset(SizeLiteral.verticalPadding)
             $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
         }
     }
@@ -98,6 +110,7 @@ extension InfoViewController {
         self.viewModel.getCategories { [weak self] categories in
             DispatchQueue.main.async { [weak self] in
                 self?.toDoInfoView.updateCountText("\(categories.checkedToDo) / \(categories.totalToDo)")
+                self?.barGraphView.updateCategories(categories)
             }
         }
         

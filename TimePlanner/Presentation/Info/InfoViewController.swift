@@ -29,13 +29,14 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
         $0.addAction(action, for: .touchUpInside)
     }
     
-    private let tasksInfoView = TaskInfoView(title: "할일", countText: "0 / 0")
-    private let memoInfoView = TaskInfoView(title: "노트", countText: "0")
+    private let toDoInfoView = TaskInfoView(title: "할일", countText: "0 / 0")
+    private let noteInfoView = TaskInfoView(title: "노트", countText: "0")
     private let dDayInfoView = TaskInfoView(title: "디데이", countText: "0")
     
-    private lazy var stackView = UIStackView(arrangedSubviews: [self.tasksInfoView, self.memoInfoView, self.dDayInfoView]).then {
+    private lazy var stackView = UIStackView(arrangedSubviews: [self.toDoInfoView, self.noteInfoView, self.dDayInfoView]).then {
         $0.axis = .horizontal
-        $0.distribution = .equalSpacing
+        $0.distribution = .fillEqually
+        $0.spacing = 24
     }
     
     // MARK: - property
@@ -71,8 +72,8 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
         self.view.addSubviews(self.stackView)
         
         self.stackView.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaLayoutGuide).inset(16)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(SizeLiteral.verticalPadding)
+            $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
         }
     }
     
@@ -96,13 +97,13 @@ extension InfoViewController {
     private func loadData() {
         self.viewModel.getCategories { [weak self] categories in
             DispatchQueue.main.async { [weak self] in
-                self?.tasksInfoView.updateCountText("\(categories.checkedToDo) / \(categories.totalToDo)")
+                self?.toDoInfoView.updateCountText("\(categories.checkedToDo) / \(categories.totalToDo)")
             }
         }
         
         self.viewModel.getNotes { [weak self] notes in
             DispatchQueue.main.async { [weak self] in
-                self?.memoInfoView.updateCountText("\(notes.count)")
+                self?.noteInfoView.updateCountText("\(notes.count)")
             }
         }
         

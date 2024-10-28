@@ -29,7 +29,8 @@ extension ChangePasswordViewModel {
     
     func changePassword(
         password: String,
-        newPassword: String
+        newPassword: String,
+        completion: @escaping () -> Void
     ) {
         Task {
             do {
@@ -38,8 +39,8 @@ extension ChangePasswordViewModel {
                 DispatchQueue.main.async { [weak self] in
                     self?.dismiss()
                 }
-            } catch(let error) {
-                print(error)
+            } catch {
+                completion()
             }
         }
     }

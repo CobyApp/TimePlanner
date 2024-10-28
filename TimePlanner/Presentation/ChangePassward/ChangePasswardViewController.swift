@@ -75,7 +75,11 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
             self.viewModel.changePassword(
                 password: self.passwordTextField.text ?? "",
                 newPassword: self.newPasswordTextField.text ?? ""
-            )
+            ) {
+                DispatchQueue.main.async { [weak self] in
+                    self?.showChangeErrorAlert()
+                }
+            }
         }
         $0.addAction(action, for: .touchUpInside)
     }
@@ -235,5 +239,11 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
         let isSpecialCharacterValid = specialCharacterPredicate.evaluate(with: password)
         
         return passwordLengthValid && isUppercaseValid && isLowercaseValid && isNumberValid && isSpecialCharacterValid
+    }
+    
+    private func showChangeErrorAlert() {
+        let alert = UIAlertController(title: "비밀번호 변경 오류", message: "비밀번호를 확인해주세요.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

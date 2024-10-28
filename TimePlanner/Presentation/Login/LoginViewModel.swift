@@ -44,7 +44,7 @@ extension LoginViewModel {
                 DispatchQueue.main.async { [weak self] in
                     self?.presentTabbar()
                 }
-            } catch(let error) {
+            } catch {
                 completion()
             }
         }

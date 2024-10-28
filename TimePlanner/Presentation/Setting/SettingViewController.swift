@@ -129,7 +129,11 @@ extension SettingViewController {
         // "탈퇴" 버튼 추가, 초기에는 비활성화 상태
         let deleteAction = UIAlertAction(title: "탈퇴", style: .destructive, handler: { [weak self] _ in
             guard let password = alertController.textFields?.first?.text else { return }
-            self?.viewModel.deleteUser(password: password)
+            self?.viewModel.deleteUser(password: password) {
+                DispatchQueue.main.async { [weak self] in
+                    self?.showDeleteErrorAlert()
+                }
+            }
         })
         deleteAction.isEnabled = false // 초기 비활성화
         alertController.addAction(deleteAction)
@@ -147,5 +151,11 @@ extension SettingViewController {
             return
         }
         deleteAction.isEnabled = !password.isEmpty
+    }
+    
+    private func showDeleteErrorAlert() {
+        let alert = UIAlertController(title: "탈퇴 오류", message: "비밀번호를 확인해주세요.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

@@ -109,13 +109,43 @@ extension SettingViewController {
     }
     
     private func confirmDeleteUser() {
-        let alertController = UIAlertController(title: "탈퇴 확인", message: "이 앱에서 탈퇴하시겠습니까?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "탈퇴 확인", message: "이 앱에서 탈퇴하시겠습니까? 비밀번호를 입력하세요.", preferredStyle: .alert)
+        
+        alertController.addTextField { textField in
+            textField.placeholder = "비밀번호"
+            textField.isSecureTextEntry = true
+            // NotificationCenter를 사용하여 입력 변화 감지
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: .main) { [weak alertController] _ in
+                guard let alertController = alertController,
+                      let password = alertController.textFields?.first?.text,
+                      let deleteAction = alertController.actions.first(where: { $0.title == "탈퇴" }) else {
+                    return
+                }
+                // 비밀번호가 입력되어야 버튼 활성화
+                deleteAction.isEnabled = !password.isEmpty
+            }
+        }
+        
+        // "탈퇴" 버튼 추가, 초기에는 비활성화 상태
+        let deleteAction = UIAlertAction(title: "탈퇴", style: .destructive, handler: { [weak self] _ in
+            guard let password = alertController.textFields?.first?.text else { return }
+            self?.viewModel.deleteUser(password: password)
+        })
+        deleteAction.isEnabled = false // 초기 비활성화
+        alertController.addAction(deleteAction)
         
         alertController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: "탈퇴", style: .destructive, handler: { [weak self] _ in
-            self?.viewModel.deleteUser()
-        }))
         
         self.present(alertController, animated: true, completion: nil)
+    }
+
+    // UITextField 입력 변화에 따른 버튼 활성화 상태 업데이트
+    @objc private func textDidChangeInLoginAlert(_ sender: UITextField) {
+        guard let alertController = presentedViewController as? UIAlertController,
+              let password = alertController.textFields?.first?.text,
+              let deleteAction = alertController.actions.first(where: { $0.title == "탈퇴" }) else {
+            return
+        }
+        deleteAction.isEnabled = !password.isEmpty
     }
 }

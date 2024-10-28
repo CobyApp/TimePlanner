@@ -12,7 +12,7 @@ protocol SignUsecase {
     func signUpWithEmail(email: String, password: String) async throws -> UserModel
     func signOut() throws
     func saveUser(user: UserModel) async throws
-    func deleteUser() async throws
+    func deleteUser(password: String) async throws
     func changePassword(password: String, newPassword: String) async throws
 }
 
@@ -64,9 +64,9 @@ final class SignUsecaseImpl: SignUsecase {
         }
     }
     
-    func deleteUser() async throws {
+    func deleteUser(password: String) async throws {
         do {
-            try await self.repository.deleteUser()
+            try await self.repository.deleteUser(password: password)
         } catch(let error) {
             throw error
         }

@@ -69,10 +69,12 @@ final class SignRepositoryImpl: SignRepository {
         }
     }
     
-    func deleteUser() async throws {
+    func deleteUser(password: String) async throws {
         guard let user = Auth.auth().currentUser else {
             throw NSError(domain: "FirebaseAuth", code: -1, userInfo: [NSLocalizedDescriptionKey: "No current user found"])
         }
+        
+        try await self.reauthenticate(password: password)
 
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             self.db.collection("users").document(user.uid).delete { error in

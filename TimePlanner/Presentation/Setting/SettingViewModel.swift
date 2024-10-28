@@ -47,10 +47,10 @@ extension SettingViewModel {
         }
     }
     
-    func deleteUser() {
+    func deleteUser(password: String) {
         Task {
             do {
-                try await self.usecase.deleteUser()
+                try await self.usecase.deleteUser(password: password)
                 
                 DispatchQueue.main.async { [weak self] in
                     self?.presentLogin()

@@ -33,7 +33,8 @@ extension LoginViewModel {
     
     func loginUser(
         email: String,
-        password: String
+        password: String,
+        completion: @escaping () -> Void
     ) {
         Task { [weak self] in
             guard let self = self else { return }
@@ -44,7 +45,7 @@ extension LoginViewModel {
                     self?.presentTabbar()
                 }
             } catch(let error) {
-                print(error)
+                completion()
             }
         }
     }

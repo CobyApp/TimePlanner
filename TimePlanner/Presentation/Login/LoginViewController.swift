@@ -76,7 +76,11 @@ final class LoginViewController: UIViewController, BaseViewControllerType, Keybo
             self.viewModel.loginUser(
                 email: self.emailTextField.text ?? "",
                 password: self.passwordTextField.text ?? ""
-            )
+            ) {
+                DispatchQueue.main.async { [weak self] in
+                    self?.showLoginErrorAlert()
+                }
+            }
         }
         $0.addAction(action, for: .touchUpInside)
     }
@@ -181,5 +185,11 @@ final class LoginViewController: UIViewController, BaseViewControllerType, Keybo
         } else {
             self.loginButton.isEnabled = false
         }
+    }
+    
+    private func showLoginErrorAlert() {
+        let alert = UIAlertController(title: "로그인 오류", message: "이메일과 비밀번호를 확인해주세요.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

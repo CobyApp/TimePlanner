@@ -44,7 +44,7 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
     }
     
     private let newPasswordTextField = UITextField().then {
-        $0.placeholder = "비밀번호를 입력하세요"
+        $0.placeholder = "최소 8자, 대문자, 소문자, 숫자, 특수문자 포함"
         $0.font = .font(size: 16, weight: .regular)
         $0.borderStyle = .roundedRect
         $0.clearButtonMode = .whileEditing
@@ -200,14 +200,40 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
-        if let password = self.passwordTextField.text, !password.isEmpty,
-           let newPassword = self.newPasswordTextField.text, !newPassword.isEmpty,
-           let newPasswordConfirm = self.newPasswordConfirmTextField.text, !newPasswordConfirm.isEmpty,
-           newPassword == newPasswordConfirm
-        {
+        let password = self.passwordTextField.text ?? ""
+        let newPassword = self.newPasswordTextField.text ?? ""
+        let newPasswordConfirm = self.newPasswordConfirmTextField.text ?? ""
+        
+        // 비밀번호 제약 조건 체크
+        let isPasswordValid = self.validatePassword(newPassword)
+        
+        if !password.isEmpty && isPasswordValid && newPassword == newPasswordConfirm {
             self.signUpButton.isEnabled = true
         } else {
             self.signUpButton.isEnabled = false
         }
+    }
+    
+    private func validatePassword(_ password: String) -> Bool {
+        // 최소 8자
+        let passwordLengthValid = password.count >= 8
+        
+        // 대문자, 소문자, 숫자 및 특수 문자가 포함되어야 함
+        let uppercaseLetterRegEx = ".*[A-Z]+.*"
+        let lowercaseLetterRegEx = ".*[a-z]+.*"
+        let numberRegEx = ".*[0-9]+.*"
+        let specialCharacterRegEx = ".*[!@#$%^&*()_+~`\\-={}|\\[\\]:;\"'<>,.?/]+.*"
+        
+        let uppercasePredicate = NSPredicate(format: "SELF MATCHES %@", uppercaseLetterRegEx)
+        let lowercasePredicate = NSPredicate(format: "SELF MATCHES %@", lowercaseLetterRegEx)
+        let numberPredicate = NSPredicate(format: "SELF MATCHES %@", numberRegEx)
+        let specialCharacterPredicate = NSPredicate(format: "SELF MATCHES %@", specialCharacterRegEx)
+        
+        let isUppercaseValid = uppercasePredicate.evaluate(with: password)
+        let isLowercaseValid = lowercasePredicate.evaluate(with: password)
+        let isNumberValid = numberPredicate.evaluate(with: password)
+        let isSpecialCharacterValid = specialCharacterPredicate.evaluate(with: password)
+        
+        return passwordLengthValid && isUppercaseValid && isLowercaseValid && isNumberValid && isSpecialCharacterValid
     }
 }

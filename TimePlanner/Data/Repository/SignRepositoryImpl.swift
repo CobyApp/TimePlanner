@@ -91,13 +91,33 @@ final class SignRepositoryImpl: SignRepository {
         }
     }
     
-    func changePassword(newPassword: String) async throws {
+    func changePassword(password: String, newPassword: String) async throws {
         guard let user = Auth.auth().currentUser else {
             throw NSError(domain: "FirebaseAuth", code: -1, userInfo: [NSLocalizedDescriptionKey: "No current user found"])
         }
+        
+        try await self.reauthenticate(password: password)
 
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             user.updatePassword(to: newPassword) { error in
+                if let error = error {
+                    continuation.resume(throwing: error)
+                } else {
+                    continuation.resume()
+                }
+            }
+        }
+    }
+    
+    func reauthenticate(password: String) async throws {
+        guard let user = Auth.auth().currentUser, let email = user.email else {
+            throw NSError(domain: "FirebaseAuth", code: -1, userInfo: [NSLocalizedDescriptionKey: "No current user found or email is missing"])
+        }
+        
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+            user.reauthenticate(with: credential) { _, error in
                 if let error = error {
                     continuation.resume(throwing: error)
                 } else {

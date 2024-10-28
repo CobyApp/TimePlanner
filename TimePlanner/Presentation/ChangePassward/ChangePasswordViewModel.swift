@@ -28,11 +28,12 @@ final class ChangePasswordViewModel {
 extension ChangePasswordViewModel {
     
     func changePassword(
-        password: String
+        password: String,
+        newPassword: String
     ) {
         Task {
             do {
-                try await self.usecase.changePassword(newPassword: password)
+                try await self.usecase.changePassword(password: password, newPassword: newPassword)
                 
                 DispatchQueue.main.async { [weak self] in
                     self?.dismiss()

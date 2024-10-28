@@ -22,12 +22,28 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
     private let contentView = UIView()
     
     private let passwordLabel = UILabel().then {
-        $0.text = "비밀번호"
+        $0.text = "기존 비밀번호"
         $0.font = .font(size: 18, weight: .medium)
         $0.textColor = .label
     }
     
     private let passwordTextField = UITextField().then {
+        $0.placeholder = "기존 비밀번호를 입력하세요"
+        $0.font = .font(size: 16, weight: .regular)
+        $0.borderStyle = .roundedRect
+        $0.clearButtonMode = .whileEditing
+        $0.autocapitalizationType = .none // 첫 글자 대문자 방지
+        $0.autocorrectionType = .no // 자동완성 기능 제거
+        $0.isSecureTextEntry = true // 비밀번호 입력 보안 설정
+    }
+    
+    private let newPasswordLabel = UILabel().then {
+        $0.text = "비밀번호"
+        $0.font = .font(size: 18, weight: .medium)
+        $0.textColor = .label
+    }
+    
+    private let newPasswordTextField = UITextField().then {
         $0.placeholder = "비밀번호를 입력하세요"
         $0.font = .font(size: 16, weight: .regular)
         $0.borderStyle = .roundedRect
@@ -37,13 +53,13 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
         $0.isSecureTextEntry = true // 비밀번호 입력 보안 설정
     }
     
-    private let passwordConfirmLabel = UILabel().then {
+    private let newPasswordConfirmLabel = UILabel().then {
         $0.text = "비밀번호 확인"
         $0.font = .font(size: 18, weight: .medium)
         $0.textColor = .label
     }
     
-    private let passwordConfirmTextField = UITextField().then {
+    private let newPasswordConfirmTextField = UITextField().then {
         $0.placeholder = "비밀번호를 다시 입력하세요"
         $0.font = .font(size: 16, weight: .regular)
         $0.borderStyle = .roundedRect
@@ -57,7 +73,8 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
             self.viewModel.changePassword(
-                password: self.passwordTextField.text ?? ""
+                password: self.passwordTextField.text ?? "",
+                newPassword: self.newPasswordTextField.text ?? ""
             )
         }
         $0.addAction(action, for: .touchUpInside)
@@ -87,7 +104,8 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
         self.setupKeyboardGesture()
         
         self.passwordTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
-        self.passwordConfirmTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        self.newPasswordTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        self.newPasswordConfirmTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -125,8 +143,10 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
         self.contentView.addSubviews(
             self.passwordLabel,
             self.passwordTextField,
-            self.passwordConfirmLabel,
-            self.passwordConfirmTextField
+            self.newPasswordLabel,
+            self.newPasswordTextField,
+            self.newPasswordConfirmLabel,
+            self.newPasswordConfirmTextField
         )
         
         self.passwordLabel.snp.makeConstraints {
@@ -140,13 +160,24 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
             $0.height.equalTo(50)
         }
         
-        self.passwordConfirmLabel.snp.makeConstraints {
+        self.newPasswordLabel.snp.makeConstraints {
             $0.top.equalTo(self.passwordTextField.snp.bottom).offset(40)
             $0.leading.equalToSuperview().inset(SizeLiteral.horizantalPadding)
         }
         
-        self.passwordConfirmTextField.snp.makeConstraints {
-            $0.top.equalTo(self.passwordConfirmLabel.snp.bottom).offset(10)
+        self.newPasswordTextField.snp.makeConstraints {
+            $0.top.equalTo(self.newPasswordLabel.snp.bottom).offset(10)
+            $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
+            $0.height.equalTo(50)
+        }
+        
+        self.newPasswordConfirmLabel.snp.makeConstraints {
+            $0.top.equalTo(self.newPasswordTextField.snp.bottom).offset(40)
+            $0.leading.equalToSuperview().inset(SizeLiteral.horizantalPadding)
+        }
+        
+        self.newPasswordConfirmTextField.snp.makeConstraints {
+            $0.top.equalTo(self.newPasswordConfirmLabel.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
             $0.height.equalTo(50)
             $0.bottom.equalToSuperview()
@@ -169,9 +200,10 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
-        if let password = passwordTextField.text, !password.isEmpty,
-            let passwordConfirm = passwordConfirmTextField.text, !passwordConfirm.isEmpty,
-           password == passwordConfirm
+        if let password = self.passwordTextField.text, !password.isEmpty,
+           let newPassword = self.newPasswordTextField.text, !newPassword.isEmpty,
+           let newPasswordConfirm = self.newPasswordConfirmTextField.text, !newPasswordConfirm.isEmpty,
+           newPassword == newPasswordConfirm
         {
             self.signUpButton.isEnabled = true
         } else {

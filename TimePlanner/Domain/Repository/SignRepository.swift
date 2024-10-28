@@ -15,5 +15,5 @@ protocol SignRepository {
     func signOut() throws
     func saveUser(user: UserModel) async throws
     func deleteUser() async throws
-    func changePassword(newPassword: String) async throws
+    func changePassword(password: String, newPassword: String) async throws
 }

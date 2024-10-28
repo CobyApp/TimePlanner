@@ -29,6 +29,15 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
         $0.addAction(action, for: .touchUpInside)
     }
     
+    private let tasksInfoView = TaskInfoView(title: "할일", countText: "0 / 0")
+    private let memoInfoView = TaskInfoView(title: "노트", countText: "0")
+    private let dDayInfoView = TaskInfoView(title: "디데이", countText: "0")
+    
+    private lazy var stackView = UIStackView(arrangedSubviews: [self.tasksInfoView, self.memoInfoView, self.dDayInfoView]).then {
+        $0.axis = .horizontal
+        $0.distribution = .equalSpacing
+    }
+    
     // MARK: - property
     
     private let viewModel: InfoViewModel
@@ -59,6 +68,12 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
     // MARK: - func
     
     func setupLayout() {
+        self.view.addSubviews(self.stackView)
+        
+        self.stackView.snp.makeConstraints {
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).inset(16)
+            $0.leading.trailing.equalToSuperview().inset(20)
+        }
     }
     
     func configureUI() {
@@ -80,18 +95,21 @@ extension InfoViewController {
     
     private func loadData() {
         self.viewModel.getCategories { [weak self] categories in
-            print("카테고리")
-            print(categories.totalToDo)
+            DispatchQueue.main.async { [weak self] in
+                self?.tasksInfoView.updateCountText("\(categories.checkedToDo) / \(categories.totalToDo)")
+            }
         }
         
         self.viewModel.getNotes { [weak self] notes in
-            print("노트")
-            print(notes.count)
+            DispatchQueue.main.async { [weak self] in
+                self?.memoInfoView.updateCountText("\(notes.count)")
+            }
         }
         
         self.viewModel.getDDay { [weak self] dDays in
-            print("디데이")
-            print(dDays.count)
+            DispatchQueue.main.async { [weak self] in
+                self?.dDayInfoView.updateCountText("\(dDays.count)")
+            }
         }
     }
 }

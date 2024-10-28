@@ -45,6 +45,7 @@
 		CB3F69A22C9DAE9300635DBC /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = CB3F69A12C9DAE9300635DBC /* Then */; };
 		CB3F69A52C9DAF3F00635DBC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CB3F69A42C9DAF3F00635DBC /* SnapKit */; };
 		CB494F7F2CB798DE00823804 /* CompleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB494F7E2CB798DE00823804 /* CompleteButton.swift */; };
+		CB5B4E872CCF591B00F932EB /* TaskInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5B4E862CCF591B00F932EB /* TaskInfoView.swift */; };
 		CB5C97662CA4433A00E3F6C5 /* ToDoListItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5C97652CA4433A00E3F6C5 /* ToDoListItemCollectionViewCell.swift */; };
 		CB5C97682CA4434E00E3F6C5 /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5C97672CA4434E00E3F6C5 /* ToDoListView.swift */; };
 		CB75CA612CC768E90017BE4C /* DDayDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB75CA602CC768E90017BE4C /* DDayDTO.swift */; };
@@ -171,6 +172,7 @@
 		CB3F698C2C9DAA5400635DBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB3F69992C9DAC9F00635DBC /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ko; path = ko.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB494F7E2CB798DE00823804 /* CompleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteButton.swift; sourceTree = "<group>"; };
+		CB5B4E862CCF591B00F932EB /* TaskInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoView.swift; sourceTree = "<group>"; };
 		CB5C97652CA4433A00E3F6C5 /* ToDoListItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB5C97672CA4434E00E3F6C5 /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
 		CB75CA602CC768E90017BE4C /* DDayDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayDTO.swift; sourceTree = "<group>"; };
@@ -457,6 +459,14 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
+		CB5B4E852CCF591100F932EB /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				CB5B4E862CCF591B00F932EB /* TaskInfoView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		CB9590292CB05B4B00CEF73B /* CategoryManagement */ = {
 			isa = PBXGroup;
 			children = (
@@ -664,6 +674,7 @@
 		CBAAEABA2CA2880500844DB8 /* Info */ = {
 			isa = PBXGroup;
 			children = (
+				CB5B4E852CCF591100F932EB /* Component */,
 				CBAAEABD2CA2883300844DB8 /* InfoViewController.swift */,
 				CB95903D2CB06C5100CEF73B /* InfoViewModel.swift */,
 				CB95903B2CB06C4200CEF73B /* InfoCoordinator.swift */,
@@ -965,6 +976,7 @@
 				CBA20E822C9DB6F600455DC4 /* Primary.swift in Sources */,
 				CB494F7F2CB798DE00823804 /* CompleteButton.swift in Sources */,
 				CB95903E2CB06C5100CEF73B /* InfoViewModel.swift in Sources */,
+				CB5B4E872CCF591B00F932EB /* TaskInfoView.swift in Sources */,
 				CB75CA6B2CC76A810017BE4C /* DDayMapper.swift in Sources */,
 				CB13FD812CCB798600FE9678 /* ChangePasswardViewController.swift in Sources */,
 				CB3271F92CBD011600E1C4D7 /* SignViewController.swift in Sources */,

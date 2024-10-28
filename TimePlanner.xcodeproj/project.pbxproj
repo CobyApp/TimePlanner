@@ -47,7 +47,8 @@
 		CB494F7F2CB798DE00823804 /* CompleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB494F7E2CB798DE00823804 /* CompleteButton.swift */; };
 		CB5B4E872CCF591B00F932EB /* TaskInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5B4E862CCF591B00F932EB /* TaskInfoView.swift */; };
 		CB5B4E892CCF6CE900F932EB /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5B4E882CCF6CE900F932EB /* ProgressBarView.swift */; };
-		CB5B4E8E2CCF6D3100F932EB /* BarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5B4E8D2CCF6D3100F932EB /* BarGraphView.swift */; };
+		CB5B4E8E2CCF6D3100F932EB /* BarGraphCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5B4E8D2CCF6D3100F932EB /* BarGraphCollectionView.swift */; };
+		CB5B4E912CCF722800F932EB /* BarGraphCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5B4E902CCF722800F932EB /* BarGraphCollectionViewCell.swift */; };
 		CB5C97662CA4433A00E3F6C5 /* ToDoListItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5C97652CA4433A00E3F6C5 /* ToDoListItemCollectionViewCell.swift */; };
 		CB5C97682CA4434E00E3F6C5 /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5C97672CA4434E00E3F6C5 /* ToDoListView.swift */; };
 		CB75CA612CC768E90017BE4C /* DDayDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB75CA602CC768E90017BE4C /* DDayDTO.swift */; };
@@ -176,7 +177,8 @@
 		CB494F7E2CB798DE00823804 /* CompleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteButton.swift; sourceTree = "<group>"; };
 		CB5B4E862CCF591B00F932EB /* TaskInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoView.swift; sourceTree = "<group>"; };
 		CB5B4E882CCF6CE900F932EB /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
-		CB5B4E8D2CCF6D3100F932EB /* BarGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphView.swift; sourceTree = "<group>"; };
+		CB5B4E8D2CCF6D3100F932EB /* BarGraphCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphCollectionView.swift; sourceTree = "<group>"; };
+		CB5B4E902CCF722800F932EB /* BarGraphCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB5C97652CA4433A00E3F6C5 /* ToDoListItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB5C97672CA4434E00E3F6C5 /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
 		CB75CA602CC768E90017BE4C /* DDayDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayDTO.swift; sourceTree = "<group>"; };
@@ -299,12 +301,12 @@
 			path = Literal;
 			sourceTree = "<group>";
 		};
-		CB306DC92CA3B2E3009517D6 /* Component */ = {
+		CB306DC92CA3B2E3009517D6 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				CB306DCA2CA3B2F6009517D6 /* DDayCollectionView.swift */,
 			);
-			path = Component;
+			path = View;
 			sourceTree = "<group>";
 		};
 		CB3271D92CBCDF1F00E1C4D7 /* Domain */ = {
@@ -475,9 +477,17 @@
 		CB5B4E8C2CCF6D2800F932EB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CB5B4E8D2CCF6D3100F932EB /* BarGraphView.swift */,
+				CB5B4E8D2CCF6D3100F932EB /* BarGraphCollectionView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CB5B4E8F2CCF720C00F932EB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CB5B4E902CCF722800F932EB /* BarGraphCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		CB9590292CB05B4B00CEF73B /* CategoryManagement */ = {
@@ -655,7 +665,7 @@
 		CBAAEAB12CA284CF00844DB8 /* Note */ = {
 			isa = PBXGroup;
 			children = (
-				CBAAEAC42CA28AE700844DB8 /* Component */,
+				CBAAEAC42CA28AE700844DB8 /* View */,
 				CBAAEAB22CA284D900844DB8 /* Cell */,
 				CBAAEAB32CA284E400844DB8 /* NoteViewController.swift */,
 				CB9590352CB06BE800CEF73B /* NoteViewModel.swift */,
@@ -675,7 +685,7 @@
 		CBAAEAB92CA287FD00844DB8 /* DDay */ = {
 			isa = PBXGroup;
 			children = (
-				CB306DC92CA3B2E3009517D6 /* Component */,
+				CB306DC92CA3B2E3009517D6 /* View */,
 				CBAAEAC12CA28A3600844DB8 /* Cell */,
 				CBAAEABB2CA2882B00844DB8 /* DDayViewController.swift */,
 				CB9590392CB06C2600CEF73B /* DDayViewModel.swift */,
@@ -688,6 +698,7 @@
 			isa = PBXGroup;
 			children = (
 				CB5B4E8C2CCF6D2800F932EB /* View */,
+				CB5B4E8F2CCF720C00F932EB /* Cell */,
 				CB5B4E852CCF591100F932EB /* Component */,
 				CBAAEABD2CA2883300844DB8 /* InfoViewController.swift */,
 				CB95903D2CB06C5100CEF73B /* InfoViewModel.swift */,
@@ -704,12 +715,12 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		CBAAEAC42CA28AE700844DB8 /* Component */ = {
+		CBAAEAC42CA28AE700844DB8 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				CBAAEAC52CA28B0500844DB8 /* NoteCollectionView.swift */,
 			);
-			path = Component;
+			path = View;
 			sourceTree = "<group>";
 		};
 		CBB9657E2CBE2F9D006B7D8A /* Repository */ = {
@@ -954,6 +965,7 @@
 				CBA20E802C9DB6EF00455DC4 /* Palette.swift in Sources */,
 				CBA0E6DB2CB41989000FF934 /* SettingViewModel.swift in Sources */,
 				CBA20E742C9DB52C00455DC4 /* String+DateFormatter.swift in Sources */,
+				CB5B4E912CCF722800F932EB /* BarGraphCollectionViewCell.swift in Sources */,
 				CBBF9E022CBF5FA400EAEEBB /* ToDoRepository.swift in Sources */,
 				CBAAEAB62CA285F000844DB8 /* PlusButton.swift in Sources */,
 				CB2628642CA033EF00C98360 /* CalendarView.swift in Sources */,
@@ -998,7 +1010,7 @@
 				CBA0E6D92CB41981000FF934 /* SettingViewController.swift in Sources */,
 				CBA20E642C9DB41D00455DC4 /* UIViewController+Alert.swift in Sources */,
 				CBB965982CBE4C97006B7D8A /* ForwardButton.swift in Sources */,
-				CB5B4E8E2CCF6D3100F932EB /* BarGraphView.swift in Sources */,
+				CB5B4E8E2CCF6D3100F932EB /* BarGraphCollectionView.swift in Sources */,
 				CB75CA612CC768E90017BE4C /* DDayDTO.swift in Sources */,
 				CBA20E662C9DB43200455DC4 /* UIViewController+Keyboard.swift in Sources */,
 				CB3271FD2CBD012800E1C4D7 /* SignCoordinator.swift in Sources */,

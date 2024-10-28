@@ -54,7 +54,7 @@ final class BarGraphCollectionViewCell: UICollectionViewCell, BaseViewType {
         }
         
         self.progressBar.snp.makeConstraints {
-            $0.bottom.equalTo(self.categoryItemView.snp.bottom).offset(8)
+            $0.bottom.equalTo(self.categoryItemView.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview()
         }
     }
@@ -67,7 +67,7 @@ extension BarGraphCollectionViewCell {
     
     func configure(_ category: CategoryModel) {
         self.categoryItemView.configure(category)
-        self.countLabel.text = "\(category.items.checkedToDo)/\(category.items.totalToDo)"
+        self.countLabel.text = "\(category.items.checkedToDo) / \(category.items.totalToDo)"
         self.progressBar.configure(
             completionRate: category.items.completionRate,
             completedColor: category.color.color

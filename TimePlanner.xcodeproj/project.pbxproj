@@ -45,6 +45,7 @@
 		CB3F69A22C9DAE9300635DBC /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = CB3F69A12C9DAE9300635DBC /* Then */; };
 		CB3F69A52C9DAF3F00635DBC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CB3F69A42C9DAF3F00635DBC /* SnapKit */; };
 		CB494F7F2CB798DE00823804 /* CompleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB494F7E2CB798DE00823804 /* CompleteButton.swift */; };
+		CB550ADC2CD100BC001B7886 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB550ADB2CD100BC001B7886 /* MonthView.swift */; };
 		CB5B4E872CCF591B00F932EB /* TaskInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5B4E862CCF591B00F932EB /* TaskInfoView.swift */; };
 		CB5B4E892CCF6CE900F932EB /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5B4E882CCF6CE900F932EB /* ProgressBarView.swift */; };
 		CB5B4E8E2CCF6D3100F932EB /* BarGraphCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5B4E8D2CCF6D3100F932EB /* BarGraphCollectionView.swift */; };
@@ -175,6 +176,7 @@
 		CB3F698C2C9DAA5400635DBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB3F69992C9DAC9F00635DBC /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ko; path = ko.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB494F7E2CB798DE00823804 /* CompleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteButton.swift; sourceTree = "<group>"; };
+		CB550ADB2CD100BC001B7886 /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
 		CB5B4E862CCF591B00F932EB /* TaskInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoView.swift; sourceTree = "<group>"; };
 		CB5B4E882CCF6CE900F932EB /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		CB5B4E8D2CCF6D3100F932EB /* BarGraphCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphCollectionView.swift; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 		CB5B4E8C2CCF6D2800F932EB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CB550ADB2CD100BC001B7886 /* MonthView.swift */,
 				CB5B4E8D2CCF6D3100F932EB /* BarGraphCollectionView.swift */,
 			);
 			path = View;
@@ -1027,6 +1030,7 @@
 				CB38204C2CC89EAA003315F4 /* ToDoItemRegisterViewModel.swift in Sources */,
 				CB3271FB2CBD012400E1C4D7 /* SignViewModel.swift in Sources */,
 				CBA20E7B2C9DB66400455DC4 /* FontSet.swift in Sources */,
+				CB550ADC2CD100BC001B7886 /* MonthView.swift in Sources */,
 				CBB9659C2CBE54FD006B7D8A /* Keyboardable.swift in Sources */,
 				CB2628562CA024AB00C98360 /* BaseViewControllerType.swift in Sources */,
 				CB2628612CA02C2000C98360 /* MoreButton.swift in Sources */,

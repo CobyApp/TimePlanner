@@ -37,11 +37,12 @@ final class InfoViewModel {
 extension InfoViewModel {
     
     func getCategories(
+        date: Date,
         completion: @escaping ([CategoryModel]) -> Void
     ) {
         Task {
             do {
-                let categories = try await self.toDoUsecase.getCategories()
+                let categories = try await self.toDoUsecase.getCategoriesForDate(date)
                 completion(categories)
             } catch(let error) {
                 print(error)

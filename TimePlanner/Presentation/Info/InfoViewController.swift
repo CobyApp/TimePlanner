@@ -33,6 +33,8 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
         $0.addAction(action, for: .touchUpInside)
     }
     
+    private lazy var monthView = MonthView()
+    
     private let toDoInfoView = TaskInfoView(title: "할일", countText: "0 / 0")
     private let noteInfoView = TaskInfoView(title: "노트", countText: "0")
     private let dDayInfoView = TaskInfoView(title: "디데이", countText: "0")
@@ -49,6 +51,8 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
     
     private let viewModel: InfoViewModel
     
+    private var selectedDate: Date?
+    
     // MARK: - life cycle
     
     init(viewModel: InfoViewModel) {
@@ -64,25 +68,37 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
         super.viewDidLoad()
         self.baseViewDidLoad()
         self.setupNavigation()
+        
+        self.monthView.onDateSelected = { [weak self] selectedDate in
+            self?.selectedDate = selectedDate
+            self?.loadData(date: selectedDate)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.configureNavigationBar()
-        self.loadData()
+        self.loadData(date: self.selectedDate ?? Date())
     }
     
     // MARK: - func
     
     func setupLayout() {
         self.view.addSubviews(
+            self.monthView,
             self.stackView,
             self.barGraphCollectionView,
             self.loadingIndicator
         )
         
+        self.monthView.snp.makeConstraints {
+            $0.top.equalTo(self.view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
+            $0.height.equalTo(60)
+        }
+        
         self.stackView.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(SizeLiteral.verticalPadding)
+            $0.top.equalTo(self.monthView.snp.bottom)
             $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
         }
         
@@ -125,7 +141,7 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
 
 extension InfoViewController {
     
-    private func loadData() {
+    private func loadData(date: Date) {
         self.startLoading()
         
         var isCategoriesLoaded = false
@@ -138,7 +154,7 @@ extension InfoViewController {
             }
         }
         
-        self.viewModel.getCategories { [weak self] categories in
+        self.viewModel.getCategories(date: date) { [weak self] categories in
             DispatchQueue.main.async { [weak self] in
                 self?.toDoInfoView.updateCountText("\(categories.checkedToDo) / \(categories.totalToDo)")
                 self?.barGraphCollectionView.categories = categories

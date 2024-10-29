@@ -276,7 +276,7 @@ final class ToDoRepositoryImpl: ToDoRepository {
         }
         
         // 주어진 날짜의 시작과 끝을 계산
-        var calendar = Calendar.current
+        let calendar = Calendar.current
         let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: date))!
         let endOfMonth = calendar.date(byAdding: .month, value: 1, to: startOfMonth)!
         

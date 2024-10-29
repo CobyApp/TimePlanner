@@ -29,7 +29,7 @@ final class AllProgressBarView: UIView {
     }
     
     // MARK: - Configure
-    func configure(with data: [ProgressBarData]) {
+    func configure(with data: [ProgressBarModel]) {
         guard !data.isEmpty else { return }
         
         self.setupBars() // 기존 막대 뷰 초기화
@@ -63,12 +63,4 @@ final class AllProgressBarView: UIView {
         // 레이아웃 업데이트
         self.layoutIfNeeded()
     }
-}
-
-import UIKit
-
-struct ProgressBarData {
-    let completionCount: Int
-    let totalCount: Int
-    let completedColor: UIColor
 }

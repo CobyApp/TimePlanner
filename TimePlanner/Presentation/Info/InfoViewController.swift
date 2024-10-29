@@ -45,7 +45,7 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
         $0.spacing = 8
     }
     
-    private let allProgressBarView = AllProgressBarView()
+    private let allToDoBarGraphView = AllToDoBarGraphView()
     
     private let barGraphCollectionView = BarGraphCollectionView()
     
@@ -89,7 +89,7 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
         self.view.addSubviews(
             self.monthView,
             self.stackView,
-            self.allProgressBarView,
+            self.allToDoBarGraphView,
             self.barGraphCollectionView,
             self.loadingIndicator
         )
@@ -105,13 +105,14 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
             $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
         }
         
-        self.allProgressBarView.snp.makeConstraints {
+        self.allToDoBarGraphView.snp.makeConstraints {
             $0.top.equalTo(self.stackView.snp.bottom).offset(SizeLiteral.verticalPadding)
             $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
+            $0.height.equalTo(70)
         }
         
         self.barGraphCollectionView.snp.makeConstraints {
-            $0.top.equalTo(self.allProgressBarView.snp.bottom).offset(SizeLiteral.verticalPadding)
+            $0.top.equalTo(self.allToDoBarGraphView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
         
@@ -166,7 +167,7 @@ extension InfoViewController {
             DispatchQueue.main.async { [weak self] in
                 self?.toDoInfoView.updateCountText("\(categories.checkedToDo) / \(categories.totalToDo)")
                 self?.barGraphCollectionView.configure(categories)
-                self?.allProgressBarView.configure(with: categories.map { $0.toProgressBarData() })
+                self?.allToDoBarGraphView.configure(categories)
                 isCategoriesLoaded = true
                 checkIfLoadingComplete()
             }

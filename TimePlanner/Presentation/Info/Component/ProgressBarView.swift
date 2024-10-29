@@ -40,40 +40,6 @@ final class ProgressBarView: UIView {
         // 남은 막대 설정
         self.remainingBar.backgroundColor = .fillStrong // 남은 항목의 색상
         self.remainingBar.frame = CGRect(x: self.completedBar.frame.width, y: 0, width: totalWidth - self.completedBar.frame.width, height: barHeight)
-
-        if completionRate == 1 || completionRate == 0  {
-            let completedPath = UIBezierPath(roundedRect: self.completedBar.bounds,
-                                               byRoundingCorners: [.topLeft, .bottomLeft, .topRight, .bottomRight],
-                                               cornerRadii: CGSize(width: 8, height: 8))
-            let completedShapeLayer = CAShapeLayer()
-            completedShapeLayer.path = completedPath.cgPath
-            self.completedBar.layer.mask = completedShapeLayer
-            
-            let remainingPath = UIBezierPath(roundedRect: self.remainingBar.bounds,
-                                               byRoundingCorners: [.topLeft, .bottomLeft, .topRight, .bottomRight],
-                                               cornerRadii: CGSize(width: 8, height: 8))
-            let remainingShapeLayer = CAShapeLayer()
-            remainingShapeLayer.path = remainingPath.cgPath
-            self.remainingBar.layer.mask = remainingShapeLayer
-        } else {
-            if completionRate > 0 {
-                let completedPath = UIBezierPath(roundedRect: self.completedBar.bounds,
-                                                 byRoundingCorners: [.topLeft, .bottomLeft],
-                                                 cornerRadii: CGSize(width: 8, height: 8))
-                let completedShapeLayer = CAShapeLayer()
-                completedShapeLayer.path = completedPath.cgPath
-                self.completedBar.layer.mask = completedShapeLayer
-            }
-            
-            if completionRate < 1 {
-                let remainingPath = UIBezierPath(roundedRect: self.remainingBar.bounds,
-                                                 byRoundingCorners: [.topRight, .bottomRight],
-                                                 cornerRadii: CGSize(width: 8, height: 8))
-                let remainingShapeLayer = CAShapeLayer()
-                remainingShapeLayer.path = remainingPath.cgPath
-                self.remainingBar.layer.mask = remainingShapeLayer
-            }
-        }
         
         // 막대의 프레임이 설정된 후 레이아웃을 업데이트
         self.layoutIfNeeded()

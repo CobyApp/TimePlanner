@@ -47,8 +47,8 @@ extension [CategoryModel] {
 }
 
 extension CategoryModel {
-    func toProgressBarData() -> ProgressBarData {
-        ProgressBarData(
+    func toProgressBarModel() -> ProgressBarModel {
+        ProgressBarModel(
             completionCount: self.items.checkedToDo,
             totalCount: self.items.totalToDo,
             completedColor: self.color.color

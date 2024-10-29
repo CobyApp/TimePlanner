@@ -32,7 +32,7 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
     }
     
     private let titleTextField = UITextField().then {
-        $0.placeholder = "내용을 입력해주세요."
+        $0.placeholder = "내용을 입력해주세요 (20자 이내)"
         $0.font = .systemFont(ofSize: 16)
         $0.borderStyle = .roundedRect
         $0.clearButtonMode = .whileEditing
@@ -104,6 +104,7 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
         self.configureUI()
         self.setupKeyboardGesture()
         
+        self.titleTextField.delegate = self
         self.titleTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }
     
@@ -209,5 +210,27 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
             self?.loadingIndicator.stopAnimating()
             self?.completeButton.isEnabled = true
         }
+    }
+}
+
+extension DDayRegisterViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        
+        if updatedText.count > 20 {
+            self.showAlert(message: "20자 이내로 설정해주세요.")
+            return false
+        }
+        
+        return true
+    }
+    
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

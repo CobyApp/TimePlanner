@@ -31,7 +31,7 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
     }
     
     private let nameTextField = UITextField().then {
-        $0.placeholder = "뭉치 이름을 입력하세요"
+        $0.placeholder = "뭉치 이름을 입력하세요 (20자 이내)"
         $0.borderStyle = .roundedRect
         $0.font = .font(size: 16, weight: .regular)
         $0.clearButtonMode = .whileEditing
@@ -113,6 +113,7 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
         self.setupKeyboardGesture()
         self.setupColorSelection()
         
+        self.nameTextField.delegate = self
         self.nameTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }
     
@@ -268,5 +269,27 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
             self?.loadingIndicator.stopAnimating()
             self?.completeButton.isEnabled = true
         }
+    }
+}
+
+extension CategoryRegisterViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        
+        if updatedText.count > 20 {
+            self.showAlert(message: "20자 이내로 설정해주세요.")
+            return false
+        }
+        
+        return true
+    }
+    
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

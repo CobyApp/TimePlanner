@@ -14,6 +14,10 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
     
     // MARK: - UI Components
     
+    private let loadingIndicator = UIActivityIndicatorView(style: .large).then {
+        $0.hidesWhenStopped = true
+    }
+    
     private let scrollView = UIScrollView().then {
         $0.isScrollEnabled = true
         $0.showsVerticalScrollIndicator = false
@@ -72,14 +76,19 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
     private lazy var signUpButton = CompleteButton().then {
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
+            self.startLoading()
             self.viewModel.changePassword(
                 password: self.passwordTextField.text ?? "",
-                newPassword: self.newPasswordTextField.text ?? ""
-            ) {
-                DispatchQueue.main.async { [weak self] in
-                    self?.showChangeErrorAlert()
+                newPassword: self.newPasswordTextField.text ?? "",
+                completion: {
+                    self.stopLoading()
+                },
+                errorAlert: {
+                    DispatchQueue.main.async { [weak self] in
+                        self?.showChangeErrorAlert()
+                    }
                 }
-            }
+            )
         }
         $0.addAction(action, for: .touchUpInside)
     }
@@ -128,7 +137,8 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
     func setupLayout() {
         self.view.addSubviews(
             self.scrollView,
-            self.signUpButton
+            self.signUpButton,
+            self.loadingIndicator
         )
         
         self.scrollView.snp.makeConstraints {
@@ -192,6 +202,10 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
             $0.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top).offset(-10)
             $0.height.equalTo(50)
         }
+        
+        self.loadingIndicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
     }
     
     func configureUI() {
@@ -245,5 +259,19 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
         let alert = UIAlertController(title: "비밀번호 변경 오류", message: "비밀번호를 확인해주세요.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func startLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.startAnimating()
+            self?.signUpButton.isEnabled = false
+        }
+    }
+
+    private func stopLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.stopAnimating()
+            self?.signUpButton.isEnabled = true
+        }
     }
 }

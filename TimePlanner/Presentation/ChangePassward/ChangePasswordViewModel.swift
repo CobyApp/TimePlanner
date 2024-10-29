@@ -30,17 +30,20 @@ extension ChangePasswordViewModel {
     func changePassword(
         password: String,
         newPassword: String,
-        completion: @escaping () -> Void
+        completion: @escaping () -> Void,
+        errorAlert: @escaping () -> Void
     ) {
         Task {
             do {
                 try await self.usecase.changePassword(password: password, newPassword: newPassword)
                 
                 DispatchQueue.main.async { [weak self] in
+                    completion()
                     self?.dismiss()
                 }
             } catch {
                 completion()
+                errorAlert()
             }
         }
     }

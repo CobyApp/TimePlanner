@@ -49,17 +49,20 @@ extension SettingViewModel {
     
     func deleteUser(
         password: String,
-        completion: @escaping () -> Void
+        completion: @escaping () -> Void,
+        errorAlert: @escaping () -> Void
     ) {
         Task {
             do {
                 try await self.usecase.deleteUser(password: password)
                 
                 DispatchQueue.main.async { [weak self] in
+                    completion()
                     self?.presentLogin()
                 }
             } catch {
                 completion()
+                errorAlert()
             }
         }
     }

@@ -1216,6 +1216,7 @@
 				DEVELOPMENT_TEAM = B88XLHTDJ3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TimePlanner/App/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = watching;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1251,6 +1252,7 @@
 				DEVELOPMENT_TEAM = B88XLHTDJ3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TimePlanner/App/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = watching;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

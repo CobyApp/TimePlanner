@@ -268,4 +268,59 @@ final class ToDoRepositoryImpl: ToDoRepository {
             .document(itemId)
             .updateData(updateData)
     }
+    
+    // 특정 날짜의 년월에 해당하는 카테고리와 할 일 목록 가져오기
+    func getCategoriesForDate(_ date: Date) async throws -> [CategoryDTO] {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            throw NSError(domain: "로그인된 사용자가 없습니다", code: 401, userInfo: nil)
+        }
+        
+        // 주어진 날짜의 시작과 끝을 계산
+        var calendar = Calendar.current
+        let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: date))!
+        let endOfMonth = calendar.date(byAdding: .month, value: 1, to: startOfMonth)!
+        
+        // 카테고리 가져오기
+        let categorySnapshot = try await self.db.collection("users")
+            .document(userId)
+            .collection("categories")
+            .getDocuments()
+        
+        var categories: [CategoryDTO] = []
+        
+        // 각 카테고리별로 할 일 목록 가져오기 (특정 월로 필터링)
+        for document in categorySnapshot.documents {
+            let categoryData = document.data()
+            guard let categoryId = categoryData["id"] as? String,
+                  let name = categoryData["name"] as? String,
+                  let color = categoryData["color"] as? String else { continue }
+            
+            // 해당 카테고리의 할 일 중 특정 월의 것들만 가져오기
+            let toDoSnapshot = try await self.db.collection("users")
+                .document(userId)
+                .collection("categories")
+                .document(categoryId)
+                .collection("items")
+                .whereField("date", isGreaterThanOrEqualTo: startOfMonth)
+                .whereField("date", isLessThan: endOfMonth)
+                .getDocuments()
+            
+            // 필터링된 할 일 목록 생성, 없으면 빈 배열로 처리
+            let filteredItems: [ToDoItemDTO] = toDoSnapshot.documents.compactMap { itemDoc in
+                let itemData = itemDoc.data()
+                guard let id = itemData["id"] as? String,
+                      let title = itemData["title"] as? String,
+                      let isChecked = itemData["isChecked"] as? Bool,
+                      let date = (itemData["date"] as? Timestamp)?.dateValue() else { return nil }
+                
+                return ToDoItemDTO(id: id, title: title, isChecked: isChecked, date: date)
+            }
+            
+            // 카테고리와 해당 월의 할 일들로 CategoryDTO 생성
+            let categoryDTO = CategoryDTO(id: categoryId, name: name, color: color, items: filteredItems)
+            categories.append(categoryDTO)
+        }
+        
+        return categories
+    }
 }

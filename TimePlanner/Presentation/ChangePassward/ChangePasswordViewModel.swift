@@ -37,7 +37,7 @@ extension ChangePasswordViewModel {
             do {
                 try await self.usecase.changePassword(password: password, newPassword: newPassword)
                 
-                DispatchQueue.main.async { [weak self] in
+                DispatchQueue.main.async {
                     completion()
                 }
             } catch {

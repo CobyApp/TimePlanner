@@ -265,7 +265,9 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
     private func showChangeSuccessAlert() {
         let alert = UIAlertController(title: "비밀번호 변경 완료", message: "비밀번호가 변경되었습니다.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인", style: .default) { [weak self] _ in
-            self?.viewModel.dismiss()
+            DispatchQueue.main.async { [weak self] in
+                self?.viewModel.dismiss()
+            }
         })
         self.present(alert, animated: true, completion: nil)
     }

@@ -45,3 +45,13 @@ extension [CategoryModel] {
         return Double(self.checkedToDo) / Double(self.totalToDo)
     }
 }
+
+extension CategoryModel {
+    func toProgressBarData() -> ProgressBarData {
+        ProgressBarData(
+            completionCount: self.items.checkedToDo,
+            totalCount: self.items.totalToDo,
+            completedColor: self.color.color
+        )
+    }
+}

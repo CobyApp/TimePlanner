@@ -46,6 +46,8 @@
 		CB3F69A52C9DAF3F00635DBC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CB3F69A42C9DAF3F00635DBC /* SnapKit */; };
 		CB494F7F2CB798DE00823804 /* CompleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB494F7E2CB798DE00823804 /* CompleteButton.swift */; };
 		CB550ADC2CD100BC001B7886 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB550ADB2CD100BC001B7886 /* MonthView.swift */; };
+		CB550ADE2CD1082C001B7886 /* AllToDoBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB550ADD2CD1082C001B7886 /* AllToDoBarGraphView.swift */; };
+		CB550AE02CD108F2001B7886 /* AllProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB550ADF2CD108F2001B7886 /* AllProgressBarView.swift */; };
 		CB5B4E872CCF591B00F932EB /* TaskInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5B4E862CCF591B00F932EB /* TaskInfoView.swift */; };
 		CB5B4E892CCF6CE900F932EB /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5B4E882CCF6CE900F932EB /* ProgressBarView.swift */; };
 		CB5B4E8E2CCF6D3100F932EB /* BarGraphCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5B4E8D2CCF6D3100F932EB /* BarGraphCollectionView.swift */; };
@@ -177,6 +179,8 @@
 		CB3F69992C9DAC9F00635DBC /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ko; path = ko.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB494F7E2CB798DE00823804 /* CompleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteButton.swift; sourceTree = "<group>"; };
 		CB550ADB2CD100BC001B7886 /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
+		CB550ADD2CD1082C001B7886 /* AllToDoBarGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllToDoBarGraphView.swift; sourceTree = "<group>"; };
+		CB550ADF2CD108F2001B7886 /* AllProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllProgressBarView.swift; sourceTree = "<group>"; };
 		CB5B4E862CCF591B00F932EB /* TaskInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoView.swift; sourceTree = "<group>"; };
 		CB5B4E882CCF6CE900F932EB /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		CB5B4E8D2CCF6D3100F932EB /* BarGraphCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphCollectionView.swift; sourceTree = "<group>"; };
@@ -471,6 +475,7 @@
 			isa = PBXGroup;
 			children = (
 				CB5B4E862CCF591B00F932EB /* TaskInfoView.swift */,
+				CB550ADF2CD108F2001B7886 /* AllProgressBarView.swift */,
 				CB5B4E882CCF6CE900F932EB /* ProgressBarView.swift */,
 			);
 			path = Component;
@@ -480,6 +485,7 @@
 			isa = PBXGroup;
 			children = (
 				CB550ADB2CD100BC001B7886 /* MonthView.swift */,
+				CB550ADD2CD1082C001B7886 /* AllToDoBarGraphView.swift */,
 				CB5B4E8D2CCF6D3100F932EB /* BarGraphCollectionView.swift */,
 			);
 			path = View;
@@ -967,6 +973,7 @@
 				CBAAEAB82CA286D400844DB8 /* PaddingLabel.swift in Sources */,
 				CBA20E802C9DB6EF00455DC4 /* Palette.swift in Sources */,
 				CBA0E6DB2CB41989000FF934 /* SettingViewModel.swift in Sources */,
+				CB550ADE2CD1082C001B7886 /* AllToDoBarGraphView.swift in Sources */,
 				CBA20E742C9DB52C00455DC4 /* String+DateFormatter.swift in Sources */,
 				CB5B4E912CCF722800F932EB /* BarGraphCollectionViewCell.swift in Sources */,
 				CBBF9E022CBF5FA400EAEEBB /* ToDoRepository.swift in Sources */,
@@ -977,6 +984,7 @@
 				CBE255332CC632010099C301 /* NoteRepository.swift in Sources */,
 				CB26285F2CA02BFD00C98360 /* SettingButton.swift in Sources */,
 				CB95902C2CB05B6C00CEF73B /* CategoryManagementViewController.swift in Sources */,
+				CB550AE02CD108F2001B7886 /* AllProgressBarView.swift in Sources */,
 				CB75CA632CC769A30017BE4C /* DDayReposiotryImpl.swift in Sources */,
 				CB9590362CB06BE800CEF73B /* NoteViewModel.swift in Sources */,
 				CBA20E5C2C9DB2DF00455DC4 /* BaseViewType.swift in Sources */,

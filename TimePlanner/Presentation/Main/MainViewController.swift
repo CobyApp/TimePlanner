@@ -35,13 +35,15 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
             let item = ToDoItemModel(title: "", date: self?.selectedDate ?? Date())
             self?.viewModel.presentToDoItemRegister(categoryId: category.id, toDoItem: item)
         }
-        $0.checkTapAction = { [weak self] category, item in
+        $0.checkTapAction = { [weak self] category, item, toggle in
             self?.viewModel.updateToDoItemCheckedStatus(
                 categoryId: category.id,
                 itemId: item.id,
                 isChecked: !item.isChecked
             ) {
-                self?.loadCategories(date: self?.selectedDate ?? Date())
+                DispatchQueue.main.async { [weak self] in
+                    toggle()
+                }
             }
         }
         $0.editTapAction = { [weak self] category, item in
@@ -155,7 +157,7 @@ extension MainViewController {
 
     private func loadCategories(date: Date) {
         self.viewModel.getCategoriesWithFilteredToDoItems(date: date) { [weak self] categories in
-            self?.todoListView.categories = categories
+            self?.todoListView.configure(categories)
         }
     }
 }

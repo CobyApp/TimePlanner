@@ -27,17 +27,11 @@ final class ToDoListCollectionViewCell: UICollectionViewCell, BaseViewType {
     // MARK: - Properties
     
     var createToDoItemTapAction: ((CategoryModel) -> Void)?
-    var checkTapAction: ((ToDoItemModel) -> Void)?
+    var checkTapAction: ((ToDoItemModel, @escaping () -> Void) -> Void)?
     var editTapAction: ((ToDoItemModel) -> Void)?
     var deleteTapAction: ((ToDoItemModel) -> Void)?
     
-    var toDoItems: [ToDoItemModel] = [] {
-        didSet {
-            DispatchQueue.main.async { [weak self] in
-                self?.listCollectionView.reloadData()
-            }
-        }
-    }
+    private var toDoItems: [ToDoItemModel] = []
     
     // MARK: - Init
     override init(frame: CGRect) {
@@ -70,6 +64,13 @@ final class ToDoListCollectionViewCell: UICollectionViewCell, BaseViewType {
     func configureUI() {
         self.backgroundColor = .backgroundNormalNormal
     }
+    
+    func configureCollectionView(_ toDoItems: [ToDoItemModel]) {
+        DispatchQueue.main.async { [weak self] in
+            self?.toDoItems = toDoItems
+            self?.listCollectionView.reloadData()
+        }
+    }
 }
 
 extension ToDoListCollectionViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -92,7 +93,12 @@ extension ToDoListCollectionViewCell: UICollectionViewDataSource, UICollectionVi
 
         // 각 셀의 액션 핸들러 설정
         cell.checkTapAction = { [weak self] in
-            self?.checkTapAction?(item)
+            guard let self = self else { return }
+            self.checkTapAction?(item) { [weak self] in
+                guard let self = self else { return }
+                self.toDoItems[indexPath.item].isChecked.toggle()
+                cell.configure(self.toDoItems[indexPath.item])
+            }
         }
 
         cell.editTapAction = { [weak self] in
@@ -123,6 +129,6 @@ extension ToDoListCollectionViewCell {
         self.categoryItemView.createToDoItemTapAction = { [weak self] in
             self?.createToDoItemTapAction?(category)
         }
-        self.toDoItems = category.items
+        self.configureCollectionView(category.items)
     }
 }

@@ -21,6 +21,11 @@ final class BarGraphCollectionViewCell: UICollectionViewCell, BaseViewType {
         $0.textColor = .labelNeutral
     }
     
+    private let precentLabel = UILabel().then {
+        $0.font = UIFont.font(size: 16, weight: .semibold)
+        $0.textColor = .labelNormal
+    }
+    
     private let progressBar = ProgressBarView()
     
     // MARK: - init
@@ -41,6 +46,7 @@ final class BarGraphCollectionViewCell: UICollectionViewCell, BaseViewType {
         self.contentView.addSubviews(
             self.categoryItemView,
             self.countLabel,
+            self.precentLabel,
             self.progressBar
         )
         
@@ -49,8 +55,12 @@ final class BarGraphCollectionViewCell: UICollectionViewCell, BaseViewType {
         }
         
         self.countLabel.snp.makeConstraints {
-            $0.top.trailing.equalToSuperview()
+            $0.top.equalToSuperview()
             $0.leading.equalTo(self.categoryItemView.snp.trailing).offset(8)
+        }
+        
+        self.precentLabel.snp.makeConstraints {
+            $0.top.trailing.equalToSuperview()
         }
         
         self.progressBar.snp.makeConstraints {
@@ -68,6 +78,7 @@ extension BarGraphCollectionViewCell {
     func configure(_ category: CategoryModel) {
         self.categoryItemView.configure(category)
         self.countLabel.text = "\(category.items.checkedToDo) / \(category.items.totalToDo)"
+        self.precentLabel.text = "\(Int(category.items.completionRate * 100))%"
         self.progressBar.configure(
             completionRate: category.items.completionRate,
             completedColor: category.color.color

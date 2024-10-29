@@ -34,20 +34,10 @@ final class ToDoListView: UIView, BaseViewType {
 
     // MARK: - Properties
     
-    var categories: [CategoryModel] = [] {
-        didSet {
-            DispatchQueue.main.async { [weak self] in
-                self?.listCollectionView.reloadData()
-                self?.listCollectionView.performBatchUpdates(nil) { _ in
-                    self?.invalidateIntrinsicContentSize()
-                }
-                self?.emptyMessageLabel.isHidden = !self!.categories.isEmpty
-            }
-        }
-    }
+    private var categories: [CategoryModel] = []
 
     var createToDoItemTapAction: ((CategoryModel) -> Void)?
-    var checkTapAction: ((CategoryModel, ToDoItemModel) -> Void)?
+    var checkTapAction: ((CategoryModel, ToDoItemModel, @escaping () -> Void) -> Void)?
     var editTapAction: ((CategoryModel, ToDoItemModel) -> Void)?
     var deleteTapAction: ((CategoryModel, ToDoItemModel) -> Void)?
 
@@ -82,6 +72,17 @@ final class ToDoListView: UIView, BaseViewType {
     func configureUI() {
         self.backgroundColor = .backgroundNormalNormal
     }
+    
+    func configure(_ categories: [CategoryModel]) {
+        DispatchQueue.main.async { [weak self] in
+            self?.categories = categories
+            self?.listCollectionView.reloadData()
+            self?.listCollectionView.performBatchUpdates(nil) { _ in
+                self?.invalidateIntrinsicContentSize()
+            }
+            self?.emptyMessageLabel.isHidden = !self!.categories.isEmpty
+        }
+    }
 }
 
 extension ToDoListView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -107,8 +108,8 @@ extension ToDoListView: UICollectionViewDataSource, UICollectionViewDelegate, UI
             self?.createToDoItemTapAction?(category)
         }
         
-        cell.checkTapAction = { [weak self] item in
-            self?.checkTapAction?(category, item)
+        cell.checkTapAction = { [weak self] item, toggle in
+            self?.checkTapAction?(category, item, toggle)
         }
 
         cell.editTapAction = { [weak self] item in

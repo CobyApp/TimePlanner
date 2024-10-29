@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 final class MainViewModel {
     
@@ -58,6 +59,10 @@ extension MainViewModel {
         Task {
             do {
                 try await self.usecase.deleteToDoItem(categoryId: categoryId, itemId: toDoItemId)
+                
+                // 푸시 알림 삭제
+                self.removeNotification(for: toDoItemId)
+                
                 completion()
             } catch(let error) {
                 print(error)
@@ -81,5 +86,10 @@ extension MainViewModel {
                 completion()
             }
         }
+    }
+    
+    // MARK: - Remove Notification
+    private func removeNotification(for itemId: String) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [itemId])
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 final class DDayViewModel {
     
@@ -35,6 +36,10 @@ extension DDayViewModel {
         Task {
             do {
                 let dDays = try await self.usecase.getDDays()
+                
+                // 푸시 알림 삭제
+                self.removeNotification(for: dDayId)
+                
                 completion(dDays)
             } catch(let error) {
                 print(error)
@@ -56,5 +61,10 @@ extension DDayViewModel {
                 completion()
             }
         }
+    }
+    
+    // MARK: - Remove Notification
+    private func removeNotification(for dDayId: String) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [dDayId])
     }
 }

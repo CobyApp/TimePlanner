@@ -78,6 +78,7 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
         $0.textColor = .redNormal
         $0.text = "" // 기본값은 빈 문자열
         $0.textAlignment = .left
+        $0.numberOfLines = 0
     }
     
     private let newPasswordConfirmErrorLabel = UILabel().then {
@@ -242,21 +243,26 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
         self.title = "비밀번호 변경"
     }
     
+    private func validatePassword(_ password: String) -> Bool {
+        let passwordPattern = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"
+        let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordPattern)
+        return passwordPredicate.evaluate(with: password)
+    }
+
     @objc private func textFieldDidChange(_ textField: UITextField) {
         let password = self.passwordTextField.text ?? ""
         let newPassword = self.newPasswordTextField.text ?? ""
         let newPasswordConfirm = self.newPasswordConfirmTextField.text ?? ""
-        
-        // 비밀번호 제약 조건 체크
-        let isPasswordValid = self.validatePassword(newPassword)
         
         // 에러 메시지 초기화
         self.newPasswordErrorLabel.text = ""
         self.newPasswordConfirmErrorLabel.text = ""
         
         if !password.isEmpty {
+            let isPasswordValid = self.validatePassword(newPassword)
+            
             if !isPasswordValid {
-                self.newPasswordErrorLabel.text = "비밀번호는 최소 8자 이상이어야 하며, 대문자와 특수 문자를 포함해야 합니다."
+                self.newPasswordErrorLabel.text = "비밀번호는 최소 8자, 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다."
                 self.signUpButton.isEnabled = false
             } else {
                 if newPassword.isEmpty {
@@ -272,33 +278,34 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
             self.signUpButton.isEnabled = false
         }
     }
-
     
-    private func validatePassword(_ password: String) -> Bool {
-        // 비밀번호의 유효성 체크 로직을 여기에 추가하세요.
-        // 예: 비밀번호 길이, 특수 문자 포함 여부 등
-        return true // 유효하면 true 반환
-    }
-    
-    private func startLoading() {
-        loadingIndicator.startAnimating()
-        signUpButton.isEnabled = false
-    }
-    
-    private func stopLoading() {
-        loadingIndicator.stopAnimating()
-        signUpButton.isEnabled = true
+    private func showChangeErrorAlert() {
+        let alert = UIAlertController(title: "비밀번호 변경 오류", message: "비밀번호를 확인해주세요.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     private func showChangeSuccessAlert() {
-        let alert = UIAlertController(title: "비밀번호 변경 성공", message: "비밀번호가 성공적으로 변경되었습니다.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "확인", style: .default))
-        present(alert, animated: true)
+        let alert = UIAlertController(title: "비밀번호 변경 완료", message: "비밀번호가 변경되었습니다.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            DispatchQueue.main.async { [weak self] in
+                self?.viewModel.dismiss()
+            }
+        })
+        self.present(alert, animated: true, completion: nil)
     }
     
-    private func showChangeErrorAlert() {
-        let alert = UIAlertController(title: "비밀번호 변경 실패", message: "비밀번호 변경 중 오류가 발생했습니다.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "확인", style: .default))
-        present(alert, animated: true)
+    private func startLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.startAnimating()
+            self?.signUpButton.isEnabled = false
+        }
+    }
+
+    private func stopLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.stopAnimating()
+            self?.signUpButton.isEnabled = true
+        }
     }
 }

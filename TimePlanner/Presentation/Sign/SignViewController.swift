@@ -72,6 +72,21 @@ final class SignViewController: UIViewController, BaseViewControllerType, Naviga
         $0.isSecureTextEntry = true // 비밀번호 입력 보안 설정
     }
     
+    private let passwordErrorLabel = UILabel().then {
+        $0.font = .font(size: 14, weight: .regular)
+        $0.textColor = .redNormal
+        $0.text = "" // 기본값은 빈 문자열
+        $0.textAlignment = .left
+        $0.numberOfLines = 0
+    }
+    
+    private let passwordConfirmErrorLabel = UILabel().then {
+        $0.font = .font(size: 14, weight: .regular)
+        $0.textColor = .redNormal
+        $0.text = "" // 기본값은 빈 문자열
+        $0.textAlignment = .left
+    }
+    
     private lazy var signUpButton = CompleteButton().then {
         $0.label.text = "회원가입"
         let action = UIAction { [weak self] _ in
@@ -146,8 +161,10 @@ final class SignViewController: UIViewController, BaseViewControllerType, Naviga
             self.emailTextField,
             self.passwordLabel,
             self.passwordTextField,
+            self.passwordErrorLabel,
             self.passwordConfirmLabel,
-            self.passwordConfirmTextField
+            self.passwordConfirmTextField,
+            self.passwordConfirmErrorLabel
         )
         
         self.emailLabel.snp.makeConstraints {
@@ -172,8 +189,13 @@ final class SignViewController: UIViewController, BaseViewControllerType, Naviga
             $0.height.equalTo(50)
         }
         
+        self.passwordErrorLabel.snp.makeConstraints {
+            $0.top.equalTo(self.passwordTextField.snp.bottom).offset(5)
+            $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
+        }
+        
         self.passwordConfirmLabel.snp.makeConstraints {
-            $0.top.equalTo(self.passwordTextField.snp.bottom).offset(40)
+            $0.top.equalTo(self.passwordErrorLabel.snp.bottom).offset(40)
             $0.leading.equalToSuperview().inset(SizeLiteral.horizantalPadding)
         }
         
@@ -181,7 +203,11 @@ final class SignViewController: UIViewController, BaseViewControllerType, Naviga
             $0.top.equalTo(self.passwordConfirmLabel.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
             $0.height.equalTo(50)
-            $0.bottom.equalToSuperview()
+        }
+        
+        self.passwordConfirmErrorLabel.snp.makeConstraints {
+            $0.top.equalTo(self.passwordConfirmTextField.snp.bottom).offset(5)
+            $0.leading.trailing.bottom.equalToSuperview().inset(SizeLiteral.horizantalPadding)
         }
         
         self.signUpButton.snp.makeConstraints {
@@ -204,41 +230,46 @@ final class SignViewController: UIViewController, BaseViewControllerType, Naviga
         self.title = "회원가입"
     }
     
-    @objc private func textFieldDidChange(_ textField: UITextField) {
-        // 각 입력 필드의 텍스트를 가져오고 비어 있지 않은지 확인
-        let emailIsValid = self.emailTextField.text?.isEmpty == false
-        let passwordIsValid = self.passwordTextField.text?.isEmpty == false
-        let passwordConfirmIsValid = self.passwordConfirmTextField.text?.isEmpty == false
-        
-        // 비밀번호와 비밀번호 확인이 일치하는지, 비밀번호가 유효한지 확인
-        let passwordsMatch = self.passwordTextField.text == self.passwordConfirmTextField.text
-        let passwordMeetsRequirements = self.validatePassword(self.passwordTextField.text ?? "")
-        
-        // 모든 조건이 충족되면 버튼 활성화
-        self.signUpButton.isEnabled = emailIsValid && passwordIsValid && passwordConfirmIsValid && passwordsMatch && passwordMeetsRequirements
+    private func validatePassword(_ password: String) -> Bool {
+        let passwordPattern = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"
+        let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordPattern)
+        return passwordPredicate.evaluate(with: password)
     }
     
-    private func validatePassword(_ password: String) -> Bool {
-        // 최소 8자
-        let passwordLengthValid = password.count >= 8
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        let email = self.emailTextField.text ?? ""
+        let password = self.passwordTextField.text ?? ""
+        let passwordConfirm = self.passwordConfirmTextField.text ?? ""
         
-        // 대문자, 소문자, 숫자 및 특수 문자가 포함되어야 함
-        let uppercaseLetterRegEx = ".*[A-Z]+.*"
-        let lowercaseLetterRegEx = ".*[a-z]+.*"
-        let numberRegEx = ".*[0-9]+.*"
-        let specialCharacterRegEx = ".*[!@#$%^&*()_+~`\\-={}|\\[\\]:;\"'<>,.?/]+.*"
+        // 이메일 유효성 체크
+        let emailIsValid = !email.isEmpty // 이메일이 비어있지 않은지 확인
         
-        let uppercasePredicate = NSPredicate(format: "SELF MATCHES %@", uppercaseLetterRegEx)
-        let lowercasePredicate = NSPredicate(format: "SELF MATCHES %@", lowercaseLetterRegEx)
-        let numberPredicate = NSPredicate(format: "SELF MATCHES %@", numberRegEx)
-        let specialCharacterPredicate = NSPredicate(format: "SELF MATCHES %@", specialCharacterRegEx)
+        // 비밀번호 제약 조건 체크
+        let isPasswordValid = self.validatePassword(password)
         
-        let isUppercaseValid = uppercasePredicate.evaluate(with: password)
-        let isLowercaseValid = lowercasePredicate.evaluate(with: password)
-        let isNumberValid = numberPredicate.evaluate(with: password)
-        let isSpecialCharacterValid = specialCharacterPredicate.evaluate(with: password)
+        // 에러 메시지 초기화
+        self.passwordErrorLabel.text = ""
+        self.passwordConfirmErrorLabel.text = ""
         
-        return passwordLengthValid && isUppercaseValid && isLowercaseValid && isNumberValid && isSpecialCharacterValid
+        // 버튼 활성화 상태 결정
+        if emailIsValid && isPasswordValid {
+            if password.isEmpty {
+                self.signUpButton.isEnabled = false
+            } else {
+                self.signUpButton.isEnabled = passwordConfirm == password
+                if passwordConfirm != password {
+                    self.passwordConfirmErrorLabel.text = "비밀번호가 일치하지 않습니다."
+                }
+            }
+        } else {
+            self.signUpButton.isEnabled = false
+            if !emailIsValid {
+                self.passwordErrorLabel.text = "이메일을 입력하세요."
+            }
+            if !isPasswordValid {
+                self.passwordErrorLabel.text = "비밀번호는 최소 8자 이상이어야 하며, 대문자와 특수 문자를 포함해야 합니다."
+            }
+        }
     }
     
     private func startLoading() {

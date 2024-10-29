@@ -33,15 +33,17 @@ extension SignViewModel {
     
     func signUser(
         email: String,
-        password: String
+        password: String,
+        completion: @escaping () -> Void
     ) {
         Task {
             do {
                 let _ = try await self.usecase.signUpWithEmail(email: email, password: password)
-                
                 self.loginUser(email: email, password: password)
+                completion()
             } catch(let error) {
                 print(error)
+                completion()
             }
         }
     }

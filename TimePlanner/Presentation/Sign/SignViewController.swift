@@ -14,6 +14,10 @@ final class SignViewController: UIViewController, BaseViewControllerType, Naviga
     
     // MARK: - UI Components
     
+    private let loadingIndicator = UIActivityIndicatorView(style: .large).then {
+        $0.hidesWhenStopped = true
+    }
+    
     private let scrollView = UIScrollView().then {
         $0.isScrollEnabled = true
         $0.showsVerticalScrollIndicator = false
@@ -72,10 +76,13 @@ final class SignViewController: UIViewController, BaseViewControllerType, Naviga
         $0.label.text = "회원가입"
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
+            self.startLoading()
             self.viewModel.signUser(
                 email: self.emailTextField.text ?? "",
                 password: self.passwordTextField.text ?? ""
-            )
+            ) {
+                self.stopLoading()
+            }
         }
         $0.addAction(action, for: .touchUpInside)
     }
@@ -118,7 +125,8 @@ final class SignViewController: UIViewController, BaseViewControllerType, Naviga
     func setupLayout() {
         self.view.addSubviews(
             self.scrollView,
-            self.signUpButton
+            self.signUpButton,
+            self.loadingIndicator
         )
         
         self.scrollView.snp.makeConstraints {
@@ -182,6 +190,10 @@ final class SignViewController: UIViewController, BaseViewControllerType, Naviga
             $0.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top).offset(-10)
             $0.height.equalTo(50)
         }
+        
+        self.loadingIndicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
     }
     
     func configureUI() {
@@ -228,5 +240,15 @@ final class SignViewController: UIViewController, BaseViewControllerType, Naviga
         let isSpecialCharacterValid = specialCharacterPredicate.evaluate(with: password)
         
         return passwordLengthValid && isUppercaseValid && isLowercaseValid && isNumberValid && isSpecialCharacterValid
+    }
+    
+    private func startLoading() {
+        self.loadingIndicator.startAnimating()
+        self.signUpButton.isEnabled = false
+    }
+
+    private func stopLoading() {
+        self.loadingIndicator.stopAnimating()
+        self.signUpButton.isEnabled = true
     }
 }

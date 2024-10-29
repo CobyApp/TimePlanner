@@ -12,6 +12,7 @@ protocol DDayUsecase {
     func updateDDay(dDay: DDayModel) async throws
     func deleteDDay(dDayId: String) async throws
     func getDDays() async throws -> [DDayModel]
+    func getDDaysForDate(_ date: Date) async throws -> [DDayModel]
 }
 
 final class DDayUsecaseImpl: DDayUsecase {
@@ -55,6 +56,15 @@ final class DDayUsecaseImpl: DDayUsecase {
     func getDDays() async throws -> [DDayModel] {
         do {
             let dDays = try await self.repository.getDDays().map { $0.toDDayModel() }
+            return dDays
+        } catch(let error) {
+            throw error
+        }
+    }
+    
+    func getDDaysForDate(_ date: Date) async throws -> [DDayModel] {
+        do {
+            let dDays = try await self.repository.getDDaysForDate(date).map { $0.toDDayModel() }
             return dDays
         } catch(let error) {
             throw error

@@ -12,6 +12,7 @@ protocol NoteUsecase {
     func updateNote(note: NoteModel) async throws
     func deleteNote(noteId: String) async throws
     func getNotes() async throws -> [NoteModel]
+    func getNotesForDate(_ date: Date) async throws -> [NoteModel]
 }
 
 final class NoteUsecaseImpl: NoteUsecase {
@@ -55,6 +56,15 @@ final class NoteUsecaseImpl: NoteUsecase {
     func getNotes() async throws -> [NoteModel] {
         do {
             let notes = try await self.repository.getNotes().map { $0.toNoteModel() }
+            return notes
+        } catch(let error) {
+            throw error
+        }
+    }
+    
+    func getNotesForDate(_ date: Date) async throws -> [NoteModel] {
+        do {
+            let notes = try await self.repository.getNotesForDate(date).map { $0.toNoteModel() }
             return notes
         } catch(let error) {
             throw error

@@ -163,7 +163,7 @@ extension InfoViewController {
             }
         }
         
-        self.viewModel.getNotes { [weak self] notes in
+        self.viewModel.getNotes(date: date) { [weak self] notes in
             DispatchQueue.main.async { [weak self] in
                 self?.noteInfoView.updateCountText("\(notes.count)")
                 isNotesLoaded = true
@@ -171,7 +171,7 @@ extension InfoViewController {
             }
         }
         
-        self.viewModel.getDDay { [weak self] dDays in
+        self.viewModel.getDDay(date: date) { [weak self] dDays in
             DispatchQueue.main.async { [weak self] in
                 self?.dDayInfoView.updateCountText("\(dDays.count)")
                 isDDaysLoaded = true

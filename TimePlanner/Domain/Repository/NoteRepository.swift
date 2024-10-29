@@ -12,4 +12,5 @@ protocol NoteRepository {
     func updateNote(note: NoteModel) async throws
     func deleteNote(noteId: String) async throws
     func getNotes() async throws -> [NoteDTO]
+    func getNotesForDate(_ date: Date) async throws -> [NoteDTO]
 }

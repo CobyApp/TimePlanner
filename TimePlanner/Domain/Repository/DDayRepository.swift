@@ -12,4 +12,5 @@ protocol DDayRepository {
     func updateDDay(dDay: DDayModel) async throws
     func deleteDDay(dDayId: String) async throws
     func getDDays() async throws -> [DDayDTO]
+    func getDDaysForDate(_ date: Date) async throws -> [DDayDTO]
 }

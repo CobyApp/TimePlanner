@@ -52,11 +52,12 @@ extension InfoViewModel {
     }
     
     func getNotes(
+        date: Date,
         completion: @escaping ([NoteModel]) -> Void
     ) {
         Task {
             do {
-                let notes = try await self.noteUsecase.getNotes()
+                let notes = try await self.noteUsecase.getNotesForDate(date)
                 completion(notes)
             } catch(let error) {
                 print(error)
@@ -66,11 +67,12 @@ extension InfoViewModel {
     }
     
     func getDDay(
+        date: Date,
         completion: @escaping ([DDayModel]) -> Void
     ) {
         Task {
             do {
-                let dDays = try await self.dDayUsecase.getDDays()
+                let dDays = try await self.dDayUsecase.getDDaysForDate(date)
                 completion(dDays)
             } catch(let error) {
                 print(error)

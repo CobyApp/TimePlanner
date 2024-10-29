@@ -130,7 +130,7 @@ final class SignViewController: UIViewController, BaseViewControllerType, Naviga
         )
         
         self.scrollView.snp.makeConstraints {
-            $0.top.edges.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
         
         self.scrollView.addSubviews(
@@ -138,8 +138,7 @@ final class SignViewController: UIViewController, BaseViewControllerType, Naviga
         )
         
         self.contentView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-            $0.width.equalToSuperview()
+            $0.edges.width.equalToSuperview()
         }
         
         self.contentView.addSubviews(

@@ -67,6 +67,9 @@ final class SignRepositoryImpl: SignRepository {
                 }
             }
         }
+        
+        // 유저 저장 후 기본 카테고리 생성
+        try await createDefaultCategories()
     }
     
     func deleteUser(password: String) async throws {
@@ -125,6 +128,39 @@ final class SignRepositoryImpl: SignRepository {
                 } else {
                     continuation.resume()
                 }
+            }
+        }
+    }
+    
+    // 기본 카테고리 생성
+    func createDefaultCategories() async throws {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            throw NSError(domain: "No user logged in", code: 401, userInfo: nil)
+        }
+        
+        let defaultCategories = [
+            CategoryModel(name: "미래 업무", color: .red),
+            CategoryModel(name: "돈버는 일", color: .blue),
+            CategoryModel(name: "로켓 업무", color: .purple),
+            CategoryModel(name: "애매한 업무", color: .green)
+        ]
+        
+        for category in defaultCategories {
+            let categoryRef = self.db.collection("users")
+                .document(userId)
+                .collection("categories")
+                .document(category.id)
+            
+            let categorySnapshot = try await categoryRef.getDocument()
+            
+            // 카테고리가 없는 경우에만 생성
+            if !categorySnapshot.exists {
+                let categoryData: [String: Any] = [
+                    "id": category.id,
+                    "name": category.name,
+                    "color": category.color.rawValue
+                ]
+                try await categoryRef.setData(categoryData)
             }
         }
     }

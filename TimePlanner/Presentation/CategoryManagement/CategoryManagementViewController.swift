@@ -14,6 +14,10 @@ final class CategoryManagementViewController: UIViewController, BaseViewControll
     
     // MARK: - ui component
     
+    private let loadingIndicator = UIActivityIndicatorView(style: .large).then {
+        $0.hidesWhenStopped = true
+    }
+    
     private lazy var plusButton = PlusButton().then {
         let action = UIAction { [weak self] _ in
             self?.viewModel.presentCategoryRegister()
@@ -67,11 +71,16 @@ final class CategoryManagementViewController: UIViewController, BaseViewControll
     
     func setupLayout() {
         self.view.addSubviews(
-            self.categoryListView
+            self.categoryListView,
+            self.loadingIndicator
         )
         
         self.categoryListView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        self.loadingIndicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
         }
     }
     
@@ -100,13 +109,27 @@ final class CategoryManagementViewController: UIViewController, BaseViewControll
         
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    private func startLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.startAnimating()
+        }
+    }
+
+    private func stopLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.stopAnimating()
+        }
+    }
 }
 
 extension CategoryManagementViewController {
 
     private func loadCategories() {
+        self.startLoading()
         self.viewModel.getCategories { [weak self] categories in
             self?.categoryListView.categories = categories
+            self?.stopLoading()
         }
     }
 }

@@ -14,6 +14,10 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
     
     // MARK: - UI Components
     
+    private let loadingIndicator = UIActivityIndicatorView(style: .large).then {
+        $0.hidesWhenStopped = true
+    }
+    
     private let scrollView = UIScrollView().then {
         $0.isScrollEnabled = true
         $0.showsVerticalScrollIndicator = false
@@ -50,16 +54,21 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
     private lazy var completeButton = CompleteButton().then {
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
+            self.startLoading()
             if let _ = self.viewModel.dDay {
                 self.viewModel.updateDDay(
                     name: self.titleTextField.text ?? "",
                     dDate: self.datePicker.date
-                )
+                ) {
+                    self.stopLoading()
+                }
             } else {
                 self.viewModel.registerDDay(
                     name: self.titleTextField.text ?? "",
                     dDate: self.datePicker.date
-                )
+                ) {
+                    self.stopLoading()
+                }
             }
         }
         $0.addAction(action, for: .touchUpInside)
@@ -114,7 +123,8 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
     func setupLayout() {
         self.view.addSubviews(
             self.scrollView,
-            self.completeButton
+            self.completeButton,
+            self.loadingIndicator
         )
         
         self.scrollView.snp.makeConstraints {
@@ -164,6 +174,10 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
             $0.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top).offset(-10)
             $0.height.equalTo(50)
         }
+        
+        self.loadingIndicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
     }
     
     func configureUI() {
@@ -180,6 +194,20 @@ final class DDayRegisterViewController: UIViewController, BaseViewControllerType
             self.completeButton.isEnabled = true
         } else {
             self.completeButton.isEnabled = false
+        }
+    }
+    
+    private func startLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.startAnimating()
+            self?.completeButton.isEnabled = false
+        }
+    }
+
+    private func stopLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.stopAnimating()
+            self?.completeButton.isEnabled = true
         }
     }
 }

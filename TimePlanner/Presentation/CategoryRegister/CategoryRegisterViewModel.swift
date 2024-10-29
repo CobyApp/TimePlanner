@@ -33,7 +33,8 @@ extension CategoryRegisterViewModel {
     
     func registerCategory(
         name: String,
-        color: CategoryColor
+        color: CategoryColor,
+        completion: @escaping () -> Void
     ) {
         Task {
             do {
@@ -43,17 +44,20 @@ extension CategoryRegisterViewModel {
                 ))
                 
                 DispatchQueue.main.async { [weak self] in
+                    completion()
                     self?.dismiss()
                 }
             } catch(let error) {
                 print(error)
+                completion()
             }
         }
     }
     
     func updateCategory(
         name: String,
-        color: CategoryColor
+        color: CategoryColor,
+        completion: @escaping () -> Void
     ) {
         guard let category = self.category else {
             print("Category is not set for update.")
@@ -71,10 +75,12 @@ extension CategoryRegisterViewModel {
                 try await self.usecase.updateCategory(category: updatedCategory)
                 
                 DispatchQueue.main.async { [weak self] in
+                    completion()
                     self?.dismiss()
                 }
             } catch(let error) {
                 print(error)
+                completion()
             }
         }
     }

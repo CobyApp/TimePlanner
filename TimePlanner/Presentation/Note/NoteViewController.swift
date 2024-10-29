@@ -14,6 +14,10 @@ final class NoteViewController: UIViewController, BaseViewControllerType, Naviga
     
     // MARK: - ui component
     
+    private let loadingIndicator = UIActivityIndicatorView(style: .large).then {
+        $0.hidesWhenStopped = true
+    }
+    
     private let titleLabel = PaddingLabel().then {
         $0.textColor = .labelNormal
         $0.font = UIFont.font(size: 20, weight: .bold)
@@ -69,12 +73,17 @@ final class NoteViewController: UIViewController, BaseViewControllerType, Naviga
     
     func setupLayout() {
         self.view.addSubviews(
-            self.noteCollectionView
+            self.noteCollectionView,
+            self.loadingIndicator
         )
         
         self.noteCollectionView.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
             $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        self.loadingIndicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
         }
     }
     
@@ -104,13 +113,27 @@ final class NoteViewController: UIViewController, BaseViewControllerType, Naviga
         
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    private func startLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.startAnimating()
+        }
+    }
+
+    private func stopLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.stopAnimating()
+        }
+    }
 }
 
 extension NoteViewController {
 
     private func loadNotes() {
+        self.startLoading()
         self.viewModel.getNotes { [weak self] notes in
             self?.noteCollectionView.notes = notes
+            self?.stopLoading()
         }
     }
 }

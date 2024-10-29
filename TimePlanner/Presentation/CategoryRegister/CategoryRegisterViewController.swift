@@ -13,6 +13,10 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
     
     // MARK: - UI Components
     
+    private let loadingIndicator = UIActivityIndicatorView(style: .large).then {
+        $0.hidesWhenStopped = true
+    }
+    
     private let scrollView = UIScrollView().then {
         $0.isScrollEnabled = true
         $0.showsVerticalScrollIndicator = false
@@ -48,16 +52,21 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
     private lazy var completeButton = CompleteButton().then {
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
+            self.startLoading()
             if let _ = self.viewModel.category {
                 self.viewModel.updateCategory(
                     name: self.nameTextField.text ?? "",
                     color: self.selectedColor
-                )
+                ) {
+                    self.stopLoading()
+                }
             } else {
                 self.viewModel.registerCategory(
                     name: self.nameTextField.text ?? "",
                     color: self.selectedColor
-                )
+                ) {
+                    self.stopLoading()
+                }
             }
         }
         $0.addAction(action, for: .touchUpInside)
@@ -127,7 +136,8 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
     func setupLayout() {
         self.view.addSubviews(
             self.scrollView,
-            self.completeButton
+            self.completeButton,
+            self.loadingIndicator
         )
         
         self.scrollView.snp.makeConstraints {
@@ -177,6 +187,10 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
             $0.leading.trailing.equalToSuperview().inset(SizeLiteral.horizantalPadding)
             $0.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top).offset(-10)
             $0.height.equalTo(50)
+        }
+        
+        self.loadingIndicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
         }
     }
     
@@ -239,6 +253,20 @@ final class CategoryRegisterViewController: UIViewController, BaseViewController
             self.completeButton.isEnabled = true
         } else {
             self.completeButton.isEnabled = false
+        }
+    }
+    
+    private func startLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.startAnimating()
+            self?.completeButton.isEnabled = false
+        }
+    }
+
+    private func stopLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.stopAnimating()
+            self?.completeButton.isEnabled = true
         }
     }
 }

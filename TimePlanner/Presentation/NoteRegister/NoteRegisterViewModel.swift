@@ -32,7 +32,8 @@ final class NoteRegisterViewModel {
 extension NoteRegisterViewModel {
     
     func registerNote(
-        content: String
+        content: String,
+        completion: @escaping () -> Void
     ) {
         Task {
             do {
@@ -42,16 +43,19 @@ extension NoteRegisterViewModel {
                 ))
                 
                 DispatchQueue.main.async { [weak self] in
+                    completion()
                     self?.dismiss()
                 }
             } catch(let error) {
                 print(error)
+                completion()
             }
         }
     }
     
     func updateNote(
-        content: String
+        content: String,
+        completion: @escaping () -> Void
     ) {
         guard let note = self.note else {
             print("Note is not set for update.")
@@ -69,10 +73,12 @@ extension NoteRegisterViewModel {
                 try await self.usecase.updateNote(note: updatedNote)
                 
                 DispatchQueue.main.async { [weak self] in
+                    completion()
                     self?.dismiss()
                 }
             } catch(let error) {
                 print(error)
+                completion()
             }
         }
     }

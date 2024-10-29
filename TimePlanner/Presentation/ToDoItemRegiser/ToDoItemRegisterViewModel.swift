@@ -36,7 +36,8 @@ extension ToDoItemRegisterViewModel {
     
     func registerToDoItem(
         title: String,
-        date: Date
+        date: Date,
+        completion: @escaping () -> Void
     ) {
         Task {
             do {
@@ -49,17 +50,20 @@ extension ToDoItemRegisterViewModel {
                 )
                 
                 DispatchQueue.main.async { [weak self] in
+                    completion()
                     self?.dismiss()
                 }
             } catch(let error) {
                 print(error)
+                completion()
             }
         }
     }
     
     func updateToDoItem(
         title: String,
-        date: Date
+        date: Date,
+        completion: @escaping () -> Void
     ) {
         Task {
             do {
@@ -76,10 +80,12 @@ extension ToDoItemRegisterViewModel {
                 )
                 
                 DispatchQueue.main.async { [weak self] in
+                    completion()
                     self?.dismiss()
                 }
             } catch(let error) {
                 print(error)
+                completion()
             }
         }
     }

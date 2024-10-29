@@ -14,6 +14,10 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
     
     // MARK: - ui component
     
+    private let loadingIndicator = UIActivityIndicatorView(style: .large).then {
+        $0.hidesWhenStopped = true
+    }
+    
     private let titleLabel = PaddingLabel().then {
         $0.textColor = .labelNormal
         $0.font = UIFont.font(size: 20, weight: .bold)
@@ -73,7 +77,8 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
     func setupLayout() {
         self.view.addSubviews(
             self.stackView,
-            self.barGraphCollectionView
+            self.barGraphCollectionView,
+            self.loadingIndicator
         )
         
         self.stackView.snp.makeConstraints {
@@ -84,6 +89,10 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
         self.barGraphCollectionView.snp.makeConstraints {
             $0.top.equalTo(self.stackView.snp.bottom).offset(SizeLiteral.verticalPadding)
             $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        self.loadingIndicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
         }
     }
     
@@ -100,27 +109,57 @@ final class InfoViewController: UIViewController, BaseViewControllerType, Naviga
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationController?.navigationBar.prefersLargeTitles = false
     }
+    
+    private func startLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.startAnimating()
+        }
+    }
+
+    private func stopLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.stopAnimating()
+        }
+    }
 }
 
 extension InfoViewController {
     
     private func loadData() {
+        self.startLoading()
+        
+        var isCategoriesLoaded = false
+        var isNotesLoaded = false
+        var isDDaysLoaded = false
+        
+        func checkIfLoadingComplete() {
+            if isCategoriesLoaded && isNotesLoaded && isDDaysLoaded {
+                self.stopLoading()
+            }
+        }
+        
         self.viewModel.getCategories { [weak self] categories in
             DispatchQueue.main.async { [weak self] in
                 self?.toDoInfoView.updateCountText("\(categories.checkedToDo) / \(categories.totalToDo)")
                 self?.barGraphCollectionView.categories = categories
+                isCategoriesLoaded = true
+                checkIfLoadingComplete()
             }
         }
         
         self.viewModel.getNotes { [weak self] notes in
             DispatchQueue.main.async { [weak self] in
                 self?.noteInfoView.updateCountText("\(notes.count)")
+                isNotesLoaded = true
+                checkIfLoadingComplete()
             }
         }
         
         self.viewModel.getDDay { [weak self] dDays in
             DispatchQueue.main.async { [weak self] in
                 self?.dDayInfoView.updateCountText("\(dDays.count)")
+                isDDaysLoaded = true
+                checkIfLoadingComplete()
             }
         }
     }

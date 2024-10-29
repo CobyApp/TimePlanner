@@ -13,6 +13,10 @@ import Then
 final class MainViewController: UIViewController, BaseViewControllerType, Navigationable {
     
     // MARK: - ui component
+    
+    private let loadingIndicator = UIActivityIndicatorView(style: .large).then {
+        $0.hidesWhenStopped = true
+    }
 
     private let titleLogo = UIImageView(image: UIImage.Icon.logo.resize(to: CGSize(width: 150, height: 28)))
         
@@ -36,6 +40,7 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
             self?.viewModel.presentToDoItemRegister(categoryId: category.id, toDoItem: item)
         }
         $0.checkTapAction = { [weak self] category, item, toggle in
+            self?.startLoading()
             self?.viewModel.updateToDoItemCheckedStatus(
                 categoryId: category.id,
                 itemId: item.id,
@@ -43,6 +48,7 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
             ) {
                 DispatchQueue.main.async { [weak self] in
                     toggle()
+                    self?.stopLoading()
                 }
             }
         }
@@ -97,7 +103,8 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
     
     func setupLayout() {
         self.view.addSubviews(
-            self.scrollView
+            self.scrollView,
+            self.loadingIndicator
         )
         
         self.scrollView.addSubviews(
@@ -120,6 +127,10 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
             $0.leading.trailing.bottom.equalToSuperview().inset(SizeLiteral.horizantalPadding)
             $0.width.equalTo(self.scrollView.snp.width).offset(-SizeLiteral.horizantalPadding * 2)
         }
+        
+        self.loadingIndicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
     }
     
     func configureUI() {
@@ -134,6 +145,18 @@ final class MainViewController: UIViewController, BaseViewControllerType, Naviga
         self.navigationItem.leftBarButtonItem = titleLogo
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    private func startLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.startAnimating()
+        }
+    }
+
+    private func stopLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.stopAnimating()
+        }
     }
 }
 
@@ -156,8 +179,10 @@ extension MainViewController {
 extension MainViewController {
 
     private func loadCategories(date: Date) {
+        self.startLoading()
         self.viewModel.getCategoriesWithFilteredToDoItems(date: date) { [weak self] categories in
             self?.todoListView.configure(categories)
+            self?.stopLoading()
         }
     }
 }

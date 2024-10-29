@@ -33,7 +33,8 @@ extension DDayRegisterViewModel {
     
     func registerDDay(
         name: String,
-        dDate: Date
+        dDate: Date,
+        completion: @escaping () -> Void
     ) {
         Task {
             do {
@@ -43,17 +44,20 @@ extension DDayRegisterViewModel {
                 ))
                 
                 DispatchQueue.main.async { [weak self] in
+                    completion()
                     self?.dismiss()
                 }
             } catch(let error) {
                 print(error)
+                completion()
             }
         }
     }
     
     func updateDDay(
         name: String,
-        dDate: Date
+        dDate: Date,
+        completion: @escaping () -> Void
     ) {
         guard let dDay = self.dDay else {
             print("DDay is not set for update.")
@@ -71,10 +75,12 @@ extension DDayRegisterViewModel {
                 try await self.usecase.updateDDay(dDay: updatedDDay)
                 
                 DispatchQueue.main.async { [weak self] in
+                    completion()
                     self?.dismiss()
                 }
             } catch(let error) {
                 print(error)
+                completion()
             }
         }
     }

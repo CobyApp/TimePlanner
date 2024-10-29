@@ -12,7 +12,11 @@ import Then
 
 final class NoteRegisterViewController: UIViewController, BaseViewControllerType, Navigationable, Keyboardable {
     
-    // MARK: - UI Componentsㅋ
+    // MARK: - UI Components
+    
+    private let loadingIndicator = UIActivityIndicatorView(style: .large).then {
+        $0.hidesWhenStopped = true
+    }
     
     private let noteTextView = UITextView().then {
         $0.font = .font(size: 16, weight: .regular)
@@ -32,14 +36,19 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
     private lazy var completeButton = CompleteButton().then {
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
+            self.startLoading()
             if let _ = self.viewModel.note {
                 self.viewModel.updateNote(
                     content: self.noteTextView.text ?? ""
-                )
+                ) {
+                    self.stopLoading()
+                }
             } else {
                 self.viewModel.registerNote(
                     content: self.noteTextView.text ?? ""
-                )
+                ) {
+                    self.stopLoading()
+                }
             }
         }
         $0.addAction(action, for: .touchUpInside)
@@ -95,7 +104,8 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
         self.view.addSubviews(
             self.noteTextView,
             self.placeholderLabel,
-            self.completeButton
+            self.completeButton,
+            self.loadingIndicator
         )
         
         self.noteTextView.snp.makeConstraints {
@@ -114,6 +124,10 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
             $0.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top).offset(-10)
             $0.height.equalTo(50)
         }
+        
+        self.loadingIndicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
     }
     
     func configureUI() {
@@ -123,6 +137,20 @@ final class NoteRegisterViewController: UIViewController, BaseViewControllerType
     func configureNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.title = "노트"
+    }
+    
+    private func startLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.startAnimating()
+            self?.completeButton.isEnabled = false
+        }
+    }
+
+    private func stopLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.stopAnimating()
+            self?.completeButton.isEnabled = true
+        }
     }
 }
 

@@ -243,12 +243,16 @@ final class SignViewController: UIViewController, BaseViewControllerType, Naviga
     }
     
     private func startLoading() {
-        self.loadingIndicator.startAnimating()
-        self.signUpButton.isEnabled = false
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.startAnimating()
+            self?.signUpButton.isEnabled = false
+        }
     }
 
     private func stopLoading() {
-        self.loadingIndicator.stopAnimating()
-        self.signUpButton.isEnabled = true
+        DispatchQueue.main.async { [weak self] in
+            self?.loadingIndicator.stopAnimating()
+            self?.signUpButton.isEnabled = true
+        }
     }
 }

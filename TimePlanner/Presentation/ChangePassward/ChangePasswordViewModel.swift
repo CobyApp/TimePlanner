@@ -39,7 +39,6 @@ extension ChangePasswordViewModel {
                 
                 DispatchQueue.main.async { [weak self] in
                     completion()
-                    self?.dismiss()
                 }
             } catch {
                 completion()

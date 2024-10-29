@@ -82,6 +82,7 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
                 newPassword: self.newPasswordTextField.text ?? "",
                 completion: {
                     self.stopLoading()
+                    self.showChangeSuccessAlert()
                 },
                 errorAlert: {
                     DispatchQueue.main.async { [weak self] in
@@ -258,6 +259,14 @@ final class ChangePasswordViewController: UIViewController, BaseViewControllerTy
     private func showChangeErrorAlert() {
         let alert = UIAlertController(title: "비밀번호 변경 오류", message: "비밀번호를 확인해주세요.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func showChangeSuccessAlert() {
+        let alert = UIAlertController(title: "비밀번호 변경 완료", message: "비밀번호가 변경되었습니다.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            self?.viewModel.dismiss()
+        })
         self.present(alert, animated: true, completion: nil)
     }
     

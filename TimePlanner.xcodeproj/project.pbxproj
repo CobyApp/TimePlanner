@@ -24,7 +24,6 @@
 		CB3271E12CBCDFEB00E1C4D7 /* CategoryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3271E02CBCDFEB00E1C4D7 /* CategoryColor.swift */; };
 		CB3271E32CBCEA9800E1C4D7 /* DDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3271E22CBCEA9800E1C4D7 /* DDayModel.swift */; };
 		CB3271E52CBCEAD800E1C4D7 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3271E42CBCEAD800E1C4D7 /* NoteModel.swift */; };
-		CB3271E82CBCF92200E1C4D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB3271E72CBCF92200E1C4D7 /* GoogleService-Info.plist */; };
 		CB3271EB2CBCFA1900E1C4D7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CB3271EA2CBCFA1900E1C4D7 /* FirebaseAuth */; };
 		CB3271ED2CBCFA1900E1C4D7 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CB3271EC2CBCFA1900E1C4D7 /* FirebaseFirestore */; };
 		CB3271EF2CBCFA1900E1C4D7 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = CB3271EE2CBCFA1900E1C4D7 /* FirebaseMessaging */; };
@@ -72,6 +71,7 @@
 		CB95903A2CB06C2600CEF73B /* DDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9590392CB06C2600CEF73B /* DDayViewModel.swift */; };
 		CB95903C2CB06C4200CEF73B /* InfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95903B2CB06C4200CEF73B /* InfoCoordinator.swift */; };
 		CB95903E2CB06C5100CEF73B /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95903D2CB06C5100CEF73B /* InfoViewModel.swift */; };
+		CBA09BD62CE212AD0055A78B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBA09BD52CE212AD0055A78B /* GoogleService-Info.plist */; };
 		CBA0E6C42CB411F3000FF934 /* CategoryRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E6C32CB411F3000FF934 /* CategoryRegisterViewController.swift */; };
 		CBA0E6C62CB411FA000FF934 /* CategoryRegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E6C52CB411FA000FF934 /* CategoryRegisterCoordinator.swift */; };
 		CBA0E6C82CB41201000FF934 /* CategoryRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA0E6C72CB41201000FF934 /* CategoryRegisterViewModel.swift */; };
@@ -160,7 +160,6 @@
 		CB3271E22CBCEA9800E1C4D7 /* DDayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayModel.swift; sourceTree = "<group>"; };
 		CB3271E42CBCEAD800E1C4D7 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
 		CB3271E62CBCF88300E1C4D7 /* TimePlanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimePlanner.entitlements; sourceTree = "<group>"; };
-		CB3271E72CBCF92200E1C4D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB3271F12CBCFA4000E1C4D7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CB3271F32CBCFA4600E1C4D7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		CB3271F52CBCFA4D00E1C4D7 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
@@ -206,6 +205,7 @@
 		CB9590392CB06C2600CEF73B /* DDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayViewModel.swift; sourceTree = "<group>"; };
 		CB95903B2CB06C4200CEF73B /* InfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCoordinator.swift; sourceTree = "<group>"; };
 		CB95903D2CB06C5100CEF73B /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
+		CBA09BD52CE212AD0055A78B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CBA0E6C32CB411F3000FF934 /* CategoryRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRegisterViewController.swift; sourceTree = "<group>"; };
 		CBA0E6C52CB411FA000FF934 /* CategoryRegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRegisterCoordinator.swift; sourceTree = "<group>"; };
 		CBA0E6C72CB41201000FF934 /* CategoryRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRegisterViewModel.swift; sourceTree = "<group>"; };
@@ -414,7 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				CB3F698C2C9DAA5400635DBC /* Info.plist */,
-				CB3271E72CBCF92200E1C4D7 /* GoogleService-Info.plist */,
+				CBA09BD52CE212AD0055A78B /* GoogleService-Info.plist */,
 				CB3F697E2C9DAA5100635DBC /* AppDelegate.swift */,
 				CB3F69802C9DAA5100635DBC /* SceneDelegate.swift */,
 			);
@@ -935,7 +935,7 @@
 				CBA20E8B2C9DB88D00455DC4 /* Pretendard-SemiBold.otf in Resources */,
 				CBA20E8C2C9DB88D00455DC4 /* Pretendard-Regular.otf in Resources */,
 				CB3F69882C9DAA5400635DBC /* Assets.xcassets in Resources */,
-				CB3271E82CBCF92200E1C4D7 /* GoogleService-Info.plist in Resources */,
+				CBA09BD62CE212AD0055A78B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1213,10 +1213,10 @@
 				CODE_SIGN_ENTITLEMENTS = TimePlanner/TimePlanner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B88XLHTDJ3;
+				DEVELOPMENT_TEAM = 3Y8YH8GWMM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TimePlanner/App/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = watching;
+				INFOPLIST_KEY_CFBundleDisplayName = TimePlanner;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1229,7 +1229,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yesung.watching;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coby.TimePlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1249,10 +1249,10 @@
 				CODE_SIGN_ENTITLEMENTS = TimePlanner/TimePlanner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B88XLHTDJ3;
+				DEVELOPMENT_TEAM = 3Y8YH8GWMM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TimePlanner/App/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = watching;
+				INFOPLIST_KEY_CFBundleDisplayName = TimePlanner;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1265,7 +1265,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yesung.watching;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coby.TimePlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

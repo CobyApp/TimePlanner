@@ -12,11 +12,11 @@
 
 ### 📱 Screenshots
 
-| 투두 리스트 | 노트 |
+| ToDo List | Note |
 |:---:|:---:|
 |<img width="300" src="https://github.com/user-attachments/assets/f20ba74b-f0fc-46db-9a61-27baaeef395e">|<img width="300" src="https://github.com/user-attachments/assets/9b4aa691-b640-4b80-945a-f8e2d555dacc">|
 
-| 디데이 | 그래프 |
+| D-Day | Graph |
 |:---:|:---:|
 |<img width="300" src="https://github.com/user-attachments/assets/13d9d0ec-11b4-4859-af4d-e0474026e3c6">|<img width="300" src="https://github.com/user-attachments/assets/fd6366ce-3630-4473-bfe0-6f130210e071">|
 
